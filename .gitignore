@@ -1,0 +1,65 @@
+# ---------------------------------------------------------------
+# Unity generated — jangan pernah di-commit
+# Library/ saja sudah 2,1 GB dan bisa dibangun ulang dari Assets +
+# Packages + ProjectSettings.
+# ---------------------------------------------------------------
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# Meta file hanya diabaikan kalau aset pasangannya juga diabaikan
+!/[Aa]ssets/**/*.meta
+
+# ---------------------------------------------------------------
+# IDE dan project file yang di-generate Unity
+# ---------------------------------------------------------------
+.vs/
+.vscode/
+.idea/
+.consulo/
+ExportedObj/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# ---------------------------------------------------------------
+# Hasil build dan artefak
+# ---------------------------------------------------------------
+*.apk
+*.aab
+*.app
+*.unitypackage
+*.x86_64
+sysinfo.txt
+crashlytics-build.properties
+
+# ---------------------------------------------------------------
+# Addressables
+# ---------------------------------------------------------------
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# ---------------------------------------------------------------
+# OS
+# ---------------------------------------------------------------
+.DS_Store
+Thumbs.db
