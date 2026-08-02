@@ -2,7 +2,8 @@
     "name": "SaksiTerakhir.Runtime",
     "rootNamespace": "SaksiTerakhir",
     "references": [
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
