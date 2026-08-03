@@ -1,7 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SaksiTerakhir.Interaction
 {
+    public enum DoorSwing
+    {
+        Auto,
+        Forward,
+        Back,
+    }
+
     [DisallowMultipleComponent]
     public sealed class DoorInteractable : Interactable
     {
@@ -15,6 +23,7 @@ namespace SaksiTerakhir.Interaction
         [Header("Swing")]
         [SerializeField] private float openAngle = 92f;
         [SerializeField] private float swingSpeed = 260f;
+        [SerializeField] private DoorSwing swing = DoorSwing.Auto;
         [SerializeField] private LayerMask obstacleLayers = ~0;
 
         [Header("State")]
@@ -28,11 +37,12 @@ namespace SaksiTerakhir.Interaction
 
         private readonly Collider[] obstacleBuffer = new Collider[ObstacleBufferSize];
 
+        private Collider leafCollider;
         private Quaternion closedRotation;
         private Vector3 hingeAxis;
-        private Vector3 swingDirection;
         private Vector3 probeCentre;
         private Vector3 probeExtents;
+        private float swingAngle;
         private float currentAngle;
         private float targetAngle;
 
@@ -46,27 +56,21 @@ namespace SaksiTerakhir.Interaction
 
         private void Awake()
         {
+            leafCollider = GetComponent<Collider>();
             closedRotation = transform.localRotation;
             hingeAxis = transform.parent != null
                 ? transform.parent.InverseTransformDirection(Vector3.up).normalized
                 : Vector3.up;
 
-            Renderer leafRenderer = GetComponent<Renderer>();
-            Vector3 leaf = leafRenderer != null
-                ? leafRenderer.bounds.center - transform.position
-                : transform.right;
-            leaf.y = 0f;
-            swingDirection = leaf.sqrMagnitude > Mathf.Epsilon
-                ? Vector3.Cross(Vector3.up, leaf.normalized)
-                : Vector3.forward;
-
             BuildSwingProbe();
+            swingAngle = ResolveSwingAngle();
 
             if (startsOpen)
             {
-                targetAngle = openAngle;
-                currentAngle = openAngle;
+                targetAngle = swingAngle;
+                currentAngle = swingAngle;
                 ApplyRotation();
+                SetColliderEnabled(false);
             }
         }
 
@@ -88,18 +92,8 @@ namespace SaksiTerakhir.Interaction
                 return;
             }
 
-            float side = Vector3.Dot(actor.position - transform.position, swingDirection);
-            float preferred = side > 0f ? -openAngle : openAngle;
-            if (!IsSwingBlocked(preferred))
-            {
-                targetAngle = preferred;
-                return;
-            }
-
-            if (!IsSwingBlocked(-preferred))
-            {
-                targetAngle = -preferred;
-            }
+            targetAngle = swingAngle;
+            SetColliderEnabled(false);
         }
 
         private void Update()
@@ -112,6 +106,7 @@ namespace SaksiTerakhir.Interaction
             currentAngle = Mathf.MoveTowards(currentAngle, targetAngle,
                 swingSpeed * Time.deltaTime);
             ApplyRotation();
+            SetColliderEnabled(Mathf.Abs(currentAngle) < AngleTolerance);
         }
 
         protected override string ResolvePromptKey()
@@ -122,6 +117,57 @@ namespace SaksiTerakhir.Interaction
             }
 
             return IsOpen ? closePromptKey : openPromptKey;
+        }
+
+        private float ResolveSwingAngle()
+        {
+            if (swing == DoorSwing.Forward)
+            {
+                return openAngle;
+            }
+
+            if (swing == DoorSwing.Back)
+            {
+                return -openAngle;
+            }
+
+            var touching = new HashSet<Collider>(CollidersAt(0f));
+            return IsSwingBlocked(openAngle, touching) ? -openAngle : openAngle;
+        }
+
+        private IEnumerable<Collider> CollidersAt(float angle)
+        {
+            Quaternion previous = transform.localRotation;
+            int count = OverlapAt(angle);
+            var found = new List<Collider>(count);
+            for (var index = 0; index < count; index++)
+            {
+                if (obstacleBuffer[index].transform != transform)
+                {
+                    found.Add(obstacleBuffer[index]);
+                }
+            }
+
+            transform.localRotation = previous;
+            Physics.SyncTransforms();
+            return found;
+        }
+
+        private int OverlapAt(float angle)
+        {
+            transform.localRotation = Quaternion.AngleAxis(angle, hingeAxis) * closedRotation;
+            Physics.SyncTransforms();
+            return Physics.OverlapBoxNonAlloc(transform.TransformPoint(probeCentre),
+                probeExtents, obstacleBuffer, transform.rotation, obstacleLayers,
+                QueryTriggerInteraction.Ignore);
+        }
+
+        private void SetColliderEnabled(bool value)
+        {
+            if (leafCollider != null && leafCollider.enabled != value)
+            {
+                leafCollider.enabled = value;
+            }
         }
 
         private void BuildSwingProbe()
@@ -139,8 +185,14 @@ namespace SaksiTerakhir.Interaction
             centre[alongAxis] = (near + far) * 0.5f;
             extents[alongAxis] = Mathf.Abs(far - near) * 0.5f;
 
+            Vector3 scale = transform.lossyScale;
+            Vector3 world = new Vector3(
+                extents.x * Mathf.Abs(scale.x),
+                extents.y * Mathf.Abs(scale.y),
+                extents.z * Mathf.Abs(scale.z));
+
             probeCentre = centre;
-            probeExtents = Vector3.Max(extents - Vector3.one * ObstacleMargin,
+            probeExtents = Vector3.Max(world - Vector3.one * ObstacleMargin,
                 Vector3.one * 0.01f);
         }
 
@@ -155,22 +207,17 @@ namespace SaksiTerakhir.Interaction
             return 3 - largest - smallest;
         }
 
-        private bool IsSwingBlocked(float angle)
+        private bool IsSwingBlocked(float angle, HashSet<Collider> touching)
         {
             Quaternion previous = transform.localRotation;
             var blocked = false;
             foreach (float fraction in SwingProbeFractions)
             {
-                transform.localRotation =
-                    Quaternion.AngleAxis(angle * fraction, hingeAxis) * closedRotation;
-                Physics.SyncTransforms();
-
-                int count = Physics.OverlapBoxNonAlloc(transform.TransformPoint(probeCentre),
-                    probeExtents, obstacleBuffer, transform.rotation, obstacleLayers,
-                    QueryTriggerInteraction.Ignore);
+                int count = OverlapAt(angle * fraction);
                 for (var index = 0; index < count && !blocked; index++)
                 {
-                    blocked = obstacleBuffer[index].transform != transform;
+                    Collider hit = obstacleBuffer[index];
+                    blocked = hit.transform != transform && !touching.Contains(hit);
                 }
 
                 if (blocked)

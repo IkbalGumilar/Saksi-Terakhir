@@ -252,6 +252,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4516871700779348180, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1778340099547683969}
+    - targetCorrespondingSourceObject: {fileID: -1144032104676360387, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4667307106785455212}
+    - targetCorrespondingSourceObject: {fileID: -1144032104676360387, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5685452445700720676}
     - targetCorrespondingSourceObject: {fileID: 5116958663338312475, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3732724866953692134}
@@ -328,6 +334,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -378,6 +385,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -455,6 +463,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -505,6 +514,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -582,6 +592,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -659,6 +670,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -709,6 +721,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -759,6 +772,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -809,6 +823,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -994,6 +1009,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1071,6 +1087,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1121,6 +1138,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1225,6 +1243,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1302,6 +1321,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1379,6 +1399,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1429,6 +1450,58 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  isLocked: 0
+  startsOpen: 0
+  openPromptKey: interact.door.open
+  closePromptKey: interact.door.close
+  lockedPromptKey: interact.door.locked
+--- !u!1 &7636810622759357374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1144032104676360387, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+  m_PrefabInstance: {fileID: 1865882298178548867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &4667307106785455212
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7636810622759357374}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7436947227003161198, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+--- !u!114 &5685452445700720676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7636810622759357374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110082b925549e1338eaa1e6d99f03f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
+  promptKey: interact.generic
+  openAngle: 92
+  swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1479,6 +1552,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1529,6 +1603,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1633,6 +1708,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1683,6 +1759,7 @@ MonoBehaviour:
   promptKey: interact.generic
   openAngle: 92
   swingSpeed: 260
+  swing: 0
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 4294967295
