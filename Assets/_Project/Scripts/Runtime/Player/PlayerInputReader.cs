@@ -13,6 +13,7 @@ namespace SaksiTerakhir.Player
         private const string SprintActionName = "Sprint";
         private const string CrouchActionName = "Crouch";
         private const string JumpActionName = "Jump";
+        private const string InteractActionName = "Interact";
 
         [SerializeField] private InputActionAsset inputActions;
 
@@ -22,14 +23,19 @@ namespace SaksiTerakhir.Player
         private InputAction sprintAction;
         private InputAction crouchAction;
         private InputAction jumpAction;
+        private InputAction interactAction;
 
         public event Action JumpPerformed;
         public event Action CrouchPerformed;
         public event Action CrouchCanceled;
+        public event Action InteractPressed;
+        public event Action InteractHeld;
+        public event Action InteractReleased;
 
         public Vector2 MoveValue { get; private set; }
         public Vector2 LookValue { get; private set; }
         public bool IsSprintHeld { get; private set; }
+        public bool IsInteractHeld { get; private set; }
         public bool IsLookFromPointer { get; private set; }
 
         private void Awake()
@@ -56,12 +62,14 @@ namespace SaksiTerakhir.Player
             sprintAction = ResolveAction(SprintActionName);
             crouchAction = ResolveAction(CrouchActionName);
             jumpAction = ResolveAction(JumpActionName);
+            interactAction = ResolveAction(InteractActionName);
 
             enabled = moveAction != null
                 && lookAction != null
                 && sprintAction != null
                 && crouchAction != null
-                && jumpAction != null;
+                && jumpAction != null
+                && interactAction != null;
         }
 
         private void OnEnable()
@@ -70,6 +78,9 @@ namespace SaksiTerakhir.Player
             jumpAction.performed += OnJumpPerformed;
             crouchAction.performed += OnCrouchPerformed;
             crouchAction.canceled += OnCrouchCanceled;
+            interactAction.started += OnInteractStarted;
+            interactAction.performed += OnInteractPerformed;
+            interactAction.canceled += OnInteractCanceled;
         }
 
         private void OnDisable()
@@ -77,11 +88,15 @@ namespace SaksiTerakhir.Player
             jumpAction.performed -= OnJumpPerformed;
             crouchAction.performed -= OnCrouchPerformed;
             crouchAction.canceled -= OnCrouchCanceled;
+            interactAction.started -= OnInteractStarted;
+            interactAction.performed -= OnInteractPerformed;
+            interactAction.canceled -= OnInteractCanceled;
             playerMap.Disable();
 
             MoveValue = Vector2.zero;
             LookValue = Vector2.zero;
             IsSprintHeld = false;
+            IsInteractHeld = false;
         }
 
         private void Update()
@@ -123,6 +138,23 @@ namespace SaksiTerakhir.Player
         private void OnCrouchCanceled(InputAction.CallbackContext context)
         {
             CrouchCanceled?.Invoke();
+        }
+
+        private void OnInteractStarted(InputAction.CallbackContext context)
+        {
+            IsInteractHeld = true;
+            InteractPressed?.Invoke();
+        }
+
+        private void OnInteractPerformed(InputAction.CallbackContext context)
+        {
+            InteractHeld?.Invoke();
+        }
+
+        private void OnInteractCanceled(InputAction.CallbackContext context)
+        {
+            IsInteractHeld = false;
+            InteractReleased?.Invoke();
         }
     }
 }
