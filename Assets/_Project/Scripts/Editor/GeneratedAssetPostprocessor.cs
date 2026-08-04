@@ -9,6 +9,10 @@ namespace SaksiTerakhir.EditorTools
         private const string TextureRoot = "Assets/_Project/Art/Textures/";
         private const string CharacterTextures = TextureRoot + "Characters/";
         private const string FabricTextures = TextureRoot + "Fabric/";
+        private const string SkyTextures = TextureRoot + "Sky/";
+
+        private const int SkyTextureSize = 2048;
+        private const int SkyHdrSize = 512;
 
         private const int CharacterTextureSize = 1024;
         private const int EnvironmentTextureSize = 1024;
@@ -60,6 +64,19 @@ namespace SaksiTerakhir.EditorTools
             importer.streamingMipmaps = true;
             importer.wrapMode = TextureWrapMode.Clamp;
             importer.textureCompression = TextureImporterCompression.Compressed;
+
+            if (importer.assetPath.StartsWith(SkyTextures))
+            {
+                bool isHighDynamicRange = importer.assetPath.EndsWith(".exr");
+                importer.textureShape = TextureImporterShape.TextureCube;
+                importer.generateCubemap = TextureImporterGenerateCubemap.Cylindrical;
+                importer.textureType = TextureImporterType.Default;
+                importer.sRGBTexture = !isHighDynamicRange;
+                importer.alphaSource = TextureImporterAlphaSource.None;
+                importer.wrapMode = TextureWrapMode.Repeat;
+                importer.maxTextureSize = isHighDynamicRange ? SkyHdrSize : SkyTextureSize;
+                return;
+            }
 
             if (importer.assetPath.StartsWith(FabricTextures))
             {
