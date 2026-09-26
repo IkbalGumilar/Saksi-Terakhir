@@ -62,3 +62,9 @@ MonoBehaviour:
   ambientLines:
   - Nomor berkas ini perlu dicocokkan.
   - Saya akan turun mengambil dokumen.
+  storyQuests:
+  - {fileID: 11400000, guid: 82286ee9fcb1047289f5e6f32136ff3e, type: 2}
+  - {fileID: 11400000, guid: 42498d6e8732b6e96a37a18a44e555b1, type: 2}
+  storyDialogues:
+  - {fileID: 11400000, guid: 8f2dd9bccc8eff0adbf054e1ec5e191a, type: 2}
+  - {fileID: 11400000, guid: 9e9b80f45ac9e26b98f63e52d3619295, type: 2}

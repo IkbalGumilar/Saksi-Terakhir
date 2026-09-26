@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using SaksiTerakhir.Interaction;
+using SaksiTerakhir.Story;
 using UnityEngine;
 
 namespace SaksiTerakhir.Npc
@@ -9,6 +10,9 @@ namespace SaksiTerakhir.Npc
     {
         private OfficeNpcAgent agent;
         private int dialogueIndex = -1;
+        private ChapterOneDirector storyDirector;
+
+        public void SetStoryDirector(ChapterOneDirector director) => storyDirector = director;
 
         public string DisplayName => Agent != null && Agent.Profile != null
             ? Agent.Profile.DisplayName
@@ -26,6 +30,7 @@ namespace SaksiTerakhir.Npc
         public override void Interact(Transform actor)
         {
             if (!CanInteract(actor)) return;
+            if (storyDirector != null && storyDirector.TryBeginNpcDialogue(this, actor)) return;
 
             IReadOnlyList<string> lines = Agent.Profile.DialogueLines;
             if (lines == null || lines.Count == 0 || dialogueIndex >= lines.Count - 1)

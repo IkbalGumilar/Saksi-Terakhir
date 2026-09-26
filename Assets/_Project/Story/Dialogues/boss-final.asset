@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: boss-final
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.boss_final
+  lines:
+  - speakerId: NPC-006
+    text: Sekarang kalian sudah lengkap. Perhatikan lembar arsip di meja ini.
+  - speakerId: NPC-003
+    text: Tulisan pinggirnya berbeda dari catatan utama.
+  - speakerId: NPC-006
+    text: Benar. Catatan itu ditambahkan setelah berkas pertama disimpan.
+  - speakerId: NPC-004
+    text: Nama desanya tidak ada di peta wilayah yang kita pakai sekarang.
+  - speakerId: NPC-006
+    text: Dan tidak muncul dalam daftar administrasi modern mana pun yang saya periksa.
+  - speakerId: PLAYER
+    text: Namun berkas lama ini mencatat alamatnya?
+  - speakerId: NPC-006
+    text: 'Ada petunjuk: Provinsi Arunika, di ujung selatan Kecamatan Tanjung Sagara.'
+  - speakerId: NPC-003
+    text: Bagian selatan kecamatan itu luas. Apakah ada penanda lain?
+  - speakerId: NPC-006
+    text: Sebuah jalan lama dan aliran sungai, tetapi keduanya mungkin sudah berubah.
+  - speakerId: NPC-004
+    text: Bisa jadi tempat itu berganti nama atau ditinggalkan.
+  - speakerId: NPC-006
+    text: Itulah yang harus kalian pastikan. Jangan menulis kesimpulan sebelum melihatnya.
+  - speakerId: PLAYER
+    text: Kami mulai dari alamat di arsip, lalu memeriksa keadaan di lapangan.
+  - speakerId: NPC-006
+    text: Catat apa yang kalian temukan, bahkan bila tampaknya tidak berhubungan.
+  - speakerId: NPC-003
+    text: Kalau jalur lama sudah tertutup, kami cari akses dari kecamatan.
+  - speakerId: NPC-006
+    text: Gunakan penilaian kalian. Keselamatan lebih penting daripada mengejar jadwal.
+  - speakerId: NPC-004
+    text: Apakah kendaraan kantor tersedia?
+  - speakerId: NPC-006
+    text: Ya. Kunci mobil ada pada Nadia di meja resepsionis.
+  - speakerId: PLAYER
+    text: Kami ambil kuncinya dan menyiapkan perjalanan.
+  - speakerId: NPC-006
+    text: Kabari saya sebelum berangkat jauh. Saya ingin tahu rute yang kalian pilih.
+  - speakerId: NPC-003
+    text: Baik, Pak. Kami mulai dari petunjuk paling jelas.

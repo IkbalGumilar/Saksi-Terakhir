@@ -62,3 +62,7 @@ MonoBehaviour:
   ambientLines:
   - Rooftop bagian barat aman.
   - Saya akan lihat sisi lainnya.
+  storyQuests:
+  - {fileID: 11400000, guid: e8697ca965344d9e193679de8fdd9e02, type: 2}
+  storyDialogues:
+  - {fileID: 11400000, guid: a719a5373a8740a72b6fead0f59c90c0, type: 2}

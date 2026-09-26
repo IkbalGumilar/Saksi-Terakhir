@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: raka-first
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.raka_first
+  lines:
+  - speakerId: PLAYER
+    text: Raka, Pak Arya meminta kita berkumpul di ruangannya.
+  - speakerId: NPC-003
+    text: Sekarang? Aku sedang menutup laporan pagi.
+  - speakerId: PLAYER
+    text: Ada arsip tempat yang belum bisa dikonfirmasi. Ia ingin kita memeriksanya.
+  - speakerId: NPC-003
+    text: Kalau begitu laporan ini bisa menunggu beberapa menit.
+  - speakerId: PLAYER
+    text: Aku masih harus mencari Sinta.
+  - speakerId: NPC-003
+    text: Pergilah. Aku jalan dulu ke lantai empat dan menunggu di sana.
+  - speakerId: PLAYER
+    text: Hati-hati di tangga. Kita bertemu di ruang bos.

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: sinta-last
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.sinta_last
+  lines:
+  - speakerId: PLAYER
+    text: Sinta, Pak Arya menunggu kita. Raka sudah menuju ke sana.
+  - speakerId: NPC-004
+    text: Aku ikut. Semoga ini tidak merusak rencana akhir pekan.
+  - speakerId: PLAYER
+    text: Bima dan Yuni sedang membahas pantai di rooftop tadi.
+  - speakerId: NPC-004
+    text: Aku tahu. Mereka berdebat soal siapa yang membawa peta.
+  - speakerId: PLAYER
+    text: Yuni tidak mau Bima memegangnya sendirian.
+  - speakerId: NPC-004
+    text: Keputusan yang bijak. Aku akan mengurus kendaraan dan bekal.
+  - speakerId: PLAYER
+    text: Setelah pekerjaan dari bos selesai?
+  - speakerId: NPC-004
+    text: Tentu. Aku tidak mau memesan apa pun sebelum kita tahu berapa lama tugas
+      ini.
+  - speakerId: PLAYER
+    text: Semoga hanya pemeriksaan singkat.
+  - speakerId: NPC-004
+    text: Kalau selesai tepat waktu, kita bisa berangkat Sabtu sebelum jalan ramai.
+  - speakerId: PLAYER
+    text: Aku ingin ikut melihat laut saat matahari terbit.
+  - speakerId: NPC-004
+    text: Bagus. Nanti aku hubungi semua orang, termasuk Pak Arya.
+  - speakerId: PLAYER
+    text: Ia benar-benar akan ikut?
+  - speakerId: NPC-004
+    text: Kita tanyakan setelah pengarahan. Nah, ruangannya sudah di depan.

@@ -34,3 +34,7 @@ MonoBehaviour:
   ambientLines:
   - Saya mencatat tamu yang masuk.
   - Jadwal kunjungan hari ini cukup padat.
+  storyQuests:
+  - {fileID: 11400000, guid: ca4ac0784153bdb3dad88877a912b011, type: 2}
+  storyDialogues:
+  - {fileID: 11400000, guid: a0583cc74b7b94c9d9a57405ec108c6d, type: 2}

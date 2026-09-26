@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: raka-last
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.raka_last
+  lines:
+  - speakerId: PLAYER
+    text: Raka, kita harus kembali ke Pak Arya. Sinta sudah menunggu.
+  - speakerId: NPC-003
+    text: Aku ikut. Kita jalan sambil bicara saja.
+  - speakerId: NPC-003
+    text: Sejujurnya, aku sedang memikirkan sesuatu di luar pekerjaan ini.
+  - speakerId: PLAYER
+    text: Sesuatu yang besar?
+  - speakerId: NPC-003
+    text: Aku ingin keluar dan membuka usaha sendiri.
+  - speakerId: PLAYER
+    text: Kamu sudah menentukan waktunya?
+  - speakerId: NPC-003
+    text: Belum. Ide itu matang, tapi melangkah keluar tetap menakutkan.
+  - speakerId: PLAYER
+    text: Wajar. Kamu tidak harus memutuskan semuanya hari ini.
+  - speakerId: NPC-003
+    text: Aku tahu. Itulah sebabnya aku belum bercerita kepada banyak orang.
+  - speakerId: PLAYER
+    text: Terima kasih sudah percaya padaku.
+  - speakerId: NPC-003
+    text: Tugas dari Pak Arya ini mungkin pekerjaan lapangan terakhirku di sini.
+  - speakerId: PLAYER
+    text: Kalau begitu kita kerjakan dengan baik.
+  - speakerId: NPC-003
+    text: Setuju. Sesudahnya aku akan memikirkan langkah berikutnya dengan tenang.
+  - speakerId: NPC-003
+    text: Kita sudah sampai. Mari dengar apa yang sebenarnya ada di berkas itu.

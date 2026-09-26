@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: boss-first
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.boss_first
+  lines:
+  - speakerId: NPC-006
+    text: Terima kasih sudah datang. Duduklah sebentar, ada berkas yang ingin saya
+      tunjukkan.
+  - speakerId: PLAYER
+    text: Berkas apa, Pak?
+  - speakerId: NPC-006
+    text: Daftar permukiman dari arsip lama. Satu entri tidak cocok dengan catatan
+      kita sekarang.
+  - speakerId: PLAYER
+    text: Mungkin nama tempatnya sudah berubah.
+  - speakerId: NPC-006
+    text: Itu dugaan pertama saya. Tetapi nomor berkas dan rujukannya masih konsisten.
+  - speakerId: PLAYER
+    text: Apakah ada orang yang pernah memeriksanya langsung?
+  - speakerId: NPC-006
+    text: Belum. Semua laporan setelahnya hanya mengutip lembar yang sama.
+  - speakerId: PLAYER
+    text: Jadi keberadaan tempat itu belum terkonfirmasi.
+  - speakerId: NPC-006
+    text: Tepat. Saya tidak mau menandainya salah sebelum kita melihat kenyataan
+      di lapangan.
+  - speakerId: PLAYER
+    text: Apa yang harus saya lakukan?
+  - speakerId: NPC-006
+    text: Cari Raka dan Sinta. Kalian bertiga akan memeriksa petunjuknya bersama.
+  - speakerId: PLAYER
+    text: Mereka tahu soal berkas ini?
+  - speakerId: NPC-006
+    text: Belum. Saya sengaja menunggu kamu tiba sebelum memanggil mereka.
+  - speakerId: PLAYER
+    text: Saya akan menemukan mereka dulu.
+  - speakerId: NPC-006
+    text: Ajak mereka ke sini. Setelah semua lengkap, saya jelaskan alamat yang tercatat.
+  - speakerId: PLAYER
+    text: Baik, Pak. Saya kembali bersama mereka.

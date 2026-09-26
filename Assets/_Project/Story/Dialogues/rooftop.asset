@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: rooftop
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.rooftop
+  lines:
+  - speakerId: NPC-021
+    text: Akhir pekan ini jadi ke pantai, kan? Aku sudah menunggu kabarnya sejak
+      Senin.
+  - speakerId: NPC-022
+    text: Jadi, kalau laporan hari Jumat selesai. Aku tidak mau membawa map arsip
+      ke pasir.
+  - speakerId: PLAYER
+    text: Kalian sudah memilih pantainya?
+  - speakerId: NPC-021
+    text: Belum resmi. Aku menemukan teluk kecil yang katanya tenang saat pagi.
+  - speakerId: NPC-022
+    text: Bima, terakhir kali kamu bilang tenang, kita malah tersesat mencari parkir.
+  - speakerId: NPC-021
+    text: Itu karena peta lama. Kali ini aku bawa petunjuk yang lebih baik.
+  - speakerId: PLAYER
+    text: Kedengarannya seperti awal dari pekerjaan baru.
+  - speakerId: NPC-022
+    text: Jangan bercanda. Ini liburan kantor, bukan survei lapangan.
+  - speakerId: NPC-021
+    text: Kita berangkat Sabtu pagi. Yang lain bisa menyusul setelah sarapan.
+  - speakerId: NPC-022
+    text: Aku akan menghubungi Raka dan Sinta. Mereka belum memberi jawaban.
+  - speakerId: PLAYER
+    text: Kalau bos bagaimana?
+  - speakerId: NPC-021
+    text: Pak Arya juga diundang. Katanya ia akan ikut kalau meja kerjanya kosong.
+  - speakerId: NPC-022
+    text: Aku belum pernah melihat meja itu benar-benar kosong.
+  - speakerId: PLAYER
+    text: Berarti kita perlu alasan yang cukup kuat untuk menariknya keluar kantor.
+  - speakerId: NPC-021
+    text: Pemandangan laut biasanya lebih meyakinkan daripada rapat.
+  - speakerId: NPC-022
+    text: Aku bawa makanan. Tolong jangan biarkan Bima memegang peta sendirian.
+  - speakerId: PLAYER
+    text: Baik. Tapi sekarang kita selesaikan urusan hari ini dulu.
+  - speakerId: NPC-021
+    text: Setuju. Nanti sore kita pastikan siapa saja yang ikut.

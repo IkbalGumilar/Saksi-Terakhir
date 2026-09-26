@@ -34,3 +34,9 @@ MonoBehaviour:
   ambientLines:
   - Saya ingin melihat ringkasan terbaru.
   - Pastikan semua bagian bekerja rapi.
+  storyQuests:
+  - {fileID: 11400000, guid: c833d157ed3f9c56488005bf52a42684, type: 2}
+  - {fileID: 11400000, guid: eb00b66347f5fe56283696b8f1409569, type: 2}
+  storyDialogues:
+  - {fileID: 11400000, guid: 32b32c364eb58621a88095b9f1e8390a, type: 2}
+  - {fileID: 11400000, guid: c8912ee77f72c0267bd600a1e41505ef, type: 2}
