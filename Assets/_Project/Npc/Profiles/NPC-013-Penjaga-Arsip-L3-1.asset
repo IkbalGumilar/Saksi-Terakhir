@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-013-Penjaga-Arsip-L3-1
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-013
+  displayName: Intan
+  age: 39
+  movementSpeed: 2
+  role: 6
+  stationary: 1
+  home:
+    key: archive_3front
+    label: Penjaga arsip lantai 3
+    localPosition: {x: -6.9999995, y: 8.000001, z: -13.000001}
+    activity: 2
+    zone: 1
+    floor: 3
+    dwellSeconds: {x: 9, y: 18}
+  route: []
+  dialogueLines:
+  - Selamat datang di arsip lantai tiga.
+  - Saya menjaga daftar peminjaman lantai ini.
+  - Tanyakan lokasi map sebelum membuka rak.
+  ambientLines:
+  - Daftar arsip lantai tiga sudah diperbarui.
+  - Saya tetap di pos depan.

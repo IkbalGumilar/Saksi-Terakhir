@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-011-Penjaga-Arsip-L2-2
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-011
+  displayName: Naufal
+  age: 28
+  movementSpeed: 2.5
+  role: 6
+  stationary: 0
+  home:
+    key: archive_2a
+    label: Pemeriksaan arsip lantai 2 A
+    localPosition: {x: -9, y: 4.2000003, z: -10.999999}
+    activity: 2
+    zone: 1
+    floor: 2
+    dwellSeconds: {x: 5, y: 12}
+  route:
+  - key: archive_2route
+    label: Rak arsip lantai 2
+    localPosition: {x: -7.7888923, y: 4.2, z: -13.000001}
+    activity: 2
+    zone: 1
+    floor: 2
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_2b
+    label: Pemeriksaan arsip lantai 2 B
+    localPosition: {x: -2.9999998, y: 4.199999, z: -17}
+    activity: 2
+    zone: 1
+    floor: 2
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_2a
+    label: Pemeriksaan arsip lantai 2 A
+    localPosition: {x: -9, y: 4.2000003, z: -10.999999}
+    activity: 2
+    zone: 1
+    floor: 2
+    dwellSeconds: {x: 5, y: 12}
+  dialogueLines:
+  - Saya menata berkas sesuai tahun penerbitan.
+  - Rak sebelah sini sedang saya periksa.
+  - Beri tahu saya jika ada label yang tertukar.
+  ambientLines:
+  - Urutan tahunnya sudah benar.
+  - Rak berikutnya perlu diperiksa.

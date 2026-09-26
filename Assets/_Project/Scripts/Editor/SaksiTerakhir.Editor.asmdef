@@ -2,7 +2,10 @@
     "name": "SaksiTerakhir.Editor",
     "rootNamespace": "SaksiTerakhir.Editor",
     "references": [
-        "SaksiTerakhir.Runtime"
+        "SaksiTerakhir.Runtime",
+        "Unity.AI.Navigation",
+        "Unity.TextMeshPro",
+        "Unity.ugui"
     ],
     "includePlatforms": [
         "Editor"

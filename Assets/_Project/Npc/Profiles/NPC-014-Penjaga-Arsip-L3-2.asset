@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-014-Penjaga-Arsip-L3-2
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-014
+  displayName: Maya
+  age: 26
+  movementSpeed: 2.5
+  role: 6
+  stationary: 0
+  home:
+    key: archive_3a
+    label: Pemeriksaan rak arsip lantai 3 A
+    localPosition: {x: -6, y: 8.000001, z: -18.000002}
+    activity: 2
+    zone: 1
+    floor: 3
+    dwellSeconds: {x: 5, y: 12}
+  route:
+  - key: archive_3route
+    label: Rak arsip lantai 3
+    localPosition: {x: -7.7888923, y: 8.000001, z: -14.000001}
+    activity: 2
+    zone: 1
+    floor: 3
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_3b
+    label: Pemeriksaan rak arsip lantai 3 B
+    localPosition: {x: -2.9999998, y: 8.000001, z: -20}
+    activity: 2
+    zone: 1
+    floor: 3
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_3a
+    label: Pemeriksaan rak arsip lantai 3 A
+    localPosition: {x: -6, y: 8.000001, z: -18.000002}
+    activity: 2
+    zone: 1
+    floor: 3
+    dwellSeconds: {x: 5, y: 12}
+  dialogueLines:
+  - Saya memeriksa rak bagian tengah.
+  - Beberapa map perlu diberi label baru.
+  - Tolong jangan ubah susunan berkas saat saya mencatatnya.
+  ambientLines:
+  - Label rak tengah mulai pudar.
+  - Saya akan ambil daftar inventaris.

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-022-Pekerja-04
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-022
+  displayName: Yuni
+  age: 25
+  movementSpeed: 2.7
+  role: 7
+  stationary: 0
+  home:
+    key: roof_2
+    label: Pekerja rooftop tengah
+    localPosition: {x: -8, y: 15.600005, z: -17}
+    activity: 3
+    zone: 4
+    floor: 5
+    dwellSeconds: {x: 5, y: 12}
+  route:
+  - key: roof_east
+    label: Patroli rooftop timur
+    localPosition: {x: -5, y: 15.600005, z: -20}
+    activity: 3
+    zone: 4
+    floor: 5
+    dwellSeconds: {x: 5, y: 12}
+  - key: roof_lookout
+    label: Pemeriksaan rooftop
+    localPosition: {x: -6.9999995, y: 15.600005, z: -9.999999}
+    activity: 3
+    zone: 4
+    floor: 5
+    dwellSeconds: {x: 5, y: 12}
+  - key: roof_2
+    label: Pekerja rooftop tengah
+    localPosition: {x: -8, y: 15.600005, z: -17}
+    activity: 3
+    zone: 4
+    floor: 5
+    dwellSeconds: {x: 5, y: 12}
+  dialogueLines:
+  - Saya berpatroli di rooftop hari ini.
+  - Saya memeriksa jalur dan sudut atap.
+  - Kalau ada yang perlu dilaporkan, saya akan turun.
+  ambientLines:
+  - Sisi timur rooftop sudah bersih.
+  - Saya cek sudut berikutnya.

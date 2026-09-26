@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-004-Rekan-B
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-004
+  displayName: Sinta
+  age: 32
+  movementSpeed: 2.7
+  role: 3
+  stationary: 0
+  home:
+    key: colleague_b
+    label: Ruang kerja rekan B
+    localPosition: {x: -10, y: 4.199999, z: -20}
+    activity: 1
+    zone: 1
+    floor: 2
+    dwellSeconds: {x: 5, y: 12}
+  route:
+  - key: archive_2route
+    label: Rak arsip lantai 2
+    localPosition: {x: -7.7888923, y: 4.2, z: -13.000001}
+    activity: 2
+    zone: 1
+    floor: 2
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_3route
+    label: Rak arsip lantai 3
+    localPosition: {x: -7.7888923, y: 8.000001, z: -14.000001}
+    activity: 2
+    zone: 1
+    floor: 3
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_4a
+    label: Pemeriksaan rak arsip lantai 4 A
+    localPosition: {x: -6, y: 11.800002, z: -16.906761}
+    activity: 2
+    zone: 1
+    floor: 4
+    dwellSeconds: {x: 5, y: 12}
+  - key: lobby_talk
+    label: Percakapan lobi
+    localPosition: {x: -8.199999, y: -0.0000015818156, z: -13.399999}
+    activity: 4
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  dialogueLines:
+  - Halo, saya sedang menyusun daftar arsip.
+  - Ada beberapa dokumen yang harus saya cocokkan.
+  - Kalau perlu bantuan, temui saya di ruang kerja lantai dua.
+  ambientLines:
+  - Nomor berkas ini perlu dicocokkan.
+  - Saya akan turun mengambil dokumen.

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-003-Rekan-A
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-003
+  displayName: Raka
+  age: 29
+  movementSpeed: 2.6
+  role: 2
+  stationary: 0
+  home:
+    key: lobby_colleague
+    label: Ruang kerja rekan A
+    localPosition: {x: -9, y: -0.0000016505902, z: -14.000001}
+    activity: 1
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  route:
+  - key: archive_1b
+    label: Pemeriksaan arsip lantai 1 B
+    localPosition: {x: -9, y: -0.0000021320122, z: -18.000002}
+    activity: 2
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_2route
+    label: Rak arsip lantai 2
+    localPosition: {x: -7.7888923, y: 4.2, z: -13.000001}
+    activity: 2
+    zone: 1
+    floor: 2
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_3route
+    label: Rak arsip lantai 3
+    localPosition: {x: -7.7888923, y: 8.000001, z: -14.000001}
+    activity: 2
+    zone: 1
+    floor: 3
+    dwellSeconds: {x: 5, y: 12}
+  - key: lobby_talk
+    label: Percakapan lobi
+    localPosition: {x: -8.199999, y: -0.0000015818156, z: -13.399999}
+    activity: 4
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  dialogueLines:
+  - Saya sedang mencari berkas yang belum dikembalikan.
+  - Saya biasa memeriksa arsip di beberapa lantai.
+  - Beri tahu saya kalau Anda menemukan map berlabel lama.
+  ambientLines:
+  - Berkas tadi sepertinya ada di lantai tiga.
+  - Saya akan cek rak berikutnya.

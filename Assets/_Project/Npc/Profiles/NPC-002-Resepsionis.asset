@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-002-Resepsionis
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-002
+  displayName: Nadia
+  age: 27
+  movementSpeed: 2
+  role: 1
+  stationary: 1
+  home:
+    key: lobby_reception
+    label: Meja resepsionis
+    localPosition: {x: -8, y: -0.0000015359659, z: -13.000001}
+    activity: 1
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 10, y: 22}
+  route: []
+  dialogueLines:
+  - Selamat datang. Siapa yang ingin Anda temui?
+  - Daftar kunjungan ada di meja depan.
+  - Ruang kerja dan arsip berada di lantai atas.
+  ambientLines:
+  - Saya mencatat tamu yang masuk.
+  - Jadwal kunjungan hari ini cukup padat.

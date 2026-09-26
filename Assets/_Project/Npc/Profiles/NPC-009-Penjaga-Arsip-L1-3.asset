@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-009-Penjaga-Arsip-L1-3
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-009
+  displayName: Hendra
+  age: 31
+  movementSpeed: 2.3
+  role: 6
+  stationary: 0
+  home:
+    key: archive_1b
+    label: Pemeriksaan arsip lantai 1 B
+    localPosition: {x: -9, y: -0.0000021320122, z: -18.000002}
+    activity: 2
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  route:
+  - key: archive_1a
+    label: Pemeriksaan arsip lantai 1 A
+    localPosition: {x: -2.9999998, y: -0.000002017388, z: -17}
+    activity: 2
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  - key: work_1b
+    label: Pemeriksaan dokumen lantai 1
+    localPosition: {x: -5, y: -0.100002885, z: -24.000002}
+    activity: 1
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_1b
+    label: Pemeriksaan arsip lantai 1 B
+    localPosition: {x: -9, y: -0.0000021320122, z: -18.000002}
+    activity: 2
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  dialogueLines:
+  - Arsip lama disimpan di sisi belakang.
+  - Saya sedang menghitung jumlah map di rak.
+  - Tolong kembalikan berkas ke urutan semula.
+  ambientLines:
+  - Jumlah map di rak ini cocok.
+  - Saya lanjut ke sisi belakang.

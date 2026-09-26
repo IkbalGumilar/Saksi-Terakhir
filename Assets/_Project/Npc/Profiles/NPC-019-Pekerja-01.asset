@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-019-Pekerja-01
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-019
+  displayName: Wulan
+  age: 22
+  movementSpeed: 2.7
+  role: 7
+  stationary: 0
+  home:
+    key: yard_west
+    label: Patroli halaman barat
+    localPosition: {x: -7.5, y: 0.019999651, z: -2.9999998}
+    activity: 3
+    zone: 2
+    floor: 0
+    dwellSeconds: {x: 5, y: 12}
+  route:
+  - key: yard_far
+    label: Pemeriksaan halaman
+    localPosition: {x: -8.35355, y: 0.019999193, z: -6.8803225}
+    activity: 3
+    zone: 2
+    floor: 0
+    dwellSeconds: {x: 5, y: 12}
+  - key: lobby_corridor
+    label: Koridor depan
+    localPosition: {x: -6.9999995, y: -0.0000011920929, z: -9.999999}
+    activity: 4
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  - key: yard_west
+    label: Patroli halaman barat
+    localPosition: {x: -7.5, y: 0.019999651, z: -2.9999998}
+    activity: 3
+    zone: 2
+    floor: 0
+    dwellSeconds: {x: 5, y: 12}
+  dialogueLines:
+  - Saya sedang mengantar dokumen dari halaman.
+  - Kadang saya membantu resepsionis di lobi.
+  - Beri saya waktu untuk menyelesaikan pemeriksaan luar.
+  ambientLines:
+  - Dokumen dari luar sudah datang.
+  - Saya masuk sebentar ke lobi.

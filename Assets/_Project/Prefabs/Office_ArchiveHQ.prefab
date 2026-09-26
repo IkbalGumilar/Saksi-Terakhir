@@ -116,6 +116,90 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 95
       objectReference: {fileID: 0}
+    - target: {fileID: 2177054025065347690, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185447206817882504, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338437382876694828, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561274621995188631, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -9078820382776355819, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286388587186424072, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -4849792876750761942, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559667154066933720, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516871700779348180, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2316015300216617379, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2384264858500923045, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813083752192054148, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531320428509524896, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -4262512725234879543, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -562896786592107337, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -263742231300588457, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1144032104676360387, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1638975891635158419, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1709509128183125795, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1904663802640698582, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322353714572917162, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -332,17 +416,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &691161686560003339 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1185447206817882504, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -383,17 +461,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &708781650066353461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8056118158800840266, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -461,17 +533,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &886699981292188948 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1561274621995188631, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -512,17 +578,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &1644960481558013639 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1094621858030752324, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -590,17 +650,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &2144472498158691337 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 298997277140766858, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -668,17 +722,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &2690585228733457577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4849792876750761942, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -719,17 +767,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &2784283460140938075 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4559667154066933720, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -770,17 +812,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &2831590922610312279 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4516871700779348180, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -821,17 +857,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &3112490853459963586 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3662899708159662657, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1007,17 +1037,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &5104845089343398065 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6862640992989402162, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1085,17 +1109,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &5145395023788615431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6813083752192054148, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1136,17 +1154,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &5354343314340548727 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6028772820800939252, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1241,17 +1253,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &6471579670343299655 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4599484203473795388, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1319,17 +1325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &6838686189864384408 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5116958663338312475, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1397,17 +1397,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &7327934691775875284 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -263742231300588457, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1448,17 +1442,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &7636810622759357374 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1144032104676360387, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1499,17 +1487,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &8117107261277959918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1638975891635158419, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1550,17 +1532,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &8188222045260373086 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1709509128183125795, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1601,17 +1577,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &8503819468507498313 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1159869524037602358, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1706,17 +1676,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked
 --- !u!1 &8969705874335354153 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7322353714572917162, guid: 9acf2703de7fa4ba7ba71137dd1734e7, type: 3}
@@ -1757,14 +1721,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.DoorInteractable
   promptKey: interact.generic
+  interact: 1
   openAngle: 92
-  swingSpeed: 260
-  swing: 0
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  isLocked: 0
-  startsOpen: 0
+  swingSpeed: 180
   openPromptKey: interact.door.open
   closePromptKey: interact.door.close
-  lockedPromptKey: interact.door.locked

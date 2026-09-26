@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-017-Penjaga-Arsip-L4-2
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-017
+  displayName: Dini
+  age: 36
+  movementSpeed: 2.4
+  role: 6
+  stationary: 0
+  home:
+    key: archive_4a
+    label: Pemeriksaan rak arsip lantai 4 A
+    localPosition: {x: -6, y: 11.800002, z: -16.906761}
+    activity: 2
+    zone: 1
+    floor: 4
+    dwellSeconds: {x: 5, y: 12}
+  route:
+  - key: executive_talk
+    label: Percakapan ruang pimpinan
+    localPosition: {x: -5.8, y: 11.800003, z: -16}
+    activity: 4
+    zone: 1
+    floor: 4
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_4b
+    label: Pemeriksaan rak arsip lantai 4 B
+    localPosition: {x: -6.9999995, y: 11.800002, z: -21}
+    activity: 2
+    zone: 1
+    floor: 4
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_4a
+    label: Pemeriksaan rak arsip lantai 4 A
+    localPosition: {x: -6, y: 11.800002, z: -16.906761}
+    activity: 2
+    zone: 1
+    floor: 4
+    dwellSeconds: {x: 5, y: 12}
+  dialogueLines:
+  - Saya memeriksa rak dekat ruang pimpinan.
+  - Berkas penting perlu ditata lebih teliti.
+  - Saya akan mengembalikan map ini ke tempatnya.
+  ambientLines:
+  - Rak dekat pimpinan sudah saya periksa.
+  - Map ini harus kembali ke urutan awal.

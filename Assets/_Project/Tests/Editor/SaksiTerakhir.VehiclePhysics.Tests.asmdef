@@ -1,0 +1,22 @@
+{
+    "name": "SaksiTerakhir.VehiclePhysics.Tests",
+    "rootNamespace": "SaksiTerakhir.Tests",
+    "references": [
+        "SaksiTerakhir.Editor",
+        "SaksiTerakhir.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false,
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

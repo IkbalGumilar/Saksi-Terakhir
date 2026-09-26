@@ -139,11 +139,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.PlayerInteractor
   input: {fileID: 7733978589852870946}
   viewpoint: {fileID: 6746833799806022556}
-  range: 2.6
-  probeRadius: 0.12
+  aimDistance: 999
+  interactionRange: 2
+  probeRadiusAtReferenceDistance: 0.12
+  probeReferenceDistance: 2
+  debugTransform: {fileID: 0}
+  aimCamera: {fileID: 0}
   probeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
 --- !u!114 &3865281065501375700
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-010-Penjaga-Arsip-L2-1
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-010
+  displayName: Lilis
+  age: 41
+  movementSpeed: 2
+  role: 6
+  stationary: 1
+  home:
+    key: archive_2front
+    label: Penjaga arsip lantai 2
+    localPosition: {x: -6.9999995, y: 4.2, z: -13.000001}
+    activity: 2
+    zone: 1
+    floor: 2
+    dwellSeconds: {x: 9, y: 18}
+  route: []
+  dialogueLines:
+  - Saya bertugas di pos arsip lantai dua.
+  - Daftar kunjungan ruang arsip ada pada saya.
+  - Jangan membawa dokumen tanpa izin petugas.
+  ambientLines:
+  - Saya catat siapa yang masuk.
+  - Pos lantai dua tetap saya jaga.

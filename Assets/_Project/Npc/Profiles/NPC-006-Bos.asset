@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-006-Bos
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-006
+  displayName: Arya
+  age: 56
+  movementSpeed: 2
+  role: 5
+  stationary: 1
+  home:
+    key: boss
+    label: Ruang bos
+    localPosition: {x: -5, y: 11.800003, z: -16}
+    activity: 1
+    zone: 1
+    floor: 4
+    dwellSeconds: {x: 12, y: 25}
+  route: []
+  dialogueLines:
+  - Selamat datang di kantor kami.
+  - Saya menunggu ringkasan pekerjaan hari ini.
+  - Silakan sampaikan temuan penting kepada Ratih.
+  ambientLines:
+  - Saya ingin melihat ringkasan terbaru.
+  - Pastikan semua bagian bekerja rapi.

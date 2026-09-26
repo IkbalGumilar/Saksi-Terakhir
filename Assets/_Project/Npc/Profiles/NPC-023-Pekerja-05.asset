@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-023-Pekerja-05
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-023
+  displayName: Arif
+  age: 37
+  movementSpeed: 2.5
+  role: 7
+  stationary: 0
+  home:
+    key: work_1
+    label: Meja kerja lantai 1
+    localPosition: {x: -10, y: -0.00000249881, z: -21}
+    activity: 1
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  route:
+  - key: work_1b
+    label: Pemeriksaan dokumen lantai 1
+    localPosition: {x: -5, y: -0.100002885, z: -24.000002}
+    activity: 1
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_2route
+    label: Rak arsip lantai 2
+    localPosition: {x: -7.7888923, y: 4.2, z: -13.000001}
+    activity: 2
+    zone: 1
+    floor: 2
+    dwellSeconds: {x: 5, y: 12}
+  - key: lobby_talk
+    label: Percakapan lobi
+    localPosition: {x: -8.199999, y: -0.0000015818156, z: -13.399999}
+    activity: 4
+    zone: 1
+    floor: 1
+    dwellSeconds: {x: 5, y: 12}
+  dialogueLines:
+  - Saya mengurus dokumen di lantai satu.
+  - Beberapa berkas harus saya bawa ke lantai dua.
+  - Saya akan kembali setelah daftar ini selesai.
+  ambientLines:
+  - Daftar lantai satu hampir selesai.
+  - Saya bawa berkas ini ke atas.

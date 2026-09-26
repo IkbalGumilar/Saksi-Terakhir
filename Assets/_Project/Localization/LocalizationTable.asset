@@ -26,3 +26,6 @@ MonoBehaviour:
   - key: interact.door.locked
     english: Locked
     indonesian: Terkunci
+  - key: interact.npc.talk
+    english: Talk to {0}
+    indonesian: Bicara dengan {0}

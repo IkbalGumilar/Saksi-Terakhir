@@ -18,6 +18,7 @@ namespace SaksiTerakhir.EditorTools
             ("interact.door.open", "Open Door", "Buka Pintu"),
             ("interact.door.close", "Close Door", "Tutup Pintu"),
             ("interact.door.locked", "Locked", "Terkunci"),
+            ("interact.npc.talk", "Talk to {0}", "Bicara dengan {0}"),
         };
 
         [MenuItem("Saksi Terakhir/Create Localization Table")]

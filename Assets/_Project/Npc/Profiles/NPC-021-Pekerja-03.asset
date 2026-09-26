@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f29213f84f4e3095c1d2a323faceb9, type: 3}
+  m_Name: NPC-021-Pekerja-03
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
+  id: NPC-021
+  displayName: Bima
+  age: 30
+  movementSpeed: 2.6
+  role: 7
+  stationary: 0
+  home:
+    key: roof_1
+    label: Pekerja rooftop barat
+    localPosition: {x: -9, y: 15.600005, z: -17}
+    activity: 3
+    zone: 4
+    floor: 5
+    dwellSeconds: {x: 5, y: 12}
+  route:
+  - key: roof_west
+    label: Patroli rooftop barat
+    localPosition: {x: -10, y: 15.600004, z: -20}
+    activity: 3
+    zone: 4
+    floor: 5
+    dwellSeconds: {x: 5, y: 12}
+  - key: roof_lookout
+    label: Pemeriksaan rooftop
+    localPosition: {x: -6.9999995, y: 15.600005, z: -9.999999}
+    activity: 3
+    zone: 4
+    floor: 5
+    dwellSeconds: {x: 5, y: 12}
+  - key: archive_4front
+    label: Penjaga arsip lantai 4
+    localPosition: {x: -6.9999995, y: 11.800003, z: -13.000001}
+    activity: 2
+    zone: 1
+    floor: 4
+    dwellSeconds: {x: 9, y: 18}
+  - key: roof_1
+    label: Pekerja rooftop barat
+    localPosition: {x: -9, y: 15.600005, z: -17}
+    activity: 3
+    zone: 4
+    floor: 5
+    dwellSeconds: {x: 5, y: 12}
+  dialogueLines:
+  - Saya sedang memeriksa bagian rooftop.
+  - Dari atas, halaman terlihat cukup jelas.
+  - Saya juga turun sesekali untuk mengambil laporan.
+  ambientLines:
+  - Rooftop bagian barat aman.
+  - Saya akan lihat sisi lainnya.
