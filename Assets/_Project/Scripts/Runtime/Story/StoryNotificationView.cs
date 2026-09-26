@@ -36,6 +36,11 @@ namespace SaksiTerakhir.Story
         {
             if (chapter != null) chapter.NoticeRequested += OnNotice;
             LocalizationManager.LanguageChanged += OnLanguageChanged;
+            if (chapter?.Progress == null) return;
+            if (chapter.Progress.Stage == ChapterOneStage.MeetRooftopWorkers)
+                Show("story.quest.started", defaultSeconds);
+            else if (chapter.Progress.Stage == ChapterOneStage.AnswerBossCall)
+                Show("story.call.incoming", defaultSeconds);
         }
 
         private void OnDisable()

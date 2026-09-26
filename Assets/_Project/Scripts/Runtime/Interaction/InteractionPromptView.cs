@@ -38,7 +38,11 @@ namespace SaksiTerakhir.Interaction
                 if (promptRoot != null) promptRoot.SetActive(false);
                 if (npcDialogueRoot != null) npcDialogueRoot.SetActive(false);
             }
-            else if (interactor != null) Refresh();
+            else if (interactor != null)
+            {
+                if (promptRoot != null) promptRoot.SetActive(interactor.Current != null);
+                Refresh();
+            }
         }
 
         public void ConfigureNpcDialogue(GameObject dialogueRoot, TMP_Text nameLabel, TMP_Text lineLabel)

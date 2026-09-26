@@ -9,6 +9,7 @@ namespace SaksiTerakhir.Story
     public sealed class BossOfficeGate : MonoBehaviour
     {
         [SerializeField] private Collider roomZone;
+        [SerializeField] private Collider playerBarrier;
         [SerializeField] private Transform corridorExit;
         [SerializeField] private Transform player;
         [SerializeField] private OfficeNpcDirector npcDirector;
@@ -46,13 +47,21 @@ namespace SaksiTerakhir.Story
         {
             progress = chapterProgress;
             door = officeDoor;
+            RefreshBarrier();
         }
 
-        public void ConfigureScene(Collider zone, Transform exit, Transform playerTransform,
+        public void RefreshBarrier()
+        {
+            if (playerBarrier != null)
+                playerBarrier.enabled = progress != null && !CanOpenFor(player);
+        }
+
+        public void ConfigureScene(Collider zone, Collider barrier, Transform exit, Transform playerTransform,
             OfficeNpcDirector director, OfficeNpcAgent bossActor,
             OfficeNpcAgent raka, OfficeNpcAgent sinta)
         {
             roomZone = zone;
+            playerBarrier = barrier;
             corridorExit = exit;
             player = playerTransform;
             npcDirector = director;
@@ -86,6 +95,7 @@ namespace SaksiTerakhir.Story
                 && (progress.Stage == ChapterOneStage.FindColleagues
                     || progress.Stage == ChapterOneStage.EscortLastColleague))
                 door?.ForceClose();
+            RefreshBarrier();
         }
 
         public void OnBlocked(Transform actor)
@@ -110,6 +120,19 @@ namespace SaksiTerakhir.Story
         {
             if (player != null && roomZone != null)
                 SetPlayerInside(roomZone.bounds.Contains(player.position));
+            RefreshBarrier();
+            if (door != null && door.IsOpen && progress != null && roomZone != null
+                && !playerInside && (progress.Stage == ChapterOneStage.FindColleagues
+                    || progress.Stage == ChapterOneStage.EscortLastColleague))
+            {
+                string enteringId = progress.Stage == ChapterOneStage.EscortLastColleague
+                    && progress.WalkDialogueComplete
+                    ? progress.LastColleagueId : progress.FirstColleagueId;
+                OfficeNpcAgent entering = enteringId == "NPC-003" ? colleagueA
+                    : enteringId == "NPC-004" ? colleagueB : null;
+                if (entering != null && roomZone.bounds.Contains(entering.transform.position))
+                    door.ForceClose();
+            }
             if (lastBlockedActor != null
                 && Vector3.Distance(lastBlockedActor.position, transform.position) > 2.5f)
                 lastBlockedActor = null;

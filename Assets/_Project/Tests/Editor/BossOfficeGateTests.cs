@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Reflection;
 using SaksiTerakhir.Interaction;
 using SaksiTerakhir.Npc;
 using SaksiTerakhir.Story;
@@ -13,6 +14,8 @@ namespace SaksiTerakhir.Tests
         private GameObject playerObject;
         private GameObject npcObject;
         private NpcProfile profile;
+        private GameObject zoneObject;
+        private GameObject barrierObject;
 
         [TearDown]
         public void TearDown()
@@ -21,6 +24,8 @@ namespace SaksiTerakhir.Tests
             if (playerObject != null) Object.DestroyImmediate(playerObject);
             if (npcObject != null) Object.DestroyImmediate(npcObject);
             if (profile != null) Object.DestroyImmediate(profile);
+            if (zoneObject != null) Object.DestroyImmediate(zoneObject);
+            if (barrierObject != null) Object.DestroyImmediate(barrierObject);
         }
 
         [Test]
@@ -89,6 +94,41 @@ namespace SaksiTerakhir.Tests
             door.ForceClose();
             door.Interact(playerObject.transform);
             Assert.That(door.IsOpen, Is.False);
+        }
+
+        [Test]
+        public void BarrierStaysSolidForPlayerAndDoorClosesBehindFirstColleague()
+        {
+            ChapterOneProgress progress = AtBossVisit();
+            progress.TryApply(ChapterOneEvent.FirstBriefingFinished);
+            progress.TryApply(ChapterOneEvent.ColleagueDialogueFinished, "NPC-003");
+            (DoorInteractable door, BossOfficeGate gate) = CreateGate(progress);
+            zoneObject = new GameObject("Room");
+            zoneObject.transform.position = new Vector3(5f, 0f, 0f);
+            BoxCollider zone = zoneObject.AddComponent<BoxCollider>();
+            zone.size = new Vector3(4f, 3f, 4f);
+            barrierObject = new GameObject("Barrier");
+            BoxCollider barrier = barrierObject.AddComponent<BoxCollider>();
+            npcObject = new GameObject("Raka");
+            npcObject.SetActive(false);
+            npcObject.AddComponent<NavMeshAgent>();
+            OfficeNpcAgent npc = npcObject.AddComponent<OfficeNpcAgent>();
+            profile = ScriptableObject.CreateInstance<NpcProfile>();
+            profile.Configure("NPC-003", "Raka", 28, 2.6f, NpcRole.ColleagueA,
+                false, null, null, null, null);
+            npc.SetProfile(profile);
+            npcObject.SetActive(true);
+            gate.ConfigureScene(zone, barrier, null, playerObject.transform, null, null, npc, null);
+
+            door.Interact(npc.transform);
+            Assert.That(door.IsOpen, Is.True);
+            npc.transform.position = zoneObject.transform.position;
+            typeof(BossOfficeGate).GetMethod("Update", BindingFlags.Instance | BindingFlags.NonPublic)
+                .Invoke(gate, null);
+
+            Assert.That(barrier.enabled, Is.True);
+            Assert.That(door.IsOpen, Is.False);
+            Assert.That(gate.CanOpenFor(playerObject.transform), Is.False);
         }
 
         private (DoorInteractable, BossOfficeGate) CreateGate(ChapterOneProgress progress)

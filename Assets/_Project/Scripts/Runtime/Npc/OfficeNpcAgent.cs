@@ -412,6 +412,7 @@ namespace SaksiTerakhir.Npc
         private void UpdateJourney()
         {
             if (destination == null || !destination.isActiveAndEnabled) { AbandonJourney(); return; }
+            if (director != null && director.IsStoryRestricted(destination)) { AbandonJourney(); return; }
             if (Time.time < doorWaitUntil) return;
             if (navigation.isStopped) navigation.isStopped = false;
             if (Time.time < nextPathCheck || navigation.pathPending) return;

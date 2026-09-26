@@ -182,7 +182,8 @@ namespace SaksiTerakhir.Npc
             foreach (OfficeNpcAgent actor in actors)
             {
                 if (actor == null || actor == boss || actor == colleagueA || actor == colleagueB
-                    || !roomZone.bounds.Contains(actor.transform.position)) continue;
+                    || !roomZone.bounds.Contains(actor.transform.position)
+                    || evacuatedActors.Contains(actor)) continue;
                 actor.HoldForStory();
                 actor.TrySetStoryDestination(corridorExit.position,
                     actor.Profile != null ? actor.Profile.MovementSpeed : 2f);

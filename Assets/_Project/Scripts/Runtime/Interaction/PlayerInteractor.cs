@@ -35,7 +35,7 @@ namespace SaksiTerakhir.Interaction
         [SerializeField, Range(0.002f, 0.05f)] private float probeViewportHeightFraction = 0.0125f;
         [Tooltip("Visible sphere placed at the aim ray's hit point.")]
         [SerializeField] private Transform debugTransform;
-        [SerializeField] private LayerMask aimColliderLayers = ~0;
+        [SerializeField] private LayerMask aimColliderLayers = Physics.DefaultRaycastLayers;
         [SerializeField] private LayerMask probeLayers = 1 << InteractableLayerIndex;
 
         [Header("Aim Sphere")]

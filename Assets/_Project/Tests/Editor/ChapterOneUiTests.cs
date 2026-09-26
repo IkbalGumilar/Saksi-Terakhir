@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Reflection;
 using NUnit.Framework;
 using SaksiTerakhir.Interaction;
 using SaksiTerakhir.Localization;
@@ -77,6 +78,32 @@ namespace SaksiTerakhir.Tests
             Assert.That(genericDialogue.activeSelf, Is.False);
             story.Hide();
             Assert.That(prompt.StoryDialogueActive, Is.False);
+        }
+
+        [Test]
+        public void PromptReappearsAfterStoryWhenAimingAtTheSameDoor()
+        {
+            GameObject playerObject = NewUi("Player");
+            playerObject.SetActive(false);
+            PlayerInteractor interactor = playerObject.AddComponent<PlayerInteractor>();
+            GameObject doorObject = NewUi("Door");
+            DoorInteractable door = doorObject.AddComponent<DoorInteractable>();
+            typeof(PlayerInteractor).GetField("current", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(interactor, door);
+
+            GameObject viewObject = NewUi("Prompt View");
+            InteractionPromptView prompt = viewObject.AddComponent<InteractionPromptView>();
+            GameObject action = NewUi("Action");
+            typeof(InteractionPromptView).GetField("interactor", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(prompt, interactor);
+            typeof(InteractionPromptView).GetField("actionLabel", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(prompt, NewText(viewObject.transform, "Label"));
+            prompt.ConfigureStoryVisibility(action, null);
+
+            prompt.SetStoryDialogueActive(true);
+            Assert.That(action.activeSelf, Is.False);
+            prompt.SetStoryDialogueActive(false);
+            Assert.That(action.activeSelf, Is.True);
         }
 
         [Test]

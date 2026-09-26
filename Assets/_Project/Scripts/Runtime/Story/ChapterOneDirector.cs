@@ -26,6 +26,7 @@ namespace SaksiTerakhir.Story
         private readonly Dictionary<string, OfficeNpcAgent> actors = new Dictionary<string, OfficeNpcAgent>();
         private ChapterOneProgress progress;
         private bool initialized;
+        private bool sceneStarted;
         private bool lastAtDoor;
         private bool lastSentToSeat;
         private OfficeNpcAgent[] activeParticipants = Array.Empty<OfficeNpcAgent>();
@@ -39,6 +40,8 @@ namespace SaksiTerakhir.Story
         public QuestDefinition CurrentQuest => progress != null && (int)progress.Stage < quests.Length
             ? quests[(int)progress.Stage] : null;
         public CarKeyInventory Inventory => inventory;
+        public static string SessionSavePathOverride { get; set; }
+
 
         public void ConfigureScene(StoryDialogueController storyDialogue, Transform playerTransform,
             BossOfficeGate gate, OfficeNpcAgent[] storyCast, Transform rakaSeatAnchor,
@@ -78,10 +81,16 @@ namespace SaksiTerakhir.Story
             ProgressChanged?.Invoke(progress);
         }
 
-        private static string SavePath => Path.Combine(Application.persistentDataPath,
-            "saksi-terakhir-chapter-one.json");
+        private string SavePath => !string.IsNullOrEmpty(SessionSavePathOverride) ? SessionSavePathOverride
+            : Path.Combine(Application.persistentDataPath, "saksi-terakhir-chapter-one.json");
 
         private void Awake() => InitializeNewGame();
+
+        private void Start()
+        {
+            sceneStarted = true;
+            RestoreBossRoomRestriction();
+        }
 
         private void OnDisable()
         {
@@ -117,6 +126,13 @@ namespace SaksiTerakhir.Story
             }
             ResumeOrders();
             initialized = true;
+            if (sceneStarted) RestoreBossRoomRestriction();
+        }
+
+        private void RestoreBossRoomRestriction()
+        {
+            if (progress != null && progress.Stage >= ChapterOneStage.MeetBoss)
+                bossGate?.ClearBackgroundActors();
         }
 
         private void ResumeOrders()
@@ -180,7 +196,6 @@ namespace SaksiTerakhir.Story
                             NoticeRequested?.Invoke("story.call.incoming");
                         }, Get("NPC-021"), Get("NPC-022"));
                 case ChapterOneStage.MeetBoss when id == "NPC-006":
-                    bossGate?.ClearBackgroundActors();
                     return PlayNpcSequence(profile, "chapter.boss_first", false,
                         () => Apply(ChapterOneEvent.FirstBriefingFinished), Get("NPC-006"));
                 case ChapterOneStage.FindColleagues when IsColleague(id):
@@ -274,11 +289,17 @@ namespace SaksiTerakhir.Story
             if (progress.Stage != ChapterOneStage.EscortLastColleague) return;
             OfficeNpcAgent last = Get(progress.LastColleagueId);
             if (last == null) return;
-            dialogue?.SetAutoAdvancePaused(last.StoryWaitingForPlayer);
             if (!lastAtDoor && last.StoryAtDestination)
             {
                 lastAtDoor = true;
                 last.SetStoryFacing(player);
+            }
+            if (dialogue != null)
+            {
+                bool holdLastLinesUntilDoor = !lastAtDoor && dialogue.IsPlaying
+                    && dialogue.ActiveSequence != null
+                    && dialogue.LineIndex >= dialogue.ActiveSequence.Lines.Count - 2;
+                dialogue.SetAutoAdvancePaused(last.StoryWaitingForPlayer || holdLastLinesUntilDoor);
             }
             if (lastAtDoor && !lastSentToSeat && progress.WalkDialogueComplete
                 && HasArrived(firstId))
@@ -338,7 +359,9 @@ namespace SaksiTerakhir.Story
 
         private void OnBossGateBlocked(Transform actor)
         {
-            if (actor != player || dialogue == null || dialogue.IsPlaying) return;
+            if (actor != player || dialogue == null || dialogue.IsPlaying || progress == null
+                || progress.Stage != ChapterOneStage.FindColleagues
+                && progress.Stage != ChapterOneStage.EscortLastColleague) return;
             string id = !progress.RakaMet ? "chapter.boss_scold_raka"
                 : !progress.SintaMet ? "chapter.boss_scold_sinta" : "chapter.boss_scold_wait";
             DialogueSequence sequence = FindSequence(id);
@@ -348,6 +371,7 @@ namespace SaksiTerakhir.Story
         private bool Apply(ChapterOneEvent kind, string id = "")
         {
             if (progress == null || !progress.TryApply(kind, id)) return false;
+            if (kind == ChapterOneEvent.BossCallFinished) RestoreBossRoomRestriction();
             PublishProgress();
             return true;
         }
@@ -360,6 +384,7 @@ namespace SaksiTerakhir.Story
 
         private void PublishProgress()
         {
+            bossGate?.RefreshBarrier();
             if (Application.isPlaying)
             {
                 try { ChapterOneSaveStore.Save(progress, SavePath); }
