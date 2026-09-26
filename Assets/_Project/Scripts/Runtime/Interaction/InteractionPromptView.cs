@@ -20,6 +20,26 @@ namespace SaksiTerakhir.Interaction
         [SerializeField] private TMP_Text npcLineLabel;
 
         private Interactable previousTarget;
+        private bool storyDialogueActive;
+
+        public bool StoryDialogueActive => storyDialogueActive;
+
+        public void ConfigureStoryVisibility(GameObject actionRoot, GameObject genericDialogueRoot)
+        {
+            promptRoot = actionRoot;
+            npcDialogueRoot = genericDialogueRoot;
+        }
+
+        public void SetStoryDialogueActive(bool active)
+        {
+            storyDialogueActive = active;
+            if (active)
+            {
+                if (promptRoot != null) promptRoot.SetActive(false);
+                if (npcDialogueRoot != null) npcDialogueRoot.SetActive(false);
+            }
+            else if (interactor != null) Refresh();
+        }
 
         public void ConfigureNpcDialogue(GameObject dialogueRoot, TMP_Text nameLabel, TMP_Text lineLabel)
         {
@@ -70,12 +90,18 @@ namespace SaksiTerakhir.Interaction
                 if (previousTarget is NpcInteractable npc) npc.CloseDialogue();
                 previousTarget = target;
             }
-            promptRoot.SetActive(target != null);
+            promptRoot.SetActive(target != null && !storyDialogueActive);
             Refresh();
         }
 
         private void Refresh()
         {
+            if (storyDialogueActive)
+            {
+                if (promptRoot != null) promptRoot.SetActive(false);
+                if (npcDialogueRoot != null) npcDialogueRoot.SetActive(false);
+                return;
+            }
             Interactable target = interactor.Current;
             if (target == null)
             {

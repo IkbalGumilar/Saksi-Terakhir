@@ -3,7 +3,9 @@
     "rootNamespace": "SaksiTerakhir.Tests",
     "references": [
         "SaksiTerakhir.Editor",
-        "SaksiTerakhir.Runtime"
+        "SaksiTerakhir.Runtime",
+        "Unity.TextMeshPro",
+        "Unity.ugui"
     ],
     "includePlatforms": [
         "Editor"

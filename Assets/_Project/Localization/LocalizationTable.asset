@@ -29,3 +29,75 @@ MonoBehaviour:
   - key: interact.npc.talk
     english: Talk to {0}
     indonesian: Bicara dengan {0}
+  - key: interact.story.find_both
+    english: Find Raka and Sinta
+    indonesian: Temukan Raka dan Sinta
+  - key: interact.story.find_raka
+    english: Find Raka
+    indonesian: Temukan Raka
+  - key: interact.story.find_sinta
+    english: Find Sinta
+    indonesian: Temukan Sinta
+  - key: interact.story.wait_colleagues
+    english: Wait for your colleagues
+    indonesian: Tunggu rekan-rekan
+  - key: interact.story.wait_boss
+    english: Wait for Arya's call
+    indonesian: Tunggu panggilan Arya
+  - key: story.quest.started
+    english: New main quest
+    indonesian: Misi utama dimulai
+  - key: story.quest.updated
+    english: Main quest updated
+    indonesian: Misi utama diperbarui
+  - key: story.call.incoming
+    english: "Incoming call: Arya. Press E to answer."
+    indonesian: "Panggilan masuk: Arya. Tekan E untuk menjawab."
+  - key: quest.main.rooftop
+    english: Meet the rooftop workers
+    indonesian: Temui rekan kerja di rooftop
+  - key: quest.main.rooftop.talk
+    english: Talk to Bima and Yuni
+    indonesian: Bicara dengan Bima dan Yuni
+  - key: quest.main.call
+    english: Answer Arya's call
+    indonesian: Jawab telepon Bos Arya
+  - key: quest.main.call.answer
+    english: Press E to answer
+    indonesian: Tekan E untuk menjawab
+  - key: quest.main.boss_first
+    english: Meet Arya in his office
+    indonesian: Temui Bos Arya di ruangannya
+  - key: quest.main.boss_first.talk
+    english: Listen to Arya's request
+    indonesian: Dengarkan permintaan Bos Arya
+  - key: quest.main.find
+    english: Find your colleagues
+    indonesian: Cari rekan-rekan
+  - key: quest.main.find.raka
+    english: Find colleague A (Raka)
+    indonesian: Cari Rekan A (Raka)
+  - key: quest.main.find.sinta
+    english: Find colleague B (Sinta)
+    indonesian: Cari Rekan B (Sinta)
+  - key: quest.main.escort
+    english: Follow your colleague to Arya
+    indonesian: Ikuti rekanmu ke ruang bos
+  - key: quest.main.boss_final
+    english: Listen to Arya's briefing
+    indonesian: Dengarkan pengarahan Bos Arya
+  - key: quest.main.boss_final.listen
+    english: Hear the location in the old archive
+    indonesian: Dengarkan petunjuk lokasi dalam arsip
+  - key: quest.main.key
+    english: Get the car key from Nadia
+    indonesian: Ambil kunci mobil dari Nadia
+  - key: quest.main.key.collect
+    english: Talk to Nadia at reception
+    indonesian: Bicara dengan Nadia di resepsionis
+  - key: quest.main.vehicle
+    english: Go to the office car
+    indonesian: Pergi ke mobil kantor
+  - key: quest.main.vehicle.reach
+    english: Approach the black SUV
+    indonesian: Dekati SUV hitam di depan gedung
