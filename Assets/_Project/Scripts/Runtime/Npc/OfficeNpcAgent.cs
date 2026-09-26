@@ -28,6 +28,16 @@ namespace SaksiTerakhir.Npc
         private Vector3 progressPosition, lastPosition;
         private int routeIndex;
         private bool started;
+        private bool storyHeld;
+        private bool storyMoveRequested;
+        private bool storyAtDestination;
+        private Vector3 storyDestination;
+        private float storySpeed;
+        private float nextStoryRetry;
+        private float nextStoryWarning;
+        private Transform storyFaceTarget;
+        private Transform storyFollowTarget;
+        private float storyFollowDistance;
 
         public NpcProfile Profile => profile;
         public string DisplayName => profile != null ? profile.DisplayName : displayName;
@@ -45,6 +55,67 @@ namespace SaksiTerakhir.Npc
         public NavMeshAgent Navigation => navigation;
         public bool CanConverse => isActiveAndEnabled && navigation != null && navigation.isOnNavMesh
             && CurrentState == NpcState.Activity && Time.time >= nextConversationTime;
+        public bool StoryAtDestination => storyHeld && storyAtDestination;
+        public bool StoryWaitingForPlayer => storyMoveRequested && storyFollowTarget != null
+            && Vector3.Distance(transform.position, storyFollowTarget.position) > storyFollowDistance;
+
+        public void HoldForStory(Transform faceTarget = null)
+        {
+            if (navigation == null) navigation = GetComponent<NavMeshAgent>();
+            if (CurrentState == NpcState.Conversation) StopConversation();
+            if (CurrentState == NpcState.PlayerConversation) EndPlayerInteraction();
+            ReleaseDestination();
+            storyHeld = true;
+            storyMoveRequested = false;
+            storyAtDestination = false;
+            storyFaceTarget = faceTarget;
+            storyFollowTarget = null;
+            CurrentState = NpcState.StoryHeld;
+            if (navigation != null && navigation.enabled && navigation.isOnNavMesh)
+            {
+                navigation.isStopped = true;
+                navigation.ResetPath();
+            }
+        }
+
+        public void ReleaseStoryHold()
+        {
+            if (!storyHeld) return;
+            if (navigation != null && navigation.enabled)
+            {
+                if (navigation.isOnNavMesh)
+                {
+                    navigation.isStopped = true;
+                    navigation.ResetPath();
+                }
+                if (profile != null) navigation.speed = profile.MovementSpeed;
+            }
+            storyHeld = false;
+            storyMoveRequested = false;
+            storyAtDestination = false;
+            storyFaceTarget = null;
+            storyFollowTarget = null;
+            CurrentState = NpcState.Waiting;
+            nextDecision = Time.time + 0.5f;
+        }
+
+        public bool TrySetStoryDestination(Vector3 target, float speed)
+        {
+            if (!storyHeld) HoldForStory();
+            storyDestination = target;
+            storySpeed = Mathf.Max(0.1f, speed);
+            storyMoveRequested = true;
+            storyAtDestination = false;
+            return TryStartStoryPath();
+        }
+
+        public void SetStoryFacing(Transform target) => storyFaceTarget = target;
+
+        public void SetStoryFollowDistance(Transform player, float maximumDistance)
+        {
+            storyFollowTarget = player;
+            storyFollowDistance = Mathf.Max(0.1f, maximumDistance);
+        }
 
         public void Configure(string name, NpcRole actorRole, NpcActivityPoint homePoint,
             NpcActivityPoint[] activityRoute, bool isStationary)
@@ -96,6 +167,12 @@ namespace SaksiTerakhir.Npc
             lastPosition = progressPosition = transform.position;
             nextConversationTime = Time.time + UnityEngine.Random.Range(5f, 20f);
             if (label != null) label.SetName(DisplayName);
+            if (storyHeld)
+            {
+                TryAttach();
+                CurrentState = NpcState.StoryHeld;
+                return;
+            }
             if (TryAttach())
             {
                 if (!TryBeginJourney(home)) ScheduleNext(0.5f, 2f);
@@ -106,7 +183,7 @@ namespace SaksiTerakhir.Npc
         {
             if (!started) return;
             lastPosition = transform.position;
-            CurrentState = NpcState.Waiting;
+            CurrentState = storyHeld ? NpcState.StoryHeld : NpcState.Waiting;
             nextDecision = Time.time + 0.5f;
         }
 
@@ -124,6 +201,12 @@ namespace SaksiTerakhir.Npc
             float displacement = Vector3.Distance(currentPosition, lastPosition);
             if (displacement < 2f) TravelMeters += displacement;
             lastPosition = currentPosition;
+
+            if (storyHeld)
+            {
+                UpdateStoryOrder();
+                return;
+            }
 
             if (CurrentState == NpcState.PlayerConversation)
             {
@@ -167,6 +250,112 @@ namespace SaksiTerakhir.Npc
             CurrentState = NpcState.OffNavMesh;
             nextDecision = Time.time + 5f;
             return false;
+        }
+
+        private bool TryStartStoryPath()
+        {
+            if (navigation == null || !navigation.enabled || !navigation.isOnNavMesh)
+                return false;
+            NavMeshQueryFilter filter = new NavMeshQueryFilter
+            {
+                agentTypeID = navigation.agentTypeID,
+                areaMask = navigation.areaMask
+            };
+            if (!NavMesh.SamplePosition(storyDestination, out NavMeshHit targetHit, 0.8f, filter)
+                || Mathf.Abs(targetHit.position.y - storyDestination.y) > 0.4f
+                || !navigation.CalculatePath(targetHit.position, candidatePath)
+                || candidatePath.status != NavMeshPathStatus.PathComplete)
+            {
+                WarnStoryPath();
+                return false;
+            }
+            navigation.speed = storySpeed;
+            navigation.isStopped = false;
+            if (!navigation.SetPath(candidatePath))
+            {
+                WarnStoryPath();
+                return false;
+            }
+            CurrentState = NpcState.StoryMoving;
+            progressPosition = transform.position;
+            stuckSince = Time.time;
+            return true;
+        }
+
+        private void UpdateStoryOrder()
+        {
+            if (storyFaceTarget != null && CurrentState != NpcState.StoryMoving)
+                Face(storyFaceTarget.position - transform.position);
+            if (!storyMoveRequested) return;
+            if (navigation == null || !navigation.enabled || !navigation.isOnNavMesh)
+            {
+                if (Time.time >= nextStoryRetry)
+                {
+                    nextStoryRetry = Time.time + 2f;
+                    TryAttach();
+                    TryStartStoryPath();
+                }
+                return;
+            }
+            if (CurrentState != NpcState.StoryMoving || !navigation.hasPath)
+            {
+                if (Time.time >= nextStoryRetry)
+                {
+                    nextStoryRetry = Time.time + 2f;
+                    TryStartStoryPath();
+                }
+                return;
+            }
+            if (StoryWaitingForPlayer)
+            {
+                navigation.isStopped = true;
+                stuckSince = Time.time;
+                return;
+            }
+            if (Time.time < doorWaitUntil) return;
+            if (navigation.isStopped) navigation.isStopped = false;
+            if (navigation.pathPending) return;
+            if (director != null && director.TryOpenDoorAhead(this, navigation.steeringTarget, out float waitUntil))
+            {
+                doorWaitUntil = waitUntil;
+                navigation.isStopped = true;
+                return;
+            }
+            if (navigation.pathStatus != NavMeshPathStatus.PathComplete)
+            {
+                navigation.ResetPath();
+                CurrentState = NpcState.StoryHeld;
+                WarnStoryPath();
+                return;
+            }
+            if (!float.IsInfinity(navigation.remainingDistance)
+                && navigation.remainingDistance <= navigation.stoppingDistance + 0.15f)
+            {
+                navigation.isStopped = true;
+                navigation.ResetPath();
+                storyMoveRequested = false;
+                storyAtDestination = true;
+                CurrentState = NpcState.StoryHeld;
+                return;
+            }
+            if ((transform.position - progressPosition).sqrMagnitude > 0.08f * 0.08f)
+            {
+                progressPosition = transform.position;
+                stuckSince = Time.time;
+            }
+            else if (Time.time - stuckSince > 12f)
+            {
+                navigation.ResetPath();
+                CurrentState = NpcState.StoryHeld;
+                WarnStoryPath();
+            }
+        }
+
+        private void WarnStoryPath()
+        {
+            if (Time.time < nextStoryWarning) return;
+            Debug.LogWarning($"NPC {DisplayName} cannot reach story destination {storyDestination}; retrying.", this);
+            nextStoryWarning = Time.time + 15f;
         }
 
         private void ChooseNextActivity()

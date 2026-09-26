@@ -6,7 +6,7 @@ namespace SaksiTerakhir.Npc
     public enum NpcRole { Security, Receptionist, ColleagueA, ColleagueB, Supervisor, Boss, ArchiveGuard, Worker }
     [Flags] public enum NpcZone { Interior = 1, Yard = 2, Roof = 4 }
     public enum NpcActivityKind { Idle, Work, InspectArchive, Patrol, Socialize }
-    public enum NpcState { Waiting, Moving, Activity, Conversation, OffNavMesh, PlayerConversation }
+    public enum NpcState { Waiting, Moving, Activity, Conversation, OffNavMesh, PlayerConversation, StoryHeld, StoryMoving }
 
     [DisallowMultipleComponent]
     public sealed class NpcActivityPoint : MonoBehaviour
