@@ -1,4 +1,5 @@
 using System;
+using SaksiTerakhir.Story;
 using UnityEngine;
 
 namespace SaksiTerakhir.Npc
@@ -51,6 +52,8 @@ namespace SaksiTerakhir.Npc
         [SerializeField] private NpcWaypointDefinition[] route = Array.Empty<NpcWaypointDefinition>();
         [SerializeField] private string[] dialogueLines = Array.Empty<string>();
         [SerializeField] private string[] ambientLines = Array.Empty<string>();
+        [SerializeField] private QuestDefinition[] storyQuests = Array.Empty<QuestDefinition>();
+        [SerializeField] private DialogueSequence[] storyDialogues = Array.Empty<DialogueSequence>();
 
         public string Id => id;
         public string DisplayName => displayName;
@@ -62,6 +65,14 @@ namespace SaksiTerakhir.Npc
         public NpcWaypointDefinition[] Route => route;
         public string[] DialogueLines => dialogueLines;
         public string[] AmbientLines => ambientLines;
+        public QuestDefinition[] StoryQuests => storyQuests;
+        public DialogueSequence[] StoryDialogues => storyDialogues;
+
+        public void SetStoryOffers(QuestDefinition[] quests, DialogueSequence[] dialogues)
+        {
+            storyQuests = quests ?? Array.Empty<QuestDefinition>();
+            storyDialogues = dialogues ?? Array.Empty<DialogueSequence>();
+        }
 
 #if UNITY_EDITOR
         public void Configure(string id, string displayName, int age, float movementSpeed, NpcRole role,
