@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using SaksiTerakhir.Npc;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace SaksiTerakhir.Story
 {
@@ -27,6 +29,7 @@ namespace SaksiTerakhir.Story
         private bool lastAtDoor;
         private bool lastSentToSeat;
         private OfficeNpcAgent[] activeParticipants = Array.Empty<OfficeNpcAgent>();
+        private CarKeyInventory inventory;
 
         public event Action<ChapterOneProgress> ProgressChanged;
         public event Action<string> NoticeRequested;
@@ -35,6 +38,7 @@ namespace SaksiTerakhir.Story
         public bool CallPending => progress != null && progress.Stage == ChapterOneStage.AnswerBossCall;
         public QuestDefinition CurrentQuest => progress != null && (int)progress.Stage < quests.Length
             ? quests[(int)progress.Stage] : null;
+        public CarKeyInventory Inventory => inventory;
 
         public void ConfigureScene(StoryDialogueController storyDialogue, Transform playerTransform,
             BossOfficeGate gate, OfficeNpcAgent[] storyCast, Transform rakaSeatAnchor,
@@ -56,11 +60,26 @@ namespace SaksiTerakhir.Story
         public void InitializeNewGame()
         {
             if (initialized) return;
-            progress = new ChapterOneProgress();
+            string path = SavePath;
+            bool hadSave = Application.isPlaying && File.Exists(path);
+            progress = Application.isPlaying ? ChapterOneSaveStore.Load(path) : new ChapterOneProgress();
+            inventory = new CarKeyInventory(progress);
             BindScene();
             ProgressChanged?.Invoke(progress);
-            NoticeRequested?.Invoke("story.quest.started");
+            if (!hadSave) NoticeRequested?.Invoke("story.quest.started");
         }
+
+        public void RestoreProgress(ChapterOneProgress snapshot)
+        {
+            if (snapshot == null) throw new ArgumentNullException(nameof(snapshot));
+            progress = snapshot;
+            inventory = new CarKeyInventory(progress);
+            BindScene();
+            ProgressChanged?.Invoke(progress);
+        }
+
+        private static string SavePath => Path.Combine(Application.persistentDataPath,
+            "saksi-terakhir-chapter-one.json");
 
         private void Awake() => InitializeNewGame();
 
@@ -96,7 +115,49 @@ namespace SaksiTerakhir.Story
                 dialogue.LineChanged -= OnDialogueLineChanged;
                 dialogue.LineChanged += OnDialogueLineChanged;
             }
+            ResumeOrders();
             initialized = true;
+        }
+
+        private void ResumeOrders()
+        {
+            lastAtDoor = false;
+            lastSentToSeat = false;
+            if (progress.Stage == ChapterOneStage.MeetRooftopWorkers) return;
+            Release("NPC-021");
+            Release("NPC-022");
+
+            foreach (string id in new[] { RakaId, SintaId })
+            {
+                if (!HasArrived(id)) continue;
+                OfficeNpcAgent agent = Get(id);
+                Transform seat = SeatFor(id);
+                if (agent == null || seat == null) continue;
+                NavMeshAgent navigation = agent.GetComponent<NavMeshAgent>();
+                if (navigation == null || !navigation.isOnNavMesh || !navigation.Warp(seat.position))
+                    agent.transform.position = seat.position;
+                agent.HoldForStory(Get("NPC-006")?.transform);
+            }
+
+            if (progress.FirstColleagueId.Length != 0 && !HasArrived(progress.FirstColleagueId))
+                SendFirstToBoss(progress.FirstColleagueId);
+
+            if (progress.Stage != ChapterOneStage.EscortLastColleague) return;
+            string lastId = progress.LastColleagueId;
+            OfficeNpcAgent last = Get(lastId);
+            if (last == null) return;
+            last.SetStoryFollowDistance(player, 5f);
+            if (bossDoorWait != null) last.TrySetStoryDestination(bossDoorWait.position, 2.2f);
+            if (!progress.WalkDialogueComplete && dialogue != null)
+            {
+                string sequenceId = lastId == RakaId ? "chapter.raka_last" : "chapter.sinta_last";
+                DialogueSequence sequence = FindNpcSequence(last.Profile, sequenceId);
+                if (sequence != null)
+                {
+                    activeParticipants = new[] { last };
+                    dialogue.Play(sequence, () => Apply(ChapterOneEvent.WalkDialogueFinished, lastId), true);
+                }
+            }
         }
 
         public bool TryBeginNpcDialogue(NpcInteractable npc, Transform actor)
@@ -142,7 +203,7 @@ namespace SaksiTerakhir.Story
                         Get("NPC-006"), Get(RakaId), Get(SintaId));
                 case ChapterOneStage.CollectCarKey when id == "NPC-002":
                     return PlayNpcSequence(profile, "chapter.nadia_key", false,
-                        () => Apply(ChapterOneEvent.CarKeyReceived), Get("NPC-002"));
+                        ReceiveCarKey, Get("NPC-002"));
                 default:
                     return false;
             }
@@ -287,9 +348,25 @@ namespace SaksiTerakhir.Story
         private bool Apply(ChapterOneEvent kind, string id = "")
         {
             if (progress == null || !progress.TryApply(kind, id)) return false;
+            PublishProgress();
+            return true;
+        }
+
+        private void ReceiveCarKey()
+        {
+            if (inventory != null && inventory.TryAdd(CarKeyInventory.CarKeyId))
+                PublishProgress();
+        }
+
+        private void PublishProgress()
+        {
+            if (Application.isPlaying)
+            {
+                try { ChapterOneSaveStore.Save(progress, SavePath); }
+                catch (Exception error) { Debug.LogError($"Chapter one save failed: {error.Message}", this); }
+            }
             ProgressChanged?.Invoke(progress);
             NoticeRequested?.Invoke("story.quest.updated");
-            return true;
         }
 
         private OfficeNpcAgent Get(string id) => !string.IsNullOrEmpty(id)

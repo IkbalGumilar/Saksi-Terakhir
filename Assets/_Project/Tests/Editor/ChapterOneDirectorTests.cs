@@ -47,6 +47,23 @@ namespace SaksiTerakhir.Tests
             Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.FindColleagues));
         }
 
+        [Test]
+        public void RestoringCompletedCallDoesNotReplayItOrTheRooftopConversation()
+        {
+            CreateChapter();
+            ChapterOneProgress loaded = new ChapterOneProgress();
+            loaded.TryApply(ChapterOneEvent.RooftopDialogueFinished);
+            loaded.TryApply(ChapterOneEvent.BossCallFinished);
+            director.RestoreProgress(loaded);
+
+            Assert.That(dialogue.IsPlaying, Is.False);
+            Assert.That(director.CallPending, Is.False);
+            Assert.That(director.TryAnswerBossCall(), Is.False);
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-021"], player), Is.False);
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-006"], player), Is.True);
+            Assert.That(dialogue.ActiveSequence.Id, Is.EqualTo("chapter.boss_first"));
+        }
+
         [TestCase("NPC-003", "NPC-004", "chapter.raka_first", "chapter.sinta_last")]
         [TestCase("NPC-004", "NPC-003", "chapter.sinta_first", "chapter.raka_last")]
         public void ColleaguesUseDifferentBranchesAndNadiaGivesOneKey(string first,
