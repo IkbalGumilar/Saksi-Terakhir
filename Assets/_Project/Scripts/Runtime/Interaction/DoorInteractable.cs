@@ -1,4 +1,5 @@
 using UnityEngine;
+using SaksiTerakhir.Story;
 
 namespace SaksiTerakhir.Interaction
 {
@@ -24,6 +25,7 @@ namespace SaksiTerakhir.Interaction
         private Vector3 hingeAxis;
         private float currentAngle;
         private float targetAngle;
+        private BossOfficeGate bossGate;
 
         public bool IsOpen => Mathf.Abs(targetAngle) > AngleTolerance;
 
@@ -48,13 +50,25 @@ namespace SaksiTerakhir.Interaction
                 return;
             }
 
-            bool opening = !IsOpen;
-            targetAngle = opening ? openAngle : 0f;
-            if (opening)
+            BossOfficeGate gate = bossGate != null ? bossGate : bossGate = GetComponent<BossOfficeGate>();
+            if (gate != null && !gate.CanOpenFor(actor))
             {
-                SetDoorColliderEnabled(false);
+                gate.OnBlocked(actor);
+                return;
             }
+
+            bool opening = !IsOpen;
+            if (opening) ForceOpen();
+            else ForceClose();
         }
+
+        public void ForceOpen()
+        {
+            targetAngle = openAngle;
+            SetDoorColliderEnabled(false);
+        }
+
+        public void ForceClose() => targetAngle = 0f;
 
         private void Update()
         {
@@ -73,6 +87,8 @@ namespace SaksiTerakhir.Interaction
 
         protected override string ResolvePromptKey()
         {
+            BossOfficeGate gate = bossGate != null ? bossGate : bossGate = GetComponent<BossOfficeGate>();
+            if (gate != null && gate.PlayerBlocked) return gate.BlockedPromptKey;
             return IsOpen ? closePromptKey : openPromptKey;
         }
 

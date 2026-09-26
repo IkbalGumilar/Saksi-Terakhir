@@ -14,6 +14,9 @@ namespace SaksiTerakhir.Npc
         private readonly RaycastHit[] sightHits = new RaycastHit[24];
         private float nextSocialCheck;
         private int socialCursor;
+        private bool executiveRoomRestricted;
+        private Collider executiveRoomZone;
+        private readonly List<OfficeNpcAgent> evacuatedActors = new List<OfficeNpcAgent>();
 
         private sealed class DoorRecord
         {
@@ -126,6 +129,18 @@ namespace SaksiTerakhir.Npc
 
         private void Update()
         {
+            for (int i = evacuatedActors.Count - 1; i >= 0; i--)
+            {
+                OfficeNpcAgent actor = evacuatedActors[i];
+                if (actor == null || !actor.isActiveAndEnabled)
+                {
+                    evacuatedActors.RemoveAt(i);
+                    continue;
+                }
+                if (!actor.StoryAtDestination) continue;
+                actor.ReleaseStoryHold();
+                evacuatedActors.RemoveAt(i);
+            }
             if (Time.time < nextSocialCheck || actors.Length < 2) return;
             nextSocialCheck = Time.time + 1.5f;
             for (int offset = 0; offset < actors.Length; offset++)
@@ -148,6 +163,31 @@ namespace SaksiTerakhir.Npc
                 }
             }
             socialCursor = (socialCursor + 1) % actors.Length;
+        }
+
+        public bool IsStoryRestricted(NpcActivityPoint point)
+        {
+            return executiveRoomRestricted && point != null
+                && (point.name.StartsWith("executive_talk", StringComparison.Ordinal)
+                    || executiveRoomZone != null
+                    && executiveRoomZone.bounds.Contains(point.transform.position));
+        }
+
+        public void RestrictExecutiveRoom(Collider roomZone, Transform corridorExit,
+            OfficeNpcAgent boss, OfficeNpcAgent colleagueA, OfficeNpcAgent colleagueB)
+        {
+            if (roomZone == null || corridorExit == null) return;
+            executiveRoomRestricted = true;
+            executiveRoomZone = roomZone;
+            foreach (OfficeNpcAgent actor in actors)
+            {
+                if (actor == null || actor == boss || actor == colleagueA || actor == colleagueB
+                    || !roomZone.bounds.Contains(actor.transform.position)) continue;
+                actor.HoldForStory();
+                actor.TrySetStoryDestination(corridorExit.position,
+                    actor.Profile != null ? actor.Profile.MovementSpeed : 2f);
+                evacuatedActors.Add(actor);
+            }
         }
 
         public bool TryOpenDoorAhead(OfficeNpcAgent actor, Vector3 nextPathCorner, out float waitUntil)

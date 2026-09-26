@@ -378,6 +378,7 @@ namespace SaksiTerakhir.Npc
 
         private bool TryBeginJourney(NpcActivityPoint point)
         {
+            if (director != null && director.IsStoryRestricted(point)) return false;
             if (point == null || navigation == null || !navigation.enabled || !navigation.isOnNavMesh || !point.TryReserve(this))
                 return false;
             NavMeshQueryFilter filter = new NavMeshQueryFilter { agentTypeID = navigation.agentTypeID, areaMask = navigation.areaMask };
