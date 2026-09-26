@@ -1,6 +1,7 @@
 using System;
 using SaksiTerakhir.Npc;
 using SaksiTerakhir.Player;
+using SaksiTerakhir.Story;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,6 +21,7 @@ namespace SaksiTerakhir.Interaction
         [SerializeField] private PlayerInputReader input;
         [SerializeField] private Transform viewpoint;
         [SerializeField] private Camera aimCamera;
+        [SerializeField] private StoryDialogueController storyDialogue;
 
         [Header("Crosshair Probe")]
         [Tooltip("Legacy ray limit. The effective distance is also capped by Maximum Aim Distance.")]
@@ -350,6 +352,11 @@ namespace SaksiTerakhir.Interaction
 
         private void OnInteractPressed()
         {
+            if (storyDialogue != null && storyDialogue.TryConsumeInteract())
+            {
+                return;
+            }
+
             if (current == null || !current.CanInteract(transform))
             {
                 return;

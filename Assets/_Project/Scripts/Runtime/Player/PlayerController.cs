@@ -34,6 +34,17 @@ namespace SaksiTerakhir.Player
         public bool IsCrouching { get; private set; }
         public bool IsSprinting { get; private set; }
         public float CurrentSpeed => horizontalVelocity.magnitude;
+        public bool StoryMovementLocked { get; private set; }
+
+        public void SetStoryMovementLocked(bool locked)
+        {
+            StoryMovementLocked = locked;
+            if (locked)
+            {
+                horizontalVelocity = Vector3.zero;
+                IsSprinting = false;
+            }
+        }
 
         private void Awake()
         {
@@ -107,6 +118,13 @@ namespace SaksiTerakhir.Player
 
         private void UpdateHorizontalVelocity()
         {
+            if (StoryMovementLocked)
+            {
+                horizontalVelocity = Vector3.zero;
+                IsSprinting = false;
+                return;
+            }
+
             Vector2 moveInput = Vector2.ClampMagnitude(input.MoveValue, 1f);
             Vector3 desiredDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
 
@@ -170,7 +188,7 @@ namespace SaksiTerakhir.Player
 
         private void OnJumpPerformed()
         {
-            if (!controller.isGrounded || IsCrouching)
+            if (StoryMovementLocked || !controller.isGrounded || IsCrouching)
             {
                 return;
             }
@@ -180,6 +198,7 @@ namespace SaksiTerakhir.Player
 
         private void OnCrouchPerformed()
         {
+            if (StoryMovementLocked) return;
             isCrouchRequested = crouchIsToggle ? !isCrouchRequested : true;
         }
 
