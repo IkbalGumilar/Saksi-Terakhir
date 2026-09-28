@@ -58,6 +58,7 @@ namespace SaksiTerakhir.Story
         public QuestDefinition CurrentQuest => progress != null && (int)progress.Stage < quests.Length
             ? quests[(int)progress.Stage] : null;
         public CarKeyInventory Inventory => inventory;
+        // Test-only persistence seam. It stays empty during normal gameplay.
         public static string SessionSavePathOverride { get; set; }
 
 
@@ -94,9 +95,14 @@ namespace SaksiTerakhir.Story
         public void InitializeNewGame()
         {
             if (initialized) return;
-            string path = SavePath;
-            bool hadSave = Application.isPlaying && File.Exists(path);
-            progress = Application.isPlaying ? ChapterOneSaveStore.Load(path) : new ChapterOneProgress();
+            bool testPersistenceEnabled = Application.isPlaying
+                && !string.IsNullOrEmpty(SessionSavePathOverride);
+            bool hadSave = testPersistenceEnabled && File.Exists(SessionSavePathOverride);
+            // Normal gameplay is session-only: older save files are ignored, and each
+            // fresh run begins at the rooftop. The override is used only by PlayMode tests.
+            progress = testPersistenceEnabled
+                ? ChapterOneSaveStore.Load(SessionSavePathOverride)
+                : new ChapterOneProgress();
             inventory = new CarKeyInventory(progress);
             BindScene();
             ProgressChanged?.Invoke(progress);
@@ -118,9 +124,6 @@ namespace SaksiTerakhir.Story
             BindScene();
             ProgressChanged?.Invoke(progress);
         }
-
-        private string SavePath => !string.IsNullOrEmpty(SessionSavePathOverride) ? SessionSavePathOverride
-            : Path.Combine(Application.persistentDataPath, "saksi-terakhir-chapter-one.json");
 
         private void Awake() => InitializeNewGame();
 
@@ -855,10 +858,10 @@ namespace SaksiTerakhir.Story
         private void PublishProgress()
         {
             bossGate?.RefreshBarrier();
-            if (Application.isPlaying)
+            if (Application.isPlaying && !string.IsNullOrEmpty(SessionSavePathOverride))
             {
-                try { ChapterOneSaveStore.Save(progress, SavePath); }
-                catch (Exception error) { Debug.LogError($"Chapter one save failed: {error.Message}", this); }
+                try { ChapterOneSaveStore.Save(progress, SessionSavePathOverride); }
+                catch (Exception error) { Debug.LogError($"Chapter one test save failed: {error.Message}", this); }
             }
             ProgressChanged?.Invoke(progress);
             NoticeRequested?.Invoke("story.quest.updated");

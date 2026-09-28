@@ -21,7 +21,7 @@ The current editor is closed and no live Unity Pipeline session is attached. The
 
 ## Persistence and recovery
 
-The save state records whether the final colleague was introduced, whether the final meeting has been assembled, which boss-side anchor was chosen, and whether the player has seated. On load, actors return to their corresponding anchors without replaying a completed cutscene.
+Story progress is session-only for the current prototype. Starting the game always creates fresh progress at the rooftop quest and ignores save files from older runs. Gameplay progress is not written automatically. The save-store utility remains available to isolated PlayMode test fixtures; it is not enabled during normal gameplay.
 
 ## Acceptance checks
 

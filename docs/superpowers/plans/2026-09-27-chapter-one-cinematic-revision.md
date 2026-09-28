@@ -19,7 +19,7 @@
 **Files:** new story motion/seating helpers, `ChapterOneProgress`, `ChapterOneDirector`, story tests.
 
 1. Add failing tests for the stationary pre-walk exchange, delayed last-colleague movement, meeting assembly state, and reload-safe seat selection.
-2. Implement player cutscene follow, persistable meeting flags, and director transitions.
+2. Implement player cutscene follow, session-only meeting flags, and director transitions.
 3. Run focused Editor and PlayMode tests.
 
 ## Task 3: Scene anchors, dialogue assets, and notification layout
@@ -41,4 +41,4 @@
 - Story locks must never leave the player permanently disabled after completion or scene reload.
 - Player auto-follow must preserve collision and NavMesh failure safety.
 - Anchor-based placement must replace hard-coded executive room assumptions without overwriting user-authored UI.
-- Save data must remain backward-compatible with existing chapter-one saves.
+- Normal gameplay does not load or write chapter-one progress; each fresh run begins at the rooftop.
