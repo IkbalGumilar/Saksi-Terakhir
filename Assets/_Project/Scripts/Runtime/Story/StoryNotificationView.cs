@@ -20,6 +20,7 @@ namespace SaksiTerakhir.Story
             chapter = director;
             notificationRoot = root;
             notificationLabel = label;
+            StoryNotificationLayout.Apply(notificationRoot, notificationLabel);
             if (notificationRoot != null) notificationRoot.SetActive(false);
         }
 

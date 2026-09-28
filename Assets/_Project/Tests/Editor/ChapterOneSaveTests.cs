@@ -28,8 +28,12 @@ namespace SaksiTerakhir.Tests
             Assert.That(progress.TryApply(ChapterOneEvent.ColleagueDialogueFinished, first), Is.True);
             Assert.That(progress.TryApply(ChapterOneEvent.ColleagueDialogueStarted, last), Is.True);
             Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, first), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.BossMovedToMeeting, "left"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.LastColleagueIntroFinished, last), Is.True);
             Assert.That(progress.TryApply(ChapterOneEvent.WalkDialogueFinished, last), Is.True);
             Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, last), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.MeetingAssembled), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.PlayerSeated), Is.True);
             Assert.That(progress.TryApply(ChapterOneEvent.FinalBriefingFinished), Is.True);
             Assert.That(new CarKeyInventory(progress).TryAdd("car-key"), Is.True);
 
@@ -42,7 +46,25 @@ namespace SaksiTerakhir.Tests
             Assert.That(loaded.RakaMet && loaded.SintaMet && loaded.RakaArrived && loaded.SintaArrived,
                 Is.True);
             Assert.That(loaded.WalkDialogueComplete && loaded.HasCarKey, Is.True);
+            Assert.That(loaded.LastColleagueIntroComplete && loaded.MeetingAssembled
+                && loaded.BossMeetingSide == 1 && loaded.PlayerSeated, Is.True);
             Assert.That(new CarKeyInventory(loaded).TryAdd("car-key"), Is.False);
+        }
+
+        [TestCase("left", 1)]
+        [TestCase("right", 2)]
+        public void RoundTripPreservesPendingMeetingSeatState(string bossSide, int expectedSide)
+        {
+            ChapterOneProgress progress = ReadyForBossInvitation(bossSide);
+            ChapterOneSaveStore.Save(progress, path);
+
+            ChapterOneProgress loaded = ChapterOneSaveStore.Load(path);
+            Assert.That(loaded.Stage, Is.EqualTo(ChapterOneStage.FinalBossBriefing));
+            Assert.That(loaded.LastColleagueIntroComplete, Is.True);
+            Assert.That(loaded.MeetingAssembled, Is.True);
+            Assert.That(loaded.BossMeetingSide, Is.EqualTo(expectedSide));
+            Assert.That(loaded.PlayerSeated, Is.False,
+                "Reloading before the invitation must not silently put the player into the sofa.");
         }
 
         [Test]
@@ -108,6 +130,20 @@ namespace SaksiTerakhir.Tests
             progress.TryApply(ChapterOneEvent.RooftopDialogueFinished);
             progress.TryApply(ChapterOneEvent.BossCallFinished);
             progress.TryApply(ChapterOneEvent.FirstBriefingFinished);
+            return progress;
+        }
+
+        private static ChapterOneProgress ReadyForBossInvitation(string bossSide)
+        {
+            ChapterOneProgress progress = ReachColleagues();
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueDialogueFinished, "NPC-003"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, "NPC-003"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.BossMovedToMeeting, bossSide), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueDialogueStarted, "NPC-004"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.LastColleagueIntroFinished, "NPC-004"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.WalkDialogueFinished, "NPC-004"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, "NPC-004"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.MeetingAssembled), Is.True);
             return progress;
         }
     }

@@ -59,6 +59,50 @@ namespace SaksiTerakhir.Tests
             Assert.That(actor.StoryAtDestination, Is.False);
         }
 
+        [Test]
+        public void SeatedPoseChangesOnlyVisualChildrenAndRestoresTheirAuthoredTransforms()
+        {
+            actorObject = new GameObject("Story actor");
+            actorObject.SetActive(false);
+            NavMeshAgent navigation = actorObject.AddComponent<NavMeshAgent>();
+            CapsuleCollider collider = actorObject.AddComponent<CapsuleCollider>();
+            Transform capsule = new GameObject("Capsule Visual").transform;
+            capsule.SetParent(actorObject.transform, false);
+            capsule.localPosition = new Vector3(0f, 0.95f, 0f);
+            capsule.localScale = new Vector3(0.7f, 0.95f, 0.7f);
+            Transform marker = new GameObject("Facing Marker").transform;
+            marker.SetParent(actorObject.transform, false);
+            marker.localPosition = new Vector3(0f, 1.45f, 0.34f);
+            Transform labelRoot = new GameObject("NPC Label").transform;
+            labelRoot.SetParent(actorObject.transform, false);
+            labelRoot.localPosition = new Vector3(0f, 2.18f, 0f);
+            OfficeNpcAgent actor = actorObject.AddComponent<OfficeNpcAgent>();
+            Vector3 originalCapsulePosition = capsule.localPosition;
+            Vector3 originalCapsuleScale = capsule.localScale;
+            Vector3 originalMarkerPosition = marker.localPosition;
+            Vector3 originalLabelPosition = labelRoot.localPosition;
+            float originalAgentHeight = navigation.height;
+            float originalColliderHeight = collider.height;
+
+            actor.SetStorySeated(true);
+            Assert.That(actor.StorySeated, Is.True);
+            Assert.That(capsule.localScale.y, Is.LessThan(originalCapsuleScale.y));
+            Assert.That(capsule.localPosition.y, Is.EqualTo(originalCapsulePosition.y));
+            Assert.That(capsule.localPosition.y - capsule.localScale.y, Is.InRange(0.35f, 0.45f));
+            Assert.That(marker.localPosition.y, Is.LessThan(originalMarkerPosition.y));
+            Assert.That(labelRoot.localPosition.y, Is.LessThan(originalLabelPosition.y));
+            Assert.That(navigation.height, Is.EqualTo(originalAgentHeight));
+            Assert.That(collider.height, Is.EqualTo(originalColliderHeight));
+
+            actor.SetStorySeated(true);
+            actor.SetStorySeated(false);
+            Assert.That(actor.StorySeated, Is.False);
+            Assert.That(capsule.localPosition, Is.EqualTo(originalCapsulePosition));
+            Assert.That(capsule.localScale, Is.EqualTo(originalCapsuleScale));
+            Assert.That(marker.localPosition, Is.EqualTo(originalMarkerPosition));
+            Assert.That(labelRoot.localPosition, Is.EqualTo(originalLabelPosition));
+        }
+
         private OfficeNpcAgent CreateActor(bool active)
         {
             profile = ScriptableObject.CreateInstance<NpcProfile>();

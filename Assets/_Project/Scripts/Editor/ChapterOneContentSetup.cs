@@ -69,7 +69,7 @@ namespace SaksiTerakhir.EditorTools
                 L("NPC-006", "Terima kasih. Saya menunggu di ruang kerja."));
 
             DialogueSequence firstBriefing = Dialogue("boss-first", "chapter.boss_first",
-                L("NPC-006", "Terima kasih sudah datang. Duduklah sebentar, ada berkas yang ingin saya tunjukkan."),
+                L("NPC-006", "Terima kasih sudah datang. Ada berkas yang ingin saya tunjukkan."),
                 L("PLAYER", "Berkas apa, Pak?"),
                 L("NPC-006", "Daftar permukiman dari arsip lama. Satu entri tidak cocok dengan catatan kita sekarang."),
                 L("PLAYER", "Mungkin nama tempatnya sudah berubah."),
@@ -103,6 +103,18 @@ namespace SaksiTerakhir.EditorTools
                 L("PLAYER", "Aku harus mencari Raka juga."),
                 L("NPC-004", "Aku ke ruangan bos lebih dulu. Beri tahu Raka agar tidak berlama-lama."),
                 L("PLAYER", "Sampai bertemu di lantai empat."));
+
+            DialogueSequence rakaLastIntro = Dialogue("raka-last-intro", "chapter.raka_last_intro",
+                L("PLAYER", "Raka, Pak Arya menunggu kita. Sinta sudah lebih dulu ke ruangannya."),
+                L("NPC-003", "Baik. Beri aku sebentar untuk menutup laporan ini."),
+                L("PLAYER", "Sudah siap?"),
+                L("NPC-003", "Sudah. Kita jalan pelan saja; ada hal yang ingin kuceritakan."));
+
+            DialogueSequence sintaLastIntro = Dialogue("sinta-last-intro", "chapter.sinta_last_intro",
+                L("PLAYER", "Sinta, Pak Arya menunggu kita. Raka sudah lebih dulu ke ruangannya."),
+                L("NPC-004", "Baik. Aku rapikan catatan ini sebentar."),
+                L("PLAYER", "Kita bisa berangkat?"),
+                L("NPC-004", "Bisa. Sambil jalan, mari bahas rencana liburan setelah tugas ini."));
 
             DialogueSequence rakaLast = Dialogue("raka-last", "chapter.raka_last",
                 L("PLAYER", "Raka, kita harus kembali ke Pak Arya. Sinta sudah menunggu."),
@@ -158,6 +170,9 @@ namespace SaksiTerakhir.EditorTools
                 L("NPC-006", "Kabari saya sebelum berangkat jauh. Saya ingin tahu rute yang kalian pilih."),
                 L("NPC-003", "Baik, Pak. Kami mulai dari petunjuk paling jelas."));
 
+            DialogueSequence bossSeating = Dialogue("boss-seating", "chapter.boss_seating",
+                L("NPC-006", "Semua sudah hadir, silakan duduk."));
+
             DialogueSequence nadia = Dialogue("nadia-key", "chapter.nadia_key",
                 L("PLAYER", "Nadia, Pak Arya meminta kunci mobil kantor."),
                 L("NPC-002", "Saya sudah menyiapkannya. Mobil hitam terparkir di depan gedung."),
@@ -178,15 +193,17 @@ namespace SaksiTerakhir.EditorTools
 
             Offer("NPC-021-Pekerja-03", new[] { rooftop }, new[] { opening });
             Offer("NPC-022-Pekerja-04", new[] { rooftop }, new[] { opening });
-            Offer("NPC-003-Rekan-A", new[] { find, escort }, new[] { rakaFirst, rakaLast });
-            Offer("NPC-004-Rekan-B", new[] { find, escort }, new[] { sintaFirst, sintaLast });
+            Offer("NPC-003-Rekan-A", new[] { find, escort },
+                new[] { rakaFirst, rakaLastIntro, rakaLast });
+            Offer("NPC-004-Rekan-B", new[] { find, escort },
+                new[] { sintaFirst, sintaLastIntro, sintaLast });
             Offer("NPC-006-Bos", new[] { bossFirst, bossFinal },
-                new[] { firstBriefing, finalBriefing });
+                new[] { firstBriefing, bossSeating, finalBriefing });
             Offer("NPC-002-Resepsionis", new[] { key }, new[] { nadia });
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            return "Chapter one content created or updated: 8 main quests, 12 dialogue sequences, 6 NPC offers.";
+            return "Chapter one content created or updated: 8 main quests, 15 dialogue sequences, 6 NPC offers.";
         }
 
         private static void EnsureFolder(string parent, string name)

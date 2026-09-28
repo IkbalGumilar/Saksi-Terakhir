@@ -11,6 +11,7 @@ namespace SaksiTerakhir.Tests
     {
         private GameObject storyObject;
         private GameObject playerObject;
+        private GameObject cameraObject;
         private GameObject doorObject;
         private DialogueSequence sequence;
 
@@ -19,12 +20,13 @@ namespace SaksiTerakhir.Tests
         {
             if (storyObject != null) Object.DestroyImmediate(storyObject);
             if (playerObject != null) Object.DestroyImmediate(playerObject);
+            if (cameraObject != null) Object.DestroyImmediate(cameraObject);
             if (doorObject != null) Object.DestroyImmediate(doorObject);
             if (sequence != null) Object.DestroyImmediate(sequence);
         }
 
         [Test]
-        public void InteractAdvancesOneLineThenReleasesInput()
+        public void InteractIsConsumedButNeverAdvancesAnAutomaticStoryLine()
         {
             StoryDialogueController dialogue = CreateDialogue();
             int completed = 0;
@@ -32,9 +34,11 @@ namespace SaksiTerakhir.Tests
             Assert.That(dialogue.IsPlaying, Is.True);
             Assert.That(dialogue.CurrentLine.Text, Is.EqualTo("Kalimat pertama."));
             Assert.That(dialogue.TryConsumeInteract(), Is.True);
-            Assert.That(dialogue.CurrentLine.Text, Is.EqualTo("Kalimat kedua."));
+            Assert.That(dialogue.CurrentLine.Text, Is.EqualTo("Kalimat pertama."));
             Assert.That(completed, Is.Zero);
-            Assert.That(dialogue.TryConsumeInteract(), Is.True);
+            Advance(dialogue);
+            Assert.That(dialogue.CurrentLine.Text, Is.EqualTo("Kalimat kedua."));
+            Advance(dialogue);
             Assert.That(completed, Is.EqualTo(1));
             Assert.That(dialogue.IsPlaying, Is.False);
             Assert.That(dialogue.TryConsumeInteract(), Is.False);
@@ -57,12 +61,12 @@ namespace SaksiTerakhir.Tests
             typeof(PlayerInteractor).GetMethod("OnInteractPressed", BindingFlags.Instance | BindingFlags.NonPublic)
                 .Invoke(interactor, null);
 
-            Assert.That(dialogue.CurrentLine.Text, Is.EqualTo("Kalimat kedua."));
+            Assert.That(dialogue.CurrentLine.Text, Is.EqualTo("Kalimat pertama."));
             Assert.That(door.IsOpen, Is.False);
         }
 
         [Test]
-        public void StandingDialogueLocksAndRestoresPlayerTranslation()
+        public void EveryStoryDialogueLocksAndRestoresPlayerTranslation()
         {
             playerObject = new GameObject("Player");
             playerObject.SetActive(false);
@@ -71,11 +75,41 @@ namespace SaksiTerakhir.Tests
             StoryDialogueController dialogue = CreateDialogue();
             SetPrivate(dialogue, "playerMovement", player);
 
-            dialogue.Play(sequence, null);
+            dialogue.Play(sequence, null, autoAdvance: true);
             Assert.That(player.StoryMovementLocked, Is.True);
-            dialogue.TryConsumeInteract();
-            dialogue.TryConsumeInteract();
+            Advance(dialogue);
+            Advance(dialogue);
             Assert.That(player.StoryMovementLocked, Is.False);
+        }
+
+        [Test]
+        public void EveryStoryDialogueLocksAndRestoresPlayerLook()
+        {
+            cameraObject = new GameObject("Story Camera");
+            cameraObject.SetActive(false);
+            PlayerCameraController camera = cameraObject.AddComponent<PlayerCameraController>();
+            StoryDialogueController dialogue = CreateDialogue();
+            SetPrivate(dialogue, "playerCamera", camera);
+
+            dialogue.Play(sequence, null);
+            Assert.That(camera.StoryDialogueLookLocked, Is.True);
+            Advance(dialogue);
+            Advance(dialogue);
+            Assert.That(camera.StoryDialogueLookLocked, Is.False);
+            Assert.That(camera.StoryFocusTarget, Is.Null);
+        }
+
+        [Test]
+        public void LineDurationScalesWithTextLengthAndIncludesRevealTime()
+        {
+            StoryDialogueController dialogue = CreateDialogue();
+            SetPrivate(dialogue, "charactersPerSecond", 20f);
+            SetPrivate(dialogue, "minimumLineSeconds", 0.5f);
+            SetPrivate(dialogue, "postRevealSeconds", 0.25f);
+
+            Assert.That(dialogue.GetLineDuration("pendek"), Is.EqualTo(0.55f).Within(0.001f));
+            Assert.That(dialogue.GetLineDuration("12345678901234567890"), Is.EqualTo(1.25f).Within(0.001f));
+            Assert.That(dialogue.GetLineDuration("x"), Is.EqualTo(0.5f).Within(0.001f));
         }
 
         private StoryDialogueController CreateDialogue()
@@ -96,6 +130,14 @@ namespace SaksiTerakhir.Tests
                 BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.That(field, Is.Not.Null, name);
             field.SetValue(target, value);
+        }
+
+        private static void Advance(StoryDialogueController dialogue)
+        {
+            MethodInfo method = typeof(StoryDialogueController).GetMethod("Advance",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            Assert.That(method, Is.Not.Null);
+            method.Invoke(dialogue, null);
         }
     }
 }

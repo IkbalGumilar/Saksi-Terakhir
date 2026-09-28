@@ -30,7 +30,12 @@ namespace SaksiTerakhir.Npc
         public override void Interact(Transform actor)
         {
             if (!CanInteract(actor)) return;
-            if (storyDirector != null && storyDirector.TryBeginNpcDialogue(this, actor)) return;
+            if (storyDirector != null)
+            {
+                if (!storyDirector.TryBeginNpcDialogue(this, actor))
+                    storyDirector.TryBeginGenericNpcDialogue(this, actor);
+                return;
+            }
 
             IReadOnlyList<string> lines = Agent.Profile.DialogueLines;
             if (lines == null || lines.Count == 0 || dialogueIndex >= lines.Count - 1)

@@ -1369,6 +1369,37 @@ MonoBehaviour:
   m_Bidirectional: 1
   m_AutoUpdatePosition: 0
   m_Area: 0
+--- !u!1 &97855330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 97855331}
+  m_Layer: 0
+  m_Name: Boss Walk Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &97855331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97855330}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.5, y: 15.84, z: -36.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1091194297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &101276598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,6 +2055,37 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &144661911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144661912}
+  m_Layer: 0
+  m_Name: Boss Chair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &144661912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144661911}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.643, y: 15.84, z: -38.926}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1091194297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &153656028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,8 +2313,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166917162}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.27, y: 15.84, z: -32.06}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000004371139}
+  m_LocalPosition: {x: -5.14, y: 15.84, z: -30.262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2505,6 +2567,9 @@ MonoBehaviour:
   minPitch: -85
   maxPitch: 50
   eyeHeightRatio: 0.92
+  seatedEyeHeight: 1.05
+  storyFocusSmoothing: 10
+  storyFocusHeight: 1.35
 --- !u!114 &188600938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3975,6 +4040,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235721062}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &247021598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247021599}
+  m_Layer: 0
+  m_Name: Player Seat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &247021599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247021598}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000004371139}
+  m_LocalPosition: {x: -5.864, y: 15.84, z: -30.262}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1091194297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &268073975
 GameObject:
   m_ObjectHideFlags: 0
@@ -6100,7 +6196,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.8, y: 2.8, z: 5.2}
+  m_Size: {x: 4.9, y: 2.8, z: 10.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &412211772
 Transform:
@@ -6110,8 +6206,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412211770}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 16.9, z: -31.8}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.65, y: 16.9, z: -34.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6687,8 +6783,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436633439}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2, y: 15.84, z: -26.4}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -1.704, y: 15.84, z: -30.964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7278,7 +7374,7 @@ Transform:
   m_GameObject: {fileID: 529700969}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.3, y: 15.84, z: -30}
+  m_LocalPosition: {x: -5.643, y: 15.84, z: -38.926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7854,11 +7950,11 @@ RectTransform:
   - {fileID: 988385627}
   m_Father: {fileID: 217428782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -450}
-  m_SizeDelta: {x: 800, y: 800}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -18, y: -20}
+  m_SizeDelta: {x: 330, y: 72}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &584829741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7869,11 +7965,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.04, g: 0.05, b: 0.07, a: 0.86}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7897,6 +7993,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584829739}
   m_CullTransparentMesh: 1
+--- !u!1 &586172482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586172483}
+  m_Layer: 0
+  m_Name: Boss Meeting Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586172483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586172482}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.629, y: 15.84, z: -33.161}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1091194297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &612127988
 GameObject:
   m_ObjectHideFlags: 0
@@ -9407,7 +9534,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.2, y: 2.7, z: 0.22}
+  m_Size: {x: 0.22, y: 2.7, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &729968307
 Transform:
@@ -9417,8 +9544,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729968305}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0980601, y: 17.192001, z: -29.028332}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.986565, y: 17.192001, z: -30.96371}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12875,7 +13002,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -24, y: -16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &988385628
 MonoBehaviour:
@@ -12887,11 +13014,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12927,12 +13054,12 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -12943,7 +13070,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -13921,21 +14048,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99b7b282c2c311d0dbee7e6bb9c74345, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.ChapterOneDirector
   dialogue: {fileID: 1091194296}
   player: {fileID: 1622203421320244790}
-  bossGate: {fileID: 7163358002517282458}
+  bossGate: {fileID: 8454453397819903818}
   cast:
-  - {fileID: 1112940114}
-  - {fileID: 1367144513}
+  - {fileID: 1428109849}
+  - {fileID: 10364166}
   - {fileID: 857552301}
   - {fileID: 1362931334}
+  - {fileID: 1403331401}
   - {fileID: 529700974}
-  - {fileID: 10364166}
+  - {fileID: 1072859712}
+  - {fileID: 352810836}
+  - {fileID: 1293686290}
+  - {fileID: 452045120}
+  - {fileID: 2128423286}
+  - {fileID: 2026303475}
+  - {fileID: 1511819157}
+  - {fileID: 1441092187}
+  - {fileID: 1702336966}
+  - {fileID: 761113657}
+  - {fileID: 1765628175}
+  - {fileID: 1559440513}
+  - {fileID: 1572545342}
+  - {fileID: 981826936}
+  - {fileID: 1112940114}
+  - {fileID: 1367144513}
+  - {fileID: 268073980}
+  - {fileID: 1035687363}
+  - {fileID: 2015648417}
   rakaSeat: {fileID: 166917163}
   sintaSeat: {fileID: 1367643698}
   bossDoorWait: {fileID: 1242104727}
+  bossChair: {fileID: 144661912}
+  bossMeetingLeft: {fileID: 1796913965}
+  bossMeetingRight: {fileID: 586172483}
+  playerSeat: {fileID: 247021599}
+  meetingApproach: {fileID: 1343507167}
+  bossWalkStart: {fileID: 97855331}
+  playerMover: {fileID: 4639575947921241167}
+  playerSeating: {fileID: 4639575947921241166}
+  playerCamera: {fileID: 188600937}
   quests:
   - {fileID: 11400000, guid: e8697ca965344d9e193679de8fdd9e02, type: 2}
   - {fileID: 11400000, guid: 7530c8fcf2c057bd393f4cbb2647d2b7, type: 2}
@@ -13951,8 +14106,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32b32c364eb58621a88095b9f1e8390a, type: 2}
   - {fileID: 11400000, guid: 5ed9ae1ec4278fdfcb65c0425f4a50c2, type: 2}
   - {fileID: 11400000, guid: 8f2dd9bccc8eff0adbf054e1ec5e191a, type: 2}
+  - {fileID: 11400000, guid: 1deaf475f67346fb878319b00d45a5fa, type: 2}
+  - {fileID: 11400000, guid: 25a7ac078bd147ad86e8e155696b27d0, type: 2}
   - {fileID: 11400000, guid: 94978febfc96b4927a573a8b94782a00, type: 2}
   - {fileID: 11400000, guid: 9e9b80f45ac9e26b98f63e52d3619295, type: 2}
+  - {fileID: 11400000, guid: eb5508f9775448599af4d8b7918bc4d6, type: 2}
   - {fileID: 11400000, guid: c8912ee77f72c0267bd600a1e41505ef, type: 2}
   - {fileID: 11400000, guid: a0583cc74b7b94c9d9a57405ec108c6d, type: 2}
   - {fileID: 11400000, guid: 772c3410328a96aa5a9ebfb9f95adae5, type: 2}
@@ -13968,10 +14126,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d83894fa2a151d42928f383e37dcca6, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.StoryDialogueController
   playerMovement: {fileID: 188600935}
-  automaticLineSeconds: 3.5
+  playerCamera: {fileID: 188600937}
+  charactersPerSecond: 30
+  minimumLineSeconds: 0.5
+  postRevealSeconds: 0.25
 --- !u!4 &1091194297
 Transform:
   m_ObjectHideFlags: 0
@@ -13992,6 +14153,13 @@ Transform:
   - {fileID: 412211772}
   - {fileID: 1842471432}
   - {fileID: 729968307}
+  - {fileID: 144661912}
+  - {fileID: 1796913965}
+  - {fileID: 586172483}
+  - {fileID: 247021599}
+  - {fileID: 1343507167}
+  - {fileID: 97855331}
+  - {fileID: 1153759791}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1094416562
@@ -14679,6 +14847,63 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1153759790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1153759791}
+  - component: {fileID: 1153759792}
+  m_Layer: 0
+  m_Name: Flag Room Interior Link
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1153759791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153759790}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1091194297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1153759792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153759790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshLink
+  m_SerializedVersion: 1
+  m_AgentTypeID: -1372625422
+  m_StartPoint: {x: -5.53, y: 15.86, z: -32.5}
+  m_EndPoint: {x: -4.5, y: 15.86, z: -32.37}
+  m_StartTransform: {fileID: 0}
+  m_EndTransform: {fileID: 0}
+  m_Activated: 1
+  m_Width: 0.6
+  m_CostModifier: 1
+  m_IsOverridingCost: 0
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
 --- !u!1 &1155520385
 GameObject:
   m_ObjectHideFlags: 0
@@ -14895,8 +15120,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242104726}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1, y: 15.84, z: -27.6}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -2.094, y: 15.84, z: -30.964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15336,6 +15561,37 @@ Transform:
   - {fileID: 330585546}
   - {fileID: 1560086826}
   m_Father: {fileID: 1622203421320244790}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1343507166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1343507167}
+  m_Layer: 0
+  m_Name: Meeting Approach
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1343507167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343507166}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.68, y: 15.86, z: -31.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1091194297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353080507
 GameObject:
@@ -15869,8 +16125,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367643697}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.55, y: 15.84, z: -31}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000004371139}
+  m_LocalPosition: {x: -6.589, y: 15.84, z: -30.262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16795,7 +17051,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcb4692d81dc8482999e72b47642e8ee, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.StoryDialogueView
   dialogue: {fileID: 1091194296}
   panelRoot: {fileID: 1277115617}
@@ -16828,6 +17084,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 471f41240231c55e9bdf438766d395c8, type: 2}
   - {fileID: 11400000, guid: 79b857ae9f35844b5ad0500adba8f8e5, type: 2}
   - {fileID: 11400000, guid: ec708b110a5e2b8c682d668f699b9736, type: 2}
+  fallbackCharactersPerSecond: 30
 --- !u!114 &1443740745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21729,6 +21986,37 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1796913964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1796913965}
+  m_Layer: 0
+  m_Name: Boss Meeting Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1796913965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796913964}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.099, y: 15.84, z: -33.161}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1091194297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1802945994
 GameObject:
   m_ObjectHideFlags: 0
@@ -27135,6 +27423,8 @@ GameObject:
   - component: {fileID: 188600934}
   - component: {fileID: 188600941}
   - component: {fileID: 4639575947921241165}
+  - component: {fileID: 4639575947921241167}
+  - component: {fileID: 4639575947921241166}
   m_Layer: 0
   m_Name: MC_ArchiveOfficer
   m_TagString: Untagged
@@ -27420,6 +27710,7 @@ GameObject:
   - component: {fileID: 2002309384863523124}
   - component: {fileID: 5628857755587214665}
   - component: {fileID: 8454453397819903817}
+  - component: {fileID: 8454453397819903818}
   m_Layer: 6
   m_Name: Office_ArchiveHQ_DoorLeaf_12
   m_TagString: Untagged
@@ -29339,6 +29630,44 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &4639575947921241166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146222259650901132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d7bd76df19c4e6dac6bb0feebbd86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.StoryPlayerSeating
+  playerMovement: {fileID: 188600935}
+  characterController: {fileID: 188600936}
+  playerCamera: {fileID: 0}
+  animator: {fileID: 4639575947921241164}
+  seatedBoolParameter: IsSeated
+--- !u!114 &4639575947921241167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146222259650901132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3885f3529463c28608991a29de1dff8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.StoryPlayerCinematicMover
+  playerMovement: {fileID: 188600935}
+  characterController: {fileID: 188600936}
+  navMeshAgentTypeId: -1372625422
+  defaultMoveSpeed: 2.2
+  defaultStoppingDistance: 0.25
+  navMeshSampleRadius: 1.2
+  followRepathInterval: 0.2
+  followRepathDistance: 0.4
+  turnSmoothing: 12
 --- !u!4 &4642062840747217668
 Transform:
   m_ObjectHideFlags: 0
@@ -29740,7 +30069,6 @@ GameObject:
   - component: {fileID: 4299775487414908753}
   - component: {fileID: 1153865227541453278}
   - component: {fileID: 7163358002517282457}
-  - component: {fileID: 7163358002517282458}
   m_Layer: 6
   m_Name: Office_ArchiveHQ_DoorLeaf_10
   m_TagString: Untagged
@@ -31759,26 +32087,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!114 &7163358002517282458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5061815404124828960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4043a47ba56ea0eaaa782b195f2b8594, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.BossOfficeGate
-  roomZone: {fileID: 412211771}
-  playerBarrier: {fileID: 729968306}
-  corridorExit: {fileID: 436633440}
-  player: {fileID: 1622203421320244790}
-  npcDirector: {fileID: 616265763}
-  boss: {fileID: 529700974}
-  colleagueA: {fileID: 857552301}
-  colleagueB: {fileID: 1362931334}
 --- !u!64 &7195579327138287942
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33237,6 +33545,26 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &8454453397819903818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2492950913837496949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4043a47ba56ea0eaaa782b195f2b8594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.BossOfficeGate
+  roomZone: {fileID: 412211771}
+  playerBarrier: {fileID: 729968306}
+  corridorExit: {fileID: 436633440}
+  player: {fileID: 1622203421320244790}
+  npcDirector: {fileID: 616265763}
+  boss: {fileID: 529700974}
+  colleagueA: {fileID: 857552301}
+  colleagueB: {fileID: 1362931334}
 --- !u!33 &8498239124166680352
 MeshFilter:
   m_ObjectHideFlags: 0

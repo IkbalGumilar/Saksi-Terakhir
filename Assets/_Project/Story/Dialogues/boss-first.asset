@@ -15,8 +15,7 @@ MonoBehaviour:
   id: chapter.boss_first
   lines:
   - speakerId: NPC-006
-    text: Terima kasih sudah datang. Duduklah sebentar, ada berkas yang ingin saya
-      tunjukkan.
+    text: Terima kasih sudah datang. Ada berkas yang ingin saya tunjukkan.
   - speakerId: PLAYER
     text: Berkas apa, Pak?
   - speakerId: NPC-006

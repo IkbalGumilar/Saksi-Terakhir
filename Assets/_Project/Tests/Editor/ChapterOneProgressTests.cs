@@ -34,11 +34,15 @@ namespace SaksiTerakhir.Tests
             Assert.That(progress.Stage, Is.EqualTo(ChapterOneStage.EscortLastColleague));
             Assert.That(progress.RakaMet && progress.SintaMet, Is.False);
             Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, first), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.BossMovedToMeeting, "left"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.LastColleagueIntroFinished, last), Is.True);
             Assert.That(progress.TryApply(ChapterOneEvent.WalkDialogueFinished, last), Is.True);
             Assert.That(progress.RakaMet && progress.SintaMet, Is.True);
             Assert.That(progress.Stage, Is.EqualTo(ChapterOneStage.EscortLastColleague));
             Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, last), Is.True);
             Assert.That(progress.Stage, Is.EqualTo(ChapterOneStage.FinalBossBriefing));
+            Assert.That(progress.TryApply(ChapterOneEvent.MeetingAssembled), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.PlayerSeated), Is.True);
             Assert.That(progress.TryApply(ChapterOneEvent.FinalBriefingFinished), Is.True);
             Assert.That(progress.Stage, Is.EqualTo(ChapterOneStage.CollectCarKey));
             Assert.That(progress.TryApply(ChapterOneEvent.CarKeyReceived), Is.True);
@@ -72,12 +76,62 @@ namespace SaksiTerakhir.Tests
             progress.TryApply(ChapterOneEvent.ColleagueDialogueFinished, "NPC-003");
             progress.TryApply(ChapterOneEvent.ColleagueDialogueStarted, "NPC-004");
             Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, "NPC-004"), Is.False);
+            Assert.That(progress.TryApply(ChapterOneEvent.WalkDialogueFinished, "NPC-004"), Is.False,
+                "The moving conversation cannot begin before the stationary introduction completes.");
+            Assert.That(progress.TryApply(ChapterOneEvent.LastColleagueIntroFinished, "NPC-004"), Is.True);
             Assert.That(progress.TryApply(ChapterOneEvent.WalkDialogueFinished, "NPC-004"), Is.True);
             Assert.That(progress.Stage, Is.EqualTo(ChapterOneStage.EscortLastColleague));
             progress.TryApply(ChapterOneEvent.ColleagueArrived, "NPC-004");
             Assert.That(progress.Stage, Is.EqualTo(ChapterOneStage.EscortLastColleague));
             progress.TryApply(ChapterOneEvent.ColleagueArrived, "NPC-003");
             Assert.That(progress.Stage, Is.EqualTo(ChapterOneStage.FinalBossBriefing));
+        }
+
+        [Test]
+        public void LastColleagueIntroMustFinishBeforeTheEscortCanAdvance()
+        {
+            ChapterOneProgress progress = AtColleagueSearch();
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueDialogueFinished, "NPC-003"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueDialogueStarted, "NPC-004"), Is.True);
+
+            Assert.That(progress.Stage, Is.EqualTo(ChapterOneStage.EscortLastColleague));
+            Assert.That(progress.LastColleagueIntroComplete, Is.False);
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, "NPC-004"), Is.False);
+            Assert.That(progress.TryApply(ChapterOneEvent.WalkDialogueFinished, "NPC-004"), Is.False);
+
+            Assert.That(progress.TryApply(ChapterOneEvent.LastColleagueIntroFinished, "NPC-004"), Is.True);
+            Assert.That(progress.LastColleagueIntroComplete, Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.LastColleagueIntroFinished, "NPC-004"), Is.False,
+                "The stationary introduction is a one-time transition.");
+            Assert.That(progress.TryApply(ChapterOneEvent.WalkDialogueFinished, "NPC-004"), Is.True);
+        }
+
+        [TestCase("left", 1)]
+        [TestCase("right", 2)]
+        public void FinalBriefingRequiresAChosenBossSeatAndThePlayerSeating(string bossSide,
+            int expectedSide)
+        {
+            ChapterOneProgress progress = AtColleagueSearch();
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueDialogueFinished, "NPC-003"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, "NPC-003"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.BossMovedToMeeting, bossSide), Is.True);
+            Assert.That(progress.BossMeetingSide, Is.EqualTo(expectedSide));
+
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueDialogueStarted, "NPC-004"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.LastColleagueIntroFinished, "NPC-004"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.WalkDialogueFinished, "NPC-004"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, "NPC-004"), Is.True);
+            Assert.That(progress.Stage, Is.EqualTo(ChapterOneStage.FinalBossBriefing));
+
+            Assert.That(progress.TryApply(ChapterOneEvent.MeetingAssembled), Is.True);
+            Assert.That(progress.MeetingAssembled, Is.True);
+            Assert.That(progress.PlayerSeated, Is.False);
+            Assert.That(progress.TryApply(ChapterOneEvent.FinalBriefingFinished), Is.False,
+                "Boss must invite and seat the player before the four-person briefing can finish.");
+            Assert.That(progress.TryApply(ChapterOneEvent.PlayerSeated), Is.True);
+            Assert.That(progress.PlayerSeated, Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.FinalBriefingFinished), Is.True);
+            Assert.That(progress.Stage, Is.EqualTo(ChapterOneStage.CollectCarKey));
         }
 
         [Test]

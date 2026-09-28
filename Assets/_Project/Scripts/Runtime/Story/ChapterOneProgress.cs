@@ -22,9 +22,13 @@ namespace SaksiTerakhir.Story
         BossCallFinished,
         FirstBriefingFinished,
         ColleagueDialogueStarted,
+        LastColleagueIntroFinished,
         ColleagueDialogueFinished,
         ColleagueArrived,
+        BossMovedToMeeting,
         WalkDialogueFinished,
+        MeetingAssembled,
+        PlayerSeated,
         FinalBriefingFinished,
         CarKeyReceived,
         VehicleReached
@@ -42,6 +46,10 @@ namespace SaksiTerakhir.Story
         [SerializeField] private bool rakaArrived;
         [SerializeField] private bool sintaArrived;
         [SerializeField] private bool walkDialogueComplete;
+        [SerializeField] private bool lastColleagueIntroComplete;
+        [SerializeField] private int bossMeetingSide;
+        [SerializeField] private bool meetingAssembled;
+        [SerializeField] private bool playerSeated;
         [SerializeField] private bool hasCarKey;
 
         public int Version => version;
@@ -53,6 +61,10 @@ namespace SaksiTerakhir.Story
         public bool RakaArrived => rakaArrived;
         public bool SintaArrived => sintaArrived;
         public bool WalkDialogueComplete => walkDialogueComplete;
+        public bool LastColleagueIntroComplete => lastColleagueIntroComplete;
+        public int BossMeetingSide => bossMeetingSide;
+        public bool MeetingAssembled => meetingAssembled;
+        public bool PlayerSeated => playerSeated;
         public bool HasCarKey => hasCarKey;
 
         public bool TryApply(ChapterOneEvent kind, string actorId = "")
@@ -79,8 +91,13 @@ namespace SaksiTerakhir.Story
                     lastColleagueId = actorId;
                     stage = ChapterOneStage.EscortLastColleague;
                     return true;
+                case ChapterOneEvent.LastColleagueIntroFinished when stage == ChapterOneStage.EscortLastColleague:
+                    if (actorId != lastColleagueId || lastColleagueIntroComplete) return false;
+                    lastColleagueIntroComplete = true;
+                    return true;
                 case ChapterOneEvent.WalkDialogueFinished when stage == ChapterOneStage.EscortLastColleague:
-                    if (actorId != lastColleagueId || walkDialogueComplete) return false;
+                    if (actorId != lastColleagueId || !lastColleagueIntroComplete
+                        || walkDialogueComplete) return false;
                     walkDialogueComplete = true;
                     SetMet(actorId);
                     AdvanceIfReady();
@@ -88,11 +105,29 @@ namespace SaksiTerakhir.Story
                 case ChapterOneEvent.ColleagueArrived when stage == ChapterOneStage.FindColleagues
                     || stage == ChapterOneStage.EscortLastColleague:
                     if (!IsColleague(actorId) || !IsMet(actorId) || HasArrived(actorId)) return false;
+                    if (actorId == lastColleagueId && (!lastColleagueIntroComplete
+                        || !walkDialogueComplete)) return false;
                     if (actorId == "NPC-003") rakaArrived = true;
                     else sintaArrived = true;
                     AdvanceIfReady();
                     return true;
+                case ChapterOneEvent.BossMovedToMeeting when stage == ChapterOneStage.FindColleagues
+                    || stage == ChapterOneStage.EscortLastColleague
+                    || stage == ChapterOneStage.FinalBossBriefing:
+                    if (bossMeetingSide != 0 || !rakaArrived && !sintaArrived) return false;
+                    bossMeetingSide = actorId == "left" ? 1 : actorId == "right" ? 2 : 0;
+                    return bossMeetingSide != 0;
+                case ChapterOneEvent.MeetingAssembled when stage == ChapterOneStage.FinalBossBriefing:
+                    if (meetingAssembled || bossMeetingSide == 0 || !rakaArrived || !sintaArrived)
+                        return false;
+                    meetingAssembled = true;
+                    return true;
+                case ChapterOneEvent.PlayerSeated when stage == ChapterOneStage.FinalBossBriefing:
+                    if (!meetingAssembled || playerSeated) return false;
+                    playerSeated = true;
+                    return true;
                 case ChapterOneEvent.FinalBriefingFinished when stage == ChapterOneStage.FinalBossBriefing:
+                    if (!meetingAssembled || !playerSeated) return false;
                     stage = ChapterOneStage.CollectCarKey;
                     return true;
                 case ChapterOneEvent.CarKeyReceived when stage == ChapterOneStage.CollectCarKey:

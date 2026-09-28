@@ -8,7 +8,11 @@ namespace SaksiTerakhir.Story
     public sealed class StoryDialogueController : MonoBehaviour
     {
         [SerializeField] private PlayerController playerMovement;
-        [SerializeField, Min(0.5f)] private float automaticLineSeconds = 3.5f;
+        [SerializeField] private PlayerCameraController playerCamera;
+        [Header("Automatic Playback")]
+        [SerializeField, Min(1f)] private float charactersPerSecond = 30f;
+        [SerializeField, Min(0.05f)] private float minimumLineSeconds = 0.5f;
+        [SerializeField, Min(0f)] private float postRevealSeconds = 0.25f;
 
         private DialogueSequence activeSequence;
         private Action completion;
@@ -23,6 +27,7 @@ namespace SaksiTerakhir.Story
         public bool IsPlaying => activeSequence != null;
         public DialogueSequence ActiveSequence => activeSequence;
         public int LineIndex => lineIndex;
+        public float CharactersPerSecond => charactersPerSecond;
         public DialogueLine CurrentLine => activeSequence != null && lineIndex >= 0
             && lineIndex < activeSequence.Lines.Count ? activeSequence.Lines[lineIndex] : null;
 
@@ -37,11 +42,14 @@ namespace SaksiTerakhir.Story
 
             activeSequence = sequence;
             completion = onComplete;
-            automatic = autoAdvance;
+            // Story dialogue is deliberately hands-free. Keep the parameter so existing callers
+            // remain source-compatible while every story sequence follows the same presentation.
+            automatic = true;
             automaticPaused = false;
             lineIndex = 0;
-            nextLineAt = Time.time + automaticLineSeconds;
-            if (playerMovement != null) playerMovement.SetStoryMovementLocked(!automatic);
+            ScheduleCurrentLine();
+            if (playerMovement != null) playerMovement.SetStoryMovementLocked(true);
+            if (playerCamera != null) playerCamera.SetStoryLookLocked(true);
             LineChanged?.Invoke(activeSequence, lineIndex);
             return true;
         }
@@ -49,7 +57,6 @@ namespace SaksiTerakhir.Story
         public bool TryConsumeInteract()
         {
             if (!IsPlaying) return false;
-            if (!automatic) Advance();
             return true;
         }
 
@@ -57,7 +64,14 @@ namespace SaksiTerakhir.Story
         {
             if (automaticPaused == paused) return;
             automaticPaused = paused;
-            if (!paused) nextLineAt = Time.time + automaticLineSeconds;
+            if (!paused) ScheduleCurrentLine();
+        }
+
+        public float GetLineDuration(string text)
+        {
+            int characterCount = string.IsNullOrEmpty(text) ? 0 : text.Length;
+            float revealSeconds = characterCount / Mathf.Max(1f, charactersPerSecond);
+            return Mathf.Max(minimumLineSeconds, revealSeconds + postRevealSeconds);
         }
 
         public void Stop()
@@ -69,6 +83,11 @@ namespace SaksiTerakhir.Story
             automaticPaused = false;
             completion = null;
             if (playerMovement != null) playerMovement.SetStoryMovementLocked(false);
+            if (playerCamera != null)
+            {
+                playerCamera.SetStoryLookLocked(false);
+                playerCamera.ClearStoryFocus();
+            }
             DialogueEnded?.Invoke();
         }
 
@@ -86,7 +105,7 @@ namespace SaksiTerakhir.Story
             if (lineIndex + 1 < activeSequence.Lines.Count)
             {
                 lineIndex++;
-                nextLineAt = Time.time + automaticLineSeconds;
+                ScheduleCurrentLine();
                 LineChanged?.Invoke(activeSequence, lineIndex);
                 return;
             }
@@ -94,6 +113,11 @@ namespace SaksiTerakhir.Story
             Action finished = completion;
             Stop();
             finished?.Invoke();
+        }
+
+        private void ScheduleCurrentLine()
+        {
+            nextLineAt = Time.time + GetLineDuration(CurrentLine != null ? CurrentLine.Text : string.Empty);
         }
     }
 }

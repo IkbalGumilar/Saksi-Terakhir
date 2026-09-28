@@ -38,6 +38,14 @@ namespace SaksiTerakhir.Npc
         private Transform storyFaceTarget;
         private Transform storyFollowTarget;
         private float storyFollowDistance;
+        private Transform storyCapsuleVisual;
+        private Transform storyFacingMarker;
+        private Transform storyLabelRoot;
+        private Vector3 standingCapsulePosition;
+        private Vector3 standingCapsuleScale;
+        private Vector3 standingMarkerPosition;
+        private Vector3 standingLabelPosition;
+        private bool storySeated;
 
         public NpcProfile Profile => profile;
         public string DisplayName => profile != null ? profile.DisplayName : displayName;
@@ -56,6 +64,8 @@ namespace SaksiTerakhir.Npc
         public bool CanConverse => isActiveAndEnabled && navigation != null && navigation.isOnNavMesh
             && CurrentState == NpcState.Activity && Time.time >= nextConversationTime;
         public bool StoryAtDestination => storyHeld && storyAtDestination;
+        public bool StoryMoveRequested => storyMoveRequested;
+        public bool StorySeated => storySeated;
         public bool StoryWaitingForPlayer => storyMoveRequested && storyFollowTarget != null
             && Vector3.Distance(transform.position, storyFollowTarget.position) > storyFollowDistance;
 
@@ -110,6 +120,38 @@ namespace SaksiTerakhir.Npc
         }
 
         public void SetStoryFacing(Transform target) => storyFaceTarget = target;
+
+        public void SetStorySeated(bool seated)
+        {
+            if (storySeated == seated) return;
+            if (seated)
+            {
+                storyCapsuleVisual = transform.Find("Capsule Visual");
+                if (storyCapsuleVisual == null) return;
+                storyFacingMarker = transform.Find("Facing Marker");
+                storyLabelRoot = transform.Find("NPC Label");
+                standingCapsulePosition = storyCapsuleVisual.localPosition;
+                standingCapsuleScale = storyCapsuleVisual.localScale;
+                if (storyFacingMarker != null) standingMarkerPosition = storyFacingMarker.localPosition;
+                if (storyLabelRoot != null) standingLabelPosition = storyLabelRoot.localPosition;
+
+                storyCapsuleVisual.localPosition = standingCapsulePosition;
+                storyCapsuleVisual.localScale = new Vector3(standingCapsuleScale.x,
+                    standingCapsuleScale.y * 0.58f, standingCapsuleScale.z);
+                if (storyFacingMarker != null)
+                    storyFacingMarker.localPosition = standingMarkerPosition + Vector3.down * 0.25f;
+                if (storyLabelRoot != null)
+                    storyLabelRoot.localPosition = standingLabelPosition + Vector3.down * 0.4f;
+            }
+            else
+            {
+                storyCapsuleVisual.localPosition = standingCapsulePosition;
+                storyCapsuleVisual.localScale = standingCapsuleScale;
+                if (storyFacingMarker != null) storyFacingMarker.localPosition = standingMarkerPosition;
+                if (storyLabelRoot != null) storyLabelRoot.localPosition = standingLabelPosition;
+            }
+            storySeated = seated;
+        }
 
         public void SetStoryFollowDistance(Transform player, float maximumDistance)
         {

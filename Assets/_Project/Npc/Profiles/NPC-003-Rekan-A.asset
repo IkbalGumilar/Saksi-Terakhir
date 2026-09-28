@@ -67,4 +67,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 42498d6e8732b6e96a37a18a44e555b1, type: 2}
   storyDialogues:
   - {fileID: 11400000, guid: 5ed9ae1ec4278fdfcb65c0425f4a50c2, type: 2}
+  - {fileID: 11400000, guid: 1deaf475f67346fb878319b00d45a5fa, type: 2}
   - {fileID: 11400000, guid: 94978febfc96b4927a573a8b94782a00, type: 2}

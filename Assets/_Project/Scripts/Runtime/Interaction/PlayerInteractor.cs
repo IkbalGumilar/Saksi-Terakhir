@@ -23,6 +23,7 @@ namespace SaksiTerakhir.Interaction
         [SerializeField] private Camera aimCamera;
         [SerializeField] private StoryDialogueController storyDialogue;
         [SerializeField] private ChapterOneDirector storyDirector;
+        [SerializeField] private PlayerController playerMovement;
 
         [Header("Crosshair Probe")]
         [Tooltip("Legacy ray limit. The effective distance is also capped by Maximum Aim Distance.")]
@@ -60,6 +61,7 @@ namespace SaksiTerakhir.Interaction
 
         private void Awake()
         {
+            if (playerMovement == null) playerMovement = GetComponent<PlayerController>();
             if (input == null)
             {
                 Debug.LogError(
@@ -114,7 +116,9 @@ namespace SaksiTerakhir.Interaction
 
         private void Update()
         {
-            SetCurrent(Probe());
+            Interactable candidate = Probe();
+            SetCurrent(playerMovement != null && playerMovement.StoryCinematicMovementLocked
+                ? null : candidate);
             SetProbeVisualColor(current != null);
         }
 
@@ -354,6 +358,10 @@ namespace SaksiTerakhir.Interaction
         private void OnInteractPressed()
         {
             if (storyDialogue != null && storyDialogue.TryConsumeInteract())
+            {
+                return;
+            }
+            if (playerMovement != null && playerMovement.StoryCinematicMovementLocked)
             {
                 return;
             }

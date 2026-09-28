@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: raka-last-intro
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.raka_last_intro
+  lines:
+  - speakerId: PLAYER
+    text: Raka, Pak Arya menunggu kita. Sinta sudah lebih dulu ke ruangannya.
+  - speakerId: NPC-003
+    text: Baik. Beri aku sebentar untuk menutup laporan ini.
+  - speakerId: PLAYER
+    text: Sudah siap?
+  - speakerId: NPC-003
+    text: Sudah. Kita jalan pelan saja; ada hal yang ingin kuceritakan.

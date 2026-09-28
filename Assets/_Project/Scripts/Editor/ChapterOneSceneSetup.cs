@@ -5,9 +5,11 @@ using SaksiTerakhir.Npc;
 using SaksiTerakhir.Player;
 using SaksiTerakhir.Story;
 using TMPro;
+using Unity.AI.Navigation;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -32,57 +34,100 @@ namespace SaksiTerakhir.EditorTools
             Transform player = objects.SelectMany(go => go.GetComponents<PlayerInteractor>()).Single().transform;
             PlayerInteractor interactor = player.GetComponent<PlayerInteractor>();
             PlayerController movement = player.GetComponent<PlayerController>();
+            PlayerCameraController playerCamera = player.GetComponent<PlayerCameraController>();
+            CharacterController playerBody = player.GetComponent<CharacterController>();
+            StoryPlayerCinematicMover playerMover = EnsureComponent<StoryPlayerCinematicMover>(player.gameObject);
+            StoryPlayerSeating playerSeating = EnsureComponent<StoryPlayerSeating>(player.gameObject);
             OfficeNpcDirector npcDirector = Find("Office NPC System").GetComponent<OfficeNpcDirector>();
             OfficeNpcAgent[] cast = npcDirector.Actors;
             OfficeNpcAgent Actor(string id) => cast.Single(npc => npc.Profile != null && npc.Profile.Id == id);
+            int agentTypeId = Actor("NPC-003").GetComponent<NavMeshAgent>().agentTypeID;
+            if (!playerMover.Configure(movement, playerBody, agentTypeId)
+                || !playerSeating.Configure(movement, playerBody,
+                    player.GetComponentInChildren<Animator>(true)))
+                throw new InvalidOperationException("The chapter one player requires movement and a CharacterController.");
             GameObject root = scene.GetRootGameObjects().FirstOrDefault(go => go.name == "Chapter One Story")
                 ?? new GameObject("Chapter One Story");
             StoryDialogueController dialogue = EnsureComponent<StoryDialogueController>(root);
             ChapterOneDirector chapter = EnsureComponent<ChapterOneDirector>(root);
             SetObjectReference(dialogue, "playerMovement", movement);
+            SetObjectReference(dialogue, "playerCamera", playerCamera);
             SetObjectReference(interactor, "storyDialogue", dialogue);
             SetObjectReference(interactor, "storyDirector", chapter);
             var serializedInteractor = new SerializedObject(interactor);
             serializedInteractor.FindProperty("aimColliderLayers").intValue = Physics.DefaultRaycastLayers;
             serializedInteractor.ApplyModifiedPropertiesWithoutUndo();
 
-            Transform rakaSeat = Anchor(root.transform, "Raka Seat", new Vector3(4.27f, 15.84f, -32.06f));
-            Transform sintaSeat = Anchor(root.transform, "Sinta Seat", new Vector3(4.55f, 15.84f, -31f));
-            Transform doorWait = Anchor(root.transform, "Boss Door Wait", new Vector3(2.1f, 15.84f, -27.6f));
-            Transform corridorExit = Anchor(root.transform, "Boss Corridor Exit", new Vector3(1.2f, 15.84f, -26.4f));
+            Transform bossChair = Anchor(root.transform, "Boss Chair",
+                new Vector3(-5.643f, 15.84f, -38.926f), 0f);
+            Transform bossMeetingLeft = Anchor(root.transform, "Boss Meeting Left",
+                new Vector3(-7.099f, 15.84f, -33.161f), 0f);
+            Transform bossMeetingRight = Anchor(root.transform, "Boss Meeting Right",
+                new Vector3(-4.629f, 15.84f, -33.161f), 0f);
+            Transform rakaSeat = Anchor(root.transform, "Raka Seat",
+                new Vector3(-5.140f, 15.84f, -30.262f), 180f);
+            Transform playerSeat = Anchor(root.transform, "Player Seat",
+                new Vector3(-5.864f, 15.84f, -30.262f), 180f);
+            Transform sintaSeat = Anchor(root.transform, "Sinta Seat",
+                new Vector3(-6.589f, 15.84f, -30.262f), 180f);
+            Transform doorWait = Anchor(root.transform, "Boss Door Wait",
+                new Vector3(-2.094f, 15.84f, -30.964f), 270f);
+            Transform corridorExit = Anchor(root.transform, "Boss Corridor Exit",
+                new Vector3(-1.704f, 15.84f, -30.964f), 270f);
+            Transform meetingApproach = Anchor(root.transform, "Meeting Approach",
+                new Vector3(-4.68f, 15.86f, -31.07f), 0f);
+            Transform bossWalkStart = Anchor(root.transform, "Boss Walk Start",
+                new Vector3(-5.5f, 15.84f, -36.5f), 0f);
+            GameObject flagRoomLink = Child(root.transform, "Flag Room Interior Link");
+            flagRoomLink.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            NavMeshLink interiorLink = EnsureComponent<NavMeshLink>(flagRoomLink);
+            interiorLink.agentTypeID = agentTypeId;
+            interiorLink.startPoint = new Vector3(-5.53f, 15.86f, -32.5f);
+            interiorLink.endPoint = new Vector3(-4.5f, 15.86f, -32.37f);
+            interiorLink.width = 0.6f;
+            interiorLink.bidirectional = true;
+            interiorLink.activated = true;
             GameObject roomObject = Child(root.transform, "Boss Room Zone");
-            roomObject.transform.position = new Vector3(4f, 16.9f, -31.8f);
+            roomObject.transform.SetPositionAndRotation(new Vector3(-5.65f, 16.9f, -34.31f),
+                Quaternion.identity);
             BoxCollider roomZone = EnsureComponent<BoxCollider>(roomObject);
             roomZone.isTrigger = true;
-            roomZone.size = new Vector3(7.8f, 2.8f, 5.2f);
-            DoorInteractable bossDoor = Find("Office_ArchiveHQ_DoorLeaf_10").GetComponent<DoorInteractable>();
+            roomZone.size = new Vector3(4.9f, 2.8f, 10.2f);
+            DoorInteractable bossDoor = Find("Office_ArchiveHQ_DoorLeaf_12").GetComponent<DoorInteractable>();
+            if (bossDoor == null)
+                throw new InvalidOperationException("The Indonesian-flag office door needs a DoorInteractable.");
+            foreach (BossOfficeGate oldGate in objects.SelectMany(go => go.GetComponents<BossOfficeGate>())
+                .Where(candidate => candidate.gameObject != bossDoor.gameObject))
+                UnityEngine.Object.DestroyImmediate(oldGate);
             GameObject barrierObject = Child(root.transform, "Boss Player Barrier");
             barrierObject.layer = 2; // Ignore Raycast, so the interaction probe still sees the door.
-            barrierObject.transform.position = bossDoor.GetComponent<Collider>().bounds.center;
+            barrierObject.transform.SetPositionAndRotation(bossDoor.GetComponent<Collider>().bounds.center,
+                Quaternion.identity);
             BoxCollider barrier = EnsureComponent<BoxCollider>(barrierObject);
             barrier.isTrigger = false;
-            barrier.size = new Vector3(1.2f, 2.7f, 0.22f);
+            barrier.size = new Vector3(0.22f, 2.7f, 1.2f);
             barrier.enabled = false;
             BossOfficeGate gate = EnsureComponent<BossOfficeGate>(bossDoor.gameObject);
             gate.ConfigureScene(roomZone, barrier, corridorExit, player, npcDirector, Actor("NPC-006"),
                 Actor("NPC-003"), Actor("NPC-004"));
-            Actor("NPC-006").transform.position = new Vector3(5.3f, 15.84f, -30f);
+            Actor("NPC-006").transform.SetPositionAndRotation(bossChair.position, bossChair.rotation);
 
             QuestDefinition[] quests = new[] { "rooftop", "call", "boss-first", "find-colleagues",
                 "escort", "boss-final", "car-key", "vehicle" }
                 .Select(name => AssetDatabase.LoadAssetAtPath<QuestDefinition>(
                     "Assets/_Project/Story/Quests/" + name + ".asset")).ToArray();
             DialogueSequence[] sequences = new[] { "rooftop", "boss-call", "boss-first",
-                "raka-first", "sinta-first", "raka-last", "sinta-last", "boss-final",
+                "raka-first", "sinta-first", "raka-last-intro", "sinta-last-intro",
+                "raka-last", "sinta-last", "boss-seating", "boss-final",
                 "nadia-key", "boss-scold-raka", "boss-scold-sinta", "boss-scold-wait" }
                 .Select(name => AssetDatabase.LoadAssetAtPath<DialogueSequence>(
                     "Assets/_Project/Story/Dialogues/" + name + ".asset")).ToArray();
             if (quests.Any(asset => asset == null) || sequences.Any(asset => asset == null))
                 throw new InvalidOperationException("Chapter one content assets must exist before scene setup.");
             chapter.ConfigureScene(dialogue, player, gate,
-                new[] { Actor("NPC-021"), Actor("NPC-022"), Actor("NPC-003"), Actor("NPC-004"),
-                    Actor("NPC-006"), Actor("NPC-002") }, rakaSeat, sintaSeat, doorWait,
-                quests, sequences);
+                cast, rakaSeat, sintaSeat, doorWait,
+                quests, sequences, bossChair, bossMeetingLeft, bossMeetingRight, playerSeat,
+                playerMover, playerSeating, playerCamera, meetingApproach, bossWalkStart);
 
             GameObject vehicle = Find("SUV_Fleet_Black");
             GameObject arrivalObject = Child(root.transform, "SUV Arrival Zone");
@@ -128,7 +173,7 @@ namespace SaksiTerakhir.EditorTools
 
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene);
-            return "Chapter one scene wired: six story actors, boss door, quest UI, dialogue, notice and SUV.";
+            return "Chapter one scene wired: 25 NPCs, flag office, cinematic seating, quest UI, dialogue, notice and SUV.";
         }
 
         private static T EnsureComponent<T>(GameObject go) where T : Component
@@ -146,10 +191,10 @@ namespace SaksiTerakhir.EditorTools
             return go;
         }
 
-        private static Transform Anchor(Transform parent, string name, Vector3 position)
+        private static Transform Anchor(Transform parent, string name, Vector3 position, float yaw)
         {
             Transform result = Child(parent, name).transform;
-            result.position = position;
+            result.SetPositionAndRotation(position, Quaternion.Euler(0f, yaw, 0f));
             return result;
         }
 

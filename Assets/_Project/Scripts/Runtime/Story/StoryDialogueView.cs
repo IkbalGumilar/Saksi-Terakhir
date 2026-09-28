@@ -14,6 +14,12 @@ namespace SaksiTerakhir.Story
         [SerializeField] private TMP_Text lineLabel;
         [SerializeField] private InteractionPromptView genericPrompt;
         [SerializeField] private NpcProfile[] speakerProfiles;
+        [Header("Typewriter")]
+        [SerializeField, Min(1f)] private float fallbackCharactersPerSecond = 30f;
+
+        private int visibleCharacterCount;
+        private float revealedCharacters;
+        private bool isRevealing;
 
         public void Configure(StoryDialogueController controller, GameObject root,
             TMP_Text speaker, TMP_Text line, InteractionPromptView prompt,
@@ -39,13 +45,47 @@ namespace SaksiTerakhir.Story
             if (genericPrompt != null) genericPrompt.SetStoryDialogueActive(true);
             DialogueLine line = sequence.Lines[lineIndex];
             if (speakerLabel != null) speakerLabel.text = SpeakerName(line.SpeakerId);
-            if (lineLabel != null) lineLabel.text = line.Text;
+            StartTypewriter(line.Text);
         }
 
         public void Hide()
         {
+            isRevealing = false;
+            visibleCharacterCount = 0;
+            revealedCharacters = 0f;
             if (panelRoot != null) panelRoot.SetActive(false);
             if (genericPrompt != null) genericPrompt.SetStoryDialogueActive(false);
+        }
+
+        private void Update()
+        {
+            AdvanceTypewriter(Time.deltaTime);
+        }
+
+        private void StartTypewriter(string text)
+        {
+            if (lineLabel == null) return;
+
+            lineLabel.text = text ?? string.Empty;
+            lineLabel.maxVisibleCharacters = 0;
+            lineLabel.ForceMeshUpdate();
+            // TextMeshPro has no generated mesh yet in some editor/UI test contexts.
+            // Dialogue content is plain text, so source length is the stable reveal count.
+            visibleCharacterCount = lineLabel.text.Length;
+            revealedCharacters = 0f;
+            isRevealing = visibleCharacterCount > 0;
+        }
+
+        private void AdvanceTypewriter(float deltaTime)
+        {
+            if (!isRevealing || lineLabel == null) return;
+
+            float rate = dialogue != null ? dialogue.CharactersPerSecond : fallbackCharactersPerSecond;
+            revealedCharacters += Mathf.Max(0f, deltaTime) * Mathf.Max(1f, rate);
+            int nextVisibleCount = Mathf.Min(visibleCharacterCount, Mathf.FloorToInt(revealedCharacters));
+            lineLabel.maxVisibleCharacters = nextVisibleCount;
+            if (nextVisibleCount >= visibleCharacterCount)
+                isRevealing = false;
         }
 
         private string SpeakerName(string id)

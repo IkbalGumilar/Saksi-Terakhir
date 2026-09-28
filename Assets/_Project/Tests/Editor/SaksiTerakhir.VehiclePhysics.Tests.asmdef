@@ -4,6 +4,7 @@
     "references": [
         "SaksiTerakhir.Editor",
         "SaksiTerakhir.Runtime",
+        "Unity.AI.Navigation",
         "Unity.TextMeshPro",
         "Unity.ugui"
     ],

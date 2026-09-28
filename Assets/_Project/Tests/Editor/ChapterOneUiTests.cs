@@ -81,6 +81,28 @@ namespace SaksiTerakhir.Tests
         }
 
         [Test]
+        public void StoryDialogueRevealsTextOneCharacterAtATime()
+        {
+            GameObject storyRoot = NewUi("Story Panel");
+            TMP_Text line = NewText(storyRoot.transform, "Line");
+            StoryDialogueView story = storyRoot.AddComponent<StoryDialogueView>();
+            story.Configure(null, storyRoot, NewText(storyRoot.transform, "Speaker"), line,
+                null, null);
+            DialogueSequence sequence = ScriptableObject.CreateInstance<DialogueSequence>();
+            created.Add(sequence);
+            sequence.Configure("test.typewriter", new[] { new DialogueLine("NPC-021", "Halo.") });
+
+            story.Render(sequence, 0);
+
+            Assert.That(line.maxVisibleCharacters, Is.EqualTo(0));
+            MethodInfo advance = typeof(StoryDialogueView).GetMethod("AdvanceTypewriter",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            Assert.That(advance, Is.Not.Null);
+            advance.Invoke(story, new object[] { 0.1f });
+            Assert.That(line.maxVisibleCharacters, Is.EqualTo(3));
+        }
+
+        [Test]
         public void PromptReappearsAfterStoryWhenAimingAtTheSameDoor()
         {
             GameObject playerObject = NewUi("Player");
@@ -104,6 +126,34 @@ namespace SaksiTerakhir.Tests
             Assert.That(action.activeSelf, Is.False);
             prompt.SetStoryDialogueActive(false);
             Assert.That(action.activeSelf, Is.True);
+        }
+
+        [Test]
+        public void NotificationLayoutKeepsTheToastCompactInTheUpperRight()
+        {
+            GameObject notice = NewUi("Notificatuion");
+            Image background = notice.AddComponent<Image>();
+            TMP_Text label = NewText(notice.transform, "Notification Text");
+
+            StoryNotificationLayout.Apply(notice, label);
+
+            RectTransform root = notice.GetComponent<RectTransform>();
+            Assert.That(root.anchorMin, Is.EqualTo(new Vector2(1f, 1f)));
+            Assert.That(root.anchorMax, Is.EqualTo(new Vector2(1f, 1f)));
+            Assert.That(root.pivot, Is.EqualTo(new Vector2(1f, 1f)));
+            Assert.That(root.anchoredPosition, Is.EqualTo(new Vector2(-18f, -20f)));
+            Assert.That(root.sizeDelta, Is.EqualTo(new Vector2(330f, 72f)));
+            Assert.That(background.raycastTarget, Is.False);
+
+            RectTransform text = label.GetComponent<RectTransform>();
+            Assert.That(text.anchorMin, Is.EqualTo(Vector2.zero));
+            Assert.That(text.anchorMax, Is.EqualTo(Vector2.one));
+            Assert.That(text.offsetMin, Is.EqualTo(new Vector2(12f, 8f)));
+            Assert.That(text.offsetMax, Is.EqualTo(new Vector2(-12f, -8f)));
+            Assert.That(label.enableAutoSizing, Is.True);
+            Assert.That(label.fontSizeMin, Is.EqualTo(18f));
+            Assert.That(label.fontSizeMax, Is.EqualTo(24f));
+            Assert.That(label.raycastTarget, Is.False);
         }
 
         [Test]

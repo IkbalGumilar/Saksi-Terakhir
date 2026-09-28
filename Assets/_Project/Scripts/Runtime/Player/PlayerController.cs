@@ -28,22 +28,54 @@ namespace SaksiTerakhir.Player
 
         private CharacterController controller;
         private Vector3 horizontalVelocity;
+        private Vector3 cinematicVelocity;
         private float verticalVelocity;
         private bool isCrouchRequested;
+        private bool storyDialogueMovementLocked;
+        private bool storyCinematicMovementLocked;
 
         public bool IsCrouching { get; private set; }
         public bool IsSprinting { get; private set; }
         public float CurrentSpeed => horizontalVelocity.magnitude;
-        public bool StoryMovementLocked { get; private set; }
+        public bool StoryMovementLocked => storyDialogueMovementLocked || storyCinematicMovementLocked;
+        public bool StoryDialogueMovementLocked => storyDialogueMovementLocked;
+        public bool StoryCinematicMovementLocked => storyCinematicMovementLocked;
+        public Vector3 CinematicVelocity => cinematicVelocity;
 
+        // Dialogue owns this lock. Cinematic movement has a separate owner so a
+        // dialogue may finish without handing input back during an escort.
         public void SetStoryMovementLocked(bool locked)
         {
-            StoryMovementLocked = locked;
+            storyDialogueMovementLocked = locked;
             if (locked)
             {
-                horizontalVelocity = Vector3.zero;
-                IsSprinting = false;
+                StopManualMotion();
             }
+        }
+
+        public void SetCinematicMovementLocked(bool locked)
+        {
+            if (storyCinematicMovementLocked == locked) return;
+            storyCinematicMovementLocked = locked;
+            if (locked)
+            {
+                StopManualMotion();
+                return;
+            }
+
+            cinematicVelocity = Vector3.zero;
+            if (!storyDialogueMovementLocked) StopManualMotion();
+        }
+
+        public void SetCinematicVelocity(Vector3 worldVelocity)
+        {
+            if (!storyCinematicMovementLocked) return;
+            cinematicVelocity = Vector3.ProjectOnPlane(worldVelocity, Vector3.up);
+        }
+
+        public void StopCinematicMotion()
+        {
+            cinematicVelocity = Vector3.zero;
         }
 
         private void Awake()
@@ -79,6 +111,7 @@ namespace SaksiTerakhir.Player
             input.CrouchCanceled -= OnCrouchCanceled;
 
             horizontalVelocity = Vector3.zero;
+            cinematicVelocity = Vector3.zero;
             verticalVelocity = 0f;
         }
 
@@ -118,10 +151,16 @@ namespace SaksiTerakhir.Player
 
         private void UpdateHorizontalVelocity()
         {
-            if (StoryMovementLocked)
+            if (storyCinematicMovementLocked)
             {
-                horizontalVelocity = Vector3.zero;
+                horizontalVelocity = cinematicVelocity;
                 IsSprinting = false;
+                return;
+            }
+
+            if (storyDialogueMovementLocked)
+            {
+                StopManualMotion();
                 return;
             }
 
@@ -208,6 +247,12 @@ namespace SaksiTerakhir.Player
             {
                 isCrouchRequested = false;
             }
+        }
+
+        private void StopManualMotion()
+        {
+            horizontalVelocity = Vector3.zero;
+            IsSprinting = false;
         }
     }
 }

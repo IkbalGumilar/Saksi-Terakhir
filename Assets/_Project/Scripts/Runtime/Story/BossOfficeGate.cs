@@ -25,6 +25,17 @@ namespace SaksiTerakhir.Story
         public event Action<Transform> Blocked;
 
         public bool PlayerInside => playerInside;
+        public bool IsInsideRoom(Vector3 position) => roomZone != null && roomZone.bounds.Contains(position);
+        public bool IsFullyInsideRoom(OfficeNpcAgent actor)
+        {
+            if (actor == null || roomZone == null || !IsInsideRoom(actor.transform.position))
+                return false;
+
+            // The pivot can cross the trigger before the capsule clears the doorway.
+            float clearance = Mathf.Max(0.45f,
+                actor.Navigation != null ? actor.Navigation.radius : 0f);
+            return actor.transform.position.x <= roomZone.bounds.max.x - clearance;
+        }
         public bool PlayerBlocked => progress != null && !CanOpenFor(player);
         public string BlockedPromptKey
         {
@@ -130,7 +141,7 @@ namespace SaksiTerakhir.Story
                     ? progress.LastColleagueId : progress.FirstColleagueId;
                 OfficeNpcAgent entering = enteringId == "NPC-003" ? colleagueA
                     : enteringId == "NPC-004" ? colleagueB : null;
-                if (entering != null && roomZone.bounds.Contains(entering.transform.position))
+                if (IsFullyInsideRoom(entering))
                     door.ForceClose();
             }
             if (lastBlockedActor != null
