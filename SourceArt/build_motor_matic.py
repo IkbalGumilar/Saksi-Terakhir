@@ -17,8 +17,8 @@ from mathutils import Vector
 
 
 ROOT = Path(__file__).resolve().parent
-PREVIEWS = ROOT / "Previews"
-PREVIEWS.mkdir(exist_ok=True)
+PREVIEWS = Path("/tmp/saksi-terakhir-generated/previews/MotorMatic")
+PREVIEWS.mkdir(parents=True, exist_ok=True)
 
 bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete(use_global=False)

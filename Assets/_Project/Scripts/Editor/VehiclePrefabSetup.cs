@@ -73,7 +73,7 @@ namespace SaksiTerakhir.EditorTools
         private const StaticEditorFlags StaticFlags =
             StaticEditorFlags.ContributeGI | StaticEditorFlags.OccluderStatic
             | StaticEditorFlags.OccludeeStatic | StaticEditorFlags.BatchingStatic
-            | StaticEditorFlags.NavigationStatic | StaticEditorFlags.ReflectionProbeStatic;
+            | StaticEditorFlags.ReflectionProbeStatic;
 
         [MenuItem("Saksi Terakhir/Create Vehicle Prefabs")]
         public static void CreateVehiclePrefabs()

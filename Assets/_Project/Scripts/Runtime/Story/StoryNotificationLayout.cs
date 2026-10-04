@@ -53,7 +53,7 @@ namespace SaksiTerakhir.Story
             notificationLabel.enableAutoSizing = true;
             notificationLabel.fontSizeMin = 18f;
             notificationLabel.fontSizeMax = 24f;
-            notificationLabel.enableWordWrapping = true;
+            notificationLabel.textWrappingMode = TextWrappingModes.Normal;
             notificationLabel.overflowMode = TextOverflowModes.Ellipsis;
             notificationLabel.alignment = TextAlignmentOptions.MidlineLeft;
             notificationLabel.raycastTarget = false;

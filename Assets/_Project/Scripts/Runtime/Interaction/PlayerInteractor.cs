@@ -51,6 +51,7 @@ namespace SaksiTerakhir.Interaction
         private Transform probeRendererRoot;
         private bool lastProbeInRange;
         private bool hasLastProbeState;
+        private bool uiInteractionBlocked;
 
         public event Action<Interactable> TargetChanged;
 
@@ -58,6 +59,16 @@ namespace SaksiTerakhir.Interaction
         public bool IsInteract => current != null;
         public Vector3 ProbePosition { get; private set; }
         public float ProbeRadius { get; private set; }
+        public bool UiInteractionBlocked => uiInteractionBlocked;
+
+        public void SetUiInteractionBlocked(bool blocked)
+        {
+            uiInteractionBlocked = blocked;
+            if (!blocked) return;
+            SetCurrent(null);
+            SetProbe(Vector3.zero, 0f);
+            SetProbeVisualColor(false);
+        }
 
         private void Awake()
         {
@@ -116,6 +127,7 @@ namespace SaksiTerakhir.Interaction
 
         private void Update()
         {
+            if (uiInteractionBlocked) return;
             Interactable candidate = Probe();
             SetCurrent(playerMovement != null && playerMovement.StoryCinematicMovementLocked
                 ? null : candidate);
@@ -357,6 +369,7 @@ namespace SaksiTerakhir.Interaction
 
         private void OnInteractPressed()
         {
+            if (uiInteractionBlocked) return;
             if (storyDialogue != null && storyDialogue.TryConsumeInteract())
             {
                 return;

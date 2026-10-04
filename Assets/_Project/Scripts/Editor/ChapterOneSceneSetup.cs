@@ -231,7 +231,7 @@ namespace SaksiTerakhir.EditorTools
             TMP_Text text = go.GetComponent<TMP_Text>();
             text.fontSize = fontSize;
             text.color = Color.white;
-            text.enableWordWrapping = true;
+            text.textWrappingMode = TextWrappingModes.Normal;
             text.text = string.Empty;
             return text;
         }

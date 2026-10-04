@@ -9,6 +9,7 @@ Cerita utama berada di:
 
 ---
 
+<a id="branch-01-urutan-menemukan-a-dan-b"></a>
 # BRANCH 01 — URUTAN MENEMUKAN A DAN B
 
 **Main Quest:** Cari A dan B
@@ -23,49 +24,33 @@ Namun kedua jalur akhirnya kembali menyatu di briefing bersama bos.
 
 # CABANG 01-A — A DITEMUKAN LEBIH DULU
 
-A ditemukan sedang berada di area lain kantor.
-
-MC menghampiri.
+A ditemukan sedang berada di area lain kantor. Ia merapikan beberapa lembar berkas ketika MC menghampiri.
 
 **MC:**
 
-> Dari tadi dicari Pak Bos.
+> Pak Bos cari kamu. Katanya sudah telepon juga.
 
-A terlihat bingung.
+A merogoh saku celana, lalu memeriksa saku satunya. Tangannya berhenti.
 
-> Saya?
+**A:**
 
-MC:
+> Oh, HP saya ketinggalan di kantin. Pantas dari tadi tenang sekali.
 
-> Telepon juga katanya.
+**MC:**
 
-A merogoh saku.
+> Tenangnya pindah ke saya. Sekarang disuruh cari kalian berdua.
 
-Berhenti.
+A tersenyum sambil meratakan ujung berkasnya.
 
-> Oh.
+**A:**
 
-MC:
+> Baik, pencarian saya selesai. Saya langsung ke ruangannya.
 
-> Kenapa?
+**MC:**
 
-A:
+> Saya lanjut cari B. Kalau sudah ketemu, kami menyusul.
 
-> HP saya ketinggalan di kantin.
-
-Ia menghela napas kecil.
-
-> Pantas saja dari tadi sepi.
-
-MC:
-
-> Disuruh langsung ke ruangannya.
-
-A:
-
-> Oke. Saya ke sana sekarang.
-
-A segera pergi.
+A mengangguk dan segera pergi.
 
 **A tidak menemani MC.**
 
@@ -85,223 +70,111 @@ Pernyataan mengenai **HP yang tertinggal di kantin** disimpan sebagai informasi 
 
 # CABANG 01-B — B DITEMUKAN TERAKHIR
 
-MC akhirnya menemukan B.
-
-B sedang melakukan aktivitasnya dan tampak sama sekali tidak mengetahui bahwa ia sedang dicari.
+MC akhirnya menemukan B. B sedang menggulung kabel di mejanya, mencoba memasukkannya ke dalam tas tanpa membuatnya kusut lagi.
 
 **MC:**
 
-> B.
+> Kabelnya nanti. Pak Bos cari kita. Coba lihat HP-mu.
 
-B menoleh.
+B meletakkan kabel dan mengeluarkan ponsel. Senyumnya hilang sesaat ketika melihat layar.
 
-> Hm?
+**B:**
 
-MC:
+> Tiga panggilan. Tadi aku cuma tinggal sebentar... ya sudah, nanti kabelnya kusut saja. A sudah ketemu?
 
-> Lihat HP.
+**MC:**
 
-B mengeluarkan ponselnya.
+> Sudah ke sana duluan. Tinggal kita.
 
-Layarnya menyala.
+B memasukkan ponsel dan mendorong tasnya ke bawah meja. Mereka mulai berjalan bersama.
 
-Ekspresinya langsung berubah.
+**B:**
 
-> Tiga panggilan?
+> Kalau sampai tiga kali, semoga bukan revisi. Satu panggilan soal revisi saja biasanya cukup buat menghabiskan sore.
 
-MC:
+**MC:**
 
-> Pak Bos.
+> Belum dijelaskan. Aku baru masuk, langsung disuruh cari kalian.
 
-B:
+**B:**
 
-> Mati aku.
+> Berarti kita sama-sama belum punya alasan yang bagus kalau ditanya.
 
-MC:
+MC tertawa kecil. Di koridor, B kembali melihat ponselnya, kali ini membuka daftar barang.
 
-> Kita disuruh ke ruangannya.
+**B:**
 
-B memasukkan ponselnya kembali.
+> Aku tadi bikin daftar buat Bali. Baru charger, power bank, sandal sama kamera. Tiap buka grup, ada tambahan lagi. Sekarang sunscreen dan dry bag.
 
-> Jalan.
+**MC:**
 
-Mereka mulai berjalan bersama.
+> Dry bag masuk daftar wajib sejak kapan? Jangan-jangan barang bawaanmu lebih banyak daripada baju.
 
-Beberapa langkah berlalu.
+**B:**
 
-B:
+> Biar aman kalau jadi main air. Kamera sendiri, soalnya. Kamera kantor boleh istirahat juga akhir pekan ini.
 
-> Ini pasti bukan soal kerjaan biasa.
+**MC:**
 
-MC:
+> Itu kameranya. Orang yang bawa masih sibuk kerja?
 
-> Kenapa?
+B menyimpan ponsel. Ia tersenyum seolah sudah mendengar keberatan itu sebelumnya.
 
-B:
+**B:**
 
-> Tiga kali telepon.
+> Justru aku mau ada di fotonya. Biasanya habis acara aku kirim foto ke grup, lalu sadar aku sendiri cuma ada di pantulan kaca.
 
-> Kalau cuma revisi biasanya sekali cukup buat bikin hidup nggak tenang.
+**MC:**
 
-MC tertawa kecil.
+> Tadi anak-anak rooftop juga ngomong soal foto bareng. Semua harus masuk, katanya.
 
-B kemudian melihat MC.
+**B:**
 
-> Eh, ngomong-ngomong.
+> Nah, kamu pegang kamera sebentar kalau begitu. Setelah itu kita pakai timer. Jangan selalu menghilang pas orang mulai berkumpul.
 
-> Perlengkapan Bali kamu sudah siap?
+**MC:**
 
-MC:
+> Aku yang pegang kamera malah diminta ikut foto juga.
 
-> Belum.
+**B:**
 
-B:
+> Iya. Foto yang lengkap susah sekali. Ada yang pulang duluan, ada yang masih terima telepon. Nanti kalau sudah pindah kerja, ngajak kumpul lagi bisa lebih susah. Mumpung hampir semua ikut, aku ingin kita punya foto yang kelihatan benar-benar sedang liburan.
 
-> Sama.
+MC memberi jalan kepada pegawai yang lewat membawa berkas. B menunggu di sisinya.
 
-Mereka berjalan melewati koridor.
+**MC:**
 
-> Aku tadi bikin daftar.
+> Asal jangan semuanya pose formal. Kalau masih berbaris seperti foto kantor, percuma jauh-jauh.
 
-MC:
+**B:**
 
-> Daftar apa?
+> Setuju. Kamu boleh kelihatan sedang makan. Tapi sebelum sendoknya masuk mulut, ya. Nanti kamu sendiri yang minta dihapus.
 
-B:
+MC tertawa. Mereka melanjutkan langkah.
 
-> Barang.
+**B:**
 
-Ia mulai menghitung.
+> Aku belum belanja semuanya. Semoga urusan ini cepat selesai, jadi masih sempat siap-siap sebelum Jumat.
 
-> Charger.
+**MC:**
 
-> Power bank.
+> Kita dengar dulu tugasnya. Daftar belanjamu jangan ikut dibacakan di dalam.
 
-> Sandal.
+**B:**
 
-> Kamera.
+> Sudah kusimpan. Kalau aku kelihatan serius nanti, jangan dibongkar.
 
-> Sunscreen.
+Mereka sampai di dekat ruangan bos. B merapikan kerahnya, lalu mengecek sekali lagi bahwa ponselnya sudah masuk saku.
 
-> Dry bag kalau jadi main air.
+**MC:**
 
-MC:
+> Sekarang kalau ditelepon pasti kedengaran.
 
-> Kamera kantor?
+**B:**
 
-B:
+> Sekarang orangnya sudah di depan pintu.
 
-> Kamera sendiri.
-
-MC:
-
-> Buat motret pantai?
-
-B:
-
-> Pantai gampang.
-
-Ia berhenti sebentar.
-
-> Aku mau foto orang-orangnya.
-
-MC:
-
-> Orang kantor?
-
-B:
-
-> Iya.
-
-> Kita hampir nggak pernah punya foto yang lengkap.
-
-MC:
-
-> Tadi di rooftop mereka ngomong hal yang sama.
-
-B:
-
-> Nah.
-
-Ia tersenyum.
-
-> Berarti memang harus.
-
-Mereka kembali berjalan.
-
-B:
-
-> Bayangin nanti dua atau tiga tahun lagi.
-
-> Orang sudah pindah.
-
-> Ada yang berhenti.
-
-> Ada yang mungkin sudah nggak pernah ketemu lagi.
-
-MC:
-
-> Kenapa semua orang ngomong kayak mau perpisahan?
-
-B:
-
-> Bukan perpisahan.
-
-> Justru karena belum berpisah, makanya difoto.
-
-MC terdiam sebentar.
-
-B lalu kembali ke nada santainya.
-
-> Yang penting kita pulang cepat.
-
-MC:
-
-> Belum tahu kerjaannya apa.
-
-B:
-
-> Apa pun itu, selesai sebelum Jumat.
-
-> Aku nggak mau perjalanan yang sudah direncanakan setengah tahun batal gara-gara satu map.
-
-MC:
-
-> Jangan ngomong begitu.
-
-B:
-
-> Kenapa?
-
-MC:
-
-> Biasanya kalau ngomong begitu malah kejadian.
-
-B tertawa.
-
-> Ya sudah.
-
-> Aku tarik ucapan.
-
-Mereka sampai di dekat ruangan bos.
-
-B menarik napas.
-
-> Tiga panggilan tidak terjawab.
-
-MC:
-
-> Siap dimarahin?
-
-B:
-
-> Tidak.
-
-MC:
-
-> Bagus.
-
-B membuka pintu.
+B mengetuk, lalu membuka pintu.
 
 [→ Kembali ke cerita utama — Briefing Arsip Misterius](./bab-01.md#7-briefing-arsip-misterius)
 
@@ -309,27 +182,25 @@ B membuka pintu.
 
 # CABANG 01-C — B DITEMUKAN LEBIH DULU
 
-MC menemukan B.
+MC menemukan B sedang membereskan barang di mejanya.
 
 **MC:**
 
-> B, Pak Bos cari.
+> B, Pak Bos cari kamu. Disuruh langsung ke ruangannya.
 
-B:
+B mengambil ponsel dari samping barang-barangnya. Ia menatap layar dan buru-buru memasukkannya ke saku.
 
-> Hah?
+**B:**
 
-Ia melihat ponselnya.
+> Tiga panggilan tidak terjawab. Aku tadi nggak dengar sama sekali. Oke, aku ke sana sekarang.
 
-> Tiga panggilan tidak terjawab?
+**MC:**
 
-MC:
+> Aku masih harus cari A. Kami menyusul.
 
-> Disuruh langsung ke ruangannya.
+**B:**
 
-B:
-
-> Oke. Aku ke sana sekarang.
+> Sip. Semoga beliau belum menghitung panggilan keempat.
 
 B segera pergi.
 
@@ -347,303 +218,139 @@ Status:
 
 # CABANG 01-D — A DITEMUKAN TERAKHIR
 
-MC akhirnya menemukan A.
+MC akhirnya menemukan A. Ia sedang memeriksa berkas ketika MC mendekat.
 
 **MC:**
 
-> Dari tadi dicari.
+> Pak Bos cari kita. B sudah ke ruangannya.
 
-A:
+A memeriksa saku celananya, kemudian berhenti mencari.
 
-> Pak Bos?
+**A:**
 
-MC:
+> HP saya sepertinya tertinggal di meja kantin. Baik, kita jalan dulu. Jangan sampai B disuruh mencari kita lagi.
 
-> Iya.
+MC dan A berjalan bersama menuju lantai tiga. Beberapa langkah pertama berlalu tanpa percakapan.
 
-A memeriksa sakunya.
+Ketika mendekati lift, A memperlambat langkah sedikit.
 
-> HP saya nggak ada.
+**A:**
 
-MC:
+> Kamu pernah kepikiran suatu hari kerja di luar sini?
 
-> Hilang?
+**MC:**
 
-A berpikir beberapa detik.
+> Barusan dipanggil bos, sudah diajak berhenti. Kita belum tahu masalahnya apa.
 
-> Kantin.
+A tertawa pelan dan menekan tombol lift.
 
-> Sepertinya saya tinggal di meja.
+**A:**
 
-MC:
+> Saya ngomong soal nanti. Sudah lama kepikiran, cuma belum pernah saya ceritakan.
 
-> B sudah ke ruangan bos.
+MC menoleh kepadanya. A mengamati angka lantai di atas pintu.
 
-A:
+**A:**
 
-> Kalau begitu jalan.
+> Di sini saya sudah hafal ritmenya. Berangkat, kerja, pulang, gajian. Nyaman. Sampai kadang saya mikir, sepuluh tahun lagi saya masih di tempat yang sama, menunda rencana yang sama.
 
-MC dan A berjalan bersama menuju lantai tiga.
+Pintu lift terbuka. Mereka masuk, lalu MC menekan tombol lantai tiga. Pintu tertutup dan lift bergerak naik.
 
-Awalnya mereka diam.
+**MC:**
 
-Beberapa saat kemudian A berbicara.
+> Berarti sudah ada rencananya. Saya masih sebatas ingin meja digitalisasi sehari saja bebas tumpukan.
 
-> Kamu pernah kepikiran berhenti?
+**A:**
 
-MC:
+> Percetakan kecil, mungkin. Fotokopi, jilid, cetak foto. Bisa sekalian scan dokumen dan jasa digitalisasi buat sekolah atau usaha kecil.
 
-> Berhenti apa?
+Lift tiba di lantai tiga. Mereka keluar dan memberi jalan kepada seorang pegawai yang lewat.
 
-A:
+**MC:**
 
-> Kerja.
+> Tetap ketemu dokumen. Bedanya, sekarang kalau mesin macet kamu nggak bisa telepon bagian lain.
 
-MC melihatnya.
+**A:**
 
-> Sekarang?
+> Bisa telepon kamu.
 
-A:
+**MC:**
 
-> Bukan sekarang.
+> Saya tahu ini ada maksudnya.
 
-> Maksud saya... suatu hari.
+A tersenyum. Mereka berjalan lebih pelan, menjaga percakapan tetap di antara mereka.
 
-MC:
+**A:**
 
-> Kenapa tiba-tiba nanya begitu?
+> Saya sudah mulai hitung sewa, mesin, kertas, komputer. Angkanya selalu lebih besar setelah dihitung ulang. Kalau modalnya cukup, mungkin tahun depan.
 
-A tersenyum kecil.
+**MC:**
 
-> Tidak tiba-tiba sebenarnya.
+> Tahun depan itu dekat. Kedengarannya kamu sudah cukup serius.
 
-Mereka terus berjalan.
+A merapikan lipatan pada ujung berkas yang dibawanya.
 
-> Saya sudah cukup lama di sini.
+**A:**
 
-MC:
+> Serius. Tapi belum seratus persen. Saya masih bolak-balik menghitung, lalu cari alasan buat menunggu sedikit lagi.
 
-> Bosan?
+**MC:**
 
-A:
+> Cerita ke yang lain juga? Barangkali ada yang bisa bantu lihat hitungannya.
 
-> Bukan.
+**A:**
 
-> Justru itu masalahnya.
+> Belum. Kalau semua sudah tahu, setiap ketemu nanti ditanya kapan buka. Saya belum siap menjawab itu.
 
-MC:
+A berhenti sebentar di sisi koridor sebelum melanjutkan, suaranya lebih rendah.
 
-> Maksudnya?
+**A:**
 
-A:
+> Cuma kalau dipikir sendiri terus, rasanya rencana itu nggak pernah benar-benar ada. Makanya tadi saya cerita.
 
-> Saya nyaman.
-
-> Terlalu nyaman mungkin.
-
-Ia menekan tombol lift.
-
-> Datang pagi.
-
-> Kerja.
-
-> Pulang.
-
-> Gajian.
-
-> Bulan berikutnya ulang lagi.
-
-Pintu lift terbuka.
-
-Mereka masuk.
-
-A melanjutkan.
-
-> Tidak buruk.
-
-> Bahkan bisa dibilang bagus.
-
-> Tapi akhir-akhir ini saya mikir...
-
-> Kalau terus begini, sepuluh tahun lagi saya masih melakukan hal yang sama.
-
-MC:
-
-> Terus rencananya?
-
-A:
-
-> Buka usaha.
-
-MC:
-
-> Usaha apa?
-
-A:
-
-> Belum seratus persen.
-
-Pintu lift tertutup.
-
-> Mungkin percetakan kecil.
-
-> Fotokopi.
-
-> Jilid.
-
-> Scan dokumen.
-
-> Cetak foto.
-
-> Sekalian jasa digitalisasi buat sekolah atau usaha kecil.
-
-MC:
-
-> Masih dokumen juga.
-
-A tertawa.
-
-> Nah.
-
-> Ternyata susah juga kabur dari arsip.
-
-MC:
-
-> Terus bedanya?
-
-A:
-
-> Kalau gagal, gagalnya punya saya sendiri.
-
-MC:
-
-> Optimistis sekali.
-
-A:
-
-> Saya belum bilang mau gagal.
-
-Lift bergerak naik.
-
-> Saya sudah hitung sedikit-sedikit.
-
-> Sewa tempat.
-
-> Mesin.
-
-> Kertas.
-
-> Printer.
-
-> Komputer.
-
-> Kalau modalnya cukup mungkin tahun depan.
-
-MC:
-
-> Serius?
-
-A mengangguk.
-
-> Serius.
-
-MC:
-
-> Yang lain sudah tahu?
-
-A:
-
-> Belum.
-
-MC:
-
-> Kenapa cerita ke saya?
-
-A diam sebentar.
-
-> Entahlah.
-
-Pintu lift terbuka.
-
-Mereka keluar.
-
-> Mungkin karena kalau cuma dipikir sendiri terus, rasanya seperti rencana yang tidak pernah benar-benar ada.
-
-MC:
+**MC:**
 
 > Sekarang sudah ada saksi.
 
-A melihat MC.
+A melihat MC, lalu tersenyum.
 
-Kemudian tersenyum.
+**A:**
 
-> Iya.
+> Iya. Sekarang ada saksi.
 
-> Sekarang ada saksi.
+Mereka kembali berjalan.
 
-Mereka melanjutkan berjalan.
+**MC:**
 
-MC:
+> Bali jadi sekalian latihan tutup toko buat liburan, dong.
 
-> Bali berarti liburan terakhir sebelum jadi pengusaha?
+**A:**
 
-A:
+> Tokonya belum ada, kamu sudah ajak tutup.
 
-> Jangan lebay.
+**MC:**
 
-MC:
+> Anak-anak rooftop sudah minta foto lengkap. Calon pengusaha juga harus ikut.
 
-> Foto lengkap terakhir juga katanya.
+**A:**
 
-A:
+> Ikut. Asal jangan pakai acara pidato perpisahan. Saya cuma cerita rencana, belum menyerahkan surat apa-apa.
 
-> Siapa yang ngomong?
+Beberapa langkah sebelum ruangan bos, A menyentuh ringan lengan MC agar ia mendengarkan.
 
-MC:
+**A:**
 
-> Anak-anak rooftop.
+> Soal usaha tadi, simpan dulu, ya. Belum waktunya dibawa ke obrolan kantor.
 
-A:
+**MC:**
 
-> Orang kantor ini memang suka dramatis.
+> Aman. Saya juga belum mau dapat pertanyaan kapan tokonya buka.
 
-MC:
+A mengangguk. Mereka berhenti di depan pintu.
 
-> Tapi ikut foto?
+**A:**
 
-A:
-
-> Ikut.
-
-Beberapa langkah sebelum ruangan bos:
-
-A:
-
-> Tapi jangan cerita dulu soal ini.
-
-MC:
-
-> Soal usaha?
-
-A:
-
-> Iya.
-
-> Belum waktunya.
-
-MC:
-
-> Aman.
-
-A:
-
-> Bagus.
-
-Mereka berhenti di depan pintu.
-
-A menarik napas.
-
-> Sekarang kita lihat apa yang lebih penting sampai bos telepon berkali-kali.
+> Sekarang kita lihat urusan yang bikin bos mencari kita ini.
 
 Mereka masuk.
 
@@ -701,227 +408,141 @@ Quest ini tersedia jika MC pergi ke kantin sebelum mengambil kunci mobil dinas. 
 
 Adegan ini hanya tersedia apabila pemain pergi ke kantin **sebelum mengambil kunci mobil dinas**.
 
-A dan B sedang makan.
-
-B melihat MC.
+A dan B sedang makan. Di sisi A ada kursi kosong. B menggeser barangnya ketika melihat MC menghampiri.
 
 **B:**
 
-> Belum ambil kunci?
+> Sini, masih ada tempat. Kukira kamu sudah ambil kunci terus langsung ke parkiran.
 
-MC:
+**MC:**
 
-> Belum.
+> Belum. Saya lihat kalian masih di sini.
 
-A menunjuk kursi kosong.
+A menunjuk kursi kosong sambil menelan suapannya.
 
-> Makan dulu.
+**A:**
+
+> Makan dulu. Urusan berangkat lebih enak kalau perutnya sudah beres.
 
 Jika pemain duduk, percakapan dimulai.
 
-B:
-
-> Aku baru kepikiran.
-
-MC:
-
-> Apa?
+B meletakkan sendok di tepi piring. Rupanya ada sesuatu yang sudah ingin ia bicarakan sejak tadi.
 
 **B:**
 
-> Kalau tempatnya benar-benar jauh, kita perlu bisa bahasa Sunda nggak?
+> Tadi aku mau tanya waktu briefing, tapi bos sudah lanjut. Kalau sampai sana orang-orangnya lebih sering pakai bahasa Sunda, aku takut cuma bisa senyum sambil nunggu kalian.
 
-A:
+**MC:**
 
-> Nggak harus.
+> Senyum dulu juga boleh. Kita masih bisa kenalan pakai Bahasa Indonesia.
 
-B:
+**A:**
 
-> Yakin?
+> Untuk urusan resmi, mulai dari situ. Kalau mereka lebih nyaman pakai bahasa daerah, kita menyesuaikan. Jangan buru-buru mengangguk kalau belum paham; minta dijelaskan saja.
 
-A:
+B mengangguk, lalu sadar dan tertawa sendiri.
 
-> Untuk urusan resmi kita pakai Bahasa Indonesia dulu. Kalau orang di sana lebih nyaman pakai bahasa daerah, baru kita menyesuaikan.
+**B:**
 
-MC:
+> Nah, itu. Aku suka telanjur mengangguk supaya nggak canggung. Nanti malah dikira sudah paham semuanya.
 
-> Lagi pula kita bukan masuk seratus tahun ke masa lalu.
+**MC:**
 
-B:
+> Baru tiba sudah setuju entah dengan apa. Catatan lapangannya nanti saya bingung baca.
 
-> Siapa tahu.
+**A:**
 
-A:
+> Makanya tulis yang benar-benar kamu dengar. Kita juga mulai dari wilayahnya dulu, tanya administrasi terdekat. Dokumennya dicocokkan, baru cari orang yang tahu nama lama desa itu.
 
-> Kamu kebanyakan film.
+**B:**
 
-B tertawa.
+> Kalau dengar kamu jelaskan, rasanya urut. Di kepala aku tadi cuma ada kita turun dari mobil, lalu bingung mau mengetuk pintu yang mana.
 
-> Aku cuma tidak mau sampai sana terus kita bertiga berdiri kayak orang hilang.
+A mengambil suapan terakhir.
 
-MC:
+**A:**
 
-> Kita memang belum tahu lokasinya.
+> Pernah juga begitu. Bedanya, sekarang saya bawa catatan dan nggak berharap semua orang langsung punya jawabannya.
 
-B:
+**MC:**
 
-> Nah, itu juga masalah.
+> Pengalaman lapangan memang kelihatan.
 
-A:
+**A:**
 
-> Makanya jangan langsung bayangin desanya.
+> Pegalnya juga. Nanti kalau berhenti, kasih waktu saya meluruskan kaki dulu.
 
-> Temukan wilayahnya dulu.
+Mereka tertawa. B kembali makan, lalu melirik ponsel yang tertelungkup di sebelah piringnya.
 
-> Tanya administrasi terdekat.
+**B:**
 
-> Cocokkan dokumen.
+> Grup Bali masih ramai. Aku belum baca. Semoga pas kita balik Jumat nanti daftarnya nggak tambah panjang lagi.
 
-> Baru cari orang yang tahu nama lamanya.
+**MC:**
 
-B:
+> Kamu sudah sempat siap-siap? Tadi di rooftop semua sudah ngomongin barang bawaan.
 
-> Pengalaman memang beda.
+**B:**
 
-A:
+> Baru sebagian. Charger, power bank, sandal, baju. Sunscreen belum. Aku ingin beres sebelum berangkat, biar nanti tinggal cari pantai sama tempat makan.
 
-> Lama kerja bukan berarti pengalaman.
+A meletakkan sendok.
 
-MC:
+**A:**
 
-> Bukannya sama?
+> Untuk sekarang, barang lapangan dulu. Air minum, charger, catatan. Yang dibawa dicek, jangan merasa sudah masuk tas karena tadi sempat dipegang.
 
-A:
+**B:**
 
-> Tidak.
+> Iya. Charger itu bisa ikut dua perjalanan. Baju pantai belum tentu.
 
-B:
+**MC:**
 
-> Kalau begitu lama kerja dapat apa?
+> Kalau tasmu penuh duluan sama barang Bali, dokumennya mau ditaruh di mana?
 
-A:
+**B:**
 
-> Pegal.
+> Belum kupak, tenang. Aku cuma senang akhirnya rencana berbulan-bulan itu dekat juga.
 
-Mereka tertawa.
+A merapikan piringnya ke tengah meja.
 
-Beberapa saat kemudian B kembali membuka pembicaraan.
+**A:**
 
-> Kita balik sebelum Jumat, kan?
+> Saya juga ingin kita pulang sebelum akhir pekan. Soal biaya tugas, uang transport dan makan untuk bertiga sudah ditransfer ke saya.
 
-MC:
+B langsung menjauhkan ponselnya sedikit dari tangan.
 
-> Kata bos begitu.
+**B:**
 
-B:
+> Bagus. Kalau masuk ke rekeningku, nanti kopi pribadi sama makan dinas harus kupisahkan satu-satu.
 
-> Bagus.
+**MC:**
 
-A:
+> Kamu sudah mengaku duluan. Saya tadi mau membela.
 
-> Kamu cuma mikirin Bali.
+**A:**
 
-B:
+> Uangnya aman. Setelah ini saya tarik sebagian tunai di ATM. Kalau daerahnya susah sinyal, kita tetap bisa bayar makan dan kebutuhan perjalanan.
 
-> Ya jelas.
+A berdiri dan mengambil barangnya. B menghabiskan suapan yang tersisa.
 
-> Kita sudah nunggu berbulan-bulan.
+**A:**
 
-MC:
+> B, kamu tunggu di mobil. MC masih ambil kunci dan selesaikan urusan di resepsionis.
 
-> Barang buat Bali sudah siap?
+**B:**
 
-B:
+> Siap. Aku cek tas sekalian. Kalau chargernya ternyata masih di meja, sekarang waktu yang bagus buat malu.
 
-> Belum semuanya.
+**MC:**
 
-Ia mulai menghitung dengan jari.
+> Kabari sebelum saya turun, nanti saya ambilkan kalau memang tertinggal.
 
-> Power bank, charger, sandal, baju, sunscreen—
+B tersenyum dan ikut bangkit.
 
-A memotong.
+**B:**
 
-> Yang kita siapkan sekarang barang kerja dulu.
-
-B:
-
-> Aku tahu.
-
-> Aku cuma tidak mau nanti pulang hari Jumat terus baru sadar belum beli apa-apa.
-
-A selesai makan.
-
-> Soal biaya perjalanan, uang transport dan makan sudah ditransfer ke saya.
-
-MC:
-
-> Untuk bertiga?
-
-A:
-
-> Iya.
-
-B:
-
-> Kenapa ke kamu?
-
-A:
-
-> Karena kalau dikirim ke kamu mungkin sudah jadi kopi.
-
-MC:
-
-> Fitnah.
-
-A berdiri.
-
-> Nanti saya tarik sebagian tunai.
-
-MC:
-
-> ATM?
-
-A:
-
-> Iya.
-
-> Kita jangan mengandalkan pembayaran digital kalau daerahnya ternyata susah sinyal.
-
-B:
-
-> Masuk akal.
-
-A mengambil barangnya.
-
-> Setelah ini saya ke ATM.
-
-Kemudian A menunjuk B.
-
-> Kamu tunggu di mobil.
-
-B:
-
-> Kenapa aku?
-
-A:
-
-> Karena kalau saya suruh MC, nanti mobilnya ditinggal keliling lagi.
-
-MC:
-
-> Kenapa semuanya nyerang saya hari ini?
-
-B:
-
-> Tradisi kantor.
-
-Mereka bangkit.
-
-Sebelum pergi, B berkata:
-
-> Jangan lama-lama.
-
-> Kalau cepat selesai, Jumat malam kita sudah ngomongin pantai lagi.
+> Semoga nggak perlu. Ayo cepat beres, biar Jumat malam kita sudah bisa memilih mau makan di mana di Bali.
 
 Adegan berakhir.
 
@@ -948,25 +569,25 @@ MC berjalan ke area parkir. B menunggu di mobil; A masih menuju ATM. MC menyalak
 
 Percakapan mereka berlangsung sekitar tiga puluh detik.
 
-**MC:**
-
-> Terjemahannya bukan catatan batas wilayah. Ini catatan perjalanan seseorang yang mencari ayahnya ke Sancang, lalu singgah di desa kaki Cikuray.
+B melihat lembar terjemahan di tangan MC.
 
 **B:**
 
-> Dia berniat tinggal berapa lama?
+> Bagian hitungan harinya itu masih bikin aku bingung. Ingat tiga hari, catatannya sampai sembilan.
 
 **MC:**
 
-> Tiga hari. Tapi catatannya menunjukkan hari kesembilan. Bekalnya berkurang, lalu dia terbangun di tempat yang tidak diingatnya.
+> Delapan, lalu sembilan. Dia mencatat karena bekalnya berkurang. Dia juga terbangun di tempat lain; sekali di batu, lalu di semak-semak.
+
+B merapatkan tasnya agar lembar terjemahan tidak terjepit.
 
 **B:**
 
-> Jadi dia berhasil keluar?
+> Padahal cuma singgah sebelum mencari ayahnya ke Sancang. Untung masih bisa keluar.
 
 **MC:**
 
-> Menurut catatannya, iya. Dia melanjutkan perjalanan ke Sancang. Peringatan terakhirnya terputus karena prasastinya patah.
+> Begitu menurut tulisannya. Perjalanannya dilanjutkan. Yang patah justru bagian peringatan terakhir.
 
 A datang dari ATM dan duduk di kursi pengemudi.
 
@@ -976,29 +597,25 @@ A membagikan uang tunai kepada mereka bertiga, masing-masing Rp2.250.000.
 
 **ITEM / STATE DANA:** `Uang tunai perjalanan — Rp2.250.000 per orang`
 
-A melihat arsip dan terjemahan yang dibawa MC.
+MC merapikan uangnya dan mengembalikan lembar terjemahan ke atas kotak pelindung arsip. A melihatnya sebelum menyimpan bagiannya sendiri.
 
 **A:**
 
-> Jadi ini isi prasastinya?
+> Saya masih kepikiran isinya. Desa damai, lalu bekal berkurang dan orangnya bangun di tempat lain. Kalau dibaca begini, kedengarannya seperti cerita karangan.
 
 **MC:**
 
-> Penulisnya singgah di desa yang tampak damai. Lalu bekalnya berkurang, hitungan harinya tidak cocok dengan ingatannya, dan ia terbangun di tempat yang tidak diingatnya.
+> Bisa saja. Terjemahan ini memberi tahu apa yang ditulis, belum membuktikan apa yang terjadi. Kita periksa prasastinya, cocokkan sumbernya, lalu cari tempat yang dimaksud.
 
 **A:**
 
-> Kedengarannya seperti cerita karangan.
-
-**MC:**
-
-> Bisa saja. Tapi ini yang tertulis di terjemahannya. Kita harus memeriksa prasasti dan mencari tempat yang dimaksud sebelum menyimpulkan.
+> Ya. Jangan sampai kita sibuk membayangkan ceritanya, urusan verifikasinya malah tertinggal.
 
 A menaruh uangnya dan menutup pintu.
 
 > Bagaimanapun, kita harus cepat.
 
-MC dan B tetap duduk di kursi belakang sementara A mengambil tempat di balik kemudi. A mulai mengemudikan mobil keluar dari area ANRI.
+MC dan B tetap duduk di kursi belakang. A mengencangkan sabuk pengamannya, lalu mulai mengemudikan mobil keluar dari area ANRI.
 
 **AKHIR BAB 1 — MOBIL MENINGGALKAN ANRI**
 
@@ -1011,25 +628,31 @@ MC dan B tetap duduk di kursi belakang sementara A mengambil tempat di balik kem
 
 Jika MC tidak menuntaskan percakapan di kantin, ia mengambil kunci di resepsionis lalu berjalan menuju area parkir. A dan B menunggu bersama di mobil. Tidak ada yang pergi ke ATM.
 
+B melambaikan tangan ketika melihat MC mendekat. A mengangkat satu bungkusan makanan.
+
 **B:**
 
-> Urusan di resepsionis sudah selesai?
+> Nah, sudah datang. Urusan di resepsionis beres semua?
 
 **MC:**
 
-> Sudah. Kalian siap?
+> Sudah. Kunci juga sudah di tangan. Kalian siap?
 
 **A:**
 
-> Siap. Ini, satu bungkus nasi uduk buat bekal di jalan.
+> Siap. Ini satu bungkus nasi uduk buat kamu. Simpan buat di jalan.
 
-A memberikan satu bungkus nasi uduk kepada MC.
+A memberikan satu bungkus nasi uduk kepada MC. MC menerima bungkusan itu dengan tangan yang bebas.
+
+**MC:**
+
+> Terima kasih. Baru pegang kunci sudah dapat bekal.
 
 **B:**
 
-> Simpan baik-baik. Kalau ditaruh di jok, nanti terguling.
+> Masukkan tas saja. Jangan di jok, nanti sekali ngerem nasinya sampai duluan.
 
-MC menerima bungkusan itu.
+MC tersenyum dan menyimpan bungkusan itu.
 
 **ITEM DIPEROLEH:** `Nasi Uduk — 1 bungkus`
 
@@ -1045,41 +668,47 @@ MC menerima bungkusan itu.
 
 Mereka memastikan semua perlengkapan sudah siap. MC duduk di kursi pengemudi, A di kursi penumpang depan, dan B di kursi belakang. MC menyalakan mobil dan mulai berkendara keluar dari area ANRI.
 
-**MC:**
-
-> Terjemahan prasasti itu catatan perjalanan Kian Santang. Ia mencari ayahnya yang menuju Sancang, lalu singgah di desa kaki Cikuray karena tempat itu tampak indah dan damai.
+B merapikan barangnya di kursi belakang. Lembar terjemahan masih terbuka di tangannya.
 
 **B:**
 
-> Dia bilang cuma tinggal tiga hari, tapi catatannya sampai hari kesembilan?
+> Aku baca lagi. Kian Santang mau mencari ayahnya yang lebih dulu ke Sancang, terus singgah di kaki Cikuray karena desanya kelihatan damai. Sampai situ masih masuk akal.
 
 **MC:**
 
-> Begitu. Ia mencatat makan dan kegiatannya karena merasa bekalnya berkurang seperti dicuri. Catatannya menunjukkan sembilan hari, sementara ingatannya hanya tiga.
+> Rencananya tinggal tiga hari. Lalu bekalnya berkurang, jadi dia menandai setiap makan dan kegiatan pakai arang di kain putih.
 
 **A:**
 
-> Aneh. Rasanya seperti cerita karangan.
+> Dan ketika dibaca, sudah delapan hari. Setelah itu sembilan, sementara dia merasa baru tiga. Saya susah percaya bagian itu. Rasanya seperti cerita karangan.
 
-**MC:**
-
-> Kita belum tahu. Kita harus menemukan tempatnya dan memeriksa sumbernya.
-
-**A:**
-
-> Dan bagian soal desa yang mencegahnya keluar?
-
-**MC:**
-
-> Itu juga hanya yang ia tulis. Belum ada yang bisa memastikan apa yang sebenarnya terjadi.
-
-**A:**
-
-> Tetap saja, rasanya janggal.
+B menahan tepi kertas yang hampir terlipat pada tasnya.
 
 **B:**
 
-> Aku setuju. Bukan cuma karena dia menyebut iblis. Dia bilang mencatat setiap makan dan kegiatan, tetapi hitungan waktunya tetap berbeda jauh dari ingatannya. Kalau catatan itu benar, ada sesuatu yang tidak cocok. Kalau tidak benar, kita perlu tahu siapa yang menulisnya dan kenapa.
+> Aku setuju. Dia mulai mencatat supaya nggak salah ingat, tapi hasilnya malah berbeda enam hari. Kalau hanya lupa sekali makan, aku masih bisa bayangkan. Ini jauh sekali.
+
+**MC:**
+
+> Itu sebabnya catatannya perlu kita periksa. Sekarang kita baru punya tulisan dan terjemahannya.
+
+A menoleh sedikit ke arah B.
+
+**A:**
+
+> Bagian bangun di batu, lalu di semak-semak juga begitu. Terakhir dia bilang desanya mencegah dia keluar. Semua berdasarkan pengalamannya sendiri.
+
+**B:**
+
+> Iya. Ditambah peringatan tentang iblis di ujungnya. Aku belum bisa menjadikan itu penjelasan. Lebih masuk akal kita cari tahu dulu siapa yang menulis dan bagaimana catatan ini dibuat.
+
+MC memperlambat mobil mengikuti kendaraan di depannya.
+
+**MC:**
+
+> Dia menulis akhirnya berhasil keluar hidup-hidup dan lanjut ke Sancang. Tapi kita belum bisa memastikan apa yang terjadi di desa itu. Sumbernya dicocokkan dulu; jangan cerita ini ikut berubah setiap kali kita menceritakannya.
+
+A mengangguk. B merapikan lembar terjemahan di pangkuannya.
 
 MC memandang jalan di depan.
 

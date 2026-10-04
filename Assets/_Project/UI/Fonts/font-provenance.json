@@ -1,0 +1,34 @@
+{
+  "generator": "fontTools 4.63.0",
+  "display": {
+    "base": "Bodoni Moda",
+    "wght": 500,
+    "opsz": 72,
+    "widthScale": 0.58
+  },
+  "menu": {
+    "base": "Cormorant Garamond",
+    "wght": 500
+  },
+  "upstreamCommits": {
+    "Bodoni": "30ce6cdc354ef179a3b72ba0f0e71826e599348c",
+    "Cormorant": "6d210fd3550b7358ca62d6ba3e354ec1ec940813"
+  },
+  "files": [
+    {
+      "name": "SaksiTerakhirDisplay-Regular.ttf",
+      "sha256": "345152efb9e90d92877df055d42d8bef9e04d4a010525e7a61d0552ed302342f",
+      "unicodeGlyphs": 428
+    },
+    {
+      "name": "CormorantGaramond-Medium.ttf",
+      "sha256": "12f8c9c059a7cddb0b11002a0b0de0dcf1bb9283f9f06b967d19f2d541c1d4c5",
+      "unicodeGlyphs": 974
+    },
+    {
+      "name": "CormorantGaramond-MediumItalic.ttf",
+      "sha256": "fc54e545bea16199d116ca4cf5a5374166dd246edd9351ed17975a8466e6fa3f",
+      "unicodeGlyphs": 979
+    }
+  ]
+}

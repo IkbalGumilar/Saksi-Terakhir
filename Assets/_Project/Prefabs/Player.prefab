@@ -125,6 +125,9 @@ MonoBehaviour:
   minPitch: -85
   maxPitch: 85
   eyeHeightRatio: 0.92
+  seatedEyeHeight: 1.05
+  storyFocusSmoothing: 10
+  storyFocusHeight: 1.35
 --- !u!114 &64672709444915142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,15 +142,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Interaction.PlayerInteractor
   input: {fileID: 7733978589852870946}
   viewpoint: {fileID: 6746833799806022556}
-  aimDistance: 999
-  interactionRange: 2
-  probeRadiusAtReferenceDistance: 0.12
-  probeReferenceDistance: 2
-  debugTransform: {fileID: 0}
   aimCamera: {fileID: 0}
+  storyDialogue: {fileID: 0}
+  storyDirector: {fileID: 0}
+  playerMovement: {fileID: 0}
+  aimDistance: 999
+  maximumAimDistance: 30
+  interactionRange: 2
+  probeViewportHeightFraction: 0.0125
+  debugTransform: {fileID: 0}
+  aimColliderLayers:
+    serializedVersion: 2
+    m_Bits: 123
   probeLayers:
     serializedVersion: 2
     m_Bits: 64
+  probeInRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &3865281065501375700
 MonoBehaviour:
   m_ObjectHideFlags: 0

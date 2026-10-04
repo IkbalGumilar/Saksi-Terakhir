@@ -18,7 +18,7 @@ namespace SaksiTerakhir.EditorTools
         private const StaticEditorFlags StaticFlags =
             StaticEditorFlags.ContributeGI | StaticEditorFlags.OccluderStatic
             | StaticEditorFlags.OccludeeStatic | StaticEditorFlags.BatchingStatic
-            | StaticEditorFlags.NavigationStatic | StaticEditorFlags.ReflectionProbeStatic;
+            | StaticEditorFlags.ReflectionProbeStatic;
 
         private static readonly Vector3 GateLocal = new Vector3(-6.70f, 1.20f, -0.75f);
         private static readonly Vector3 EntranceLocal = new Vector3(-6.50f, 1.20f, -8.40f);

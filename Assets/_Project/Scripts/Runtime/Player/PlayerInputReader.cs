@@ -24,6 +24,8 @@ namespace SaksiTerakhir.Player
         private InputAction crouchAction;
         private InputAction jumpAction;
         private InputAction interactAction;
+        private InputAction journalAction;
+        private InputAction pauseAction;
 
         public event Action JumpPerformed;
         public event Action CrouchPerformed;
@@ -31,6 +33,8 @@ namespace SaksiTerakhir.Player
         public event Action InteractPressed;
         public event Action InteractHeld;
         public event Action InteractReleased;
+        public event Action InventoryTogglePressed;
+        public event Action PausePressed;
 
         public Vector2 MoveValue { get; private set; }
         public Vector2 LookValue { get; private set; }
@@ -63,6 +67,8 @@ namespace SaksiTerakhir.Player
             crouchAction = ResolveAction(CrouchActionName);
             jumpAction = ResolveAction(JumpActionName);
             interactAction = ResolveAction(InteractActionName);
+            journalAction = playerMap.FindAction("Journal", false);
+            pauseAction = playerMap.FindAction("Pause", false);
 
             enabled = moveAction != null
                 && lookAction != null
@@ -81,6 +87,8 @@ namespace SaksiTerakhir.Player
             interactAction.started += OnInteractStarted;
             interactAction.performed += OnInteractPerformed;
             interactAction.canceled += OnInteractCanceled;
+            if (journalAction != null) journalAction.performed += OnInventoryTogglePerformed;
+            if (pauseAction != null) pauseAction.performed += OnPausePerformed;
         }
 
         private void OnDisable()
@@ -91,6 +99,8 @@ namespace SaksiTerakhir.Player
             interactAction.started -= OnInteractStarted;
             interactAction.performed -= OnInteractPerformed;
             interactAction.canceled -= OnInteractCanceled;
+            if (journalAction != null) journalAction.performed -= OnInventoryTogglePerformed;
+            if (pauseAction != null) pauseAction.performed -= OnPausePerformed;
             playerMap.Disable();
 
             MoveValue = Vector2.zero;
@@ -128,6 +138,16 @@ namespace SaksiTerakhir.Player
         private void OnJumpPerformed(InputAction.CallbackContext context)
         {
             JumpPerformed?.Invoke();
+        }
+
+        private void OnInventoryTogglePerformed(InputAction.CallbackContext context)
+        {
+            InventoryTogglePressed?.Invoke();
+        }
+
+        private void OnPausePerformed(InputAction.CallbackContext context)
+        {
+            PausePressed?.Invoke();
         }
 
         private void OnCrouchPerformed(InputAction.CallbackContext context)

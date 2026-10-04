@@ -30,13 +30,17 @@ namespace SaksiTerakhir.Player
         private bool storyLookLocked;
         private bool cinematicLookLocked;
         private bool storySeated;
+        private bool uiLookLocked;
         private Transform storyFocusTarget;
 
         public bool IsLookEnabled { get; set; } = true;
         public bool StoryLookLocked => storyLookLocked || cinematicLookLocked;
         public bool StoryDialogueLookLocked => storyLookLocked;
         public bool StoryCinematicLookLocked => cinematicLookLocked;
-        public bool IsLookInputAllowed => IsLookEnabled && !StoryLookLocked;
+        public bool IsLookInputAllowed => IsLookEnabled && !StoryLookLocked && !uiLookLocked;
+        public bool UiLookLocked => uiLookLocked;
+
+        public void SetUiLookLocked(bool locked) => uiLookLocked = locked;
         public Transform StoryFocusTarget => storyFocusTarget;
 
         private void Awake()

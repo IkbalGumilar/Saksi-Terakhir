@@ -33,6 +33,7 @@ namespace SaksiTerakhir.Player
         private bool isCrouchRequested;
         private bool storyDialogueMovementLocked;
         private bool storyCinematicMovementLocked;
+        private bool uiMovementLocked;
 
         public bool IsCrouching { get; private set; }
         public bool IsSprinting { get; private set; }
@@ -41,6 +42,13 @@ namespace SaksiTerakhir.Player
         public bool StoryDialogueMovementLocked => storyDialogueMovementLocked;
         public bool StoryCinematicMovementLocked => storyCinematicMovementLocked;
         public Vector3 CinematicVelocity => cinematicVelocity;
+        public bool UiMovementLocked => uiMovementLocked;
+
+        public void SetUiMovementLocked(bool locked)
+        {
+            uiMovementLocked = locked;
+            if (locked) StopManualMotion();
+        }
 
         // Dialogue owns this lock. Cinematic movement has a separate owner so a
         // dialogue may finish without handing input back during an escort.
@@ -117,7 +125,7 @@ namespace SaksiTerakhir.Player
 
         private void Update()
         {
-            UpdateCrouchState();
+            if (!uiMovementLocked) UpdateCrouchState();
             UpdateHorizontalVelocity();
             UpdateVerticalVelocity();
 
@@ -158,7 +166,7 @@ namespace SaksiTerakhir.Player
                 return;
             }
 
-            if (storyDialogueMovementLocked)
+            if (storyDialogueMovementLocked || uiMovementLocked)
             {
                 StopManualMotion();
                 return;
@@ -227,7 +235,7 @@ namespace SaksiTerakhir.Player
 
         private void OnJumpPerformed()
         {
-            if (StoryMovementLocked || !controller.isGrounded || IsCrouching)
+            if (StoryMovementLocked || uiMovementLocked || !controller.isGrounded || IsCrouching)
             {
                 return;
             }
@@ -237,7 +245,7 @@ namespace SaksiTerakhir.Player
 
         private void OnCrouchPerformed()
         {
-            if (StoryMovementLocked) return;
+            if (StoryMovementLocked || uiMovementLocked) return;
             isCrouchRequested = crouchIsToggle ? !isCrouchRequested : true;
         }
 
