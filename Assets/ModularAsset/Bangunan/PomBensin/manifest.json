@@ -1,0 +1,2990 @@
+{
+  "units": "metres",
+  "blender_front": "-Y",
+  "blender_up": "+Z",
+  "unity_up": "+Y",
+  "unity_front": "-Z",
+  "blender_to_unity": "(x,z,y)",
+  "source": "SourceArt/ModularAsset/PomBensin/Modular_PomBensin.blend",
+  "scope": [
+    "stasiun pengisian",
+    "papan penanda",
+    "tembok pembatas"
+  ],
+  "canopy_grid_m": 2,
+  "column_height_m": 4.8,
+  "roof_underside_demo_m": 5.25,
+  "assets": [
+    {
+      "name": "MPS_Column_4p8m",
+      "category": "Kanopi",
+      "description": "Tiang kanopi 4,8 m dengan kaki, badan putih, dan kepala merah.",
+      "anchor": "bottom centre",
+      "snap_m": 0.1,
+      "bounds_min_blender": [
+        -0.3199999928474426,
+        -0.3199999928474426,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.3199999928474426,
+        0.3199999928474426,
+        4.799999713897705
+      ],
+      "size_blender_m": [
+        0.6399999856948853,
+        0.6399999856948853,
+        4.799999713897705
+      ],
+      "vertices": 560,
+      "triangles": 1088,
+      "mesh_parts": 8,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Kanopi/MPS_Column_4p8m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            0.0,
+            0.0,
+            2.4
+          ],
+          "size_blender_m": [
+            0.5,
+            0.5,
+            4.8
+          ]
+        }
+      ],
+      "column_height_m": 4.8
+    },
+    {
+      "name": "MPS_Beam_2m",
+      "category": "Kanopi",
+      "description": "Balok rangka baja; ujung rata untuk sambungan berulang.",
+      "anchor": "start underside, +X",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        -0.11999999731779099,
+        0.0
+      ],
+      "bounds_max_blender": [
+        2.0,
+        0.11999999731779099,
+        0.30000001192092896
+      ],
+      "size_blender_m": [
+        2.0,
+        0.23999999463558197,
+        0.30000001192092896
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "mesh_parts": 3,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Kanopi/MPS_Beam_2m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            1.0,
+            0.0,
+            0.15
+          ],
+          "size_blender_m": [
+            2.0,
+            0.24,
+            0.3
+          ]
+        }
+      ],
+      "repeat_length_m": 2
+    },
+    {
+      "name": "MPS_Beam_4m",
+      "category": "Kanopi",
+      "description": "Balok rangka baja; ujung rata untuk sambungan berulang.",
+      "anchor": "start underside, +X",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        -0.11999999731779099,
+        0.0
+      ],
+      "bounds_max_blender": [
+        4.0,
+        0.11999999731779099,
+        0.30000001192092896
+      ],
+      "size_blender_m": [
+        4.0,
+        0.23999999463558197,
+        0.30000001192092896
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "mesh_parts": 3,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Kanopi/MPS_Beam_4m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            2.0,
+            0.0,
+            0.15
+          ],
+          "size_blender_m": [
+            4.0,
+            0.24,
+            0.3
+          ]
+        }
+      ],
+      "repeat_length_m": 4
+    },
+    {
+      "name": "MPS_Roof_Panel_2x2m",
+      "category": "Kanopi",
+      "description": "Panel atap 2×2 m dengan plafon bergaris dan lampu tertanam.",
+      "anchor": "minimum XY corner, underside Z=0",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.05999999865889549
+      ],
+      "bounds_max_blender": [
+        2.0,
+        2.0,
+        0.25999999046325684
+      ],
+      "size_blender_m": [
+        2.0,
+        2.0,
+        0.31999998912215233
+      ],
+      "vertices": 280,
+      "triangles": 468,
+      "mesh_parts": 23,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Kanopi/MPS_Roof_Panel_2x2m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            1.0,
+            1.0,
+            0.13
+          ],
+          "size_blender_m": [
+            2.0,
+            2.0,
+            0.26
+          ]
+        }
+      ],
+      "tile_size_m": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "MPS_Fascia_2m",
+      "category": "Kanopi",
+      "description": "Lis tepi kanopi merah putih; memanjang +X, sisi luar -Y.",
+      "anchor": "start underside; wall at Y=0",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        -0.11999999731779099,
+        0.0
+      ],
+      "bounds_max_blender": [
+        2.0,
+        0.0,
+        0.429999977350235
+      ],
+      "size_blender_m": [
+        2.0,
+        0.11999999731779099,
+        0.429999977350235
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "mesh_parts": 3,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Kanopi/MPS_Fascia_2m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            1.0,
+            -0.06,
+            0.215
+          ],
+          "size_blender_m": [
+            2.0,
+            0.12,
+            0.43
+          ]
+        }
+      ],
+      "repeat_length_m": 2
+    },
+    {
+      "name": "MPS_Fascia_4m",
+      "category": "Kanopi",
+      "description": "Lis tepi kanopi merah putih; memanjang +X, sisi luar -Y.",
+      "anchor": "start underside; wall at Y=0",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        -0.11999999731779099,
+        0.0
+      ],
+      "bounds_max_blender": [
+        4.0,
+        0.0,
+        0.429999977350235
+      ],
+      "size_blender_m": [
+        4.0,
+        0.11999999731779099,
+        0.429999977350235
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "mesh_parts": 3,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Kanopi/MPS_Fascia_4m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            2.0,
+            -0.06,
+            0.215
+          ],
+          "size_blender_m": [
+            4.0,
+            0.12,
+            0.43
+          ]
+        }
+      ],
+      "repeat_length_m": 4
+    },
+    {
+      "name": "MPS_Fascia_Corner",
+      "category": "Kanopi",
+      "description": "Penutup sudut 90°; diputar untuk keempat sudut, skala tetap positif.",
+      "anchor": "corner at XY=0, outside negative XY",
+      "snap_m": 0,
+      "bounds_min_blender": [
+        -0.11999999731779099,
+        -0.11999999731779099,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.0,
+        0.0,
+        0.429999977350235
+      ],
+      "size_blender_m": [
+        0.11999999731779099,
+        0.11999999731779099,
+        0.429999977350235
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "mesh_parts": 3,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Kanopi/MPS_Fascia_Corner.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            -0.06,
+            -0.06,
+            0.215
+          ],
+          "size_blender_m": [
+            0.12,
+            0.12,
+            0.43
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MPS_Forecourt_Slab_2x2m",
+      "category": "Stasiun",
+      "description": "Pelat halaman beton untuk diulang; permukaan berjalan tepat Z=0.",
+      "anchor": "minimum XY corner, top Z=0",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.11999999731779099
+      ],
+      "bounds_max_blender": [
+        2.0,
+        2.0,
+        0.0
+      ],
+      "size_blender_m": [
+        2.0,
+        2.0,
+        0.11999999731779099
+      ],
+      "vertices": 8,
+      "triangles": 12,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Stasiun/MPS_Forecourt_Slab_2x2m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            1.0,
+            1.0,
+            -0.06
+          ],
+          "size_blender_m": [
+            2.0,
+            2.0,
+            0.12
+          ]
+        }
+      ],
+      "tile_size_m": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "MPS_Forecourt_Slab_4x4m",
+      "category": "Stasiun",
+      "description": "Pelat halaman beton untuk diulang; permukaan berjalan tepat Z=0.",
+      "anchor": "minimum XY corner, top Z=0",
+      "snap_m": 4,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.11999999731779099
+      ],
+      "bounds_max_blender": [
+        4.0,
+        4.0,
+        0.0
+      ],
+      "size_blender_m": [
+        4.0,
+        4.0,
+        0.11999999731779099
+      ],
+      "vertices": 8,
+      "triangles": 12,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Stasiun/MPS_Forecourt_Slab_4x4m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            2.0,
+            2.0,
+            -0.06
+          ],
+          "size_blender_m": [
+            4.0,
+            4.0,
+            0.12
+          ]
+        }
+      ],
+      "tile_size_m": [
+        4,
+        4
+      ]
+    },
+    {
+      "name": "MPS_Dispenser_Dual",
+      "category": "Pengisian",
+      "description": "Red and white dual-sided dispenser, neutral BBM A/B labels, zeroed digital readings, four parked nozzles and closed hose loops.",
+      "anchor": "cabinet floor centre",
+      "snap_m": 0,
+      "bounds_min_blender": [
+        -0.5034773945808411,
+        -0.3564999997615814,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.5034773945808411,
+        0.3564999997615814,
+        1.75
+      ],
+      "size_blender_m": [
+        1.0069547891616821,
+        0.7129999995231628,
+        1.75
+      ],
+      "vertices": 6356,
+      "triangles": 11964,
+      "mesh_parts": 183,
+      "moving_pivots": [
+        "MPS_Front_BBM_A_Nozzle_Pivot",
+        "MPS_Front_BBM_A_Hose_Pivot",
+        "MPS_Front_BBM_B_Nozzle_Pivot",
+        "MPS_Front_BBM_B_Hose_Pivot",
+        "MPS_Rear_BBM_A_Nozzle_Pivot",
+        "MPS_Rear_BBM_A_Hose_Pivot",
+        "MPS_Rear_BBM_B_Nozzle_Pivot",
+        "MPS_Rear_BBM_B_Hose_Pivot"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Pengisian/MPS_Dispenser_Dual.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            0,
+            0,
+            0.875
+          ],
+          "size_blender_m": [
+            0.75,
+            0.5,
+            1.75
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MPS_Support_Frame_2p8m",
+      "category": "Pengisian",
+      "description": "Two steel posts and overhead crossbar, 1.30 m across and 2.80 m tall; independent support frame centred over a dispenser.",
+      "anchor": "floor centre between posts",
+      "snap_m": 0,
+      "bounds_min_blender": [
+        -0.6499999761581421,
+        -0.10000000149011612,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.6499999761581421,
+        0.10000000149011612,
+        2.799999952316284
+      ],
+      "size_blender_m": [
+        1.2999999523162842,
+        0.20000000298023224,
+        2.799999952316284
+      ],
+      "vertices": 512,
+      "triangles": 976,
+      "mesh_parts": 12,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Pengisian/MPS_Support_Frame_2p8m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            -0.58,
+            0,
+            1.3575
+          ],
+          "size_blender_m": [
+            0.08,
+            0.095,
+            2.665
+          ]
+        },
+        {
+          "center_blender_m": [
+            0.58,
+            0,
+            1.3575
+          ],
+          "size_blender_m": [
+            0.08,
+            0.095,
+            2.665
+          ]
+        },
+        {
+          "center_blender_m": [
+            0,
+            0,
+            2.75
+          ],
+          "size_blender_m": [
+            1.3,
+            0.12,
+            0.1
+          ]
+        },
+        {
+          "center_blender_m": [
+            -0.58,
+            0,
+            0.0125
+          ],
+          "size_blender_m": [
+            0.14,
+            0.2,
+            0.025
+          ]
+        },
+        {
+          "center_blender_m": [
+            0.58,
+            0,
+            0.0125
+          ],
+          "size_blender_m": [
+            0.14,
+            0.2,
+            0.025
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MPS_Island_Straight_2m",
+      "category": "Pengisian",
+      "description": "Closed raised concrete island, 1.20 m wide and 2.00 m long, with un-bevelled flat butt joints at Y=0 and Y=2.",
+      "anchor": "connection centre at Y=0, floor Z=0",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        -0.6000000238418579,
+        0.0,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.6000000238418579,
+        2.0,
+        0.15000000596046448
+      ],
+      "size_blender_m": [
+        1.2000000476837158,
+        2.0,
+        0.15000000596046448
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Pengisian/MPS_Island_Straight_2m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            0.0,
+            1.0,
+            0.07500000298023224
+          ],
+          "size_blender_m": [
+            1.2000000476837158,
+            2.0,
+            0.15000000596046448
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MPS_Island_EndCap_1p2m",
+      "category": "Pengisian",
+      "description": "Closed semicircular nose for a 1.20 m concrete island, joining at Y=0. Rotate a duplicate +180 degrees at the far end.",
+      "anchor": "connection centre at Y=0, floor Z=0",
+      "snap_m": 0,
+      "bounds_min_blender": [
+        -0.6000000238418579,
+        -0.6000000238418579,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.6000000238418579,
+        0.0,
+        0.15000000596046448
+      ],
+      "size_blender_m": [
+        1.2000000476837158,
+        0.6000000238418579,
+        0.15000000596046448
+      ],
+      "vertices": 63,
+      "triangles": 122,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Pengisian/MPS_Island_EndCap_1p2m.fbx",
+      "collision_mesh": true
+    },
+    {
+      "name": "MPS_Boundary_Wall_Straight_1m",
+      "category": "Tembok",
+      "description": "Tembok beton polos 1 m; tinggi 1,8 m; tebal 0,2 m. Tutup atas rata termasuk dalam tinggi; kedua ujung tanpa bevel.",
+      "anchor": "ground, start centre of wall thickness",
+      "snap_m": 1.0,
+      "bounds_min_blender": [
+        0.0,
+        -0.10000000149011612,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.0,
+        0.10000000149011612,
+        1.7999999523162842
+      ],
+      "size_blender_m": [
+        1.0,
+        0.20000000298023224,
+        1.7999999523162842
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Tembok/MPS_Boundary_Wall_Straight_1m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            0.5,
+            0.0,
+            0.8999999761581421
+          ],
+          "size_blender_m": [
+            1.0,
+            0.20000000298023224,
+            1.7999999523162842
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MPS_Boundary_Wall_Straight_2m",
+      "category": "Tembok",
+      "description": "Tembok beton polos 2 m; tinggi 1,8 m; tebal 0,2 m. Tutup atas rata termasuk dalam tinggi; kedua ujung tanpa bevel.",
+      "anchor": "ground, start centre of wall thickness",
+      "snap_m": 1.0,
+      "bounds_min_blender": [
+        0.0,
+        -0.10000000149011612,
+        0.0
+      ],
+      "bounds_max_blender": [
+        2.0,
+        0.10000000149011612,
+        1.7999999523162842
+      ],
+      "size_blender_m": [
+        2.0,
+        0.20000000298023224,
+        1.7999999523162842
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Tembok/MPS_Boundary_Wall_Straight_2m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            1.0,
+            0.0,
+            0.8999999761581421
+          ],
+          "size_blender_m": [
+            2.0,
+            0.20000000298023224,
+            1.7999999523162842
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MPS_Boundary_Wall_Straight_4m",
+      "category": "Tembok",
+      "description": "Tembok beton polos 4 m; tinggi 1,8 m; tebal 0,2 m. Tutup atas rata termasuk dalam tinggi; kedua ujung tanpa bevel.",
+      "anchor": "ground, start centre of wall thickness",
+      "snap_m": 1.0,
+      "bounds_min_blender": [
+        0.0,
+        -0.10000000149011612,
+        0.0
+      ],
+      "bounds_max_blender": [
+        4.0,
+        0.10000000149011612,
+        1.7999999523162842
+      ],
+      "size_blender_m": [
+        4.0,
+        0.20000000298023224,
+        1.7999999523162842
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Tembok/MPS_Boundary_Wall_Straight_4m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            2.0,
+            0.0,
+            0.8999999761581421
+          ],
+          "size_blender_m": [
+            4.0,
+            0.20000000298023224,
+            1.7999999523162842
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MPS_Boundary_Wall_Corner",
+      "category": "Tembok",
+      "description": "Sudut tembok terisi 0,2 x 0,2 m; tinggi 1,8 m. Sambungkan lengan tembok pada muka X=0,1 dan Y=0,1 m; putar seluruh modul untuk sudut lain.",
+      "anchor": "ground centre of filled corner",
+      "snap_m": 0.1,
+      "bounds_min_blender": [
+        -0.10000000149011612,
+        -0.10000000149011612,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.10000000149011612,
+        0.10000000149011612,
+        1.7999999523162842
+      ],
+      "size_blender_m": [
+        0.20000000298023224,
+        0.20000000298023224,
+        1.7999999523162842
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Tembok/MPS_Boundary_Wall_Corner.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            0.0,
+            0.0,
+            0.8999999761581421
+          ],
+          "size_blender_m": [
+            0.20000000298023224,
+            0.20000000298023224,
+            1.7999999523162842
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MPS_Boundary_Wall_Pier",
+      "category": "Tembok",
+      "description": "Pilar beton polos 0,3 x 0,3 m, tinggi 1,95 m; tutup rata tanpa hiasan atau bibir yang menonjol.",
+      "anchor": "ground centre of pier",
+      "snap_m": 0.1,
+      "bounds_min_blender": [
+        -0.15000000596046448,
+        -0.15000000596046448,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.15000000596046448,
+        0.15000000596046448,
+        1.9500000476837158
+      ],
+      "size_blender_m": [
+        0.30000001192092896,
+        0.30000001192092896,
+        1.9500000476837158
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Tembok/MPS_Boundary_Wall_Pier.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            0.0,
+            0.0,
+            0.9750000238418579
+          ],
+          "size_blender_m": [
+            0.30000001192092896,
+            0.30000001192092896,
+            1.9500000476837158
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MPS_Boundary_Wall_EndCap",
+      "category": "Tembok",
+      "description": "Penutup ujung tembok opsional 0,2 x 0,2 m, tinggi 1,8 m; muka ujung rata dan tertutup, tanpa tutup besar.",
+      "anchor": "ground centre of end cap",
+      "snap_m": 0.1,
+      "bounds_min_blender": [
+        -0.10000000149011612,
+        -0.10000000149011612,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.10000000149011612,
+        0.10000000149011612,
+        1.7999999523162842
+      ],
+      "size_blender_m": [
+        0.20000000298023224,
+        0.20000000298023224,
+        1.7999999523162842
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Tembok/MPS_Boundary_Wall_EndCap.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            0.0,
+            0.0,
+            0.8999999761581421
+          ],
+          "size_blender_m": [
+            0.20000000298023224,
+            0.20000000298023224,
+            1.7999999523162842
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MPS_Station_Sign_4m",
+      "category": "Penanda",
+      "description": "Papan identitas pom bensin dua sisi; lebar 1,3 m, tebal 0,22 m, tinggi total 4 m. Nama POM BENSIN dan tiga baris BBM generik dengan harga placeholder; tiap panel muka terpisah.",
+      "anchor": "ground centre of concrete base",
+      "snap_m": 0.1,
+      "bounds_min_blender": [
+        -0.6499999761581421,
+        -0.10999999940395355,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.6499999761581421,
+        0.10999999940395355,
+        4.0
+      ],
+      "size_blender_m": [
+        1.2999999523162842,
+        0.2199999988079071,
+        4.0
+      ],
+      "vertices": 3984,
+      "triangles": 7744,
+      "mesh_parts": 26,
+      "moving_pivots": [
+        "MPS_Station_Sign_4m_Front_Station_Name_Panel",
+        "MPS_Station_Sign_4m_Front_Fuel_Row_1",
+        "MPS_Station_Sign_4m_Front_Fuel_Row_2",
+        "MPS_Station_Sign_4m_Front_Fuel_Row_3",
+        "MPS_Station_Sign_4m_Rear_Station_Name_Panel",
+        "MPS_Station_Sign_4m_Rear_Fuel_Row_1",
+        "MPS_Station_Sign_4m_Rear_Fuel_Row_2",
+        "MPS_Station_Sign_4m_Rear_Fuel_Row_3"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Bangunan/PomBensin/Models/Penanda/MPS_Station_Sign_4m.fbx",
+      "collision_boxes": [
+        {
+          "center_blender_m": [
+            0.0,
+            0.0,
+            2.0
+          ],
+          "size_blender_m": [
+            1.2999999523162842,
+            0.2199999988079071,
+            4.0
+          ]
+        }
+      ]
+    }
+  ],
+  "geometry_issues": [],
+  "materials": [
+    {
+      "name": "MPS_Plaster",
+      "key": "plaster",
+      "srgb": [
+        0.85,
+        0.84,
+        0.81
+      ],
+      "roughness": 0.78,
+      "metallic": 0
+    },
+    {
+      "name": "MPS_Concrete",
+      "key": "concrete",
+      "srgb": [
+        0.66,
+        0.65,
+        0.62
+      ],
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    {
+      "name": "MPS_Chrome",
+      "key": "chrome",
+      "srgb": [
+        0.63,
+        0.68,
+        0.7
+      ],
+      "roughness": 0.22,
+      "metallic": 0.9
+    },
+    {
+      "name": "MPS_Steel",
+      "key": "steel",
+      "srgb": [
+        0.47,
+        0.52,
+        0.54
+      ],
+      "roughness": 0.38,
+      "metallic": 0.8
+    },
+    {
+      "name": "MPS_Black",
+      "key": "black",
+      "srgb": [
+        0.025,
+        0.033,
+        0.041
+      ],
+      "roughness": 0.6,
+      "metallic": 0
+    },
+    {
+      "name": "MPS_Screen",
+      "key": "screen",
+      "srgb": [
+        0.075,
+        0.2,
+        0.25
+      ],
+      "roughness": 0.28,
+      "metallic": 0
+    },
+    {
+      "name": "MPS_White",
+      "key": "white",
+      "srgb": [
+        0.96,
+        0.96,
+        0.93
+      ],
+      "roughness": 0.55,
+      "metallic": 0
+    },
+    {
+      "name": "MPS_Red",
+      "key": "red",
+      "srgb": [
+        0.63,
+        0.065,
+        0.047
+      ],
+      "roughness": 0.38,
+      "metallic": 0.15
+    },
+    {
+      "name": "MPS_Green",
+      "key": "green",
+      "srgb": [
+        0.045,
+        0.32,
+        0.2
+      ],
+      "roughness": 0.52,
+      "metallic": 0
+    },
+    {
+      "name": "MPS_Yellow",
+      "key": "yellow",
+      "srgb": [
+        0.91,
+        0.64,
+        0.08
+      ],
+      "roughness": 0.52,
+      "metallic": 0
+    },
+    {
+      "name": "MPS_Rubber",
+      "key": "rubber",
+      "srgb": [
+        0.026,
+        0.03,
+        0.031
+      ],
+      "roughness": 0.92,
+      "metallic": 0
+    },
+    {
+      "name": "MPS_Light",
+      "key": "light",
+      "srgb": [
+        1.0,
+        0.89,
+        0.66
+      ],
+      "roughness": 0.24,
+      "metallic": 0
+    }
+  ],
+  "examples": [
+    {
+      "name": "Demo_PomBensin_Modular",
+      "placements": [
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -6.0,
+            0.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -6.0,
+            2.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -6.0,
+            4.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -6.0,
+            6.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -4.0,
+            0.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -4.0,
+            2.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -4.0,
+            4.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -4.0,
+            6.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -2.0,
+            0.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -2.0,
+            2.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -2.0,
+            4.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -2.0,
+            6.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            0.0,
+            0.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            0.0,
+            2.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            0.0,
+            4.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            0.0,
+            6.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            2.0,
+            0.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            2.0,
+            2.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            2.0,
+            4.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            2.0,
+            6.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            4.0,
+            0.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            4.0,
+            2.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            4.0,
+            4.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            4.0,
+            6.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_4m",
+          "position_blender": [
+            -6.0,
+            1.2000000476837158,
+            4.949999809265137
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_4m",
+          "position_blender": [
+            -2.0,
+            1.2000000476837158,
+            4.949999809265137
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_4m",
+          "position_blender": [
+            2.0,
+            1.2000000476837158,
+            4.949999809265137
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_4m",
+          "position_blender": [
+            -6.0,
+            4.800000190734863,
+            4.949999809265137
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_4m",
+          "position_blender": [
+            -2.0,
+            4.800000190734863,
+            4.949999809265137
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_4m",
+          "position_blender": [
+            2.0,
+            4.800000190734863,
+            4.949999809265137
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Column_4p8m",
+          "position_blender": [
+            -3.0,
+            1.2000000476837158,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Column_4p8m",
+          "position_blender": [
+            -3.0,
+            4.800000190734863,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            -3.0,
+            0.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            -3.0,
+            2.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            -3.0,
+            4.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            -3.0,
+            6.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Island_Straight_2m",
+          "position_blender": [
+            -3.0,
+            1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_Straight_2m",
+          "position_blender": [
+            -3.0,
+            3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_EndCap_1p2m",
+          "position_blender": [
+            -3.0,
+            1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_EndCap_1p2m",
+          "position_blender": [
+            -3.0,
+            5.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Dispenser_Dual",
+          "position_blender": [
+            -3.0,
+            3.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Support_Frame_2p8m",
+          "position_blender": [
+            -3.0,
+            3.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Column_4p8m",
+          "position_blender": [
+            3.0,
+            1.2000000476837158,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Column_4p8m",
+          "position_blender": [
+            3.0,
+            4.800000190734863,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            3.0,
+            0.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            3.0,
+            2.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            3.0,
+            4.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            3.0,
+            6.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Island_Straight_2m",
+          "position_blender": [
+            3.0,
+            1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_Straight_2m",
+          "position_blender": [
+            3.0,
+            3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_EndCap_1p2m",
+          "position_blender": [
+            3.0,
+            1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_EndCap_1p2m",
+          "position_blender": [
+            3.0,
+            5.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Dispenser_Dual",
+          "position_blender": [
+            3.0,
+            3.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Support_Frame_2p8m",
+          "position_blender": [
+            3.0,
+            3.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -6.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -4.0,
+            8.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -4.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -2.0,
+            8.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -2.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            0.0,
+            8.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            0.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            2.0,
+            8.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            2.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            4.0,
+            8.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            4.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            6.0,
+            8.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -6.0,
+            2.0,
+            5.079999923706055
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            6.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -6.0,
+            4.0,
+            5.079999923706055
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            6.0,
+            2.0,
+            5.079999923706055
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -6.0,
+            6.0,
+            5.079999923706055
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            6.0,
+            4.0,
+            5.079999923706055
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -6.0,
+            8.0,
+            5.079999923706055
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            6.0,
+            6.0,
+            5.079999923706055
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_Corner",
+          "position_blender": [
+            -6.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_Corner",
+          "position_blender": [
+            6.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_Corner",
+          "position_blender": [
+            6.0,
+            8.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_Corner",
+          "position_blender": [
+            -6.0,
+            8.0,
+            5.079999923706055
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -12.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -12.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -12.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -12.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -8.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -8.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -8.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -8.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -4.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -4.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -4.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            0.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            0.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            0.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            4.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            4.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            4.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            8.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            8.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            8.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            8.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -12.0,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -8.0,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -4.0,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            0.0,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            4.0,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            8.0,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Corner",
+          "position_blender": [
+            -12.100000381469727,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Corner",
+          "position_blender": [
+            12.100000381469727,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -12.100000381469727,
+            -1.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -12.100000381469727,
+            3.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -12.100000381469727,
+            7.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_EndCap",
+          "position_blender": [
+            -12.100000381469727,
+            -1.100000023841858,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            12.100000381469727,
+            -1.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            12.100000381469727,
+            3.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            12.100000381469727,
+            7.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_EndCap",
+          "position_blender": [
+            12.100000381469727,
+            -1.100000023841858,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Station_Sign_4m",
+          "position_blender": [
+            -10.399999618530273,
+            -2.200000047683716,
+            0.0
+          ],
+          "rotation_z": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Demo_PomBensin_Kompak",
+      "placements": [
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -4.0,
+            0.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -4.0,
+            2.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -4.0,
+            4.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -2.0,
+            0.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -2.0,
+            2.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            -2.0,
+            4.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            0.0,
+            0.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            0.0,
+            2.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            0.0,
+            4.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            2.0,
+            0.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            2.0,
+            2.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Roof_Panel_2x2m",
+          "position_blender": [
+            2.0,
+            4.0,
+            5.25
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_4m",
+          "position_blender": [
+            -4.0,
+            1.2000000476837158,
+            4.949999809265137
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_4m",
+          "position_blender": [
+            0.0,
+            1.2000000476837158,
+            4.949999809265137
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_4m",
+          "position_blender": [
+            -4.0,
+            4.800000190734863,
+            4.949999809265137
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_4m",
+          "position_blender": [
+            0.0,
+            4.800000190734863,
+            4.949999809265137
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Column_4p8m",
+          "position_blender": [
+            -2.0,
+            1.2000000476837158,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Column_4p8m",
+          "position_blender": [
+            -2.0,
+            4.800000190734863,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            -2.0,
+            0.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            -2.0,
+            2.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            -2.0,
+            4.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Island_Straight_2m",
+          "position_blender": [
+            -2.0,
+            1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_Straight_2m",
+          "position_blender": [
+            -2.0,
+            3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_EndCap_1p2m",
+          "position_blender": [
+            -2.0,
+            1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_EndCap_1p2m",
+          "position_blender": [
+            -2.0,
+            5.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Dispenser_Dual",
+          "position_blender": [
+            -2.0,
+            3.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Support_Frame_2p8m",
+          "position_blender": [
+            -2.0,
+            3.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Column_4p8m",
+          "position_blender": [
+            2.0,
+            1.2000000476837158,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Column_4p8m",
+          "position_blender": [
+            2.0,
+            4.800000190734863,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            2.0,
+            0.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            2.0,
+            2.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Beam_2m",
+          "position_blender": [
+            2.0,
+            4.0,
+            4.949999809265137
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Island_Straight_2m",
+          "position_blender": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_Straight_2m",
+          "position_blender": [
+            2.0,
+            3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_EndCap_1p2m",
+          "position_blender": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Island_EndCap_1p2m",
+          "position_blender": [
+            2.0,
+            5.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Dispenser_Dual",
+          "position_blender": [
+            2.0,
+            3.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Support_Frame_2p8m",
+          "position_blender": [
+            2.0,
+            3.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -4.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -2.0,
+            6.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -2.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            0.0,
+            6.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            0.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            2.0,
+            6.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            2.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            4.0,
+            6.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -4.0,
+            2.0,
+            5.079999923706055
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            4.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -4.0,
+            4.0,
+            5.079999923706055
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            4.0,
+            2.0,
+            5.079999923706055
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            -4.0,
+            6.0,
+            5.079999923706055
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_2m",
+          "position_blender": [
+            4.0,
+            4.0,
+            5.079999923706055
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_Corner",
+          "position_blender": [
+            -4.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Fascia_Corner",
+          "position_blender": [
+            4.0,
+            0.0,
+            5.079999923706055
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Fascia_Corner",
+          "position_blender": [
+            4.0,
+            6.0,
+            5.079999923706055
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "MPS_Fascia_Corner",
+          "position_blender": [
+            -4.0,
+            6.0,
+            5.079999923706055
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -8.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -8.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -8.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -8.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -4.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -4.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -4.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            -4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            0.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            0.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            0.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            4.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            4.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            4.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Forecourt_Slab_4x4m",
+          "position_blender": [
+            4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -8.0,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -4.0,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            0.0,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            4.0,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Corner",
+          "position_blender": [
+            -8.100000381469727,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Corner",
+          "position_blender": [
+            8.100000381469727,
+            11.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -8.100000381469727,
+            -1.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -8.100000381469727,
+            3.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            -8.100000381469727,
+            7.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_EndCap",
+          "position_blender": [
+            -8.100000381469727,
+            -1.100000023841858,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            8.100000381469727,
+            -1.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            8.100000381469727,
+            3.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_Straight_4m",
+          "position_blender": [
+            8.100000381469727,
+            7.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MPS_Boundary_Wall_EndCap",
+          "position_blender": [
+            8.100000381469727,
+            -1.100000023841858,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MPS_Station_Sign_4m",
+          "position_blender": [
+            -6.400000095367432,
+            -2.200000047683716,
+            0.0
+          ],
+          "rotation_z": 0.0
+        }
+      ]
+    }
+  ]
+}

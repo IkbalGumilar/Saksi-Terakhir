@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e351c6e6fe46494987ed5c59a063121c, type: 3}
+  m_Name: Terjemahan_Arsip_Wanaseta
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Inventory.ItemDefinition
+  id: document.wanaseta_translation
+  nameKey: document.wanaseta_translation.name
+  descriptionKey: document.wanaseta_translation.description
+  type: 1
+  icon: {fileID: 0}
+  modelPrefab: {fileID: 0}
+  documentText: "CATATAN PERJALANAN \u2014 RADEN KIAN SANTANG\n\nAku singgah di desa
+    di kaki Gunung Cikuray dalam perjalanan mencari ayahku, yang telah lebih dahulu
+    menuju Sancang.\n\nDesa ini indah dan damai. Karena itu, kuputuskan tinggal selama
+    tiga hari sebelum melanjutkan perjalanan.\n\nHari pertama. Aku berbaur dengan
+    warga dan membantu pekerjaan mereka. Setiap malam, desa menjadi sunyi. Malam
+    itu aku terbangun di atas sebuah batu besar, jauh dari tempatku beristirahat.
+    Aku tidak tahu bagaimana sampai di sana. Rasa kantuk begitu berat; aku kembali
+    tidur.\n\nPagi datang. Desa kembali indah dan tenang, seolah malam tadi hanya
+    mimpi. Namun mimpi itu terasa terlalu nyata untuk kulupakan.\n\nHari kedua. Aku
+    harus segera berangkat. Ayahku masih harus kutemukan. Tetapi bekalku berkurang
+    terlalu cepat, seakan ada yang mengambil makanan saat aku tidak melihat. Agar
+    tidak salah mengingat, kutandai setiap kali makan dan setiap kegiatanku dengan
+    arang bambu pada kain putih.\n\nMalam ini kubaca kembali catatan itu. Tulisan
+    tanganku memenuhi kain. Catatan tersebut menunjukkan bahwa aku telah berada di
+    desa ini selama delapan hari.\n\nIni tidak mungkin. Aku baru mulai mencatat pagi
+    tadi.\n\nApa pun yang terjadi, besok aku harus pergi.\n\nMalam berikutnya aku
+    terbangun di antara semak-semak. Aku tidak ingat bagaimana sampai ke sana. Ada
+    sesuatu yang janggal. Aku berlari tanpa arah, hanya ingin menjauh dari desa.\n\nMenurut
+    ingatanku, aku baru berada di sini tiga hari. Catatanku menunjukkan hari kesembilan.
+    Bekalku hampir habis. Desa ini seolah mencegahku keluar.\n\nAku akhirnya berhasil
+    keluar. Tubuhku lelah, bekalku hampir habis, tetapi aku masih hidup. Perjalanan
+    ke Sancang kulanjutkan.\n\nJangan percaya pada apa yang kaulihat. Jangan percaya
+    pada apa yang kauingat. Iblis-iblis di dalam desa ini sangat kuat. Yang tampak
+    nyata belum tentu nyata. Keluarlah p\u2014\n\n[Prasasti terbelah. Kelanjutan
+    tulisan tidak ditemukan.]"

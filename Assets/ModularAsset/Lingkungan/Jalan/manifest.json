@@ -1,0 +1,4413 @@
+{
+  "units": "metres",
+  "blender_front": "-Y",
+  "blender_up": "+Z",
+  "unity_up": "+Y",
+  "unity_front": "-Z",
+  "blender_to_unity": "(x,z,y)",
+  "road_width_m": 8,
+  "straight_length_m": 8,
+  "curve_radius_m": 8,
+  "source": "SourceArt/OfficeArchiveRoads/OfficeArchive_Roads.blend",
+  "assets": [
+    {
+      "name": "OAR_Road_Straight_Dashed_8m",
+      "category": "Jalan",
+      "description": "Road width8m length8m; top0; +Y travel; single centre separator",
+      "anchor": "entry midline (0,0,0)",
+      "snap_m": 8,
+      "bounds_min_blender": [
+        -4.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        4.0,
+        8.0,
+        0.003000000026077032
+      ],
+      "size_blender_m": [
+        8.0,
+        8.0,
+        0.1530000059865415
+      ],
+      "vertices": 40,
+      "triangles": 60,
+      "mesh_parts": 5,
+      "moving_pivots": [
+        "Markings"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Jalan/OAR_Road_Straight_Dashed_8m.fbx"
+    },
+    {
+      "name": "OAR_Road_Straight_Solid_8m",
+      "category": "Jalan",
+      "description": "Road width8m length8m; top0; +Y travel; single centre separator",
+      "anchor": "entry midline (0,0,0)",
+      "snap_m": 8,
+      "bounds_min_blender": [
+        -4.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        4.0,
+        8.0,
+        0.003000000026077032
+      ],
+      "size_blender_m": [
+        8.0,
+        8.0,
+        0.1530000059865415
+      ],
+      "vertices": 32,
+      "triangles": 48,
+      "mesh_parts": 4,
+      "moving_pivots": [
+        "Markings.001"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Jalan/OAR_Road_Straight_Solid_8m.fbx"
+    },
+    {
+      "name": "OAR_Road_Straight_Plain_8m",
+      "category": "Jalan",
+      "description": "Road width8m length8m; top0; +Y travel; single centre separator",
+      "anchor": "entry midline (0,0,0)",
+      "snap_m": 8,
+      "bounds_min_blender": [
+        -4.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        4.0,
+        8.0,
+        0.003000000026077032
+      ],
+      "size_blender_m": [
+        8.0,
+        8.0,
+        0.1530000059865415
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "Markings.002"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Jalan/OAR_Road_Straight_Plain_8m.fbx"
+    },
+    {
+      "name": "OAR_Road_Curve90_Right",
+      "category": "Jalan",
+      "description": "Quarter road width8m Rcentre8m; endpoints at (+/-8,0) and (0,8)",
+      "anchor": "arc centre (0,0,0)",
+      "snap_m": 8,
+      "bounds_min_blender": [
+        2.4492937051703357e-16,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        12.0,
+        12.0,
+        0.003000000026077032
+      ],
+      "size_blender_m": [
+        12.0,
+        12.0,
+        0.1530000059865415
+      ],
+      "vertices": 784,
+      "triangles": 1552,
+      "mesh_parts": 4,
+      "moving_pivots": [
+        "Markings.003"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Jalan/OAR_Road_Curve90_Right.fbx"
+    },
+    {
+      "name": "OAR_Road_Curve90_Left",
+      "category": "Jalan",
+      "description": "Quarter road width8m Rcentre8m; endpoints at (+/-8,0) and (0,8)",
+      "anchor": "arc centre (0,0,0)",
+      "snap_m": 8,
+      "bounds_min_blender": [
+        -12.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        -2.4492937051703357e-16,
+        12.0,
+        0.003000000026077032
+      ],
+      "size_blender_m": [
+        12.0,
+        12.0,
+        0.1530000059865415
+      ],
+      "vertices": 784,
+      "triangles": 1552,
+      "mesh_parts": 4,
+      "moving_pivots": [
+        "Markings.004"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Jalan/OAR_Road_Curve90_Left.fbx"
+    },
+    {
+      "name": "OAR_Road_Junction_T",
+      "category": "Jalan",
+      "description": "8m approach width; ports +/-12m; junction centre left clear of centre lines",
+      "anchor": "intersection centre (0,0,0)",
+      "snap_m": 8,
+      "bounds_min_blender": [
+        -12.0,
+        -4.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        12.0,
+        12.0,
+        0.003000000026077032
+      ],
+      "size_blender_m": [
+        24.0,
+        16.0,
+        0.1530000059865415
+      ],
+      "vertices": 80,
+      "triangles": 124,
+      "mesh_parts": 9,
+      "moving_pivots": [
+        "Markings.005"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Jalan/OAR_Road_Junction_T.fbx"
+    },
+    {
+      "name": "OAR_Road_Junction_Cross",
+      "category": "Jalan",
+      "description": "8m approach width; ports +/-12m; junction centre left clear of centre lines",
+      "anchor": "intersection centre (0,0,0)",
+      "snap_m": 8,
+      "bounds_min_blender": [
+        -12.0,
+        -12.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        12.0,
+        12.0,
+        0.003000000026077032
+      ],
+      "size_blender_m": [
+        24.0,
+        24.0,
+        0.1530000059865415
+      ],
+      "vertices": 120,
+      "triangles": 188,
+      "mesh_parts": 13,
+      "moving_pivots": [
+        "Markings.006"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Jalan/OAR_Road_Junction_Cross.fbx"
+    },
+    {
+      "name": "OAR_Road_ZebraCross_8m",
+      "category": "Jalan",
+      "description": "8x8m roadway with3m-deep crossing; solid centre line ends before crossing",
+      "anchor": "entry midline (0,0,0)",
+      "snap_m": 8,
+      "bounds_min_blender": [
+        -4.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        4.0,
+        8.0,
+        0.003000000026077032
+      ],
+      "size_blender_m": [
+        8.0,
+        8.0,
+        0.1530000059865415
+      ],
+      "vertices": 96,
+      "triangles": 144,
+      "mesh_parts": 12,
+      "moving_pivots": [
+        "Markings.007"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Jalan/OAR_Road_ZebraCross_8m.fbx"
+    },
+    {
+      "name": "OAR_ZebraCross_Marking_7m",
+      "category": "Marka",
+      "description": "Separate7m-wide crossing paint overlay; no collision",
+      "anchor": "crossing centre (0,0,0)",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        -3.25,
+        -1.5,
+        0.0010000000474974513
+      ],
+      "bounds_max_blender": [
+        3.25,
+        1.5,
+        0.003000000026077032
+      ],
+      "size_blender_m": [
+        6.5,
+        3.0,
+        0.001999999978579581
+      ],
+      "vertices": 56,
+      "triangles": 84,
+      "mesh_parts": 7,
+      "moving_pivots": [
+        "Markings.008"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Marka/OAR_ZebraCross_Marking_7m.fbx"
+    },
+    {
+      "name": "OAR_Sidewalk_Paving_2x2m",
+      "category": "Trotoar",
+      "description": "Trotoar paving bata abu kecokelatan 2x2m; atas +0.15m, UV metrik 200x100mm.",
+      "anchor": "southwest corner, road Z=0, long edge +X",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        2.0,
+        2.0,
+        0.15000000596046448
+      ],
+      "size_blender_m": [
+        2.0,
+        2.0,
+        0.30000001192092896
+      ],
+      "vertices": 8,
+      "triangles": 12,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Trotoar/OAR_Sidewalk_Paving_2x2m.fbx"
+    },
+    {
+      "name": "OAR_Sidewalk_Paving_4x2m",
+      "category": "Trotoar",
+      "description": "Trotoar paving bata abu kecokelatan 4x2m; atas +0.15m, UV metrik 200x100mm.",
+      "anchor": "southwest corner, road Z=0, long edge +X",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        4.0,
+        2.0,
+        0.15000000596046448
+      ],
+      "size_blender_m": [
+        4.0,
+        2.0,
+        0.30000001192092896
+      ],
+      "vertices": 8,
+      "triangles": 12,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Trotoar/OAR_Sidewalk_Paving_4x2m.fbx"
+    },
+    {
+      "name": "OAR_Sidewalk_Paving_8x2m",
+      "category": "Trotoar",
+      "description": "Trotoar paving bata abu kecokelatan 8x2m; atas +0.15m, UV metrik 200x100mm.",
+      "anchor": "southwest corner, road Z=0, long edge +X",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        8.0,
+        2.0,
+        0.15000000596046448
+      ],
+      "size_blender_m": [
+        8.0,
+        2.0,
+        0.30000001192092896
+      ],
+      "vertices": 8,
+      "triangles": 12,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Trotoar/OAR_Sidewalk_Paving_8x2m.fbx"
+    },
+    {
+      "name": "OAR_Sidewalk_Curve90_Inner_Right",
+      "category": "Trotoar",
+      "description": "Paving seperempat lingkaran inner radius 2-4m; cocok tikungan jalan R8m lebar8m, 48 segmen.",
+      "anchor": "centre of curvature at road Z=0",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        4.0,
+        4.0,
+        0.15000000596046448
+      ],
+      "size_blender_m": [
+        4.0,
+        4.0,
+        0.30000001192092896
+      ],
+      "vertices": 196,
+      "triangles": 388,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Trotoar/OAR_Sidewalk_Curve90_Inner_Right.fbx"
+    },
+    {
+      "name": "OAR_Sidewalk_Curve90_Outer_Right",
+      "category": "Trotoar",
+      "description": "Paving seperempat lingkaran outer radius 12-14m; cocok tikungan jalan R8m lebar8m, 48 segmen.",
+      "anchor": "centre of curvature at road Z=0",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        14.0,
+        14.0,
+        0.15000000596046448
+      ],
+      "size_blender_m": [
+        14.0,
+        14.0,
+        0.30000001192092896
+      ],
+      "vertices": 196,
+      "triangles": 388,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Trotoar/OAR_Sidewalk_Curve90_Outer_Right.fbx"
+    },
+    {
+      "name": "OAR_Sidewalk_Curve90_Inner_Left",
+      "category": "Trotoar",
+      "description": "Paving seperempat lingkaran inner radius 2-4m; cocok tikungan jalan R8m lebar8m, 48 segmen.",
+      "anchor": "centre of curvature at road Z=0",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        -4.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        0.0,
+        4.0,
+        0.15000000596046448
+      ],
+      "size_blender_m": [
+        4.0,
+        4.0,
+        0.30000001192092896
+      ],
+      "vertices": 196,
+      "triangles": 388,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Trotoar/OAR_Sidewalk_Curve90_Inner_Left.fbx"
+    },
+    {
+      "name": "OAR_Sidewalk_Curve90_Outer_Left",
+      "category": "Trotoar",
+      "description": "Paving seperempat lingkaran outer radius 12-14m; cocok tikungan jalan R8m lebar8m, 48 segmen.",
+      "anchor": "centre of curvature at road Z=0",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        -14.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        0.0,
+        14.0,
+        0.15000000596046448
+      ],
+      "size_blender_m": [
+        14.0,
+        14.0,
+        0.30000001192092896
+      ],
+      "vertices": 196,
+      "triangles": 388,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Trotoar/OAR_Sidewalk_Curve90_Outer_Left.fbx"
+    },
+    {
+      "name": "OAR_Sidewalk_Ramp_2x2m",
+      "category": "Trotoar",
+      "description": "Ramp paving akses dari jalan Z0 pada Y0 ke trotoar +0.15m pada Y2; permukaan selebar2m, slope7.5%.",
+      "anchor": "southwest corner, road Z=0",
+      "snap_m": 2,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        2.0,
+        2.0,
+        0.15000000596046448
+      ],
+      "size_blender_m": [
+        2.0,
+        2.0,
+        0.30000001192092896
+      ],
+      "vertices": 8,
+      "triangles": 12,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Trotoar/OAR_Sidewalk_Ramp_2x2m.fbx"
+    },
+    {
+      "name": "OAR_Curb_Straight_1m",
+      "category": "Kanstin",
+      "description": "Kanstin beton 1m; lebar0.15m tinggi atas0.18m dari jalan; ujung rata, chamfer hanya sepanjang sisi atas.",
+      "anchor": "road edge start, long edge +X, width +Y",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        1.0,
+        0.15000000596046448,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        1.0,
+        0.15000000596046448,
+        0.33000001311302185
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Straight_1m.fbx"
+    },
+    {
+      "name": "OAR_Curb_Straight_2m",
+      "category": "Kanstin",
+      "description": "Kanstin beton 2m; lebar0.15m tinggi atas0.18m dari jalan; ujung rata, chamfer hanya sepanjang sisi atas.",
+      "anchor": "road edge start, long edge +X, width +Y",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        2.0,
+        0.15000000596046448,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        2.0,
+        0.15000000596046448,
+        0.33000001311302185
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Straight_2m.fbx"
+    },
+    {
+      "name": "OAR_Curb_Straight_4m",
+      "category": "Kanstin",
+      "description": "Kanstin beton 4m; lebar0.15m tinggi atas0.18m dari jalan; ujung rata, chamfer hanya sepanjang sisi atas.",
+      "anchor": "road edge start, long edge +X, width +Y",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        4.0,
+        0.15000000596046448,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        4.0,
+        0.15000000596046448,
+        0.33000001311302185
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Straight_4m.fbx"
+    },
+    {
+      "name": "OAR_Curb_Straight_8m",
+      "category": "Kanstin",
+      "description": "Kanstin beton 8m; lebar0.15m tinggi atas0.18m dari jalan; ujung rata, chamfer hanya sepanjang sisi atas.",
+      "anchor": "road edge start, long edge +X, width +Y",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        8.0,
+        0.15000000596046448,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        8.0,
+        0.15000000596046448,
+        0.33000001311302185
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Straight_8m.fbx"
+    },
+    {
+      "name": "OAR_Curb_Curve90_Inner_Right",
+      "category": "Kanstin",
+      "description": "Kanstin tikungan90 inner radius3.85-4m; 48 segmen cocok tikungan jalan R8m lebar8m.",
+      "anchor": "centre of curvature at road Z=0",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        4.0,
+        4.0,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        4.0,
+        4.0,
+        0.33000001311302185
+      ],
+      "vertices": 294,
+      "triangles": 584,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Curve90_Inner_Right.fbx"
+    },
+    {
+      "name": "OAR_Curb_Curve90_Outer_Right",
+      "category": "Kanstin",
+      "description": "Kanstin tikungan90 outer radius12-12.15m; 48 segmen cocok tikungan jalan R8m lebar8m.",
+      "anchor": "centre of curvature at road Z=0",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        12.149999618530273,
+        12.149999618530273,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        12.149999618530273,
+        12.149999618530273,
+        0.33000001311302185
+      ],
+      "vertices": 294,
+      "triangles": 584,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Curve90_Outer_Right.fbx"
+    },
+    {
+      "name": "OAR_Curb_Curve90_Inner_Left",
+      "category": "Kanstin",
+      "description": "Kanstin tikungan90 inner radius3.85-4m; 48 segmen cocok tikungan jalan R8m lebar8m.",
+      "anchor": "centre of curvature at road Z=0",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        -4.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        0.0,
+        4.0,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        4.0,
+        4.0,
+        0.33000001311302185
+      ],
+      "vertices": 294,
+      "triangles": 584,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Curve90_Inner_Left.fbx"
+    },
+    {
+      "name": "OAR_Curb_Curve90_Outer_Left",
+      "category": "Kanstin",
+      "description": "Kanstin tikungan90 outer radius12-12.15m; 48 segmen cocok tikungan jalan R8m lebar8m.",
+      "anchor": "centre of curvature at road Z=0",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        -12.149999618530273,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        0.0,
+        12.149999618530273,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        12.149999618530273,
+        12.149999618530273,
+        0.33000001311302185
+      ],
+      "vertices": 294,
+      "triangles": 584,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Curve90_Outer_Left.fbx"
+    },
+    {
+      "name": "OAR_Curb_Corner90_2m",
+      "category": "Kanstin",
+      "description": "Kanstin L siku2x2m untuk sudut trotoar/persimpangan; lebar0.15m dan atas0.18m, satu solid tertutup.",
+      "anchor": "outer corner at road Z=0, arms +X and +Y",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        2.0,
+        2.0,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        2.0,
+        2.0,
+        0.33000001311302185
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Corner90_2m.fbx"
+    },
+    {
+      "name": "OAR_Curb_Transition_Drop_2m",
+      "category": "Kanstin",
+      "description": "Kanstin transisi akses2m, tinggi atas 0.18m ke 0m; ujung pertama pada X0 dan terakhir X2.",
+      "anchor": "road edge start, length +X, width +Y",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        2.0,
+        0.15000000596046448,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        2.0,
+        0.15000000596046448,
+        0.33000001311302185
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Transition_Drop_2m.fbx"
+    },
+    {
+      "name": "OAR_Curb_Transition_Rise_2m",
+      "category": "Kanstin",
+      "description": "Kanstin transisi akses2m, tinggi atas 0m ke 0.18m; ujung pertama pada X0 dan terakhir X2.",
+      "anchor": "road edge start, length +X, width +Y",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        -0.15000000596046448
+      ],
+      "bounds_max_blender": [
+        2.0,
+        0.15000000596046448,
+        0.18000000715255737
+      ],
+      "size_blender_m": [
+        2.0,
+        0.15000000596046448,
+        0.33000001311302185
+      ],
+      "vertices": 12,
+      "triangles": 20,
+      "mesh_parts": 1,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Kanstin/OAR_Curb_Transition_Rise_2m.fbx"
+    },
+    {
+      "name": "OAR_Wall_Panel_Open_1m",
+      "category": "Tembok",
+      "description": "Panel tembok putih gading 1 m, tinggi 1,20 m, plint solid dan celah vertikal. Origin ujung kiri; pilar universal menutup sambungan.",
+      "anchor": "left endpoint at X=0; panel follows +X; floor Z=0",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        -0.11999999731779099,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.0,
+        0.11999999731779099,
+        1.2000000476837158
+      ],
+      "size_blender_m": [
+        1.0,
+        0.23999999463558197,
+        1.2000000476837158
+      ],
+      "vertices": 320,
+      "triangles": 600,
+      "mesh_parts": 10,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Tembok/OAR_Wall_Panel_Open_1m.fbx"
+    },
+    {
+      "name": "OAR_Wall_Panel_Open_2m",
+      "category": "Tembok",
+      "description": "Panel tembok putih gading 2 m, tinggi 1,20 m, plint solid dan celah vertikal. Origin ujung kiri; pilar universal menutup sambungan.",
+      "anchor": "left endpoint at X=0; panel follows +X; floor Z=0",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        -0.11999999731779099,
+        0.0
+      ],
+      "bounds_max_blender": [
+        2.0,
+        0.11999999731779099,
+        1.2000000476837158
+      ],
+      "size_blender_m": [
+        2.0,
+        0.23999999463558197,
+        1.2000000476837158
+      ],
+      "vertices": 544,
+      "triangles": 1032,
+      "mesh_parts": 14,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Tembok/OAR_Wall_Panel_Open_2m.fbx"
+    },
+    {
+      "name": "OAR_Wall_Panel_Open_4m",
+      "category": "Tembok",
+      "description": "Panel tembok putih gading 4 m, tinggi 1,20 m, plint solid dan celah vertikal. Origin ujung kiri; pilar universal menutup sambungan.",
+      "anchor": "left endpoint at X=0; panel follows +X; floor Z=0",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        -0.11999999731779099,
+        0.0
+      ],
+      "bounds_max_blender": [
+        4.0,
+        0.11999999731779099,
+        1.2000000476837158
+      ],
+      "size_blender_m": [
+        4.0,
+        0.23999999463558197,
+        1.2000000476837158
+      ],
+      "vertices": 992,
+      "triangles": 1896,
+      "mesh_parts": 22,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Tembok/OAR_Wall_Panel_Open_4m.fbx"
+    },
+    {
+      "name": "OAR_Wall_Panel_Solid_2m",
+      "category": "Tembok",
+      "description": "Panel tembok solid rendah 2 m, tinggi 1,20 m; profil kaki dan kepala cocok dengan panel bercelah.",
+      "anchor": "left endpoint at X=0; panel follows +X; floor Z=0",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        0.0,
+        -0.11999999731779099,
+        0.0
+      ],
+      "bounds_max_blender": [
+        2.0,
+        0.11999999731779099,
+        1.2000000476837158
+      ],
+      "size_blender_m": [
+        2.0,
+        0.23999999463558197,
+        1.2000000476837158
+      ],
+      "vertices": 24,
+      "triangles": 36,
+      "mesh_parts": 3,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Tembok/OAR_Wall_Panel_Solid_2m.fbx"
+    },
+    {
+      "name": "OAR_Wall_Pier_Universal_1p5m",
+      "category": "Tembok",
+      "description": "Pilar persegi tinggi 1,50 m, kepala bertingkat dan kubah kecil. Dipakai untuk sambungan lurus, sudut 90 derajat, dan ujung pagar; posisi di endpoint panel.",
+      "anchor": "floor centre; place at panel endpoints",
+      "snap_m": 1,
+      "bounds_min_blender": [
+        -0.20000000298023224,
+        -0.20000000298023224,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.20000000298023224,
+        0.20000000298023224,
+        1.5
+      ],
+      "size_blender_m": [
+        0.4000000059604645,
+        0.4000000059604645,
+        1.5
+      ],
+      "vertices": 729,
+      "triangles": 1430,
+      "mesh_parts": 7,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Tembok/OAR_Wall_Pier_Universal_1p5m.fbx"
+    },
+    {
+      "name": "OAR_Rambu_Dilarang_Berhenti",
+      "category": "Rambu",
+      "description": "Rambu Indonesia dilarang berhenti: lingkaran putih bertepi merah, S hitam dicoret merah. Diameter 0,60 m; tinggi total 2,50 m; depan menghadap -Y.",
+      "anchor": "base plate centre at floor; front -Y",
+      "snap_m": 0,
+      "bounds_min_blender": [
+        -0.30000001192092896,
+        -0.044999998062849045,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.30000001192092896,
+        0.11499999463558197,
+        2.5
+      ],
+      "size_blender_m": [
+        0.6000000238418579,
+        0.15999999269843102,
+        2.5
+      ],
+      "vertices": 2241,
+      "triangles": 4418,
+      "mesh_parts": 16,
+      "moving_pivots": [],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Jalan/Models/Rambu/OAR_Rambu_Dilarang_Berhenti.fbx"
+    }
+  ],
+  "geometry_issues": [],
+  "connections": {
+    "pass": true,
+    "ports_checked": 19,
+    "ports": [
+      {
+        "asset": "OAR_Road_Straight_Dashed_8m",
+        "port_blender": [
+          0,
+          0,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Straight_Dashed_8m",
+        "port_blender": [
+          0,
+          8,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Straight_Solid_8m",
+        "port_blender": [
+          0,
+          0,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Straight_Solid_8m",
+        "port_blender": [
+          0,
+          8,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Straight_Plain_8m",
+        "port_blender": [
+          0,
+          0,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Straight_Plain_8m",
+        "port_blender": [
+          0,
+          8,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Curve90_Right",
+        "port_blender": [
+          8,
+          0,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Curve90_Right",
+        "port_blender": [
+          0,
+          8,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Curve90_Left",
+        "port_blender": [
+          -8,
+          0,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Curve90_Left",
+        "port_blender": [
+          0,
+          8,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Junction_T",
+        "port_blender": [
+          -12,
+          0,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Junction_T",
+        "port_blender": [
+          12,
+          0,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Junction_T",
+        "port_blender": [
+          0,
+          12,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Junction_Cross",
+        "port_blender": [
+          -12,
+          0,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Junction_Cross",
+        "port_blender": [
+          12,
+          0,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Junction_Cross",
+        "port_blender": [
+          0,
+          -12,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_Junction_Cross",
+        "port_blender": [
+          0,
+          12,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_ZebraCross_8m",
+        "port_blender": [
+          0,
+          0,
+          0
+        ],
+        "width_m": 8
+      },
+      {
+        "asset": "OAR_Road_ZebraCross_8m",
+        "port_blender": [
+          0,
+          8,
+          0
+        ],
+        "width_m": 8
+      }
+    ],
+    "errors": []
+  },
+  "materials": [
+    {
+      "name": "OAR_Plaster",
+      "key": "plaster",
+      "srgb": [
+        0.85,
+        0.84,
+        0.81
+      ],
+      "roughness": 0.78,
+      "metallic": 0
+    },
+    {
+      "name": "OAR_Concrete",
+      "key": "concrete",
+      "srgb": [
+        0.5,
+        0.49,
+        0.46
+      ],
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    {
+      "name": "OAR_Chrome",
+      "key": "chrome",
+      "srgb": [
+        0.63,
+        0.68,
+        0.7
+      ],
+      "roughness": 0.22,
+      "metallic": 0.9
+    },
+    {
+      "name": "OAR_Steel",
+      "key": "steel",
+      "srgb": [
+        0.47,
+        0.52,
+        0.54
+      ],
+      "roughness": 0.38,
+      "metallic": 0.8
+    },
+    {
+      "name": "OAR_Black",
+      "key": "black",
+      "srgb": [
+        0.025,
+        0.033,
+        0.041
+      ],
+      "roughness": 0.6,
+      "metallic": 0
+    },
+    {
+      "name": "OAR_White",
+      "key": "white",
+      "srgb": [
+        0.96,
+        0.96,
+        0.93
+      ],
+      "roughness": 0.55,
+      "metallic": 0
+    },
+    {
+      "name": "OAR_Red",
+      "key": "red",
+      "srgb": [
+        0.63,
+        0.065,
+        0.047
+      ],
+      "roughness": 0.38,
+      "metallic": 0.15
+    },
+    {
+      "name": "OAR_Asphalt",
+      "key": "asphalt",
+      "srgb": [
+        0.2,
+        0.205,
+        0.21
+      ],
+      "roughness": 0.95,
+      "metallic": 0
+    },
+    {
+      "name": "OAR_Paver",
+      "key": "paver",
+      "srgb": [
+        0.43,
+        0.4,
+        0.35
+      ],
+      "roughness": 0.94,
+      "metallic": 0
+    },
+    {
+      "name": "OAR_Mortar",
+      "key": "mortar",
+      "srgb": [
+        0.29,
+        0.28,
+        0.25
+      ],
+      "roughness": 0.96,
+      "metallic": 0
+    }
+  ],
+  "examples": [
+    {
+      "name": "Demo_Road_Street",
+      "placements": [
+        {
+          "asset": "OAR_Road_Straight_Dashed_8m",
+          "position_blender": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_8x2m",
+          "position_blender": [
+            -4.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_8x2m",
+          "position_blender": [
+            4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_8m",
+          "position_blender": [
+            -4.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_8m",
+          "position_blender": [
+            4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Road_ZebraCross_8m",
+          "position_blender": [
+            0.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_8x2m",
+          "position_blender": [
+            -4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_8x2m",
+          "position_blender": [
+            4.0,
+            16.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_8m",
+          "position_blender": [
+            -4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_8m",
+          "position_blender": [
+            4.0,
+            16.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Road_Straight_Solid_8m",
+          "position_blender": [
+            0.0,
+            16.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_8x2m",
+          "position_blender": [
+            -4.0,
+            16.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_8x2m",
+          "position_blender": [
+            4.0,
+            24.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_8m",
+          "position_blender": [
+            -4.0,
+            16.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_8m",
+          "position_blender": [
+            4.0,
+            24.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Wall_Panel_Open_4m",
+          "position_blender": [
+            6.150000095367432,
+            0.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Wall_Panel_Open_4m",
+          "position_blender": [
+            6.150000095367432,
+            4.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Wall_Panel_Open_4m",
+          "position_blender": [
+            6.150000095367432,
+            8.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Wall_Panel_Open_4m",
+          "position_blender": [
+            6.150000095367432,
+            12.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Wall_Panel_Open_4m",
+          "position_blender": [
+            6.150000095367432,
+            16.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Wall_Panel_Open_4m",
+          "position_blender": [
+            6.150000095367432,
+            20.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Wall_Pier_Universal_1p5m",
+          "position_blender": [
+            6.150000095367432,
+            0.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Wall_Pier_Universal_1p5m",
+          "position_blender": [
+            6.150000095367432,
+            4.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Wall_Pier_Universal_1p5m",
+          "position_blender": [
+            6.150000095367432,
+            8.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Wall_Pier_Universal_1p5m",
+          "position_blender": [
+            6.150000095367432,
+            12.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Wall_Pier_Universal_1p5m",
+          "position_blender": [
+            6.150000095367432,
+            16.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Wall_Pier_Universal_1p5m",
+          "position_blender": [
+            6.150000095367432,
+            20.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Wall_Pier_Universal_1p5m",
+          "position_blender": [
+            6.150000095367432,
+            24.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Rambu_Dilarang_Berhenti",
+          "position_blender": [
+            5.300000190734863,
+            4.0,
+            0.15000000596046448
+          ],
+          "rotation_z": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Demo_Road_Network",
+      "placements": [
+        {
+          "asset": "OAR_Road_Junction_Cross",
+          "position_blender": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Road_Straight_Solid_8m",
+          "position_blender": [
+            0.0,
+            12.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Road_Straight_Dashed_8m",
+          "position_blender": [
+            0.0,
+            20.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Road_Straight_Dashed_8m",
+          "position_blender": [
+            0.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Road_ZebraCross_8m",
+          "position_blender": [
+            0.0,
+            -20.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Road_Straight_Solid_8m",
+          "position_blender": [
+            12.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Road_Straight_Solid_8m",
+          "position_blender": [
+            20.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Road_Straight_Dashed_8m",
+          "position_blender": [
+            -20.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Road_Curve90_Right",
+          "position_blender": [
+            28.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Curve90_Inner_Right",
+          "position_blender": [
+            28.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Curve90_Outer_Right",
+          "position_blender": [
+            28.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Curve90_Inner_Right",
+          "position_blender": [
+            28.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Curve90_Outer_Right",
+          "position_blender": [
+            28.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Road_Straight_Solid_8m",
+          "position_blender": [
+            36.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Road_Junction_T",
+          "position_blender": [
+            36.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            32.0,
+            -18.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            26.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -14.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            40.0,
+            -18.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            28.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            6.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            44.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            44.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            28.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -12.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            8.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            40.0,
+            -16.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            34.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -8.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            12.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            48.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -10.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            40.0,
+            -14.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -6.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            20.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            14.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            24.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -26.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            48.0,
+            -26.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            40.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            40.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            40.0,
+            -12.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -20.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            26.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -20.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -18.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            26.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -14.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            22.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            16.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            42.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            48.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            46.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            32.0,
+            -16.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -12.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            40.0,
+            -10.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -18.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -20.0,
+            -2.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -10.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            30.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            30.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            24.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -10.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            16.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -22.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -6.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            32.0,
+            -14.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            0.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            40.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -8.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -16.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -20.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            36.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            18.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            18.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            22.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            26.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            2.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            22.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -20.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            32.0,
+            -12.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -20.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -20.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -14.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            24.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -16.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -16.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            2.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            24.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            26.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            40.0,
+            -22.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            32.0,
+            -10.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -14.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            26.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            12.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -12.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            12.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            28.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -12.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            14.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            14.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            24.0,
+            -30.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            18.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            40.0,
+            -20.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -2.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -10.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            16.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            14.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            20.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            32.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            24.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            20.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            42.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -2.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -26.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -18.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            16.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            8.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            0.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            48.0,
+            -30.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            48.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            46.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            6.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            32.0,
+            -22.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            24.0,
+            -26.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            24.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            22.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -18.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            10.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            10.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            32.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            18.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            12.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            32.0,
+            -20.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            24.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            -16.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            -22.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            38.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 3.1415927410125732
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            4.0,
+            20.0,
+            0.0
+          ],
+          "rotation_z": -1.5707963705062866
+        },
+        {
+          "asset": "OAR_Curb_Straight_2m",
+          "position_blender": [
+            -4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -22.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -22.0,
+            -4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -22.0,
+            -2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -22.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -22.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -22.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -20.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -20.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -18.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -18.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -16.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -16.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -14.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -14.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -12.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -12.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -10.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -10.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -8.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -8.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -30.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -26.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -22.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -20.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -18.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -16.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -14.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -12.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            12.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            14.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            16.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            18.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            20.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            22.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            26.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -6.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -4.0,
+            -30.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -4.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -2.0,
+            -30.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            -2.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            0.0,
+            -30.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            0.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            2.0,
+            -30.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            2.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -30.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -26.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -22.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -20.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -18.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -16.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -14.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -12.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            12.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            14.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            16.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            18.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            20.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            22.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            26.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            4.0,
+            28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            6.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            6.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            8.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            8.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            10.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            10.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            12.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            12.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            14.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            14.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            16.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            16.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            18.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            18.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            20.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            20.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            22.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            22.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            22.0,
+            -30.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            22.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            22.0,
+            -26.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            22.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            22.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            22.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            24.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            24.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            24.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            24.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            26.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            26.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            26.0,
+            -6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            26.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            28.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            28.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            30.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            30.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            30.0,
+            -22.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            30.0,
+            -20.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            30.0,
+            -18.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            30.0,
+            -16.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            30.0,
+            -14.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            30.0,
+            -12.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            30.0,
+            -10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            32.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            34.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            36.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            38.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            40.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            40.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            40.0,
+            -22.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            40.0,
+            -20.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            40.0,
+            -18.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            40.0,
+            -16.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            40.0,
+            -14.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            40.0,
+            -12.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            40.0,
+            -10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            42.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            42.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            44.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            44.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            46.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            46.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            48.0,
+            -34.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            48.0,
+            -32.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            48.0,
+            -30.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            48.0,
+            -28.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            48.0,
+            -26.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "OAR_Sidewalk_Paving_2x2m",
+          "position_blender": [
+            48.0,
+            -24.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        }
+      ]
+    }
+  ]
+}

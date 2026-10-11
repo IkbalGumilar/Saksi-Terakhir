@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using SaksiTerakhir.Inventory;
 using UnityEngine;
 
 namespace SaksiTerakhir.Story
@@ -25,14 +27,50 @@ namespace SaksiTerakhir.Story
     {
         [SerializeField] private string id = string.Empty;
         [SerializeField] private DialogueLine[] lines = Array.Empty<DialogueLine>();
+        [SerializeField] private ChapterOneStoryCondition[] conditions = Array.Empty<ChapterOneStoryCondition>();
+        [SerializeField] private bool phoneConversation;
 
         public string Id => id;
         public IReadOnlyList<DialogueLine> Lines => lines;
+        public IReadOnlyList<ChapterOneStoryCondition> Conditions => conditions;
+        public bool IsPhoneConversation => phoneConversation
+            || string.Equals(id, "chapter.boss_call", StringComparison.Ordinal);
 
-        public void Configure(string sequenceId, DialogueLine[] dialogueLines)
+        // Identifies the chosen logical branch without using transient Unity
+        // instance IDs. Text edits and AND-requirement reordering keep this key.
+        public string SelectionKey
+        {
+            get
+            {
+                var parts = new List<string>();
+                if (conditions != null)
+                {
+                    foreach (ChapterOneStoryCondition requirement in conditions)
+                    {
+                        if (requirement == null) return string.Empty;
+                        bool inventoryCondition = requirement.Condition == ChapterOneConditionId.InventoryContainsEntry;
+                        string entryId = inventoryCondition ? requirement.InventoryEntryId : string.Empty;
+                        parts.Add(string.Format(CultureInfo.InvariantCulture, "{0}:{1}:{2}:{3}:{4}",
+                            (int)requirement.Condition, requirement.ExpectedValue ? 1 : 0,
+                            inventoryCondition ? (int)requirement.InventoryEntryType : 0, entryId.Length, entryId));
+                    }
+                }
+                parts.Sort(StringComparer.Ordinal);
+                return id.Length.ToString(CultureInfo.InvariantCulture) + ":" + id + "|"
+                    + string.Join("|", parts);
+            }
+        }
+
+        public bool MeetsConditions(ChapterOneProgress progress, InventoryState inventory = null)
+            => ChapterOneConditionEvaluator.AllMet(progress, conditions, inventory);
+
+        public void Configure(string sequenceId, DialogueLine[] dialogueLines,
+            ChapterOneStoryCondition[] requirements = null, bool isPhoneConversation = false)
         {
             id = sequenceId;
             lines = dialogueLines ?? Array.Empty<DialogueLine>();
+            conditions = requirements ?? Array.Empty<ChapterOneStoryCondition>();
+            phoneConversation = isPhoneConversation;
         }
 
         public bool Validate(out string error)
@@ -49,6 +87,17 @@ namespace SaksiTerakhir.Story
                 {
                     error = $"Dialogue {id} has an incomplete line.";
                     return false;
+                }
+            }
+            if (conditions != null)
+            {
+                foreach (ChapterOneStoryCondition condition in conditions)
+                {
+                    if (condition == null || !condition.Validate(out _))
+                    {
+                        error = $"Dialogue {id} has an invalid story condition.";
+                        return false;
+                    }
                 }
             }
             error = string.Empty;

@@ -17,3 +17,5 @@ MonoBehaviour:
   titleKey: quest.main.boss_final
   objectiveKeys:
   - quest.main.boss_final.listen
+  conditions: []
+  progressSource: 0

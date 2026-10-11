@@ -15,16 +15,13 @@ MonoBehaviour:
   id: chapter.raka_first
   lines:
   - speakerId: PLAYER
-    text: Raka, Pak Arya meminta kita berkumpul di ruangannya.
+    text: Pak Bos cari kamu. Katanya sudah telepon juga.
   - speakerId: NPC-003
-    text: Sekarang? Aku sedang menutup laporan pagi.
+    text: Oh, HP saya ketinggalan di kantin. Pantas dari tadi tenang sekali.
   - speakerId: PLAYER
-    text: Ada arsip tempat yang belum bisa dikonfirmasi. Ia ingin kita memeriksanya.
+    text: Tenangnya pindah ke saya. Sekarang disuruh cari kalian berdua.
   - speakerId: NPC-003
-    text: Kalau begitu laporan ini bisa menunggu beberapa menit.
+    text: Baik, pencarian saya selesai. Saya langsung ke ruangannya.
   - speakerId: PLAYER
-    text: Aku masih harus mencari Sinta.
-  - speakerId: NPC-003
-    text: Pergilah. Aku jalan dulu ke lantai empat dan menunggu di sana.
-  - speakerId: PLAYER
-    text: Hati-hati di tangga. Kita bertemu di ruang bos.
+    text: Saya lanjut cari B. Kalau sudah ketemu, kami menyusul.
+  conditions: []

@@ -15,10 +15,8 @@ MonoBehaviour:
   id: chapter.raka_last_intro
   lines:
   - speakerId: PLAYER
-    text: Raka, Pak Arya menunggu kita. Sinta sudah lebih dulu ke ruangannya.
+    text: Pak Bos cari kita. B sudah ke ruangannya.
   - speakerId: NPC-003
-    text: Baik. Beri aku sebentar untuk menutup laporan ini.
-  - speakerId: PLAYER
-    text: Sudah siap?
-  - speakerId: NPC-003
-    text: Sudah. Kita jalan pelan saja; ada hal yang ingin kuceritakan.
+    text: HP saya sepertinya tertinggal di meja kantin. Baik, kita jalan dulu. Jangan
+      sampai B disuruh mencari kita lagi.
+  conditions: []

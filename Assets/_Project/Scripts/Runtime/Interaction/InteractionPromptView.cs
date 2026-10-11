@@ -1,3 +1,4 @@
+using SaksiTerakhir.Inventory;
 using SaksiTerakhir.Localization;
 using SaksiTerakhir.Npc;
 using TMPro;
@@ -19,7 +20,6 @@ namespace SaksiTerakhir.Interaction
         [SerializeField] private TMP_Text npcNameLabel;
         [SerializeField] private TMP_Text npcLineLabel;
 
-        private Interactable previousTarget;
         private bool storyDialogueActive;
 
         public bool StoryDialogueActive => storyDialogueActive;
@@ -81,19 +81,14 @@ namespace SaksiTerakhir.Interaction
         {
             if (interactor != null) interactor.TargetChanged -= OnTargetChanged;
             LocalizationManager.LanguageChanged -= Refresh;
-            if (previousTarget is NpcInteractable npc) npc.CloseDialogue();
-            previousTarget = null;
             if (npcDialogueRoot != null) npcDialogueRoot.SetActive(false);
             if (promptRoot != null) promptRoot.SetActive(false);
         }
 
         private void OnTargetChanged(Interactable target)
         {
-            if (target != previousTarget)
-            {
-                if (previousTarget is NpcInteractable npc) npc.CloseDialogue();
-                previousTarget = target;
-            }
+            // Target loss also happens during the owned conversation retreat.
+            // The interactor and NPC own dialogue cancellation; this view only renders it.
             promptRoot.SetActive(target != null && !storyDialogueActive);
             Refresh();
         }
@@ -121,9 +116,7 @@ namespace SaksiTerakhir.Interaction
             string prompt = LocalizationManager.Get(target.PromptKey);
             if (target is NpcInteractable npc)
             {
-                actionLabel.text = prompt.Contains("{0}")
-                    ? prompt.Replace("{0}", npc.DisplayName)
-                    : $"{prompt} {npc.DisplayName}";
+                actionLabel.text = FormatNamedPrompt(prompt, npc.DisplayName);
 
                 bool dialogueActive = npc.DialogueActive;
                 if (npcNameLabel != null) npcNameLabel.text = npc.DisplayName;
@@ -132,8 +125,18 @@ namespace SaksiTerakhir.Interaction
                 return;
             }
 
-            actionLabel.text = prompt;
+            ItemDefinition definition = target is ItemPickupInteractable pickup ? pickup.Definition
+                : target is ItemUseInteractable itemTarget ? itemTarget.RequiredItem : null;
+            if (definition != null)
+            {
+                string itemName = LocalizationManager.Get(definition.NameKey);
+                actionLabel.text = FormatNamedPrompt(prompt, itemName);
+            }
+            else actionLabel.text = prompt;
             if (npcDialogueRoot != null) npcDialogueRoot.SetActive(false);
         }
+
+        private static string FormatNamedPrompt(string prompt, string name) => prompt.Contains("{0}")
+            ? prompt.Replace("{0}", name) : $"{prompt} {name}";
     }
 }

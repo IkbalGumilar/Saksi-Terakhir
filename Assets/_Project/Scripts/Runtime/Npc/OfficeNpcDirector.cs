@@ -10,6 +10,7 @@ namespace SaksiTerakhir.Npc
     {
         [SerializeField] private OfficeNpcAgent[] actors = Array.Empty<OfficeNpcAgent>();
         [SerializeField] private Transform buildingRoot;
+        [SerializeField] private bool bindProfileWaypointsOnAwake = true;
         private DoorRecord[] doors = Array.Empty<DoorRecord>();
         private readonly RaycastHit[] sightHits = new RaycastHit[24];
         private float nextSocialCheck;
@@ -34,6 +35,23 @@ namespace SaksiTerakhir.Npc
         public OfficeNpcAgent[] Actors => actors;
 
         public void SetBuildingRoot(Transform root) => buildingRoot = root;
+        public void SetAutomaticWaypointBinding(bool enabled) => bindProfileWaypointsOnAwake = enabled;
+
+        public void RegisterActor(OfficeNpcAgent actor)
+        {
+            if (actor == null || Array.IndexOf(actors, actor) >= 0) return;
+            Array.Resize(ref actors, actors.Length + 1); actors[actors.Length - 1] = actor; actor.SetDirector(this);
+        }
+
+        public void UnregisterActor(OfficeNpcAgent actor)
+        {
+            int index = Array.IndexOf(actors, actor);
+            if (index < 0) return;
+            var remaining = new OfficeNpcAgent[actors.Length - 1];
+            Array.Copy(actors, 0, remaining, 0, index);
+            Array.Copy(actors, index + 1, remaining, index, actors.Length - index - 1);
+            actors = remaining;
+        }
 
         public void Configure(OfficeNpcAgent[] officeActors)
         {
@@ -45,13 +63,17 @@ namespace SaksiTerakhir.Npc
         private void Awake()
         {
             Configure(actors);
-            BindProfileWaypoints();
+            if (bindProfileWaypointsOnAwake && actors.Length > 0) BindProfileWaypoints();
+            RefreshDoors();
+        }
+
+        public void RefreshDoors()
+        {
             DoorInteractable[] sceneDoors = FindObjectsByType<DoorInteractable>(FindObjectsSortMode.None);
             doors = new DoorRecord[sceneDoors.Length];
             for (int i = 0; i < sceneDoors.Length; i++)
             {
-                Collider doorCollider = sceneDoors[i].GetComponent<Collider>();
-                Bounds bounds = doorCollider != null ? doorCollider.bounds : new Bounds(sceneDoors[i].transform.position, Vector3.zero);
+                Bounds bounds = sceneDoors[i].ClosedDoorwayBounds;
                 // Keep the closed doorway bounds: opening the existing door disables its collider.
                 doors[i] = new DoorRecord { Door = sceneDoors[i], ClosedBounds = bounds };
             }
@@ -156,8 +178,9 @@ namespace SaksiTerakhir.Npc
                     if (Mathf.Abs(separation.y) > 0.45f || separation.sqrMagnitude > 2.6f * 2.6f
                         || separation.sqrMagnitude < 0.7f * 0.7f || !HasClearSight(first, second)) continue;
                     float duration = UnityEngine.Random.Range(4.5f, 7f);
-                    first.BeginConversation(second, duration, PickAmbientLine(first));
-                    second.BeginConversation(first, duration, PickAmbientLine(second));
+                    NpcContextDialogueLibrary.GetAmbientExchange(first, second, out string firstLine, out string secondLine);
+                    first.BeginConversation(second, duration, firstLine);
+                    second.BeginConversation(first, duration, secondLine);
                     socialCursor = (index + 1) % actors.Length;
                     return;
                 }
@@ -192,34 +215,49 @@ namespace SaksiTerakhir.Npc
         }
 
         public bool TryOpenDoorAhead(OfficeNpcAgent actor, Vector3 nextPathCorner, out float waitUntil)
+            => TryOpenDoorAhead(actor != null ? actor.transform : null, nextPathCorner, out waitUntil);
+
+        public bool TryOpenDoorAhead(Transform actor, Vector3 nextPathCorner, out float waitUntil)
         {
             waitUntil = 0f;
-            Vector3 direction = nextPathCorner - actor.transform.position;
+            if (actor == null) return false;
+            Vector3 direction = nextPathCorner - actor.position;
             direction.y = 0f;
             float segmentLength = Mathf.Min(direction.magnitude, 1.8f);
             if (segmentLength < 0.02f) return false;
-            Ray ray = new Ray(actor.transform.position + Vector3.up * 0.95f, direction.normalized);
+            Ray ray = new Ray(actor.position + Vector3.up * 0.95f, direction.normalized);
             DoorRecord closest = null;
             float nearestDistance = segmentLength;
             for (int i = 0; i < doors.Length; i++)
             {
                 DoorRecord record = doors[i];
                 if (record.Door == null || !record.Door.isActiveAndEnabled || record.ClosedBounds.size.sqrMagnitude < 0.01f) continue;
+                // The collider remains disabled during the closing swing. Do not
+                // restart an opening while an NPC is already clearing that doorway.
+                if (record.Door.IsClosing) continue;
                 Bounds bounds = record.ClosedBounds;
                 if (ray.origin.y < bounds.min.y || ray.origin.y > bounds.max.y) continue;
                 bounds.Expand(new Vector3(0.25f, 0f, 0.25f));
                 if (!bounds.IntersectRay(ray, out float distance) || distance > nearestDistance) continue;
-                if (record.Door.IsOpen && Time.time >= record.ReadyAt) continue;
+                if (record.Door.IsOpen)
+                {
+                    // Story scripts may start the swing without this director. The
+                    // remaining animation, not only our cached deadline, controls passage.
+                    if (record.Door.OpeningTimeRemaining > 0f)
+                        record.ReadyAt = Mathf.Max(record.ReadyAt,
+                            Time.time + record.Door.OpeningTimeRemaining + 0.05f);
+                    if (Time.time >= record.ReadyAt) continue;
+                }
                 nearestDistance = distance;
                 closest = record;
             }
             if (closest == null) return false;
             if (!closest.Door.IsOpen)
             {
-                if (!closest.Door.CanInteract(actor.transform)) return false;
-                closest.Door.Interact(actor.transform);
+                if (!closest.Door.CanInteract(actor)) return false;
+                closest.Door.Interact(actor);
                 if (!closest.Door.IsOpen) return false;
-                closest.ReadyAt = Time.time + 0.65f;
+                closest.ReadyAt = Time.time + Mathf.Max(0.65f, closest.Door.OpeningTimeRemaining + 0.05f);
             }
             waitUntil = closest.ReadyAt;
             return waitUntil > Time.time;
@@ -239,17 +277,6 @@ namespace SaksiTerakhir.Npc
                 return false;
             }
             return true;
-        }
-
-        private static string PickAmbientLine(OfficeNpcAgent actor)
-        {
-            string[] lines = actor.Profile != null ? actor.Profile.AmbientLines : null;
-            if (lines != null && lines.Length > 0)
-            {
-                string selected = lines[UnityEngine.Random.Range(0, lines.Length)];
-                if (!string.IsNullOrWhiteSpace(selected)) return selected;
-            }
-            return "Baik, saya lanjut bekerja.";
         }
     }
 }

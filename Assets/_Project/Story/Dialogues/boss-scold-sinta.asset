@@ -15,6 +15,6 @@ MonoBehaviour:
   id: chapter.boss_scold_sinta
   lines:
   - speakerId: NPC-006
-    text: Sinta masih belum datang. Temukan dia sebelum kita mulai.
-  - speakerId: PLAYER
-    text: Baik. Saya akan mengajaknya ke sini.
+    text: Iya, cari dua-duanya. Berkasnya kita bahas setelah lengkap, supaya nanti
+      kalian berangkat dengan informasi yang sama.
+  conditions: []

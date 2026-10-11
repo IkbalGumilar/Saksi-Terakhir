@@ -14,31 +14,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.raka_last
   lines:
+  - speakerId: NPC-003
+    text: Kamu pernah kepikiran suatu hari kerja di luar sini?
   - speakerId: PLAYER
-    text: Raka, kita harus kembali ke Pak Arya. Sinta sudah menunggu.
+    text: Barusan dipanggil bos, sudah diajak berhenti. Kita belum tahu masalahnya
+      apa.
   - speakerId: NPC-003
-    text: Aku ikut. Kita jalan sambil bicara saja.
+    text: Saya ngomong soal nanti. Sudah lama kepikiran, cuma belum pernah saya ceritakan.
   - speakerId: NPC-003
-    text: Sejujurnya, aku sedang memikirkan sesuatu di luar pekerjaan ini.
+    text: Di sini saya sudah hafal ritmenya. Berangkat, kerja, pulang, gajian. Nyaman.
+      Sampai kadang saya mikir, sepuluh tahun lagi saya masih di tempat yang sama,
+      menunda rencana yang sama.
   - speakerId: PLAYER
-    text: Sesuatu yang besar?
+    text: Berarti sudah ada rencananya. Saya masih sebatas ingin meja digitalisasi
+      sehari saja bebas tumpukan.
   - speakerId: NPC-003
-    text: Aku ingin keluar dan membuka usaha sendiri.
+    text: Percetakan kecil, mungkin. Fotokopi, jilid, cetak foto. Bisa sekalian scan
+      dokumen dan jasa digitalisasi buat sekolah atau usaha kecil.
   - speakerId: PLAYER
-    text: Kamu sudah menentukan waktunya?
+    text: Tetap ketemu dokumen. Bedanya, sekarang kalau mesin macet kamu nggak bisa
+      telepon bagian lain.
   - speakerId: NPC-003
-    text: Belum. Ide itu matang, tapi melangkah keluar tetap menakutkan.
+    text: Bisa telepon kamu.
   - speakerId: PLAYER
-    text: Wajar. Kamu tidak harus memutuskan semuanya hari ini.
+    text: Saya tahu ini ada maksudnya.
   - speakerId: NPC-003
-    text: Aku tahu. Itulah sebabnya aku belum bercerita kepada banyak orang.
+    text: Saya sudah mulai hitung sewa, mesin, kertas, komputer. Angkanya selalu
+      lebih besar setelah dihitung ulang. Kalau modalnya cukup, mungkin tahun depan.
   - speakerId: PLAYER
-    text: Terima kasih sudah percaya padaku.
+    text: Tahun depan itu dekat. Kedengarannya kamu sudah cukup serius.
   - speakerId: NPC-003
-    text: Tugas dari Pak Arya ini mungkin pekerjaan lapangan terakhirku di sini.
+    text: Serius. Tapi belum seratus persen. Saya masih bolak-balik menghitung, lalu
+      cari alasan buat menunggu sedikit lagi.
   - speakerId: PLAYER
-    text: Kalau begitu kita kerjakan dengan baik.
+    text: Cerita ke yang lain juga? Barangkali ada yang bisa bantu lihat hitungannya.
   - speakerId: NPC-003
-    text: Setuju. Sesudahnya aku akan memikirkan langkah berikutnya dengan tenang.
+    text: Belum. Kalau semua sudah tahu, setiap ketemu nanti ditanya kapan buka.
+      Saya belum siap menjawab itu.
   - speakerId: NPC-003
-    text: Kita sudah sampai. Mari dengar apa yang sebenarnya ada di berkas itu.
+    text: Cuma kalau dipikir sendiri terus, rasanya rencana itu nggak pernah benar-benar
+      ada. Makanya tadi saya cerita.
+  - speakerId: PLAYER
+    text: Sekarang sudah ada saksi.
+  - speakerId: NPC-003
+    text: Iya. Sekarang ada saksi.
+  - speakerId: PLAYER
+    text: Bali jadi sekalian latihan tutup toko buat liburan, dong.
+  - speakerId: NPC-003
+    text: Tokonya belum ada, kamu sudah ajak tutup.
+  - speakerId: PLAYER
+    text: Anak-anak rooftop sudah minta foto lengkap. Calon pengusaha juga harus
+      ikut.
+  - speakerId: NPC-003
+    text: Ikut. Asal jangan pakai acara pidato perpisahan. Saya cuma cerita rencana,
+      belum menyerahkan surat apa-apa.
+  - speakerId: NPC-003
+    text: Soal usaha tadi, simpan dulu, ya. Belum waktunya dibawa ke obrolan kantor.
+  - speakerId: PLAYER
+    text: Aman. Saya juga belum mau dapat pertanyaan kapan tokonya buka.
+  - speakerId: NPC-003
+    text: Sekarang kita lihat urusan yang bikin bos mencari kita ini.
+  conditions: []

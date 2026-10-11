@@ -15,6 +15,6 @@ MonoBehaviour:
   id: chapter.boss_scold_raka
   lines:
   - speakerId: NPC-006
-    text: Jangan kembali sendirian dulu. Raka belum kamu ajak bicara.
-  - speakerId: PLAYER
-    text: Baik, Pak. Saya cari Raka dan kembali bersama mereka.
+    text: Iya, cari dua-duanya. Berkasnya kita bahas setelah lengkap, supaya nanti
+      kalian berangkat dengan informasi yang sama.
+  conditions: []

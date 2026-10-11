@@ -1,0 +1,2957 @@
+{
+  "units": "metres",
+  "blender_front": "-Y",
+  "blender_up": "+Z",
+  "unity_up": "+Y",
+  "unity_front": "-Z",
+  "blender_to_unity": "(x,z,y)",
+  "source": "SourceArt/ModularAsset/Vegetation/Modular_Vegetation.blend",
+  "assets": [
+    {
+      "name": "MV_Tree_Trembesi_8m",
+      "category": "Pohon",
+      "description": "Broad asymmetric umbrella crown, spreading limbs and visible buttress roots.",
+      "anchor": "ground centre",
+      "snap_m": 0,
+      "bounds_min_blender": [
+        -6.050334453582764,
+        -6.1090803146362305,
+        0.0
+      ],
+      "bounds_max_blender": [
+        5.963625431060791,
+        5.886019706726074,
+        8.0
+      ],
+      "size_blender_m": [
+        12.013959884643555,
+        11.995100021362305,
+        8.0
+      ],
+      "vertices": 55211,
+      "triangles": 84034,
+      "mesh_parts": 6,
+      "moving_pivots": [
+        "LOD0",
+        "LOD1",
+        "LOD2"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Pohon/MV_Tree_Trembesi_8m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        11.1,
+        10.6
+      ],
+      "collider_radius_m": 0.35,
+      "collider_height_m": 3.0,
+      "desired_height_m": 8,
+      "species": "Trembesi",
+      "lod_triangle_budgets": [
+        65000,
+        65000,
+        65000
+      ],
+      "lod_triangles": [
+        48948,
+        24140,
+        10946
+      ]
+    },
+    {
+      "name": "MV_Tree_Angsana_7m",
+      "category": "Pohon",
+      "description": "Upright rounded urban shade tree with lush compound foliage and sparse yellow flowers.",
+      "anchor": "ground centre",
+      "snap_m": 0,
+      "bounds_min_blender": [
+        -3.494222640991211,
+        -3.552640676498413,
+        0.0
+      ],
+      "bounds_max_blender": [
+        3.5926008224487305,
+        3.3482108116149902,
+        7.0
+      ],
+      "size_blender_m": [
+        7.086823463439941,
+        6.900851488113403,
+        7.0
+      ],
+      "vertices": 43149,
+      "triangles": 65654,
+      "mesh_parts": 6,
+      "moving_pivots": [
+        "LOD0.001",
+        "LOD1.001",
+        "LOD2.001"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Pohon/MV_Tree_Angsana_7m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        6.8,
+        6.5
+      ],
+      "collider_radius_m": 0.28,
+      "collider_height_m": 2.6,
+      "desired_height_m": 7,
+      "species": "Angsana",
+      "lod_triangle_budgets": [
+        65000,
+        65000,
+        65000
+      ],
+      "lod_triangles": [
+        38588,
+        18792,
+        8274
+      ]
+    },
+    {
+      "name": "MV_Tree_KetapangKencana_5m",
+      "category": "Pohon",
+      "description": "Compact four-tier crown with near-horizontal branches and fine leaves.",
+      "anchor": "ground centre",
+      "snap_m": 0,
+      "bounds_min_blender": [
+        -2.336594343185425,
+        -2.241670608520508,
+        0.0
+      ],
+      "bounds_max_blender": [
+        2.650707721710205,
+        2.2812821865081787,
+        5.0
+      ],
+      "size_blender_m": [
+        4.98730206489563,
+        4.5229527950286865,
+        5.0
+      ],
+      "vertices": 16118,
+      "triangles": 25028,
+      "mesh_parts": 6,
+      "moving_pivots": [
+        "LOD0.002",
+        "LOD1.002",
+        "LOD2.002"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Pohon/MV_Tree_KetapangKencana_5m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        5.0,
+        4.8
+      ],
+      "collider_radius_m": 0.16,
+      "collider_height_m": 2.0,
+      "desired_height_m": 5,
+      "species": "KetapangKencana",
+      "lod_triangle_budgets": [
+        65000,
+        65000,
+        65000
+      ],
+      "lod_triangles": [
+        14190,
+        7212,
+        3626
+      ]
+    },
+    {
+      "name": "MV_Tree_Kamboja_3m",
+      "category": "Pohon",
+      "description": "Thick pale forked stems, broad terminal leaf rosettes and white five-petal flowers.",
+      "anchor": "ground centre",
+      "snap_m": 0,
+      "bounds_min_blender": [
+        -1.6156202554702759,
+        -1.6593626737594604,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.737178921699524,
+        1.7565319538116455,
+        3.0
+      ],
+      "size_blender_m": [
+        3.3527991771698,
+        3.415894627571106,
+        3.0
+      ],
+      "vertices": 10116,
+      "triangles": 16866,
+      "mesh_parts": 6,
+      "moving_pivots": [
+        "LOD0.003",
+        "LOD1.003",
+        "LOD2.003"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Pohon/MV_Tree_Kamboja_3m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        3.5,
+        3.4
+      ],
+      "collider_radius_m": 0.12,
+      "collider_height_m": 1.2,
+      "desired_height_m": 3,
+      "species": "Kamboja",
+      "lod_triangle_budgets": [
+        65000,
+        65000,
+        65000
+      ],
+      "lod_triangles": [
+        9414,
+        5256,
+        2196
+      ]
+    },
+    {
+      "name": "MV_Hedge_Straight_1m",
+      "category": "Semak",
+      "description": "Semak pagar daun pangkas, panjang 1 m, kedalaman 0.6 m, tinggi 1 m.",
+      "anchor": "ground start, +X length",
+      "snap_m": 1.0,
+      "bounds_min_blender": [
+        0.0,
+        -0.30000001192092896,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.0,
+        0.30000001192092896,
+        1.0
+      ],
+      "size_blender_m": [
+        1.0,
+        0.6000000238418579,
+        1.0
+      ],
+      "vertices": 7896,
+      "triangles": 11904,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.004",
+        "LOD1.004",
+        "LOD2.004"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Semak/MV_Hedge_Straight_1m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        1.0,
+        0.6
+      ],
+      "repeat_axis": "X",
+      "tile_size_m": [
+        1.0,
+        0.6
+      ],
+      "height_m": 1.0,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        6756,
+        3414,
+        1734
+      ]
+    },
+    {
+      "name": "MV_Hedge_Straight_2m",
+      "category": "Semak",
+      "description": "Semak pagar daun pangkas, panjang 2 m, kedalaman 0.6 m, tinggi 1 m.",
+      "anchor": "ground start, +X length",
+      "snap_m": 1.0,
+      "bounds_min_blender": [
+        0.0,
+        -0.30000001192092896,
+        0.0
+      ],
+      "bounds_max_blender": [
+        2.0,
+        0.30000001192092896,
+        1.0
+      ],
+      "size_blender_m": [
+        2.0,
+        0.6000000238418579,
+        1.0
+      ],
+      "vertices": 11064,
+      "triangles": 16716,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.005",
+        "LOD1.005",
+        "LOD2.005"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Semak/MV_Hedge_Straight_2m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        2.0,
+        0.6
+      ],
+      "repeat_axis": "X",
+      "tile_size_m": [
+        2.0,
+        0.6
+      ],
+      "height_m": 1.0,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        9588,
+        4740,
+        2388
+      ]
+    },
+    {
+      "name": "MV_Hedge_Straight_4m",
+      "category": "Semak",
+      "description": "Semak pagar daun pangkas, panjang 4 m, kedalaman 0.6 m, tinggi 1 m.",
+      "anchor": "ground start, +X length",
+      "snap_m": 1.0,
+      "bounds_min_blender": [
+        0.0,
+        -0.30000001192092896,
+        0.0
+      ],
+      "bounds_max_blender": [
+        4.0,
+        0.30000001192092896,
+        1.0
+      ],
+      "size_blender_m": [
+        4.0,
+        0.6000000238418579,
+        1.0
+      ],
+      "vertices": 17552,
+      "triangles": 26568,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.006",
+        "LOD1.006",
+        "LOD2.006"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Semak/MV_Hedge_Straight_4m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        4.0,
+        0.6
+      ],
+      "repeat_axis": "X",
+      "tile_size_m": [
+        4.0,
+        0.6
+      ],
+      "height_m": 1.0,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        15264,
+        7608,
+        3696
+      ]
+    },
+    {
+      "name": "MV_Hedge_Corner_1m",
+      "category": "Semak",
+      "description": "Semak pagar siku 90 derajat, panjang garis tengah tiap lengan 1 m; tinggi 1 m.",
+      "anchor": "ground bend centre, arms +X and +Y",
+      "snap_m": 1.0,
+      "bounds_min_blender": [
+        -0.30000001192092896,
+        -0.30000001192092896,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "size_blender_m": [
+        1.300000011920929,
+        1.300000011920929,
+        1.0
+      ],
+      "vertices": 9752,
+      "triangles": 14724,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.007",
+        "LOD1.007",
+        "LOD2.007"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Semak/MV_Hedge_Corner_1m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        1.3,
+        1.3
+      ],
+      "repeat_axis": "90 degree corner",
+      "height_m": 1.0,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        8592,
+        4224,
+        1908
+      ]
+    },
+    {
+      "name": "MV_Hedge_End_1m",
+      "category": "Semak",
+      "description": "Semak pagar ujung membulat, panjang 1 m, kedalaman 0.6 m, tinggi 1 m.",
+      "anchor": "ground start, +X length",
+      "snap_m": 1.0,
+      "bounds_min_blender": [
+        0.0,
+        -0.30000001192092896,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.0,
+        0.30000001192092896,
+        1.0
+      ],
+      "size_blender_m": [
+        1.0,
+        0.6000000238418579,
+        1.0
+      ],
+      "vertices": 7896,
+      "triangles": 11904,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.008",
+        "LOD1.008",
+        "LOD2.008"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Semak/MV_Hedge_End_1m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        1.0,
+        0.6
+      ],
+      "repeat_axis": "connector at X=0",
+      "tile_size_m": [
+        1.0,
+        0.6
+      ],
+      "height_m": 1.0,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        6756,
+        3414,
+        1734
+      ]
+    },
+    {
+      "name": "MV_Shrub_Round_Small",
+      "category": "Semak",
+      "description": "Semak bulat hijau, tinggi nominal 0.5 m.",
+      "anchor": "ground bottom centre",
+      "snap_m": 0.0,
+      "bounds_min_blender": [
+        -0.3199999928474426,
+        -0.3199999928474426,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.3199999928474426,
+        0.3199999928474426,
+        0.5
+      ],
+      "size_blender_m": [
+        0.6399999856948853,
+        0.6399999856948853,
+        0.5
+      ],
+      "vertices": 6213,
+      "triangles": 9414,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.009",
+        "LOD1.009",
+        "LOD2.009"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Semak/MV_Shrub_Round_Small.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        0.64,
+        0.64
+      ],
+      "height_m": 0.5,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        5414,
+        2702,
+        1298
+      ]
+    },
+    {
+      "name": "MV_Shrub_Round_Medium",
+      "category": "Semak",
+      "description": "Semak bulat hijau, tinggi nominal 0.9 m.",
+      "anchor": "ground bottom centre",
+      "snap_m": 0.0,
+      "bounds_min_blender": [
+        -0.550000011920929,
+        -0.550000011920929,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.550000011920929,
+        0.550000011920929,
+        0.8999999761581421
+      ],
+      "size_blender_m": [
+        1.100000023841858,
+        1.100000023841858,
+        0.8999999761581421
+      ],
+      "vertices": 10181,
+      "triangles": 15366,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.010",
+        "LOD1.010",
+        "LOD2.010"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Semak/MV_Shrub_Round_Medium.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        1.1,
+        1.1
+      ],
+      "height_m": 0.8999999761581421,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        8954,
+        4406,
+        2006
+      ]
+    },
+    {
+      "name": "MV_Shrub_Round_Large",
+      "category": "Semak",
+      "description": "Semak bulat hijau, tinggi nominal 1.4 m.",
+      "anchor": "ground bottom centre",
+      "snap_m": 0.0,
+      "bounds_min_blender": [
+        -0.8199999928474426,
+        -0.8199999928474426,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.8199999928474426,
+        0.8199999928474426,
+        1.399999976158142
+      ],
+      "size_blender_m": [
+        1.6399999856948853,
+        1.6399999856948853,
+        1.399999976158142
+      ],
+      "vertices": 15085,
+      "triangles": 22722,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.011",
+        "LOD1.011",
+        "LOD2.011"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Semak/MV_Shrub_Round_Large.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        1.64,
+        1.64
+      ],
+      "height_m": 1.399999976158142,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        13334,
+        6506,
+        2882
+      ]
+    },
+    {
+      "name": "MV_Shrub_RedTip_Small",
+      "category": "Semak",
+      "description": "Semak pucuk merah, tinggi nominal 0.9 m.",
+      "anchor": "ground bottom centre",
+      "snap_m": 0.0,
+      "bounds_min_blender": [
+        -0.44999998807907104,
+        -0.44999998807907104,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.44999998807907104,
+        0.44999998807907104,
+        0.8999999761581421
+      ],
+      "size_blender_m": [
+        0.8999999761581421,
+        0.8999999761581421,
+        0.8999999761581421
+      ],
+      "vertices": 9811,
+      "triangles": 14838,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.012",
+        "LOD1.012",
+        "LOD2.012"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Semak/MV_Shrub_RedTip_Small.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        0.9,
+        0.9
+      ],
+      "height_m": 0.8999999761581421,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        8610,
+        4254,
+        1974
+      ]
+    },
+    {
+      "name": "MV_Shrub_RedTip_Large",
+      "category": "Semak",
+      "description": "Semak pucuk merah, tinggi nominal 1.5 m.",
+      "anchor": "ground bottom centre",
+      "snap_m": 0.0,
+      "bounds_min_blender": [
+        -0.6499999761581421,
+        -0.6499999761581421,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.6499999761581421,
+        0.6499999761581421,
+        1.5
+      ],
+      "size_blender_m": [
+        1.2999999523162842,
+        1.2999999523162842,
+        1.5
+      ],
+      "vertices": 15123,
+      "triangles": 22806,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.013",
+        "LOD1.013",
+        "LOD2.013"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Semak/MV_Shrub_RedTip_Large.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        1.3,
+        1.3
+      ],
+      "height_m": 1.5,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        13350,
+        6534,
+        2922
+      ]
+    },
+    {
+      "name": "MV_Grass_Lawn_1x1m",
+      "category": "Rumput",
+      "description": "Rumput pendek taman petak 1 x 1 m; tanpa pelat tanah.",
+      "anchor": "ground lower-left corner",
+      "snap_m": 0.5,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.0,
+        1.0,
+        0.10794669389724731
+      ],
+      "size_blender_m": [
+        1.0,
+        1.0,
+        0.10794669389724731
+      ],
+      "vertices": 6912,
+      "triangles": 10368,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.014",
+        "LOD1.014",
+        "LOD2.014"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Rumput/MV_Grass_Lawn_1x1m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        1.0,
+        1.0
+      ],
+      "tile_size_m": [
+        1.0,
+        1.0
+      ],
+      "repeat_axis": "XY",
+      "height_m": 0.10794669389724731,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        6096,
+        2976,
+        1296
+      ]
+    },
+    {
+      "name": "MV_Grass_Lawn_2x2m",
+      "category": "Rumput",
+      "description": "Rumput pendek taman petak 2 x 2 m; tanpa pelat tanah.",
+      "anchor": "ground lower-left corner",
+      "snap_m": 0.5,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bounds_max_blender": [
+        2.0,
+        2.0,
+        0.10793115198612213
+      ],
+      "size_blender_m": [
+        2.0,
+        2.0,
+        0.10793115198612213
+      ],
+      "vertices": 18336,
+      "triangles": 27504,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.015",
+        "LOD1.015",
+        "LOD2.015"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Rumput/MV_Grass_Lawn_2x2m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        2.0,
+        2.0
+      ],
+      "tile_size_m": [
+        2.0,
+        2.0
+      ],
+      "repeat_axis": "XY",
+      "height_m": 0.10793115198612213,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        16296,
+        7872,
+        3336
+      ]
+    },
+    {
+      "name": "MV_Grass_Lawn_4x4m",
+      "category": "Rumput",
+      "description": "Rumput pendek taman petak 4 x 4 m; tanpa pelat tanah.",
+      "anchor": "ground lower-left corner",
+      "snap_m": 0.5,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bounds_max_blender": [
+        4.0,
+        4.0,
+        0.10799956321716309
+      ],
+      "size_blender_m": [
+        4.0,
+        4.0,
+        0.10799956321716309
+      ],
+      "vertices": 32984,
+      "triangles": 49476,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.016",
+        "LOD1.016",
+        "LOD2.016"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Rumput/MV_Grass_Lawn_4x4m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        4.0,
+        4.0
+      ],
+      "tile_size_m": [
+        4.0,
+        4.0
+      ],
+      "repeat_axis": "XY",
+      "height_m": 0.10799956321716309,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        29376,
+        14148,
+        5952
+      ]
+    },
+    {
+      "name": "MV_Grass_Uneven_2x2m",
+      "category": "Rumput",
+      "description": "Rumput liar tidak rata petak 2 x 2 m; tanpa pelat tanah.",
+      "anchor": "ground lower-left corner",
+      "snap_m": 0.5,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bounds_max_blender": [
+        2.0,
+        2.0,
+        0.3307130038738251
+      ],
+      "size_blender_m": [
+        2.0,
+        2.0,
+        0.3307130038738251
+      ],
+      "vertices": 10808,
+      "triangles": 16212,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.017",
+        "LOD1.017",
+        "LOD2.017"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Rumput/MV_Grass_Uneven_2x2m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        2.0,
+        2.0
+      ],
+      "tile_size_m": [
+        2.0,
+        2.0
+      ],
+      "repeat_axis": "XY",
+      "height_m": 0.3307130038738251,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        9576,
+        4644,
+        1992
+      ]
+    },
+    {
+      "name": "MV_Grass_Tuft_Small",
+      "category": "Rumput",
+      "description": "Rumpun rumput hias, tinggi nominal 0.22 m; pivot pusat dasar.",
+      "anchor": "ground bottom centre",
+      "snap_m": 0.0,
+      "bounds_min_blender": [
+        -0.1599999964237213,
+        -0.1599999964237213,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.1599999964237213,
+        0.1599999964237213,
+        0.21988999843597412
+      ],
+      "size_blender_m": [
+        0.3199999928474426,
+        0.3199999928474426,
+        0.21988999843597412
+      ],
+      "vertices": 1583,
+      "triangles": 2388,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.018",
+        "LOD1.018",
+        "LOD2.018"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Rumput/MV_Grass_Tuft_Small.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        0.32,
+        0.32
+      ],
+      "height_m": 0.21988999843597412,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        1392,
+        684,
+        312
+      ]
+    },
+    {
+      "name": "MV_Grass_Tuft_Medium",
+      "category": "Rumput",
+      "description": "Rumpun rumput hias, tinggi nominal 0.37 m; pivot pusat dasar.",
+      "anchor": "ground bottom centre",
+      "snap_m": 0.0,
+      "bounds_min_blender": [
+        -0.23999999463558197,
+        -0.23999999463558197,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.23999999463558197,
+        0.23999999463558197,
+        0.36981499195098877
+      ],
+      "size_blender_m": [
+        0.47999998927116394,
+        0.47999998927116394,
+        0.36981499195098877
+      ],
+      "vertices": 2447,
+      "triangles": 3684,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.019",
+        "LOD1.019",
+        "LOD2.019"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Rumput/MV_Grass_Tuft_Medium.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        0.48,
+        0.48
+      ],
+      "height_m": 0.36981499195098877,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        2160,
+        1056,
+        468
+      ]
+    },
+    {
+      "name": "MV_Grass_Border_Tuft",
+      "category": "Rumput",
+      "description": "Rumpun rumput tepi taman, tinggi nominal 0.32 m; pivot pusat dasar.",
+      "anchor": "ground bottom centre",
+      "snap_m": 0.0,
+      "bounds_min_blender": [
+        -0.2199999988079071,
+        -0.2199999988079071,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.2199999988079071,
+        0.2199999988079071,
+        0.3199999928474426
+      ],
+      "size_blender_m": [
+        0.4399999976158142,
+        0.4399999976158142,
+        0.3199999928474426
+      ],
+      "vertices": 1935,
+      "triangles": 2916,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.020",
+        "LOD1.020",
+        "LOD2.020"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Rumput/MV_Grass_Border_Tuft.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        0.44,
+        0.44
+      ],
+      "height_m": 0.3199999928474426,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        1704,
+        840,
+        372
+      ]
+    },
+    {
+      "name": "MV_Grass_Border_Straight_1m",
+      "category": "Rumput",
+      "description": "Barisan rumpun rumput tepi taman, panjang 1 m, lebar 0.34 m.",
+      "anchor": "ground start, +X length",
+      "snap_m": 1.0,
+      "bounds_min_blender": [
+        0.0,
+        -0.16253063082695007,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.0,
+        0.17000000178813934,
+        0.29999998211860657
+      ],
+      "size_blender_m": [
+        1.0,
+        0.3325306326150894,
+        0.29999998211860657
+      ],
+      "vertices": 5424,
+      "triangles": 8136,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.021",
+        "LOD1.021",
+        "LOD2.021"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Rumput/MV_Grass_Border_Straight_1m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        1.0,
+        0.34
+      ],
+      "repeat_axis": "X",
+      "tile_size_m": [
+        1.0,
+        0.34
+      ],
+      "height_m": 0.29999998211860657,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        4824,
+        2328,
+        984
+      ]
+    },
+    {
+      "name": "MV_Grass_Border_Straight_2m",
+      "category": "Rumput",
+      "description": "Barisan rumpun rumput tepi taman, panjang 2 m, lebar 0.34 m.",
+      "anchor": "ground start, +X length",
+      "snap_m": 1.0,
+      "bounds_min_blender": [
+        0.0,
+        -0.17000000178813934,
+        0.0
+      ],
+      "bounds_max_blender": [
+        2.0,
+        0.17000000178813934,
+        0.29999998211860657
+      ],
+      "size_blender_m": [
+        2.0,
+        0.3400000035762787,
+        0.29999998211860657
+      ],
+      "vertices": 8376,
+      "triangles": 12564,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.022",
+        "LOD1.022",
+        "LOD2.022"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Rumput/MV_Grass_Border_Straight_2m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        2.0,
+        0.34
+      ],
+      "repeat_axis": "X",
+      "tile_size_m": [
+        2.0,
+        0.34
+      ],
+      "height_m": 0.29999998211860657,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        7464,
+        3588,
+        1512
+      ]
+    },
+    {
+      "name": "MV_Flower_Groundcover_1x1m",
+      "category": "PenutupTanah",
+      "description": "Penutup tanah daun rendah dengan bunga putih kuning, petak 1 x 1 m; tanpa pelat tanah.",
+      "anchor": "ground lower-left corner",
+      "snap_m": 0.5,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.0,
+        1.0,
+        0.1976422220468521
+      ],
+      "size_blender_m": [
+        1.0,
+        1.0,
+        0.1976422220468521
+      ],
+      "vertices": 8624,
+      "triangles": 13328,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.023",
+        "LOD1.023",
+        "LOD2.023"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/PenutupTanah/MV_Flower_Groundcover_1x1m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        1.0,
+        1.0
+      ],
+      "tile_size_m": [
+        1.0,
+        1.0
+      ],
+      "repeat_axis": "XY",
+      "height_m": 0.1976422220468521,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        7872,
+        3720,
+        1736
+      ]
+    },
+    {
+      "name": "MV_Grass_Paving_Seams_1x1m",
+      "category": "PenutupTanah",
+      "description": "Rumput tipis pada sela paving grid 0.5 m, petak 1 x 1 m; tidak termasuk paving.",
+      "anchor": "ground lower-left corner",
+      "snap_m": 0.5,
+      "bounds_min_blender": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.0,
+        1.0,
+        0.08203005790710449
+      ],
+      "size_blender_m": [
+        1.0,
+        1.0,
+        0.08203005790710449
+      ],
+      "vertices": 1864,
+      "triangles": 2796,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.024",
+        "LOD1.024",
+        "LOD2.024"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/PenutupTanah/MV_Grass_Paving_Seams_1x1m.fbx",
+      "lod_count": 3,
+      "footprint_m": [
+        1.0,
+        1.0
+      ],
+      "tile_size_m": [
+        1.0,
+        1.0
+      ],
+      "repeat_axis": "XY",
+      "height_m": 0.08203005790710449,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        1632,
+        804,
+        360
+      ]
+    },
+    {
+      "name": "MV_Tropical_Broadleaf_Clump",
+      "category": "TanamanHias",
+      "description": "Rumpun tanaman tropis dengan tangkai panjang, daun lebar berlipat dan urat tengah.",
+      "anchor": "ground centre",
+      "snap_m": 0.05,
+      "bounds_min_blender": [
+        -0.6870931386947632,
+        -0.6587278842926025,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.7184355854988098,
+        0.7009733319282532,
+        1.7556034326553345
+      ],
+      "size_blender_m": [
+        1.405528724193573,
+        1.3597012162208557,
+        1.7556034326553345
+      ],
+      "vertices": 846,
+      "triangles": 1428,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.025",
+        "LOD1.025",
+        "LOD2.025"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/TanamanHias/MV_Tropical_Broadleaf_Clump.fbx",
+      "lod_count": 3,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        792,
+        420,
+        216
+      ]
+    },
+    {
+      "name": "MV_Fern_Clump",
+      "category": "TanamanHias",
+      "description": "Pakis dengan daun menyirip mengembang dari pangkal; tiap anak daun merupakan volume tertutup.",
+      "anchor": "ground centre",
+      "snap_m": 0.05,
+      "bounds_min_blender": [
+        -0.7069509029388428,
+        -0.675187885761261,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.7192931771278381,
+        0.6992819309234619,
+        0.5665188431739807
+      ],
+      "size_blender_m": [
+        1.426244080066681,
+        1.374469816684723,
+        0.5665188431739807
+      ],
+      "vertices": 5151,
+      "triangles": 8600,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.026",
+        "LOD1.026",
+        "LOD2.026"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/TanamanHias/MV_Fern_Clump.fbx",
+      "lod_count": 3,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        5096,
+        2448,
+        1056
+      ]
+    },
+    {
+      "name": "MV_Palm_Areca_Free",
+      "category": "Palem",
+      "description": "Rumpun palem bebas tanpa pot untuk halaman.",
+      "anchor": "ground centre",
+      "snap_m": 0.05,
+      "bounds_min_blender": [
+        -0.9517905116081238,
+        -1.012862205505371,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.9620178937911987,
+        0.9741582870483398,
+        1.9858604669570923
+      ],
+      "size_blender_m": [
+        1.9138084053993225,
+        1.987020492553711,
+        1.9858604669570923
+      ],
+      "vertices": 13776,
+      "triangles": 22024,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.027",
+        "LOD1.027",
+        "LOD2.027"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Palem/MV_Palm_Areca_Free.fbx",
+      "lod_count": 3,
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        13160,
+        6128,
+        2736
+      ]
+    },
+    {
+      "name": "MV_Palm_Pot_Square_Tall",
+      "category": "Palem",
+      "description": "Palem berdaun majemuk dalam pot; bagian daun dan pot memakai tiga tingkat detail.",
+      "anchor": "bottom pot centre",
+      "snap_m": 0.05,
+      "bounds_min_blender": [
+        -1.0891058444976807,
+        -1.0947308540344238,
+        0.0
+      ],
+      "bounds_max_blender": [
+        1.1816586256027222,
+        1.1967829465866089,
+        2.9963536262512207
+      ],
+      "size_blender_m": [
+        2.270764470100403,
+        2.2915138006210327,
+        2.9963536262512207
+      ],
+      "vertices": 13924,
+      "triangles": 22296,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.028",
+        "LOD1.028",
+        "LOD2.028"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Palem/MV_Palm_Pot_Square_Tall.fbx",
+      "lod_count": 3,
+      "collider_box_blender_m": [
+        0.6,
+        0.6,
+        0.75
+      ],
+      "collider_center_blender_m": [
+        0.0,
+        0.0,
+        0.375
+      ],
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        13280,
+        6216,
+        2800
+      ]
+    },
+    {
+      "name": "MV_Palm_Pot_Round_Medium",
+      "category": "Palem",
+      "description": "Palem berdaun majemuk dalam pot; bagian daun dan pot memakai tiga tingkat detail.",
+      "anchor": "bottom pot centre",
+      "snap_m": 0.05,
+      "bounds_min_blender": [
+        -0.8054612278938293,
+        -0.8095358610153198,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.8733999729156494,
+        0.884677529335022,
+        2.2012178897857666
+      ],
+      "size_blender_m": [
+        1.6788612008094788,
+        1.6942133903503418,
+        2.2012178897857666
+      ],
+      "vertices": 14324,
+      "triangles": 23096,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.029",
+        "LOD1.029",
+        "LOD2.029"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Palem/MV_Palm_Pot_Round_Medium.fbx",
+      "lod_count": 3,
+      "collider_box_blender_m": [
+        0.56,
+        0.56,
+        0.55
+      ],
+      "collider_center_blender_m": [
+        0.0,
+        0.0,
+        0.275
+      ],
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        13696,
+        6464,
+        2936
+      ]
+    },
+    {
+      "name": "MV_Palm_Pot_Round_Small",
+      "category": "Palem",
+      "description": "Palem berdaun majemuk dalam pot; bagian daun dan pot memakai tiga tingkat detail.",
+      "anchor": "bottom pot centre",
+      "snap_m": 0.05,
+      "bounds_min_blender": [
+        -0.550180971622467,
+        -0.5528603196144104,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.5959669947624207,
+        0.6037828922271729,
+        1.4355957508087158
+      ],
+      "size_blender_m": [
+        1.1461479663848877,
+        1.1566432118415833,
+        1.4355957508087158
+      ],
+      "vertices": 14324,
+      "triangles": 23096,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.030",
+        "LOD1.030",
+        "LOD2.030"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Palem/MV_Palm_Pot_Round_Small.fbx",
+      "lod_count": 3,
+      "collider_box_blender_m": [
+        0.41,
+        0.41,
+        0.32
+      ],
+      "collider_center_blender_m": [
+        0.0,
+        0.0,
+        0.16
+      ],
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        13696,
+        6464,
+        2936
+      ]
+    },
+    {
+      "name": "MV_Planter_Square_Tall",
+      "category": "Pot",
+      "description": "Pot kosong dengan dinding, bibir, lantai dalam, dan dasar tertutup; dapat diisi tanaman lain.",
+      "anchor": "bottom centre",
+      "snap_m": 0.05,
+      "bounds_min_blender": [
+        -0.30000001192092896,
+        -0.30000001192092896,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.30000001192092896,
+        0.30000001192092896,
+        0.75
+      ],
+      "size_blender_m": [
+        0.6000000238418579,
+        0.6000000238418579,
+        0.75
+      ],
+      "vertices": 200,
+      "triangles": 388,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.031",
+        "LOD1.031",
+        "LOD2.031"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Pot/MV_Planter_Square_Tall.fbx",
+      "lod_count": 3,
+      "collider_box_blender_m": [
+        0.6,
+        0.6,
+        0.75
+      ],
+      "collider_center_blender_m": [
+        0.0,
+        0.0,
+        0.375
+      ],
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        252,
+        108,
+        28
+      ]
+    },
+    {
+      "name": "MV_Planter_Round_Medium",
+      "category": "Pot",
+      "description": "Pot kosong dengan dinding, bibir, lantai dalam, dan dasar tertutup; dapat diisi tanaman lain.",
+      "anchor": "bottom centre",
+      "snap_m": 0.05,
+      "bounds_min_blender": [
+        -0.2800000011920929,
+        -0.2800000011920929,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.2800000011920929,
+        0.2800000011920929,
+        0.550000011920929
+      ],
+      "size_blender_m": [
+        0.5600000023841858,
+        0.5600000023841858,
+        0.550000011920929
+      ],
+      "vertices": 448,
+      "triangles": 884,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.032",
+        "LOD1.032",
+        "LOD2.032"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Pot/MV_Planter_Round_Medium.fbx",
+      "lod_count": 3,
+      "collider_box_blender_m": [
+        0.56,
+        0.56,
+        0.55
+      ],
+      "collider_center_blender_m": [
+        0.0,
+        0.0,
+        0.275
+      ],
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        444,
+        276,
+        164
+      ]
+    },
+    {
+      "name": "MV_Planter_Round_Small",
+      "category": "Pot",
+      "description": "Pot kosong dengan dinding, bibir, lantai dalam, dan dasar tertutup; dapat diisi tanaman lain.",
+      "anchor": "bottom centre",
+      "snap_m": 0.05,
+      "bounds_min_blender": [
+        -0.20499999821186066,
+        -0.20499999821186066,
+        0.0
+      ],
+      "bounds_max_blender": [
+        0.20499999821186066,
+        0.20499999821186066,
+        0.3199999928474426
+      ],
+      "size_blender_m": [
+        0.4099999964237213,
+        0.4099999964237213,
+        0.3199999928474426
+      ],
+      "vertices": 448,
+      "triangles": 884,
+      "mesh_parts": 3,
+      "moving_pivots": [
+        "LOD0.033",
+        "LOD1.033",
+        "LOD2.033"
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "negative_determinants": 0,
+      "fbx": "Assets/ModularAsset/Lingkungan/Vegetasi/Models/Pot/MV_Planter_Round_Small.fbx",
+      "lod_count": 3,
+      "collider_box_blender_m": [
+        0.41,
+        0.41,
+        0.32
+      ],
+      "collider_center_blender_m": [
+        0.0,
+        0.0,
+        0.16
+      ],
+      "lod_triangle_budgets": [
+        40000,
+        40000,
+        40000
+      ],
+      "lod_triangles": [
+        444,
+        276,
+        164
+      ]
+    }
+  ],
+  "geometry_issues": [],
+  "lod_thresholds": [
+    0.45,
+    0.18,
+    0.025
+  ],
+  "foliage": "closed volume leaves, opaque materials, backface culling",
+  "materials": [
+    {
+      "name": "MV_Bark",
+      "key": "bark",
+      "srgb": [
+        0.31,
+        0.23,
+        0.155
+      ],
+      "roughness": 0.94,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Bark_Light",
+      "key": "bark_light",
+      "srgb": [
+        0.44,
+        0.34,
+        0.235
+      ],
+      "roughness": 0.9,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Leaf_Dark",
+      "key": "leaf_dark",
+      "srgb": [
+        0.12,
+        0.27,
+        0.075
+      ],
+      "roughness": 0.78,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Leaf_Mid",
+      "key": "leaf_mid",
+      "srgb": [
+        0.23,
+        0.4,
+        0.12
+      ],
+      "roughness": 0.7,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Leaf_Light",
+      "key": "leaf_light",
+      "srgb": [
+        0.36,
+        0.51,
+        0.185
+      ],
+      "roughness": 0.68,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Red_Leaf",
+      "key": "red_leaf",
+      "srgb": [
+        0.38,
+        0.085,
+        0.075
+      ],
+      "roughness": 0.7,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Red_Tip",
+      "key": "red_tip",
+      "srgb": [
+        0.66,
+        0.2,
+        0.145
+      ],
+      "roughness": 0.68,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Grass_Dark",
+      "key": "grass_dark",
+      "srgb": [
+        0.17,
+        0.3,
+        0.075
+      ],
+      "roughness": 0.87,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Grass_Mid",
+      "key": "grass_mid",
+      "srgb": [
+        0.31,
+        0.43,
+        0.12
+      ],
+      "roughness": 0.83,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Grass_Light",
+      "key": "grass_light",
+      "srgb": [
+        0.48,
+        0.53,
+        0.2
+      ],
+      "roughness": 0.8,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Soil",
+      "key": "soil",
+      "srgb": [
+        0.2,
+        0.15,
+        0.1
+      ],
+      "roughness": 0.97,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Flower_White",
+      "key": "flower_white",
+      "srgb": [
+        0.97,
+        0.95,
+        0.84
+      ],
+      "roughness": 0.72,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Flower_Yellow",
+      "key": "flower_yellow",
+      "srgb": [
+        0.98,
+        0.69,
+        0.13
+      ],
+      "roughness": 0.73,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Palm_Stem",
+      "key": "palm_stem",
+      "srgb": [
+        0.43,
+        0.48,
+        0.22
+      ],
+      "roughness": 0.87,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Pot_White",
+      "key": "pot_white",
+      "srgb": [
+        0.81,
+        0.8,
+        0.75
+      ],
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    {
+      "name": "MV_Pot_Charcoal",
+      "key": "pot_charcoal",
+      "srgb": [
+        0.2,
+        0.22,
+        0.21
+      ],
+      "roughness": 0.87,
+      "metallic": 0
+    }
+  ],
+  "examples": [
+    {
+      "name": "Demo_Vegetasi_Overview",
+      "placements": [
+        {
+          "asset": "MV_Tree_Trembesi_8m",
+          "position_blender": [
+            0.0,
+            9.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Tree_Angsana_7m",
+          "position_blender": [
+            11.0,
+            9.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Tree_KetapangKencana_5m",
+          "position_blender": [
+            19.0,
+            9.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Tree_Kamboja_3m",
+          "position_blender": [
+            26.0,
+            9.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            -4.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Corner_1m",
+          "position_blender": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Shrub_Round_Small",
+          "position_blender": [
+            4.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Shrub_Round_Medium",
+          "position_blender": [
+            6.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Shrub_Round_Large",
+          "position_blender": [
+            8.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Shrub_RedTip_Small",
+          "position_blender": [
+            11.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Shrub_RedTip_Large",
+          "position_blender": [
+            13.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Tropical_Broadleaf_Clump",
+          "position_blender": [
+            17.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Fern_Clump",
+          "position_blender": [
+            20.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Palm_Pot_Square_Tall",
+          "position_blender": [
+            23.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Palm_Pot_Round_Medium",
+          "position_blender": [
+            26.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Palm_Pot_Round_Small",
+          "position_blender": [
+            28.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            -4.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Uneven_2x2m",
+          "position_blender": [
+            0.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Tuft_Small",
+          "position_blender": [
+            4.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Tuft_Medium",
+          "position_blender": [
+            6.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Border_Tuft",
+          "position_blender": [
+            8.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Border_Straight_2m",
+          "position_blender": [
+            11.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Flower_Groundcover_1x1m",
+          "position_blender": [
+            16.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Paving_Seams_1x1m",
+          "position_blender": [
+            19.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Planter_Square_Tall",
+          "position_blender": [
+            23.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Planter_Round_Medium",
+          "position_blender": [
+            26.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Planter_Round_Small",
+          "position_blender": [
+            28.0,
+            -3.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Straight_1m",
+          "position_blender": [
+            -4.0,
+            -7.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Straight_4m",
+          "position_blender": [
+            -1.0,
+            -7.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_End_1m",
+          "position_blender": [
+            5.0,
+            -7.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_1x1m",
+          "position_blender": [
+            8.0,
+            -7.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_4x4m",
+          "position_blender": [
+            10.0,
+            -7.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Border_Straight_1m",
+          "position_blender": [
+            16.0,
+            -7.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Palm_Areca_Free",
+          "position_blender": [
+            21.0,
+            -7.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Demo_Taman_Modular",
+      "placements": [
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            0.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            0.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            0.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            2.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            2.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            2.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            2.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            2.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            4.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            4.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            4.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            4.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            4.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            6.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            6.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            6.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            6.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            6.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            8.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            8.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            8.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            8.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            8.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            10.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            10.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            10.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            10.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            10.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            12.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            12.0,
+            2.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            12.0,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            12.0,
+            6.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Lawn_2x2m",
+          "position_blender": [
+            12.0,
+            8.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            0.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            2.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            4.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            6.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            8.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            10.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Corner_1m",
+          "position_blender": [
+            12.0,
+            10.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            -0.6499999761581421,
+            1.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            -0.6499999761581421,
+            3.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            -0.6499999761581421,
+            5.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MV_Hedge_Straight_2m",
+          "position_blender": [
+            -0.6499999761581421,
+            7.0,
+            0.0
+          ],
+          "rotation_z": 1.5707963705062866
+        },
+        {
+          "asset": "MV_Tree_Trembesi_8m",
+          "position_blender": [
+            2.0,
+            7.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Tree_KetapangKencana_5m",
+          "position_blender": [
+            11.0,
+            7.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Tree_Kamboja_3m",
+          "position_blender": [
+            10.0,
+            1.5,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Shrub_Round_Large",
+          "position_blender": [
+            5.0,
+            8.300000190734863,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Shrub_Round_Medium",
+          "position_blender": [
+            6.5,
+            8.300000190734863,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Shrub_RedTip_Large",
+          "position_blender": [
+            7.800000190734863,
+            8.100000381469727,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Shrub_RedTip_Small",
+          "position_blender": [
+            9.0,
+            8.300000190734863,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Tropical_Broadleaf_Clump",
+          "position_blender": [
+            0.800000011920929,
+            1.399999976158142,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Fern_Clump",
+          "position_blender": [
+            2.0,
+            1.2000000476837158,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Palm_Areca_Free",
+          "position_blender": [
+            1.2999999523162842,
+            4.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Palm_Pot_Square_Tall",
+          "position_blender": [
+            4.400000095367432,
+            -1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Palm_Pot_Round_Medium",
+          "position_blender": [
+            8.0,
+            -1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Palm_Pot_Round_Small",
+          "position_blender": [
+            9.100000381469727,
+            -1.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Flower_Groundcover_1x1m",
+          "position_blender": [
+            3.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Flower_Groundcover_1x1m",
+          "position_blender": [
+            4.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Flower_Groundcover_1x1m",
+          "position_blender": [
+            5.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Flower_Groundcover_1x1m",
+          "position_blender": [
+            6.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Flower_Groundcover_1x1m",
+          "position_blender": [
+            7.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Flower_Groundcover_1x1m",
+          "position_blender": [
+            8.0,
+            0.0,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Border_Straight_2m",
+          "position_blender": [
+            3.0,
+            -0.25,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Border_Straight_2m",
+          "position_blender": [
+            5.0,
+            -0.25,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Border_Straight_2m",
+          "position_blender": [
+            7.0,
+            -0.25,
+            0.0
+          ],
+          "rotation_z": 0.0
+        },
+        {
+          "asset": "MV_Grass_Border_Straight_2m",
+          "position_blender": [
+            9.0,
+            -0.25,
+            0.0
+          ],
+          "rotation_z": 0.0
+        }
+      ]
+    }
+  ]
+}

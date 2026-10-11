@@ -70,6 +70,12 @@ namespace SaksiTerakhir.EditorTools
             ("Vehicle_Glass", 0.30f),
         };
 
+        private static readonly string[] CabinVisibleShellMaterials =
+        {
+            "Vehicle_Paint_Black", "Vehicle_Paint_Silver", "Vehicle_Paint_Grey",
+            "Vehicle_Trim", "Vehicle_Glass",
+        };
+
         private const StaticEditorFlags StaticFlags =
             StaticEditorFlags.ContributeGI | StaticEditorFlags.OccluderStatic
             | StaticEditorFlags.OccludeeStatic | StaticEditorFlags.BatchingStatic
@@ -131,6 +137,17 @@ namespace SaksiTerakhir.EditorTools
                                   + $"queue {material.renderQueue}  "
                                   + $"smoothness {material.GetFloat("_Smoothness"):F2}");
             }
+
+            // The imported shell has no separate inner surface at every pillar/window.
+            // Keep its inside visible from a seated first-person camera as well.
+            foreach (string name in CabinVisibleShellMaterials)
+            {
+                Material material = LoadMaterial(name, report);
+                if (material == null) continue;
+                material.SetFloat("_Cull", (float)CullMode.Off);
+                material.doubleSidedGI = true;
+                EditorUtility.SetDirty(material);
+            }
         }
 
         private static Material LoadMaterial(string name, StringBuilder report)
@@ -152,7 +169,7 @@ namespace SaksiTerakhir.EditorTools
             material.SetFloat("_ZWrite", 0f);
             material.SetFloat("_SrcBlend", (float)BlendMode.SrcAlpha);
             material.SetFloat("_DstBlend", (float)BlendMode.OneMinusSrcAlpha);
-            material.SetFloat("_Cull", (float)CullMode.Back);
+            material.SetFloat("_Cull", (float)CullMode.Off);
 
             material.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
             material.DisableKeyword("_ALPHATEST_ON");

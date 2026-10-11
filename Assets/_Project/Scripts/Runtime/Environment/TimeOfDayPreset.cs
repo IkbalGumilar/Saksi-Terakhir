@@ -6,13 +6,18 @@ namespace SaksiTerakhir.Environment
     [CreateAssetMenu(fileName = "TimeOfDay", menuName = "Saksi Terakhir/Time Of Day Preset")]
     public sealed class TimeOfDayPreset : ScriptableObject
     {
+        [Header("Time")]
+        [Range(0f, 24f)] public float hourOfDay = 7f;
+
         [Header("Sky")]
         public Material skybox;
         [Range(0f, 360f)] public float skyRotation;
         [Range(0f, 8f)] public float skyExposure = 1f;
+        public Color skyTint = new Color(0.5f, 0.5f, 0.5f, 1f);
 
         [Header("Sun")]
-        [Range(-15f, 90f)] public float sunElevation = 22f;
+        [Tooltip("At night, this directional light represents moonlight.")]
+        [Range(-90f, 90f)] public float sunElevation = 22f;
         [Range(0f, 360f)] public float sunAzimuth = 105f;
         [ColorUsage(false, true)] public Color sunColor = Color.white;
         public bool useColorTemperature;

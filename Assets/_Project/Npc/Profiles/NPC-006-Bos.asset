@@ -16,7 +16,12 @@ MonoBehaviour:
   displayName: Arya
   age: 56
   movementSpeed: 2
+  trafficPriority: 1
   role: 5
+  interactable: 1
+  buildingContext: 0
+  occupation: 0
+  department: 0
   stationary: 1
   home:
     key: boss

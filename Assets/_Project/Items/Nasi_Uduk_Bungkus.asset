@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e351c6e6fe46494987ed5c59a063121c, type: 3}
+  m_Name: Nasi_Uduk_Bungkus
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Inventory.ItemDefinition
+  id: item.nasi_uduk
+  nameKey: item.nasi_uduk.name
+  descriptionKey: item.nasi_uduk.description
+  type: 0
+  icon: {fileID: -5009892608616823026, guid: a0a853f43c4aebef68a1ffe19c59e0f9, type: 3}
+  modelPrefab: {fileID: 919132149155446097, guid: 2e3d04afab4d4903919ec1b33c8734e9, type: 3}
+  documentText: 

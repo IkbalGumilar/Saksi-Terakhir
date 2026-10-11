@@ -21,17 +21,33 @@ namespace SaksiTerakhir.Player
         [Header("Eye Height")]
         [SerializeField, Range(0.5f, 1f)] private float eyeHeightRatio = 0.92f;
         [SerializeField, Min(0.5f)] private float seatedEyeHeight = 1.05f;
+        [SerializeField, Range(30f, 180f)] private float seatedYawLimit = 120f;
 
         [Header("Story Focus")]
         [SerializeField, Min(0.1f)] private float storyFocusSmoothing = 10f;
         [SerializeField] private float storyFocusHeight = 1.35f;
 
+        [Header("Main Menu Preview")]
+        [SerializeField, Range(0f, 10f)] private float menuLookAmplitude = 6f;
+        [SerializeField, Min(4f)] private float menuLookPeriod = 12f;
+
         private float pitch;
         private bool storyLookLocked;
         private bool cinematicLookLocked;
         private bool storySeated;
+        private float? seatedEyeHeightOverride;
+        private float seatedYaw;
         private bool uiLookLocked;
         private Transform storyFocusTarget;
+        private PlayerIdleBreathing breathing;
+        private bool menuPreview;
+        private MenuViewPlanner.View menuView;
+        private float menuStartedAt;
+        private Vector3 gameplayPosition;
+        private Quaternion gameplayRotation;
+        private Quaternion gameplayYaw;
+        private Vector3 gameplayCameraPosition;
+        private bool gameplayControllerEnabled;
 
         public bool IsLookEnabled { get; set; } = true;
         public bool StoryLookLocked => storyLookLocked || cinematicLookLocked;
@@ -39,9 +55,65 @@ namespace SaksiTerakhir.Player
         public bool StoryCinematicLookLocked => cinematicLookLocked;
         public bool IsLookInputAllowed => IsLookEnabled && !StoryLookLocked && !uiLookLocked;
         public bool UiLookLocked => uiLookLocked;
+        public float SavedPitch => pitch;
+
+        public void RestoreSavedPitch(float value)
+        {
+            pitch = Mathf.Clamp(value, minPitch, maxPitch);
+            ApplyEyeHeight();
+        }
 
         public void SetUiLookLocked(bool locked) => uiLookLocked = locked;
         public Transform StoryFocusTarget => storyFocusTarget;
+
+        public void BeginMenuPreview()
+        {
+            if (menuPreview || !isActiveAndEnabled || body == null || yawTransform == null || cameraTransform == null) return;
+            gameplayPosition = body.transform.position;
+            gameplayRotation = body.transform.rotation;
+            gameplayYaw = yawTransform.rotation;
+            gameplayCameraPosition = cameraTransform.localPosition;
+            gameplayControllerEnabled = body.enabled;
+            menuPreview = true;
+            menuStartedAt = Time.unscaledTime;
+            float initialYaw = yawTransform.eulerAngles.y;
+            menuView = new MenuViewPlanner.View(gameplayPosition, initialYaw, 0f);
+            ApplyMenuPose();
+            ApplyEyeHeight();
+            Camera view = cameraTransform.GetComponentInChildren<Camera>();
+            Transform eye = view != null ? view.transform : cameraTransform;
+            float horizontalFieldOfView = view != null
+                ? 2f * Mathf.Atan(Mathf.Tan(view.fieldOfView * Mathf.Deg2Rad * 0.5f) * view.aspect) * Mathf.Rad2Deg : 80f;
+            var seating = GetComponent<SaksiTerakhir.Story.StoryPlayerSeating>();
+            menuView = MenuViewPlanner.Choose(body, eye, initialYaw, horizontalFieldOfView,
+                menuLookAmplitude, gameplayControllerEnabled && (seating == null || !seating.IsSeated));
+            if (menuView.Position != body.transform.position)
+            {
+                if (body.enabled) body.enabled = false;
+                body.transform.position = menuView.Position;
+                body.enabled = gameplayControllerEnabled;
+            }
+            ApplyMenuPose();
+            ApplyEyeHeight();
+            Physics.SyncTransforms();
+        }
+
+        public void EndMenuPreview(bool keepAdjustedPose = true)
+        {
+            if (!menuPreview) return;
+            menuPreview = false;
+            if (!keepAdjustedPose && body != null)
+            {
+                if (body.enabled) body.enabled = false;
+                body.transform.SetPositionAndRotation(gameplayPosition, gameplayRotation);
+                body.enabled = gameplayControllerEnabled;
+            }
+            if (keepAdjustedPose) pitch = 0f;
+            else if (yawTransform != null) yawTransform.rotation = gameplayYaw;
+            if (cameraTransform != null) cameraTransform.localPosition = gameplayCameraPosition;
+            ApplyEyeHeight();
+            Physics.SyncTransforms();
+        }
 
         private void Awake()
         {
@@ -55,6 +127,8 @@ namespace SaksiTerakhir.Player
             }
 
             pitch = NormalizeAngle(cameraTransform.localEulerAngles.x);
+            breathing = GetComponent<PlayerIdleBreathing>();
+            if (breathing == null) breathing = gameObject.AddComponent<PlayerIdleBreathing>();
         }
 
         private void OnEnable()
@@ -64,11 +138,18 @@ namespace SaksiTerakhir.Player
 
         private void OnDisable()
         {
+            EndMenuPreview(false);
             SetCursorLocked(false);
         }
 
         private void LateUpdate()
         {
+            if (menuPreview)
+            {
+                ApplyMenuPose();
+                ApplyEyeHeight();
+                return;
+            }
             if (StoryLookLocked && storyFocusTarget != null)
             {
                 ApplyStoryFocus();
@@ -97,9 +178,11 @@ namespace SaksiTerakhir.Player
 
         public void ClearStoryFocus() => storyFocusTarget = null;
 
-        public void SetStorySeated(bool seated)
+        public void SetStorySeated(bool seated, float eyeHeight = -1f)
         {
+            if (storySeated != seated) seatedYaw = 0f;
             storySeated = seated;
+            seatedEyeHeightOverride = seated && eyeHeight >= 0.5f ? eyeHeight : (float?)null;
             ApplyEyeHeight();
         }
 
@@ -115,7 +198,10 @@ namespace SaksiTerakhir.Player
                 ? pointerSensitivity
                 : stickSensitivity * Time.deltaTime;
 
-            yawTransform.Rotate(0f, lookDelta.x * scale, 0f, Space.Self);
+            if (storySeated)
+                seatedYaw = Mathf.Clamp(seatedYaw + lookDelta.x * scale, -seatedYawLimit, seatedYawLimit);
+            else
+                yawTransform.Rotate(0f, lookDelta.x * scale, 0f, Space.Self);
             pitch = Mathf.Clamp(pitch - lookDelta.y * scale, minPitch, maxPitch);
         }
 
@@ -123,9 +209,17 @@ namespace SaksiTerakhir.Player
         {
             if (body == null || cameraTransform == null) return;
             Vector3 localPosition = cameraTransform.localPosition;
-            localPosition.y = storySeated ? seatedEyeHeight : body.height * eyeHeightRatio;
+            localPosition.y = (storySeated ? seatedEyeHeightOverride ?? seatedEyeHeight : body.height * eyeHeightRatio)
+                + (breathing != null ? breathing.EyeOffset : 0f);
             cameraTransform.localPosition = localPosition;
-            cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+            cameraTransform.localRotation = Quaternion.Euler(menuPreview ? 0f : pitch,
+                storySeated && !menuPreview ? seatedYaw : 0f, 0f);
+        }
+
+        private void ApplyMenuPose()
+        {
+            float phase = (Time.unscaledTime - menuStartedAt) * Mathf.PI * 2f / Mathf.Max(4f, menuLookPeriod);
+            yawTransform.rotation = Quaternion.Euler(0f, menuView.Yaw + Mathf.Sin(phase) * menuView.ScanAngle, 0f);
         }
 
         private void ApplyStoryFocus()

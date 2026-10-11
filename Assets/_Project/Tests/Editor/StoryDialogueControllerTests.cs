@@ -112,6 +112,35 @@ namespace SaksiTerakhir.Tests
             Assert.That(dialogue.GetLineDuration("x"), Is.EqualTo(0.5f).Within(0.001f));
         }
 
+        [TestCase(false)]
+        [TestCase(true)]
+        public void AutomaticPlaybackRespectsPauseAndCompletesOnceRegardlessOfLegacyFlag(bool autoAdvance)
+        {
+            StoryDialogueController dialogue = CreateDialogue();
+            int completed = 0;
+            Assert.That(dialogue.Play(sequence, () => completed++, autoAdvance), Is.True);
+
+            dialogue.SetAutoAdvancePaused(true);
+            SetPrivate(dialogue, "nextLineAt", Time.time - 1f);
+            Update(dialogue);
+            Assert.That(dialogue.LineIndex, Is.Zero);
+
+            dialogue.SetAutoAdvancePaused(false);
+            Update(dialogue);
+            Assert.That(dialogue.LineIndex, Is.Zero, "Resuming gives the current line its full reading time.");
+
+            SetPrivate(dialogue, "nextLineAt", Time.time - 1f);
+            Update(dialogue);
+            Assert.That(dialogue.LineIndex, Is.EqualTo(1));
+            SetPrivate(dialogue, "nextLineAt", Time.time - 1f);
+            Update(dialogue);
+            Assert.That(dialogue.IsPlaying, Is.False);
+            Assert.That(completed, Is.EqualTo(1));
+
+            Update(dialogue);
+            Assert.That(completed, Is.EqualTo(1));
+        }
+
         private StoryDialogueController CreateDialogue()
         {
             sequence = ScriptableObject.CreateInstance<DialogueSequence>();
@@ -138,6 +167,12 @@ namespace SaksiTerakhir.Tests
                 BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.That(method, Is.Not.Null);
             method.Invoke(dialogue, null);
+        }
+
+        private static void Update(StoryDialogueController dialogue)
+        {
+            typeof(StoryDialogueController).GetMethod("Update", BindingFlags.Instance | BindingFlags.NonPublic)
+                .Invoke(dialogue, null);
         }
     }
 }

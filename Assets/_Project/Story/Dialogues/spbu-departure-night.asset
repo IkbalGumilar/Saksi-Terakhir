@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: spbu-departure-night
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.spbu_departure
+  lines:
+  - speakerId: PLAYER
+    text: Sebelum jalan, tadi saya ngobrol dengan seorang kakek di taman. Dia pernah
+      tinggal di Garut, masih saling kabar dengan beberapa warga Giriawas. Ada cerita
+      yang mungkin berhubungan dengan pencarian kita.
+  - speakerId: PLAYER
+    text: Katanya ada laki-laki menebang pohon dan berburu dengan anjing di kaki
+      Cikuray. Membawa kapak, keluar-masuk jalur pepohonan. Warga Giriawas yang bercerita
+      kepadanya tidak mengenali mereka sebagai warga desa. Kakeknya tidak melihat
+      sendiri.
+  - speakerId: NPC-003
+    text: Jadi kabar dari warga, lalu sampai ke kamu. Saya belum yakin. Orang keluar-masuk
+      hutan bisa punya banyak urusan.
+  - speakerId: NPC-004
+    text: Aku juga belum bisa menghubungkan mereka dengan prasasti. Tapi kalau warga
+      pernah melihat, kita bisa tanya di mana. Daripada aku terus membesarkan peta
+      sampai nama desanya hilang dari layar.
+  - speakerId: PLAYER
+    text: Dia sempat menyarankan datang malam, mencari pemburu dengan anjing lalu
+      mengikuti diam-diam dari jarak cukup, tanpa ketahuan. Obrolannya belum saya
+      tuntaskan; saya belum punya arahan setelah itu.
+  - speakerId: NPC-003
+    text: Baik. Kita mulai dari sumber kabarnya di Giriawas. Bagian yang belum kamu
+      dengar, biarkan dulu. Jangan kita isi sendiri.
+  - speakerId: PLAYER
+    text: Saya pisahkan kabar yang didengar dari dugaan kita. Di Giriawas, kita tanyakan
+      siapa yang pernah melihat, kapan, dan jalur mana. Baru cocokkan dengan wilayah
+      dalam arsip.
+  - speakerId: NPC-004
+    text: Tujuan awalnya ini, ya. Aku simpan rutenya. Pengalaman lapanganku belum
+      banyak; untuk sekarang aku bisa memastikan kita tidak salah belok sebelum mulai
+      mencari.
+  - speakerId: NPC-003
+    text: Itu sudah membantu. Kita periksa keterangannya satu-satu. Jangan buru-buru
+      menyebut permukiman yang belum dilihat sebagai desa yang kita cari.
+  - speakerId: NPC-004
+    text: Siap. Kalau aku terlalu cepat menyimpulkan, potong saja. Asal jangan pas
+      aku lagi menunjukkan belokan.
+  - speakerId: PLAYER
+    text: Belokannya kamu selesaikan dulu. Giriawas jadi tempat pertama untuk konfirmasi.
+  conditions:
+  - condition: 43
+    expectedValue: 1
+    inventoryEntryId: 
+    inventoryEntryType: 0
+  - condition: 46
+    expectedValue: 0
+    inventoryEntryId: 
+    inventoryEntryType: 0
+  - condition: 45
+    expectedValue: 0
+    inventoryEntryId: 
+    inventoryEntryType: 0
+  - condition: 44
+    expectedValue: 1
+    inventoryEntryId: 
+    inventoryEntryType: 0
+  phoneConversation: 0

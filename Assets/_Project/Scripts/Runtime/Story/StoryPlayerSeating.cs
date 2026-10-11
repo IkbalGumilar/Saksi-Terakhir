@@ -42,7 +42,7 @@ namespace SaksiTerakhir.Story
             return HasDependencies;
         }
 
-        public bool SeatAt(Transform seat)
+        public bool SeatAt(Transform seat, float eyeHeight = -1f)
         {
             ResolveDependencies();
             if (seat == null || !HasDependencies) return false;
@@ -55,21 +55,23 @@ namespace SaksiTerakhir.Story
             ownsCinematicLock = true;
             CurrentSeat = seat;
             IsSeated = true;
-            playerCamera?.SetStorySeated(true);
+            playerCamera?.SetStorySeated(true, eyeHeight);
             SetAnimatorSeated(true);
             return true;
         }
 
         public void StandUp()
         {
+            // Ignore stale managed wrappers so cleanup cannot change another live owner's pose.
+            if (this == null) return;
             if (!IsSeated && !ownsCinematicLock) return;
             SetAnimatorSeated(false);
-            playerCamera?.SetStorySeated(false);
+            if (playerCamera != null) playerCamera.SetStorySeated(false);
             IsSeated = false;
             CurrentSeat = null;
             if (!ownsCinematicLock) return;
             ownsCinematicLock = false;
-            playerMovement?.SetCinematicMovementLocked(false);
+            if (playerMovement != null) playerMovement.SetCinematicMovementLocked(false);
         }
 
         private void PlaceAt(Transform seat)

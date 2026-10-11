@@ -19,6 +19,7 @@ namespace SaksiTerakhir.Story
         {
             if (progress == null) throw new ArgumentNullException(nameof(progress));
             if (string.IsNullOrWhiteSpace(path)) throw new ArgumentException("Save path is empty.", nameof(path));
+            if (!progress.ValidateStoryState(out string error)) throw new InvalidDataException(error);
             string directory = Path.GetDirectoryName(path);
             if (!string.IsNullOrEmpty(directory)) Directory.CreateDirectory(directory);
             string temporaryPath = path + ".tmp";
@@ -49,6 +50,7 @@ namespace SaksiTerakhir.Story
                     || file.progress.Version != CurrentVersion
                     || !Enum.IsDefined(typeof(ChapterOneStage), file.progress.Stage))
                     throw new InvalidDataException("Unsupported version or invalid chapter state.");
+                if (!file.progress.ValidateStoryState(out string error)) throw new InvalidDataException(error);
                 return file.progress;
             }
             catch (Exception error)

@@ -40,6 +40,13 @@ namespace SaksiTerakhir.EditorTools
                 AssetDatabase.LoadAssetAtPath<Font>(Root + "/Source/CormorantGaramond-MediumItalic.ttf") == null)
                 return;
             EditorApplication.update -= InstallWhenReady;
+            // Completed font installations need no work on later unrelated script reloads.
+            if (AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(DisplayPath) != null &&
+                AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(MenuPath) != null &&
+                AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(ItalicPath) != null &&
+                AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FallbackPath) != null &&
+                AssetDatabase.LoadAssetAtPath<GameObject>(PreviewPath) != null)
+                return;
             try { InstallFonts(); }
             catch (Exception exception) { Debug.LogException(exception); }
         }

@@ -120,6 +120,11 @@ namespace SaksiTerakhir.Interaction
         private void OnDisable()
         {
             input.InteractPressed -= OnInteractPressed;
+            if (current is NpcInteractable npc) npc.CloseDialogue(true);
+            if (NpcDialoguePresenter.Instance != null && NpcDialoguePresenter.Instance.IsDirectConversation)
+                NpcDialoguePresenter.Instance.Stop();
+            NpcConversationPreparation preparation = GetComponent<NpcConversationPreparation>();
+            if (preparation != null) preparation.Cancel();
             SetCurrent(null);
             SetProbe(Vector3.zero, 0f);
             SetProbeVisualColor(false);
@@ -362,7 +367,10 @@ namespace SaksiTerakhir.Interaction
                 return;
             }
 
-            if (current is NpcInteractable previousNpc) previousNpc.CloseDialogue();
+            // A scripted retreat deliberately loses its aim target. Its preparation
+            // owns cancellation until arrival, timeout or an actor is disabled.
+            if (current is NpcInteractable previousNpc && !previousNpc.ConversationPreparing)
+                previousNpc.CloseDialogue();
             current = candidate;
             TargetChanged?.Invoke(current);
         }
@@ -370,6 +378,7 @@ namespace SaksiTerakhir.Interaction
         private void OnInteractPressed()
         {
             if (uiInteractionBlocked) return;
+            if (NpcDialoguePresenter.Instance != null && NpcDialoguePresenter.Instance.IsDirectConversation) return;
             if (storyDialogue != null && storyDialogue.TryConsumeInteract())
             {
                 return;

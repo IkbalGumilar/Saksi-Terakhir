@@ -15,40 +15,89 @@ MonoBehaviour:
   id: chapter.rooftop
   lines:
   - speakerId: NPC-021
-    text: Akhir pekan ini jadi ke pantai, kan? Aku sudah menunggu kabarnya sejak
-      Senin.
-  - speakerId: NPC-022
-    text: Jadi, kalau laporan hari Jumat selesai. Aku tidak mau membawa map arsip
-      ke pasir.
+    text: Empat hari lagi. Rasanya minggu ini bakal panjang sekali. Di rumah sudah
+      ada tas kosong, tiap lewat saya ingat belum masukin apa-apa.
   - speakerId: PLAYER
-    text: Kalian sudah memilih pantainya?
-  - speakerId: NPC-021
-    text: Belum resmi. Aku menemukan teluk kecil yang katanya tenang saat pagi.
+    text: Punya saya masih di lemari. Kalau dikeluarin sekarang, malah ganggu jalan.
+      Nanti Kamis saja.
   - speakerId: NPC-022
-    text: Bima, terakhir kali kamu bilang tenang, kita malah tersesat mencari parkir.
+    text: Nanti Kamis kamu tanya di grup, boleh bawa barang berapa kilo. Padahal
+      pesannya sudah dipasang paling atas.
   - speakerId: NPC-021
-    text: Itu karena peta lama. Kali ini aku bawa petunjuk yang lebih baik.
+    text: Kepedasan dulu. Pembelaannya nanti.
   - speakerId: PLAYER
-    text: Kedengarannya seperti awal dari pekerjaan baru.
+    text: Ini kalian belikan level berapa? Kok dari tadi kalian santai sekali.
   - speakerId: NPC-022
-    text: Jangan bercanda. Ini liburan kantor, bukan survei lapangan.
-  - speakerId: NPC-021
-    text: Kita berangkat Sabtu pagi. Yang lain bisa menyusul setelah sarapan.
-  - speakerId: NPC-022
-    text: Aku akan menghubungi Raka dan Sinta. Mereka belum memberi jawaban.
+    text: Saya minta dipisah. Kamu biasanya bilang tanggung kalau sedikit.
   - speakerId: PLAYER
-    text: Kalau bos bagaimana?
+    text: Orang lagi lapar itu jangan terlalu dipercaya omongannya.
   - speakerId: NPC-021
-    text: Pak Arya juga diundang. Katanya ia akan ikut kalau meja kerjanya kosong.
+    text: Pakai ini. Masih ada setengah ayam, pelan-pelan saja. Di Bali nanti saya
+      juga mau begitu. Makan, duduk lihat laut, tidur kalau ngantuk. Sudah.
   - speakerId: NPC-022
-    text: Aku belum pernah melihat meja itu benar-benar kosong.
+    text: Coba kamu kirim kalimat itu ke grup. Jadwal hari pertama saja sudah penuh.
+      Ada yang minta pantai, ada yang minta belanja, ada yang baru mau jalan sore
+      karena takut panas.
   - speakerId: PLAYER
-    text: Berarti kita perlu alasan yang cukup kuat untuk menariknya keluar kantor.
-  - speakerId: NPC-021
-    text: Pemandangan laut biasanya lebih meyakinkan daripada rapat.
+    text: Yang ini revisi keenam? Waktu saya baca terakhir, hari pertama masih ditulis
+      santai.
   - speakerId: NPC-022
-    text: Aku bawa makanan. Tolong jangan biarkan Bima memegang peta sendirian.
-  - speakerId: PLAYER
-    text: Baik. Tapi sekarang kita selesaikan urusan hari ini dulu.
+    text: Masih. Judulnya santai. Isinya dari pagi sampai malam.
   - speakerId: NPC-021
-    text: Setuju. Nanti sore kita pastikan siapa saja yang ikut.
+    text: Saya sudah bilang, kasih waktu kosong. Masa liburan bangunnya lebih pagi
+      dari berangkat kerja.
+  - speakerId: PLAYER
+    text: Kalau dikasih waktu kosong, kamu tidur. Jauh-jauh ke Bali.
+  - speakerId: NPC-021
+    text: Tidur di Bali. Begitu bangun bisa lihat laut. Kalau di rumah, bangun lihat
+      jemuran.
+  - speakerId: NPC-022
+    text: Ini baru jadwal. Belum mulai pembagian tempat duduk. Dari Januari bikin
+      grup, Februari bikin lagi karena grup pertama kebanyakan stiker. Sekarang benar-benar
+      tinggal berangkat, masih saja ada yang kirim ide baru.
+  - speakerId: PLAYER
+    text: Setidaknya kali ini jadi. Biasanya kata paling sering di grup itu nanti.
+  - speakerId: NPC-021
+    text: Makanya saya senang hampir semua ikut. Nyocokin waktu orang satu kantor
+      susah. Sudah cocok, ada saja yang mendadak nggak bisa.
+  - speakerId: NPC-021
+    text: Pas makan malam bareng nanti, jangan langsung bubar. Kita foto dulu. Satu
+      yang lengkap.
+  - speakerId: NPC-022
+    text: Saya masukin ke jadwal. Sebelum makan atau sesudah? Kalau sesudah, separuh
+      orang sudah cari kamar.
+  - speakerId: PLAYER
+    text: Sebelum makan jangan lama-lama. Nanti foto lengkapnya semua kelihatan kesal.
+  - speakerId: NPC-021
+    text: Sebentar saja. Kita punya banyak foto acara resmi, tapi coba cari yang
+      semuanya santai. Biasanya yang motret malah nggak masuk.
+  - speakerId: NPC-022
+    text: Betul. Nanti minta tolong orang lain. Kalau B yang pegang kamera, dia bisa
+      motret sampai selesai makan dan tetap nggak ada di fotonya sendiri.
+  - speakerId: NPC-021
+    text: Orang datang, pindah kerja, berhenti, menikah. Tahu-tahu mau kumpul begini
+      lagi susunannya sudah berubah. Mumpung sekarang bisa ikut, saya mau ada satu
+      foto yang bisa dikirim ke semua orang.
+  - speakerId: PLAYER
+    text: Ikut, ikut. Asal saya nggak disuruh berdiri sendirian paling depan.
+  - speakerId: NPC-022
+    text: Kamu di tengah saja. Kalau di pinggir, nanti pas kameranya mau ambil, kamu
+      pura-pura dipanggil orang.
+  - speakerId: PLAYER
+    text: Ada tekniknya ternyata.
+  - speakerId: NPC-021
+    text: Kami sudah pengalaman ngajak kamu foto.
+  - speakerId: NPC-022
+    text: 'Ini yang belum disepakati: siapa yang bawa kamera, siapa yang bawa speaker.
+      Kalau laptop, saya rasa nggak perlu ada yang bawa.'
+  - speakerId: PLAYER
+    text: Laptopnya mungkin sudah masuk tas orang sebelum bajunya.
+  - speakerId: NPC-021
+    text: Tolong keluarkan. Akhir pekan ini saya maunya ditanya mau makan di mana.
+      Urusan revisi berkas tunggu kita masuk lagi.
+  - speakerId: NPC-022
+    text: Saya boleh bantu cek jadwal liburan. Kalau minta cek tabel kantor, nanti
+      saja.
+  - speakerId: PLAYER
+    text: Baik. Jumat sore kita semua jadi turis.
+  conditions: []

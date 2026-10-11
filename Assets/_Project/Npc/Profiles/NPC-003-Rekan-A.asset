@@ -16,7 +16,12 @@ MonoBehaviour:
   displayName: Raka
   age: 29
   movementSpeed: 2.6
+  trafficPriority: 1
   role: 2
+  interactable: 1
+  buildingContext: 0
+  occupation: 0
+  department: 0
   stationary: 0
   home:
     key: lobby_colleague
@@ -65,7 +70,9 @@ MonoBehaviour:
   storyQuests:
   - {fileID: 11400000, guid: 82286ee9fcb1047289f5e6f32136ff3e, type: 2}
   - {fileID: 11400000, guid: 42498d6e8732b6e96a37a18a44e555b1, type: 2}
+  - {fileID: 11400000, guid: 9a3e2e22e8593558ab0463737109ab9b, type: 2}
   storyDialogues:
   - {fileID: 11400000, guid: 5ed9ae1ec4278fdfcb65c0425f4a50c2, type: 2}
   - {fileID: 11400000, guid: 1deaf475f67346fb878319b00d45a5fa, type: 2}
   - {fileID: 11400000, guid: 94978febfc96b4927a573a8b94782a00, type: 2}
+  - {fileID: 11400000, guid: 8819ae70dcaecc36f88f1c16dc0d5d68, type: 2}

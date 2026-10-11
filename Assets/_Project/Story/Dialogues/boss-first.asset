@@ -15,36 +15,17 @@ MonoBehaviour:
   id: chapter.boss_first
   lines:
   - speakerId: NPC-006
-    text: Terima kasih sudah datang. Ada berkas yang ingin saya tunjukkan.
+    text: Kamu duluan yang datang. Saya juga sudah menghubungi A dan B, belum ada
+      yang angkat.
   - speakerId: PLAYER
-    text: Berkas apa, Pak?
+    text: Tadi saya makan sama rekan-rekan di rooftop, Pak. A dan B belum ketemu.
+      Kalau untuk tim lapangan, saya cari mereka dulu saja.
   - speakerId: NPC-006
-    text: Daftar permukiman dari arsip lama. Satu entri tidak cocok dengan catatan
-      kita sekarang.
-  - speakerId: PLAYER
-    text: Mungkin nama tempatnya sudah berubah.
+    text: Iya, cari dua-duanya. Berkasnya kita bahas setelah lengkap, supaya nanti
+      kalian berangkat dengan informasi yang sama.
   - speakerId: NPC-006
-    text: Itu dugaan pertama saya. Tetapi nomor berkas dan rujukannya masih konsisten.
+    text: Yang ketemu duluan suruh langsung ke sini. Kamu lanjut cari satunya. Saya
+      siapkan berkasnya sambil menunggu.
   - speakerId: PLAYER
-    text: Apakah ada orang yang pernah memeriksanya langsung?
-  - speakerId: NPC-006
-    text: Belum. Semua laporan setelahnya hanya mengutip lembar yang sama.
-  - speakerId: PLAYER
-    text: Jadi keberadaan tempat itu belum terkonfirmasi.
-  - speakerId: NPC-006
-    text: Tepat. Saya tidak mau menandainya salah sebelum kita melihat kenyataan
-      di lapangan.
-  - speakerId: PLAYER
-    text: Apa yang harus saya lakukan?
-  - speakerId: NPC-006
-    text: Cari Raka dan Sinta. Kalian bertiga akan memeriksa petunjuknya bersama.
-  - speakerId: PLAYER
-    text: Mereka tahu soal berkas ini?
-  - speakerId: NPC-006
-    text: Belum. Saya sengaja menunggu kamu tiba sebelum memanggil mereka.
-  - speakerId: PLAYER
-    text: Saya akan menemukan mereka dulu.
-  - speakerId: NPC-006
-    text: Ajak mereka ke sini. Setelah semua lengkap, saya jelaskan alamat yang tercatat.
-  - speakerId: PLAYER
-    text: Baik, Pak. Saya kembali bersama mereka.
+    text: Baik, Pak. Nanti saya bawa yang terakhir ke sini.
+  conditions: []

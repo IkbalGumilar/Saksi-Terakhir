@@ -1,7 +1,6 @@
 # ---------------------------------------------------------------
 # Unity generated — jangan pernah di-commit
-# Library/ saja sudah 2,1 GB dan bisa dibangun ulang dari Assets +
-# Packages + ProjectSettings.
+# Bisa dibangun ulang dari Assets + Packages + ProjectSettings.
 # ---------------------------------------------------------------
 /[Ll]ibrary/
 /[Tt]emp/
@@ -13,7 +12,7 @@
 /[Mm]emoryCaptures/
 /[Rr]ecordings/
 
-# Meta file hanya diabaikan kalau aset pasangannya juga diabaikan
+# Meta file aset sumber harus tetap masuk version control.
 !/[Aa]ssets/**/*.meta
 
 # ---------------------------------------------------------------
@@ -24,10 +23,10 @@
 .idea/
 .consulo/
 ExportedObj/
-*.csproj
-*.unityproj
-*.sln
-*.slnx
+/*.csproj
+/*.unityproj
+/*.sln
+/*.slnx
 *.suo
 *.tmp
 *.user
@@ -35,28 +34,35 @@ ExportedObj/
 *.pidb
 *.booproj
 *.svd
-*.pdb
-*.mdb
+/*.pdb
+/*.mdb
 *.opendb
 *.VC.db
 
 # ---------------------------------------------------------------
-# Hasil build dan artefak
+# Hasil build di root; artefak dalam Build/ dan Builds/ sudah diabaikan.
+# Ekstensi ini tetap diperbolehkan untuk aset atau dependensi proyek.
 # ---------------------------------------------------------------
-*.apk
-*.aab
-*.app
-*.unitypackage
-*.x86_64
-sysinfo.txt
-crashlytics-build.properties
+/*.apk
+/*.aab
+/*.app
+/*.unitypackage
+/*.x86_64
+/sysinfo.txt
+/crashlytics-build.properties
+
+# Log dan dump crash Unity/Mono di root.
+/*.log
+/mono_crash.*
+/crash.dmp
 
 # ---------------------------------------------------------------
 # Addressables
 # ---------------------------------------------------------------
-/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/addressables_content_state.bin
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/addressables_content_state.bin.meta
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
-/[Aa]ssets/[Ss]treamingAssets/aa/*
+/[Aa]ssets/[Ss]treamingAssets/aa/
 
 # ---------------------------------------------------------------
 # Catatan & aturan pribadi — tidak untuk repo publik
@@ -64,6 +70,24 @@ crashlytics-build.properties
 /note/
 /Docs/
 /Tools/
+/.agents/
+/.aws/
+/.codex/
+/.superpowers/
+
+# ---------------------------------------------------------------
+# Cache Python dan cadangan Blender; sumber .py/.blend tetap tersedia.
+# ---------------------------------------------------------------
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.blend[0-9]
+*.blend[0-9][0-9]
+*.blend[0-9].meta
+*.blend[0-9][0-9].meta
 
 # ---------------------------------------------------------------
 # OS

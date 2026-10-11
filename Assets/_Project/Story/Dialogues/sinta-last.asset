@@ -14,32 +14,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.sinta_last
   lines:
-  - speakerId: PLAYER
-    text: Sinta, Pak Arya menunggu kita. Raka sudah menuju ke sana.
   - speakerId: NPC-004
-    text: Aku ikut. Semoga ini tidak merusak rencana akhir pekan.
+    text: Kalau sampai tiga kali, semoga bukan revisi. Satu panggilan soal revisi
+      saja biasanya cukup buat menghabiskan sore.
   - speakerId: PLAYER
-    text: Bima dan Yuni sedang membahas pantai di rooftop tadi.
+    text: Belum dijelaskan. Aku baru masuk, langsung disuruh cari kalian.
   - speakerId: NPC-004
-    text: Aku tahu. Mereka berdebat soal siapa yang membawa peta.
+    text: Berarti kita sama-sama belum punya alasan yang bagus kalau ditanya.
+  - speakerId: NPC-004
+    text: Aku tadi bikin daftar buat Bali. Baru charger, power bank, sandal sama
+      kamera. Tiap buka grup, ada tambahan lagi. Sekarang sunscreen dan dry bag.
   - speakerId: PLAYER
-    text: Yuni tidak mau Bima memegangnya sendirian.
+    text: Dry bag masuk daftar wajib sejak kapan? Jangan-jangan barang bawaanmu lebih
+      banyak daripada baju.
   - speakerId: NPC-004
-    text: Keputusan yang bijak. Aku akan mengurus kendaraan dan bekal.
+    text: Biar aman kalau jadi main air. Kamera sendiri, soalnya. Kamera kantor boleh
+      istirahat juga akhir pekan ini.
   - speakerId: PLAYER
-    text: Setelah pekerjaan dari bos selesai?
+    text: Itu kameranya. Orang yang bawa masih sibuk kerja?
   - speakerId: NPC-004
-    text: Tentu. Aku tidak mau memesan apa pun sebelum kita tahu berapa lama tugas
-      ini.
+    text: Justru aku mau ada di fotonya. Biasanya habis acara aku kirim foto ke grup,
+      lalu sadar aku sendiri cuma ada di pantulan kaca.
   - speakerId: PLAYER
-    text: Semoga hanya pemeriksaan singkat.
+    text: Tadi anak-anak rooftop juga ngomong soal foto bareng. Semua harus masuk,
+      katanya.
   - speakerId: NPC-004
-    text: Kalau selesai tepat waktu, kita bisa berangkat Sabtu sebelum jalan ramai.
+    text: Nah, kamu pegang kamera sebentar kalau begitu. Setelah itu kita pakai timer.
+      Jangan selalu menghilang pas orang mulai berkumpul.
   - speakerId: PLAYER
-    text: Aku ingin ikut melihat laut saat matahari terbit.
+    text: Aku yang pegang kamera malah diminta ikut foto juga.
   - speakerId: NPC-004
-    text: Bagus. Nanti aku hubungi semua orang, termasuk Pak Arya.
+    text: Iya. Foto yang lengkap susah sekali. Ada yang pulang duluan, ada yang masih
+      terima telepon. Nanti kalau sudah pindah kerja, ngajak kumpul lagi bisa lebih
+      susah. Mumpung hampir semua ikut, aku ingin kita punya foto yang kelihatan
+      benar-benar sedang liburan.
   - speakerId: PLAYER
-    text: Ia benar-benar akan ikut?
+    text: Asal jangan semuanya pose formal. Kalau masih berbaris seperti foto kantor,
+      percuma jauh-jauh.
   - speakerId: NPC-004
-    text: Kita tanyakan setelah pengarahan. Nah, ruangannya sudah di depan.
+    text: Setuju. Kamu boleh kelihatan sedang makan. Tapi sebelum sendoknya masuk
+      mulut, ya. Nanti kamu sendiri yang minta dihapus.
+  - speakerId: NPC-004
+    text: Aku belum belanja semuanya. Semoga urusan ini cepat selesai, jadi masih
+      sempat siap-siap sebelum Jumat.
+  - speakerId: PLAYER
+    text: Kita dengar dulu tugasnya. Daftar belanjamu jangan ikut dibacakan di dalam.
+  - speakerId: NPC-004
+    text: Sudah kusimpan. Kalau aku kelihatan serius nanti, jangan dibongkar.
+  - speakerId: PLAYER
+    text: Sekarang kalau ditelepon pasti kedengaran.
+  - speakerId: NPC-004
+    text: Sekarang orangnya sudah di depan pintu.
+  conditions: []

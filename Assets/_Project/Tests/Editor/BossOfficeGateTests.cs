@@ -127,7 +127,7 @@ namespace SaksiTerakhir.Tests
                 .Invoke(gate, null);
 
             Assert.That(barrier.enabled, Is.True);
-            Assert.That(door.IsOpen, Is.False);
+            Assert.That(door.IsOpen, Is.True, "The story gate schedules closure instead of bypassing the passage timer.");
             Assert.That(gate.CanOpenFor(playerObject.transform), Is.False);
         }
 

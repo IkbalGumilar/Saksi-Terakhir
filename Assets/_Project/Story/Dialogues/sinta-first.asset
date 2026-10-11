@@ -15,16 +15,12 @@ MonoBehaviour:
   id: chapter.sinta_first
   lines:
   - speakerId: PLAYER
-    text: Sinta, Pak Arya memanggil kita ke ruangannya.
+    text: B, Pak Bos cari kamu. Disuruh langsung ke ruangannya.
   - speakerId: NPC-004
-    text: Apakah jadwal akhir pekan berubah?
+    text: Tiga panggilan tidak terjawab. Aku tadi nggak dengar sama sekali. Oke,
+      aku ke sana sekarang.
   - speakerId: PLAYER
-    text: Bukan soal liburan. Ada arsip lama yang perlu kita periksa bersama.
+    text: Aku masih harus cari A. Kami menyusul.
   - speakerId: NPC-004
-    text: Baik. Aku rapikan meja ini sebentar lalu berangkat.
-  - speakerId: PLAYER
-    text: Aku harus mencari Raka juga.
-  - speakerId: NPC-004
-    text: Aku ke ruangan bos lebih dulu. Beri tahu Raka agar tidak berlama-lama.
-  - speakerId: PLAYER
-    text: Sampai bertemu di lantai empat.
+    text: Sip. Semoga beliau belum menghitung panggilan keempat.
+  conditions: []

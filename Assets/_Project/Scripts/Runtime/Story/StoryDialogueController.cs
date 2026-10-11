@@ -17,48 +17,84 @@ namespace SaksiTerakhir.Story
         private DialogueSequence activeSequence;
         private Action completion;
         private int lineIndex = -1;
-        private bool automatic;
         private bool automaticPaused;
         private float nextLineAt;
+        private bool vehicleTravelActive;
+        private DialogueSequence pendingInterruption;
+        private Action interruptionCompletion;
+        private DialogueSequence interruptedSequence;
+        private Action interruptedCompletion;
+        private int resumeLine;
+        private int playbackGeneration;
 
         public event Action<DialogueSequence, int> LineChanged;
+        public event Action<DialogueSequence, int> LineCompleted;
         public event Action DialogueEnded;
 
         public bool IsPlaying => activeSequence != null;
+        public bool VehicleTravelActive => vehicleTravelActive;
+        public bool IsPhoneConversation => IsPlaying && activeSequence.IsPhoneConversation;
+        public bool BlocksInventory => IsPlaying && (IsPhoneConversation || !vehicleTravelActive);
+        public bool BlocksPause => BlocksInventory;
         public DialogueSequence ActiveSequence => activeSequence;
         public int LineIndex => lineIndex;
+        public bool HasQueuedInterruption => pendingInterruption != null;
         public float CharactersPerSecond => charactersPerSecond;
         public DialogueLine CurrentLine => activeSequence != null && lineIndex >= 0
             && lineIndex < activeSequence.Lines.Count ? activeSequence.Lines[lineIndex] : null;
 
-        public bool Play(DialogueSequence sequence, Action onComplete, bool autoAdvance = false)
+        public bool PlayFrom(DialogueSequence sequence, int firstLine, Action onComplete)
         {
-            if (IsPlaying || sequence == null || !sequence.Validate(out string error))
+            if (!ValidSequence(sequence) || IsPlaying || firstLine < 0 || firstLine >= sequence.Lines.Count)
+                return false;
+            BeginSequence(sequence, firstLine, onComplete);
+            return true;
+        }
+
+        public bool QueueInterruption(DialogueSequence sequence, Action onComplete)
+        {
+            if (!ValidSequence(sequence) || pendingInterruption != null || interruptedSequence != null) return false;
+            if (!IsPlaying) return Play(sequence, onComplete);
+            pendingInterruption = sequence;
+            interruptionCompletion = onComplete;
+            return true;
+        }
+
+        // Keep the legacy flag source-compatible; all story playback is hands-free.
+        public bool Play(DialogueSequence sequence, Action onComplete, bool autoAdvance = false)
+            => PlayFrom(sequence, 0, onComplete);
+
+        private static bool ValidSequence(DialogueSequence sequence)
+        {
+            if (sequence == null) return false;
+            if (!sequence.Validate(out string error))
             {
-                if (sequence != null && !sequence.Validate(out error))
-                    Debug.LogError(error, sequence);
+                Debug.LogError(error, sequence);
                 return false;
             }
+            return true;
+        }
 
+        private void BeginSequence(DialogueSequence sequence, int firstLine, Action onComplete)
+        {
+            playbackGeneration++;
             activeSequence = sequence;
             completion = onComplete;
-            // Story dialogue is deliberately hands-free. Keep the parameter so existing callers
-            // remain source-compatible while every story sequence follows the same presentation.
-            automatic = true;
             automaticPaused = false;
-            lineIndex = 0;
+            lineIndex = firstLine;
             ScheduleCurrentLine();
-            if (playerMovement != null) playerMovement.SetStoryMovementLocked(true);
-            if (playerCamera != null) playerCamera.SetStoryLookLocked(true);
             LineChanged?.Invoke(activeSequence, lineIndex);
-            return true;
+            ApplyPlaybackLocks();
         }
 
-        public bool TryConsumeInteract()
+        public void SetVehicleTravelActive(bool active)
         {
-            if (!IsPlaying) return false;
-            return true;
+            vehicleTravelActive = active;
+            if (active && playerCamera != null) playerCamera.SetCinematicLookLocked(false);
+            ApplyPlaybackLocks();
         }
+
+        public bool TryConsumeInteract() => IsPlaying;
 
         public void SetAutoAdvancePaused(bool paused)
         {
@@ -76,10 +112,14 @@ namespace SaksiTerakhir.Story
 
         public void Stop()
         {
+            pendingInterruption = null;
+            interruptionCompletion = null;
+            interruptedSequence = null;
+            interruptedCompletion = null;
+            playbackGeneration++;
             if (!IsPlaying) return;
             activeSequence = null;
             lineIndex = -1;
-            automatic = false;
             automaticPaused = false;
             completion = null;
             if (playerMovement != null) playerMovement.SetStoryMovementLocked(false);
@@ -93,7 +133,7 @@ namespace SaksiTerakhir.Story
 
         private void Update()
         {
-            if (automatic && IsPlaying && !automaticPaused && Time.time >= nextLineAt)
+            if (Time.timeScale > 0f && IsPlaying && !automaticPaused && Time.time >= nextLineAt)
                 Advance();
         }
 
@@ -102,22 +142,55 @@ namespace SaksiTerakhir.Story
         private void Advance()
         {
             if (!IsPlaying) return;
+            DialogueSequence spokenSequence = activeSequence;
+            int generation = playbackGeneration;
+            LineCompleted?.Invoke(spokenSequence, lineIndex);
+            // A listener may stop playback to offer a choice, or start a new conversation.
+            if (!IsPlaying || generation != playbackGeneration) return;
+            if (pendingInterruption != null)
+            {
+                interruptedSequence = spokenSequence;
+                interruptedCompletion = completion;
+                resumeLine = lineIndex + 1;
+                DialogueSequence call = pendingInterruption;
+                Action callCompletion = interruptionCompletion;
+                pendingInterruption = null;
+                interruptionCompletion = null;
+                BeginSequence(call, 0, callCompletion);
+                return;
+            }
             if (lineIndex + 1 < activeSequence.Lines.Count)
             {
                 lineIndex++;
                 ScheduleCurrentLine();
                 LineChanged?.Invoke(activeSequence, lineIndex);
+                ApplyPlaybackLocks();
                 return;
             }
 
             Action finished = completion;
+            DialogueSequence resume = interruptedSequence;
+            Action resumeFinished = interruptedCompletion;
+            int nextUnreadLine = resumeLine;
             Stop();
             finished?.Invoke();
+            if (resume == null || IsPlaying || !isActiveAndEnabled) return;
+            if (nextUnreadLine < resume.Lines.Count) PlayFrom(resume, nextUnreadLine, resumeFinished);
+            else resumeFinished?.Invoke();
         }
 
         private void ScheduleCurrentLine()
         {
             nextLineAt = Time.time + GetLineDuration(CurrentLine != null ? CurrentLine.Text : string.Empty);
+        }
+
+        private void ApplyPlaybackLocks()
+        {
+            bool locked = IsPlaying && !IsPhoneConversation && !vehicleTravelActive;
+            if (playerMovement != null) playerMovement.SetStoryMovementLocked(locked);
+            if (playerCamera == null) return;
+            playerCamera.SetStoryLookLocked(locked);
+            if (!locked) playerCamera.ClearStoryFocus();
         }
     }
 }

@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.nadia_key
   lines:
-  - speakerId: PLAYER
-    text: Nadia, Pak Arya meminta kunci mobil kantor.
   - speakerId: NPC-002
-    text: Saya sudah menyiapkannya. Mobil hitam terparkir di depan gedung.
+    text: Untuk tim verifikasi lapangan, ya. Kuncinya sudah dititipkan di sini. Tunggu
+      sebentar, saya lihat lacinya.
   - speakerId: PLAYER
-    text: Kami akan memakainya untuk pemeriksaan arsip di lapangan.
+    text: Iya. Kami bertiga berangkat hari ini. A dan B sudah bersiap, saya sekalian
+      mengambil kunci.
   - speakerId: NPC-002
-    text: Ini kuncinya. Tolong catat keadaan mobil sebelum berangkat.
+    text: Mobilnya di area kendaraan dinas. Ini kuncinya. Periksa barang bersama
+      dulu sebelum jalan, kalau masih ada yang kurang kalian belum jauh.
   - speakerId: PLAYER
-    text: Terima kasih. Saya akan menjaganya.
-  - speakerId: NPC-002
-    text: Hati-hati di jalan, dan beri kabar jika jadwal kembali berubah.
+    text: Baik. Nanti kami cek sekali lagi di mobil. Map dan kotak arsipnya sudah
+      ada.
+  conditions: []

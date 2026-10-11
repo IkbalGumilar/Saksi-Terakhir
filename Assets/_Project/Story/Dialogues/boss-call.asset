@@ -14,14 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.boss_call
   lines:
-  - speakerId: NPC-006
-    text: Halo, ini Arya. Bisa datang ke ruangan saya sekarang?
   - speakerId: PLAYER
-    text: Ada yang perlu diperiksa, Pak?
+    text: Halo, Pak. Saya baru selesai makan, masih di rooftop.
   - speakerId: NPC-006
-    text: Ada catatan arsip yang mengganggu pikiran saya. Lebih baik kita bicara
-      langsung.
+    text: Kalau begitu langsung ke ruangan saya di lantai tiga. Ada berkas untuk
+      verifikasi lapangan yang perlu kita bahas.
   - speakerId: PLAYER
-    text: Saya segera ke sana.
+    text: Baik, Pak. Saya turun sekarang.
   - speakerId: NPC-006
-    text: Terima kasih. Saya menunggu di ruang kerja.
+    text: Saya tunggu. Bawa catatan kalau perlu.
+  conditions: []

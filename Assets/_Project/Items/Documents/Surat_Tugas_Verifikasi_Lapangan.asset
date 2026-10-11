@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e351c6e6fe46494987ed5c59a063121c, type: 3}
+  m_Name: Surat_Tugas_Verifikasi_Lapangan
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Inventory.ItemDefinition
+  id: document.field_assignment
+  nameKey: document.field_assignment.name
+  descriptionKey: document.field_assignment.description
+  type: 1
+  icon: {fileID: 0}
+  modelPrefab: {fileID: 0}
+  documentText: 'Surat Tugas Verifikasi Lapangan
+
+    24 Agustus 2026
+
+
+    Itu yang
+    saya perlukan. Cari wilayahnya, periksa apakah Wanaseta pernah digunakan sebagai
+    nama di sana, dan cari nama administratif sekarang. Foto, catatan, atau keterangan
+    yang menghubungkan tempat itu dengan arsip, semuanya dibawa pulang.'

@@ -15,10 +15,10 @@ MonoBehaviour:
   id: chapter.sinta_last_intro
   lines:
   - speakerId: PLAYER
-    text: Sinta, Pak Arya menunggu kita. Raka sudah lebih dulu ke ruangannya.
+    text: Kabelnya nanti. Pak Bos cari kita. Coba lihat HP-mu.
   - speakerId: NPC-004
-    text: Baik. Aku rapikan catatan ini sebentar.
+    text: Tiga panggilan. Tadi aku cuma tinggal sebentar... ya sudah, nanti kabelnya
+      kusut saja. A sudah ketemu?
   - speakerId: PLAYER
-    text: Kita bisa berangkat?
-  - speakerId: NPC-004
-    text: Bisa. Sambil jalan, mari bahas rencana liburan setelah tugas ini.
+    text: Sudah ke sana duluan. Tinggal kita.
+  conditions: []

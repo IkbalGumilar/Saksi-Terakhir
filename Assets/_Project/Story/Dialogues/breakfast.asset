@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: breakfast
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.breakfast
+  lines:
+  - speakerId: Bu Kantin
+    text: Pagi. Ambil piring dulu. Dari tadi dilihatin, makanannya nggak bakal pindah
+      sendiri.
+  - speakerId: PLAYER
+    text: Saya lagi milih, Bu. Kalau langsung ambil, nanti lihat punya orang malah
+      lebih enak.
+  - speakerId: Bu Kantin
+    text: Itu yang sebelah sana baru matang. Masih hangat. Kamu makan dulu yang benar
+      sebelum naik.
+  - speakerId: PLAYER
+    text: Pekerjaan belum saya buka, perut sudah minta istirahat duluan.
+  - speakerId: Bu Kantin
+    text: Ya dikasih makan. Jangan semuanya nunggu jam istirahat. Sambalnya ambil
+      sendiri, ya. Saya sudah tahu kalau saya yang kasih, nanti dibilang sedikit.
+  - speakerId: PLAYER
+    text: Saya belum bilang apa-apa, lho.
+  - speakerId: Bu Kantin
+    text: Sudah? Piringnya biar di situ, nanti saya ambil. Bayarnya di kasir dulu
+      sebelum kamu naik.
+  conditions: []

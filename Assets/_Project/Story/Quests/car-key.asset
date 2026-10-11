@@ -17,3 +17,5 @@ MonoBehaviour:
   titleKey: quest.main.key
   objectiveKeys:
   - quest.main.key.collect
+  conditions: []
+  progressSource: 0

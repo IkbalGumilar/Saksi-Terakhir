@@ -18,3 +18,5 @@ MonoBehaviour:
   objectiveKeys:
   - quest.main.find.raka
   - quest.main.find.sinta
+  conditions: []
+  progressSource: 0

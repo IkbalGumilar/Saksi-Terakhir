@@ -46,7 +46,15 @@ namespace SaksiTerakhir.Npc
         [SerializeField] private string displayName = "NPC";
         [SerializeField, Min(1)] private int age = 25;
         [SerializeField, Range(2f, 5f)] private float movementSpeed = 2f;
+        [SerializeField, Range(0, 10), Tooltip("Prioritas berpapasan: NPC dengan nilai lebih rendah mengalah. Nilai sama dipilih acak untuk satu pertemuan.")]
+        private int trafficPriority = 1;
         [SerializeField] private NpcRole role = NpcRole.Worker;
+        [Header("Interaksi dan lingkungan")]
+        [SerializeField, Tooltip("Mengizinkan percakapan langsung dengan pemain. Percakapan antar NPC dan sapaan otomatis tetap dapat berjalan.")]
+        private bool interactable = true;
+        [SerializeField] private NpcBuildingContext buildingContext = NpcBuildingContext.OfficeArchive;
+        [SerializeField] private NpcOccupation occupation = NpcOccupation.Clerk;
+        [SerializeField] private NpcDepartment department = NpcDepartment.General;
         [SerializeField] private bool stationary;
         [SerializeField] private NpcWaypointDefinition home;
         [SerializeField] private NpcWaypointDefinition[] route = Array.Empty<NpcWaypointDefinition>();
@@ -59,7 +67,12 @@ namespace SaksiTerakhir.Npc
         public string DisplayName => displayName;
         public int Age => age;
         public float MovementSpeed => Mathf.Clamp(movementSpeed, 2f, 5f);
+        public int TrafficPriority => Mathf.Clamp(trafficPriority, 0, 10);
         public NpcRole Role => role;
+        public bool Interactable => interactable;
+        public NpcBuildingContext BuildingContext => buildingContext;
+        public NpcOccupation Occupation => occupation;
+        public NpcDepartment Department => department;
         public bool Stationary => stationary;
         public NpcWaypointDefinition Home => home;
         public NpcWaypointDefinition[] Route => route;
@@ -72,6 +85,17 @@ namespace SaksiTerakhir.Npc
         {
             storyQuests = quests ?? Array.Empty<QuestDefinition>();
             storyDialogues = dialogues ?? Array.Empty<DialogueSequence>();
+        }
+
+        public void SetTrafficPriority(int priority) => trafficPriority = Mathf.Clamp(priority, 0, 10);
+
+        public void SetInteractable(bool value) => interactable = value;
+
+        public void SetContext(NpcBuildingContext context, NpcOccupation job, NpcDepartment section)
+        {
+            buildingContext = context;
+            occupation = job;
+            department = section;
         }
 
 #if UNITY_EDITOR
@@ -95,6 +119,7 @@ namespace SaksiTerakhir.Npc
         {
             age = Mathf.Max(1, age);
             movementSpeed = Mathf.Clamp(movementSpeed, 2f, 5f);
+            trafficPriority = Mathf.Clamp(trafficPriority, 0, 10);
         }
 #endif
     }

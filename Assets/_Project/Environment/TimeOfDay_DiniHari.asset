@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e9a72c2c7f5ee9a87451199ec0d00d, type: 3}
+  m_Name: TimeOfDay_DiniHari
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Environment.TimeOfDayPreset
+  hourOfDay: 5
+  skybox: {fileID: 2100000, guid: 7d009f201ea759263a47522e6aacde26, type: 2}
+  skyRotation: 0
+  skyExposure: 0.7
+  skyTint: {r: 0.47, g: 0.53, b: 0.68, a: 1}
+  sunElevation: -6
+  sunAzimuth: 90
+  sunColor: {r: 1, g: 0.957, b: 0.882, a: 1}
+  useColorTemperature: 0
+  colorTemperature: 6500
+  sunIntensity: 0
+  shadowStrength: 0.85
+  ambientMode: 1
+  ambientIntensity: 1
+  ambientSky: {r: 0.12, g: 0.16, b: 0.25, a: 1}
+  ambientEquator: {r: 0.1, g: 0.12, b: 0.17, a: 1}
+  ambientGround: {r: 0.025, g: 0.03, b: 0.045, a: 1}
+  fogEnabled: 1
+  fogMode: 3
+  fogColor: {r: 0.19, g: 0.23, b: 0.32, a: 1}
+  fogDensity: 0.007

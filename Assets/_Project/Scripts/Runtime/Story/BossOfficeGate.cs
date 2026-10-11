@@ -25,6 +25,7 @@ namespace SaksiTerakhir.Story
         public event Action<Transform> Blocked;
 
         public bool PlayerInside => playerInside;
+        public bool IsPlayerBarrier(Collider candidate) => candidate != null && candidate == playerBarrier;
         public bool IsInsideRoom(Vector3 position) => roomZone != null && roomZone.bounds.Contains(position);
         public bool IsFullyInsideRoom(OfficeNpcAgent actor)
         {
@@ -34,7 +35,9 @@ namespace SaksiTerakhir.Story
             // The pivot can cross the trigger before the capsule clears the doorway.
             float clearance = Mathf.Max(0.45f,
                 actor.Navigation != null ? actor.Navigation.radius : 0f);
-            return actor.transform.position.x <= roomZone.bounds.max.x - clearance;
+            Bounds interior = roomZone.bounds;
+            interior.Expand(new Vector3(-clearance * 2f, 0f, -clearance * 2f));
+            return interior.Contains(actor.transform.position);
         }
         public bool PlayerBlocked => progress != null && !CanOpenFor(player);
         public string BlockedPromptKey
@@ -105,7 +108,7 @@ namespace SaksiTerakhir.Story
             if (wasInside && !inside && progress != null
                 && (progress.Stage == ChapterOneStage.FindColleagues
                     || progress.Stage == ChapterOneStage.EscortLastColleague))
-                door?.ForceClose();
+                door?.RequestAutoClose();
             RefreshBarrier();
         }
 
@@ -129,6 +132,8 @@ namespace SaksiTerakhir.Story
 
         private void Update()
         {
+            // Menu framing is temporary and must not advance room/door state.
+            if (Time.timeScale <= 0f || Time.deltaTime <= 0f) return;
             if (player != null && roomZone != null)
                 SetPlayerInside(roomZone.bounds.Contains(player.position));
             RefreshBarrier();
@@ -142,7 +147,7 @@ namespace SaksiTerakhir.Story
                 OfficeNpcAgent entering = enteringId == "NPC-003" ? colleagueA
                     : enteringId == "NPC-004" ? colleagueB : null;
                 if (IsFullyInsideRoom(entering))
-                    door.ForceClose();
+                    door.RequestAutoClose();
             }
             if (lastBlockedActor != null
                 && Vector3.Distance(lastBlockedActor.position, transform.position) > 2.5f)

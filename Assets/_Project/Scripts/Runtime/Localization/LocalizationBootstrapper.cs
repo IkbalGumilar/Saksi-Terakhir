@@ -8,7 +8,8 @@ namespace SaksiTerakhir.Localization
 
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
+            // The static manager retains localization state across scene loads.
+            // Keep this host scene-owned, since it can also carry the EventSystem.
             LocalizationManager.Initialize(table);
         }
     }

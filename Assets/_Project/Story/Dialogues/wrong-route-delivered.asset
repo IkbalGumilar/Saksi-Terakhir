@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: wrong-route-delivered
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.wrong_route_delivered
+  lines:
+  - speakerId: Petugas Digitalisasi
+    text: Nah, ini dia. Kami tadi sudah buka daftar penyimpanan, padahal berkasnya
+      masih keliling di gedung sendiri.
+  - speakerId: PLAYER
+    text: Ketemunya di rak aktif. Saya tadi dititipi pas mau naik.
+  - speakerId: Petugas Digitalisasi
+    text: Lihat, angka terakhirnya mirip. Salah baca sedikit, masuk rak lain. Kami
+      tinggal tunggu map ini untuk melanjutkan pemindaian.
+  - speakerId: PLAYER
+    text: Untung masih satu gedung. Kalau harus diambil ke tempat lain, saya sekalian
+      titip makan siang.
+  - speakerId: Petugas Digitalisasi
+    text: Untuk satu map begini? Nanti biaya makannya lebih besar dari ongkos ambil
+      berkas. Sudah, taruh di sini. Terima kasih, ya.
+  conditions: []

@@ -16,7 +16,12 @@ MonoBehaviour:
   displayName: Nadia
   age: 27
   movementSpeed: 2
+  trafficPriority: 1
   role: 1
+  interactable: 1
+  buildingContext: 0
+  occupation: 0
+  department: 0
   stationary: 1
   home:
     key: lobby_reception

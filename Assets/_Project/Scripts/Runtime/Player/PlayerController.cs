@@ -125,11 +125,17 @@ namespace SaksiTerakhir.Player
 
         private void Update()
         {
+            // Move(Vector3.zero) still resolves penetrations. A paused menu must keep
+            // the restored pose fixed until gameplay actually resumes.
+            // The frame's delta may still be positive when the menu pauses during Awake.
+            if (Time.timeScale <= 0f || Time.deltaTime <= 0f) return;
             if (!uiMovementLocked) UpdateCrouchState();
             UpdateHorizontalVelocity();
             UpdateVerticalVelocity();
 
             Vector3 motion = horizontalVelocity + Vector3.up * verticalVelocity;
+            if (horizontalVelocity.sqrMagnitude > 0.0001f)
+                SaksiTerakhir.Npc.NpcPassageYield.Request(transform, horizontalVelocity, controller.radius, 1.8f);
             controller.Move(motion * Time.deltaTime);
         }
 

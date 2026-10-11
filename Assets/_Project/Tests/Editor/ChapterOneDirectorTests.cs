@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using NUnit.Framework;
+using SaksiTerakhir.Inventory;
 using SaksiTerakhir.Npc;
 using SaksiTerakhir.Player;
 using SaksiTerakhir.Story;
@@ -115,6 +116,8 @@ namespace SaksiTerakhir.Tests
             director.TryBeginNpcDialogue(cast["NPC-002"], player);
             FinishCurrentDialogue();
             Assert.That(director.Progress.HasCarKey, Is.True);
+            Assert.That(player.GetComponent<InventoryPanelController>().HasItem(CarKeyInventory.CarKeyId), Is.True);
+            Assert.That(player.GetComponent<InventoryPanelController>().State.Items.Count, Is.EqualTo(1));
             Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.ReachVehicle));
             Assert.That(director.TryBeginNpcDialogue(cast["NPC-002"], player), Is.False);
             Assert.That(director.TryReachVehicle(player), Is.True);
@@ -146,6 +149,46 @@ namespace SaksiTerakhir.Tests
             Assert.That(director.Progress.LastColleagueIntroComplete, Is.True);
             Assert.That(lastAgent.StoryMoveRequested, Is.True,
                 "Only completion of the stationary introduction may request the escort route.");
+        }
+
+        [Test]
+        public void ReceptionKeyWaitsForFreeCapacityAndIsPresentBeforeQuestEvent()
+        {
+            CreateChapter();
+            var progress = new ChapterOneProgress();
+            foreach (ChapterOneEvent kind in new[] { ChapterOneEvent.RooftopDialogueFinished,
+                ChapterOneEvent.BossCallFinished, ChapterOneEvent.FirstBriefingFinished })
+                Assert.That(progress.TryApply(kind), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueDialogueFinished, "NPC-003"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueDialogueStarted, "NPC-004"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.LastColleagueIntroFinished, "NPC-004"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.WalkDialogueFinished, "NPC-004"), Is.True);
+            // Use the same progression as the full story fixture for the final meeting.
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, "NPC-003"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.ColleagueArrived, "NPC-004"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.BossMovedToMeeting, "left"), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.MeetingAssembled), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.PlayerSeated), Is.True);
+            Assert.That(progress.TryApply(ChapterOneEvent.FinalBriefingFinished), Is.True);
+            director.RestoreProgress(progress);
+            InventoryPanelController items = player.GetComponent<InventoryPanelController>();
+            items.RestoreState(new InventoryState(1, 1));
+            var blocker = new InventoryEntry("test.blocker", "Barang", InventoryEntryType.Item);
+            Assert.That(items.TryAdd(blocker), Is.True);
+            MethodInfo receive = typeof(ChapterOneDirector).GetMethod("ReceiveCarKey",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            receive.Invoke(director, null);
+            Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.CollectCarKey));
+            Assert.That(director.Progress.HasCarKey, Is.False);
+            Assert.That(items.HasItem(CarKeyInventory.CarKeyId), Is.False);
+            items.Remove(blocker);
+            bool observedKey = false;
+            director.ProgressChanged += _ => observedKey = items.HasItem(CarKeyInventory.CarKeyId);
+            receive.Invoke(director, null);
+            Assert.That(observedKey, Is.True);
+            Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.ReachVehicle));
+            receive.Invoke(director, null);
+            Assert.That(items.State.Items.Count, Is.EqualTo(1));
         }
 
         [Test]
@@ -279,6 +322,122 @@ namespace SaksiTerakhir.Tests
                 Is.Not.EqualTo(NpcState.PlayerConversation));
         }
 
+        [Test]
+        public void LastIntroductionKeepsTheVariantSelectedBeforeProgressChanges()
+        {
+            CreateChapter();
+            ReachColleagueSearch();
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-004"], player), Is.True);
+            FinishCurrentDialogue();
+            DialogueSequence intro = sequences["chapter.raka_last_intro"];
+            intro.Configure(intro.Id, new List<DialogueLine>(intro.Lines).ToArray(), new[]
+            {
+                new ChapterOneStoryCondition(ChapterOneConditionId.ColleagueAFoundLast, false)
+            });
+
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-003"], player), Is.True);
+            Assert.That(dialogue.ActiveSequence, Is.SameAs(intro));
+            Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.EscortLastColleague));
+            FinishCurrentDialogue();
+            Assert.That(director.Progress.LastColleagueIntroComplete, Is.True);
+        }
+
+        [Test]
+        public void IneligibleLastIntroductionDoesNotAdvanceProgress()
+        {
+            CreateChapter();
+            ReachColleagueSearch();
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-004"], player), Is.True);
+            FinishCurrentDialogue();
+            DialogueSequence intro = sequences["chapter.raka_last_intro"];
+            intro.Configure(intro.Id, new List<DialogueLine>(intro.Lines).ToArray(), new[]
+            {
+                new ChapterOneStoryCondition(ChapterOneConditionId.BreakfastPaid)
+            });
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-003"], player), Is.False);
+            Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.FindColleagues));
+            Assert.That(director.Progress.LastColleagueId, Is.Empty);
+        }
+
+        [TestCase(false)]
+        [TestCase(true)]
+        public void InterruptedConditionalIntroductionKeepsItsSelectionOnRetryOrRestore(bool restore)
+        {
+            CreateChapter();
+            ReachColleagueSearch();
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-004"], player), Is.True);
+            FinishCurrentDialogue();
+            DialogueSequence intro = sequences["chapter.raka_last_intro"];
+            intro.Configure(intro.Id, new List<DialogueLine>(intro.Lines).ToArray(), new[]
+            {
+                new ChapterOneStoryCondition(ChapterOneConditionId.ColleagueAFoundLast, false)
+            });
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-003"], player), Is.True);
+            dialogue.Stop();
+            if (restore) director.RestoreProgress(director.Progress);
+            else Assert.That(director.TryBeginNpcDialogue(cast["NPC-003"], player), Is.True);
+            Assert.That(dialogue.ActiveSequence, Is.SameAs(intro));
+            Assert.That(director.Progress.LastColleagueIntroComplete, Is.False);
+            FinishCurrentDialogue();
+            Assert.That(director.Progress.LastColleagueIntroComplete, Is.True);
+        }
+
+        [Test]
+        public void DialogueSelectionKeySurvivesConditionReorderingAndTextEdits()
+        {
+            CreateChapter();
+            DialogueSequence intro = sequences["chapter.raka_last_intro"];
+            var breakfast = new ChapterOneStoryCondition(ChapterOneConditionId.BreakfastPaid);
+            var last = new ChapterOneStoryCondition(ChapterOneConditionId.ColleagueAFoundLast, false);
+            intro.Configure(intro.Id, new[] { new DialogueLine("PLAYER", "Original") },
+                new[] { breakfast, last });
+            string key = intro.SelectionKey;
+            Assert.That(key, Is.Not.Empty);
+            intro.Configure(intro.Id, new[] { new DialogueLine("PLAYER", "Edited") },
+                new[] { last, breakfast });
+            Assert.That(intro.SelectionKey, Is.EqualTo(key));
+            intro.Configure(intro.Id, new[] { new DialogueLine("PLAYER", "Edited") },
+                new[] { new ChapterOneStoryCondition(ChapterOneConditionId.BreakfastOwed), last });
+            Assert.That(intro.SelectionKey, Is.Not.EqualTo(key));
+        }
+
+        [Test]
+        public void InventoryChangesRefreshConditionalQuestWithoutChangingStoryProgress()
+        {
+            CreateChapter();
+            QuestDefinition quest = ScriptableObject.CreateInstance<QuestDefinition>();
+            created.Add(quest);
+            quest.Configure("inventory.probe", QuestCategory.Main, "Find key", new[] { "key" }, new[]
+            {
+                new ChapterOneStoryCondition(ChapterOneConditionId.InventoryContainsEntry,
+                    inventoryEntryId: "probe-key")
+            });
+            typeof(ChapterOneDirector).GetField("quests", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(director, new[] { quest });
+            var controllerObject = new GameObject("Inventory probe");
+            controllerObject.SetActive(false);
+            created.Add(controllerObject);
+            InventoryPanelController controller = controllerObject.AddComponent<InventoryPanelController>();
+            var inventory = new InventoryState(1, 1);
+            typeof(InventoryPanelController).GetField("state", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(controller, inventory);
+            typeof(ChapterOneDirector).GetField("playerInventory", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(director, controller);
+            typeof(ChapterOneDirector).GetMethod("RefreshInventoryBinding", BindingFlags.Instance | BindingFlags.NonPublic)
+                .Invoke(director, null);
+            int refreshed = 0;
+            director.ProgressChanged += _ => refreshed++;
+            Assert.That(director.CurrentQuest, Is.Null);
+            var key = new InventoryEntry("probe-key", "Key", InventoryEntryType.Item);
+            Assert.That(inventory.TryAdd(key), Is.True);
+            Assert.That(refreshed, Is.EqualTo(1));
+            Assert.That(director.CurrentQuest, Is.SameAs(quest));
+            Assert.That(inventory.Remove(key), Is.True);
+            Assert.That(refreshed, Is.EqualTo(2));
+            Assert.That(director.CurrentQuest, Is.Null);
+            Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.MeetRooftopWorkers));
+        }
+
         private void CreateChapter()
         {
             string[] ids = { "chapter.rooftop", "chapter.boss_call", "chapter.boss_first",
@@ -311,6 +470,19 @@ namespace SaksiTerakhir.Tests
                 go.SetActive(true);
             }
             GameObject playerObject = new GameObject("Player");
+            playerObject.SetActive(false);
+            InventoryPanelController itemInventory = playerObject.AddComponent<InventoryPanelController>();
+            itemInventory.RestoreState(new InventoryState());
+            ItemDefinition keyDefinition = ScriptableObject.CreateInstance<ItemDefinition>();
+            typeof(ItemDefinition).GetField("id", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(keyDefinition, CarKeyInventory.CarKeyId);
+            ItemDefinitionCatalog catalog = ScriptableObject.CreateInstance<ItemDefinitionCatalog>();
+            typeof(ItemDefinitionCatalog).GetField("definitions", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(catalog, new[] { keyDefinition });
+            typeof(InventoryPanelController).GetField("itemCatalog", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(itemInventory, catalog);
+            created.Add(keyDefinition);
+            created.Add(catalog);
             player = playerObject.transform;
             created.Add(playerObject);
             GameObject dialogueObject = new GameObject("Dialogue");

@@ -1,374 +1,239 @@
 # Saksi Terakhir
 
-Saksi Terakhir is a first-person psychological horror investigation game set in a mysterious Indonesian village. Explore abandoned locations, uncover hidden truths, and survive an ancient force that watches every step you take.
-
-| | |
-|---|---|
-| **Engine** | Unity 6000.4.0f1 |
-| **Render pipeline** | URP 17.4.0 · Forward+ · Linear · HDR on · MSAA off |
-| **Platform** | PC (developed on Linux, OpenGL Core 4.6) |
-| **Perspective** | First person |
-| **Genre** | Psychological horror investigation |
-| **Estimated playtime** | 3–5 hours |
-| **Endings** | Multiple |
-| **Combat** | Minimal by design |
-| **Status** | In development · design docs at version 0.1 |
-| **Team** | Solo developer |
-
----
-
-## Contents
-
-- [Premise](#premise)
-- [Design pillars](#design-pillars)
-- [Core gameplay loop](#core-gameplay-loop)
-- [Mechanics](#mechanics)
-- [World rules](#world-rules)
-- [Chapters](#chapters)
-- [Cast](#cast)
-- [What this game is not](#what-this-game-is-not)
-- [Technical target](#technical-target)
-- [Repository layout](#repository-layout)
-- [Runtime systems](#runtime-systems)
-- [Editor tools](#editor-tools)
-- [Procedural asset pipeline](#procedural-asset-pipeline)
-- [Current content](#current-content)
-- [Getting started](#getting-started)
-- [Design documents](#design-documents)
-- [Conventions](#conventions)
-- [License](#license)
-
----
-
-## Premise
-
-The player is a government archive officer assigned to organize and digitize old
-documents before they are permanently destroyed. During that routine assignment they
-find an unregistered archive: evidence of an Indonesian village that officially does
-not exist.
-
-On arrival the village looks entirely ordinary. Children play outside, shops are open,
-the mosque continues its daily activities. Nothing looks unusual — yet everything feels
-wrong. The villagers know more than they should, every conversation seems rehearsed,
-every silence hides something.
-
-As the investigation deepens, reality begins to fracture, and one truth becomes clear:
-someone, or something, has been waiting for the player to arrive.
-
-**Central theme:** *"Not every truth is meant to be uncovered."*
-
----
-
-## Design pillars
-
-1. **Atmosphere first** — silence, lighting, and environmental storytelling carry the
-   fear, not jump scares.
-2. **Mystery drives progression** — the player advances because they want answers.
-3. **Investigation over combat** — observe, collect evidence, solve the mystery.
-4. **Psychological horror** — reality becomes unreliable; certainty never arrives.
-5. **The feeling of being watched** — the world reacts to the player's presence.
-
-Every feature must strengthen at least one pillar. If it does not, it does not ship.
-
----
-
-## Core gameplay loop
-
-```
-Observe → Explore → Investigate → Collect evidence → Analyze
-   → Solve puzzle → Unlock area → Discover truth → Pressure rises → repeat
-```
-
-Every completed investigation reveals another mystery rather than a complete answer.
-The player never grows stronger — progression is knowledge, understanding, and access
-to new locations.
-
-Fear escalates in five stages: something feels wrong → inconsistencies appear →
-reality becomes unreliable → the village reacts to the player → confrontation becomes
-unavoidable.
-
----
-
-## Mechanics
-
-| Mechanic | Role |
-|---|---|
-| Exploration | Primary activity. No objective markers; locations are found through maps, notes, conversation, and environmental clues. |
-| Movement | Walk, run, crouch, jump, climb small obstacles. Ordinary human capability only. |
-| Interaction | Doors, switches, pickups, pushable objects, readable documents. |
-| Object inspection | Rotate, zoom, and read details to find hidden marks. |
-| Evidence collection | Documents, photographs, audio recordings, keys, government files — stored automatically. |
-| Document reading | A primary storytelling tool. Not every document tells the truth. |
-| Inventory | Deliberately small: flashlight, HT, keys, documents, puzzle items. |
-| Flashlight | Main light source. Not a weapon; light does not guarantee safety. |
-| Handheld radio (HT) | Recovered from The Outsider. Warns, guides, and misleads. Never fully trustworthy. |
-| Dialogue | NPCs may tell the truth, lie, deflect, or withhold. Choices change available information. |
-| Investigation journal | Automatically records evidence, objectives, notes, village rules, and maps — organizes without solving. |
-| Puzzles | Grounded in village history, documents, symbols, and mechanisms. Never arbitrary gates. |
-| Observation | Rewarded: strange behavior, environmental change, sound shifts, animal reactions. |
-| Stealth | Situational. Hide, stay quiet, avoid detection. |
-| Chase sequences | Rare and memorable. The player cannot fight — escape, hide, survive. |
-| Decisions | Influence information, relationships, progression, and ending. Never signposted as correct. |
-| Environmental change | Paths appear, buildings feel different, objects move, sounds vanish. |
-| Save system | Manual saves at designated locations, plus auto-save on major story beats. |
-
----
-
-## World rules
-
-The supernatural obeys a fixed internal logic — nothing happens "just because it is
-horror." A selection of the sixteen rules in [Docs/Worl Rule.md](Docs/Worl%20Rule.md):
-
-- The village cannot be found by someone not meant to find it. No map or GPS is
-  accurate.
-- The village always appears normal at first. Horror escalates slowly.
-- Knowledge changes reality — the more truth uncovered, the more unstable the world.
-- Silence is information. When nature stops, something is happening.
-- Animals perceive danger before humans do; observant players gain warning.
-- Light represents safety, not protection.
-- Documents never tell the whole truth. Sources must be compared.
-- The player is not special. The village has received visitors before.
-- Every mystery has an explanation. Not every explanation will be found.
-
----
-
-## Chapters
-
-| # | Chapter | Theme | Gameplay focus | Ends when |
-|---|---|---|---|---|
-| 1 | The Assignment | Curiosity | Movement, interaction, reading | The player enters the village |
-| 2 | A Village That Shouldn't Exist | Suspicion | Exploration, dialogue, evidence | The decades-long secret is felt |
-| 3 | The Missing Witness | Investigation | Puzzles, document analysis, HT | The player is repeating someone else's investigation |
-| 4 | The Rules | Fear | Stealth, survival, environmental change | The truth beneath the village surfaces |
-| 5 | The Truth | Despair | Final investigation, hard decisions | The point of no return |
-| 6 | The Last Witness | Acceptance | Final exploration, ending choice | Multiple endings resolve |
-
-Per-chapter drafts live in [Docs/Story/](Docs/Story/), including
-[Endings.md](Docs/Story/Endings.md).
-
----
-
-## Cast
-
-| Group | Characters |
-|---|---|
-| Main | Archive Officer — the playable investigator. No supernatural ability; knowledge is the only weapon. |
-| Archive office | Senior Archivist, Archive Supervisor, Administrative Staff |
-| Outside the village | Friend 01, Friend 02 (separated from the player mid-story), The Outsider (never met — only traces) |
-| Village | Village Chief, Village Elder, Religious Figure, Child, Child's Mother, Village Dog (a warning system), background residents |
-| Mystery | The Last Witness, Missing Child, The Presence |
-| Environmental | The Village itself — it observes, remembers, and reacts |
-
-No character explains the whole truth. Full detail in
-[Docs/Characters.md](Docs/Characters.md).
-
----
-
-## What this game is not
-
-Not a shooter, action horror, survival crafting, multiplayer, loot, or RPG game, and
-not a jump-scare simulator. Explicitly excluded: weapon upgrades, character levels,
-skill trees, crafting, base building, hunger and thirst meters, experience points, and
-fast travel. Any feature pushing the project toward these is rejected unless it clearly
-serves the pillars.
-
----
-
-## Technical target
-
-The target machine dictates every rendering decision:
-
-| | |
-|---|---|
-| GPU | **Intel HD Graphics 4600** (Haswell GT2, 2013, 20 EU) |
-| GPU memory | Shared with system, DDR3, ~25 GB/s bandwidth |
-| CPU | Core i7-4790 @ 3.6 GHz (4C/8T) — ample; the bottleneck is purely GPU |
-| Graphics API | OpenGL Core 4.6 (Mesa), not Vulkan |
-| **Frame target** | **1280×720 at 30 FPS** |
-
-This is roughly a tenth of an Iris Xe. Generic "integrated GPU" guidance is far too
-generous here, so the budget is calibrated for 720p30 rather than 1080p60 — a stable
-30 FPS also suits horror pacing.
-
-Consequences worth remembering:
-
-- **GPU Resident Drawer is impossible on OpenGL** (needs `BatchBufferTarget.RawBuffer`)
-  and is disabled.
-- **Native Render Pass is ignored** — that is a Vulkan/Metal path.
-- **Compute shaders are expensive on Haswell**, which matters for Forward+ light
-  culling.
-
-Horror mood — darkness, flashlight shadows, fog, ambient occlusion — is treated as a
-core feature, not decoration. Cost is cut in this order: remove what is not visible,
-then reduce visible quality, and `RenderScale` only as a last resort.
-
-Key settings changed from the URP template (in `Assets/Settings/PC_RPAsset.asset` and
-`PC_Renderer.asset`): shadow cascades 4 → 2, shadow distance 50 → 30, soft shadow
-quality High → Low, additional-light shadowmap 2048 → 1024, cookie atlas 2048 → 512
-grayscale, opaque texture off, screen-space lens flare off, and SSAO computed at half
-resolution. Realtime flashlight shadows and SSAO are deliberately kept.
-
-Every knob, the reasoning behind it, and the ordered list of what to cut next is
-recorded in
-[Assets/_Project/Documentation/RenderBudget.md](Assets/_Project/Documentation/RenderBudget.md).
-Measure with **Window → Analysis → Rendering Debugger** and the Profiler GPU module,
-in a real scene with the flashlight on.
-
-### Packages
-
-`com.unity.render-pipelines.universal` 17.4.0 · `com.unity.inputsystem` 1.19.0 ·
-`com.unity.ai.navigation` 2.0.11 · `com.unity.timeline` 1.8.11 · `com.unity.ugui` 2.0.0 ·
-`com.unity.test-framework` 1.6.0 · `com.unity.visualscripting` 1.9.10 ·
-`com.unity.collab-proxy` 2.11.4 · Linux x86_64 SDK and toolchain 1.1.0
-
----
-
-## Repository layout
-
-```
-Assets/
-  _Project/
-    Art/Models/          generated FBX + extracted materials
-    Art/Textures/        characters, fabric, environment, sky
-    Animations/          339 clips: Armed, Unarmed, Relax, Crawl, Swimming,
-                         Climb-Ladder, Climb-Ledge
-    Documentation/       RenderBudget.md
-    Environment/         time-of-day presets
-    Localization/        LocalizationTable.asset
-    Prefabs/             gameplay-ready prefabs
-    Scenes/              Regional Archive Office, Regional Vilage
-    Scripts/Editor/      editor tooling (menu items below)
-    Scripts/Runtime/     player, interaction, localization, environment
-  Settings/              URP assets: PC_RPAsset, PC_Renderer, volume profiles
-Docs/                    design documents (see index below)
-Tools/CharacterGenerator/  Blender procedural asset pipeline
-```
-
----
-
-## Runtime systems
-
-Implemented in `Assets/_Project/Scripts/Runtime/`:
-
-| Area | Scripts |
-|---|---|
-| Player | `PlayerController` (CharacterController-based, crouch with standing-height probe), `PlayerCameraController`, `PlayerInputReader`, `PlayerAnimatorDriver`, `FirstPersonBody` |
-| Interaction | `Interactable` (abstract base with localized prompt key), `DoorInteractable` (swing with obstacle probing), `PlayerInteractor`, `InteractionPromptView` |
-| Localization | `LocalizationManager`, `LocalizationTable`, `LocalizationBootstrapper`, `LocalizedText` — English and Indonesian, keyed strings such as `interact.door.locked` |
-| Environment | `TimeOfDayPreset`, `TimeOfDayApplier` |
-
----
-
-## Editor tools
-
-Under `Assets/_Project/Scripts/Editor/`, exposed on the **Saksi Terakhir** menu:
-
-| Menu item | Purpose |
-|---|---|
-| Create Prefabs | Builds building and character prefabs from imported models, adding mesh colliders, door components, and static flags |
-| Create Vehicle Prefabs | Configures vehicle materials, derives box colliders from mesh vertices, and saves the three SUV prefabs |
-| Probe Player Route | Read-only diagnostic: raycasts the player's path to the gate and entrance, reporting ground height and capsule blockage |
-
-`GeneratedAssetPostprocessor` applies import settings automatically for anything under
-`Art/Models/` and `Art/Textures/` — file scale, imported normals, Mikkt tangents,
-external material extraction, secondary (lightmap) UVs, and per-folder texture rules
-including cubemap sky and normal-map fabric. Additional setup scripts:
-`LocalizationTableSetup`, `TimeOfDaySetup`, `PlayerRigSetup`, `PlayerRigFixer`,
-`InteractionProbe`, `GeneratedAssetReport`.
-
----
-
-## Procedural asset pipeline
-
-Art in this project is generated from Python rather than modelled by hand. Scripts live
-in `Tools/CharacterGenerator/` and run headless against Blender 5.1+:
-
-```bash
-blender --background --factory-startup --python Tools/CharacterGenerator/generate_suv.py
-```
-
-Relative paths fail because the working directory is not preserved — pass absolute
-paths.
-
-| Script | Output |
-|---|---|
-| `generate_suv.py` | `SUV_Fleet` — a full SUV with opening doors, separate roll-down door glass, framed windows, and a modelled interior |
-| `generate_office.py` | `Office_ArchiveHQ` — the archive building |
-| `generate_mc.py`, `generate_b.py` | Protagonist and colleague characters |
-| `generate_humanoid.py`, `character_body.py`, `humanoid_rig.py` | Humanoid body and rig construction |
-| `audit_vehicle.py` | Read-only audit: watertightness, panel fit, glass framing, ray-leak checks |
-| `render_vehicle.py` | 20 orthographic and perspective preview renders, including per-colour shots |
-| `export_vehicle.py` | Exports the three painted SUV variants as FBX into `Art/Models/` |
-| `bake_albedo.py`, `bake_building.py`, `bake_sky.py`, `texture_bake.py` | Texture and sky baking |
-| `mesh_kit.py`, `vehicle_kit.py`, `building_kit.py` | Shared geometry, material, and export helpers |
-
-Supporting scripts in the same folder cover textured character export
-(`export_textured.py`), preview rendering (`render_preview.py`,
-`render_building.py`), fabric textures (`make_fabric_textures.py`), and rig posing
-checks (`pose_test.py`).
-
-Two knobs worth knowing:
-
-- **`vehicle_kit.DETAIL`** scales the whole SUV's density from one value. `1` produces
-  roughly 35k triangles; the committed value `2.2` produces about 140k. Given the
-  HD 4600 target, the high setting is intended as a bake source for a low-poly version.
-- **`generate_suv.PAINT_FINISHES`** defines the three body colours (black, silver,
-  grey). Pick one with `-- --paint silver`; all three exist in the saved `.blend` so
-  they can be swapped in Blender without rebuilding.
-
----
-
-## Current content
-
-Two scenes exist: `Regional Archive Office` and `Regional Vilage`. Generated and
-imported art includes the archive building, two characters, a 339-clip humanoid
-animation library, sky textures with time-of-day presets, and three SUV prefabs with
-derived box colliders. The localization table currently holds interaction prompts only.
-
----
-
-## Getting started
-
-1. Install **Unity 6000.4.0f1** through Unity Hub.
-2. Open the project root. First import takes a while — generated FBX files carry
-   lightmap UV generation.
-3. Open a scene from `Assets/_Project/Scenes/`.
-4. To regenerate art, install **Blender 5.1+** on `PATH` and run the scripts above,
-   then let Unity reimport.
-
----
-
-## Design documents
-
-| Document | Contents |
-|---|---|
-| [Vision.md](Docs/Vision.md) | Pillars, player fantasy, art and audio direction, anti-vision |
-| [Story.md](Docs/Story.md) | Premise, themes, narrative goals, player motivation |
-| [Game Chapters.md](Docs/Game%20Chapters.md) | Chapter-by-chapter progression |
-| [Story/](Docs/Story/) | Per-chapter drafts and endings |
-| [Gameplay.md](Docs/Gameplay.md) | Loop, pillars, fear progression, HT gameplay, failure states |
-| [Mechanics.md](Docs/Mechanics.md) | Every player-facing mechanic, and the excluded ones |
-| [Worl Rule.md](Docs/Worl%20Rule.md) | The sixteen laws the supernatural obeys |
-| [Lore.md](Docs/Lore.md) | Village history, the erased records, the Presence |
-| [Characters.md](Docs/Characters.md) | Full cast with motivations and story functions |
-| [Timeline.md](Docs/Timeline.md) | World chronology, mostly for internal consistency |
-| [Tasks.md](Docs/Tasks.md) | Development backlog and open design questions |
-| [Ideas.md](Docs/Ideas.md) | Unsorted and undecided ideas |
-| [RenderBudget.md](Assets/_Project/Documentation/RenderBudget.md) | Every rendering decision and its reasoning |
-
-Design documents are at version 0.1 and still moving; the story documents in
-particular are drafts rather than settled specification.
-
----
-
-## Conventions
-
-Project-wide rules for contributors and AI assistants are defined in
-[Claude.md](Claude.md), including code style, naming, and an absolute prohibition on
-automated Git operations — the repository owner performs all Git work.
-
----
-
-## License
-
-No license has been chosen yet, so all rights are reserved by default.
+**Bahasa Indonesia** · [English — The Last Witness](README_EN.md)
+
+Game horor psikologis dan misteri 3D dengan sudut pandang orang pertama, berlatar Indonesia. Seorang pegawai arsip dan dua rekannya menelusuri sebuah desa yang ditemukan dalam catatan lama. Pemain mengikuti percakapan, membaca dokumen, dan mengambil keputusan yang dicatat sebagai kondisi cerita.
+
+Repositori ini berisi proyek Unity, kode gameplay, aset, prefab, dan sumber Blender. Dokumentasi berikut menjelaskan implementasi yang tersedia saat ini tanpa mengungkap inti misterinya.
+
+## Status pengembangan
+
+Proyek masih dalam pengembangan. Sistem Bab 1 mencakup kegiatan di kantor, pencarian rekan, persiapan keberangkatan, perjalanan mobil otomatis ke SPBU, kegiatan di SPBU, dan penutup dengan layar hitam. Di Unity Editor, penutup menghentikan Play Mode setelah progres berhasil disimpan. Dalam build permainan, penutup membekukan gameplay pada layar hitam; transisi ke bab berikutnya belum tersedia.
+
+Scene utama adalah [Regional Archive Office](Assets/_Project/Scenes/Regional%20Archive%20Office.unity), satu-satunya scene yang saat ini diaktifkan dalam [konfigurasi build](ProjectSettings/EditorBuildSettings.asset). Scene desa dan scene perakitan aset juga tersedia. Keberadaan aset dan kode tidak berarti seluruh permainan sudah selesai atau setiap alur sudah diuji pada semua perangkat.
+
+Versi dan referensi dokumentasi ini diperiksa dari berkas proyek pada **11 Oktober 2026**. Pembaruan README tidak menjalankan Play Mode atau pengujian performa.
+
+## Teknologi
+
+| Komponen | Versi / penggunaan |
+| --- | --- |
+| Unity | **6000.3.24f1 — Unity 6.3 LTS** |
+| Universal Render Pipeline | **17.3.0** |
+| Input System | **1.19.0** |
+| AI Navigation | **2.0.11** |
+| uGUI | **2.0.0**, dengan TextMeshPro untuk teks |
+| Unity Test Framework | **1.6.0** |
+| Timeline | **1.8.11** |
+| Bahasa pemrograman | C#; assembly runtime dan Editor terpisah |
+| Lokalisasi | Tabel teks khusus Bahasa Indonesia dan Inggris |
+| Penyimpanan | Snapshot JSON dengan enkripsi dan autentikasi |
+| Pembuatan aset | Blender, model FBX, material, tekstur, dan prefab Unity |
+
+Versi Editor mengikuti [ProjectVersion.txt](ProjectSettings/ProjectVersion.txt). Dependensi tercatat dalam [manifest.json](Packages/manifest.json) dan [packages-lock.json](Packages/packages-lock.json). Paket yang terpasang tidak otomatis menandakan adanya fitur gameplay seperti multiplayer.
+
+## Membuka proyek
+
+1. Siapkan Unity Hub dan Unity **6000.3.24f1**. Tambahkan modul build sesuai platform tujuan jika diperlukan.
+2. Tambahkan folder repositori melalui Unity Hub, lalu buka dengan versi tersebut.
+3. Tunggu pemulihan paket, impor aset, dan kompilasi selesai. `Library` akan dibangun ulang bila belum tersedia.
+4. Buka [Regional Archive Office.unity](Assets/_Project/Scenes/Regional%20Archive%20Office.unity).
+5. Jalankan Play Mode. Gunakan **Permainan Baru** untuk memulai atau **Lanjutkan** jika ada autosave valid.
+
+Scene dan aset sudah disimpan di repositori; menjalankan ulang semua alat pembuat scene bukan syarat untuk membuka proyek. Pengembangan dilakukan di Ubuntu, tetapi kompatibilitas build dan kebutuhan perangkat minimum tetap perlu diuji pada platform tujuan. Belum ada tolok ukur performa atau spesifikasi minimum resmi.
+
+## Kontrol
+
+Binding berada di [InputSystem_Actions.inputactions](Assets/InputSystem_Actions.inputactions) dan dibaca oleh [PlayerInputReader](Assets/_Project/Scripts/Runtime/Player/PlayerInputReader.cs).
+
+| Tindakan | Keyboard / mouse |
+| --- | --- |
+| Bergerak | WASD atau tombol panah |
+| Melihat | Gerakan mouse |
+| Berlari | Left Shift |
+| Merunduk | C; tersedia konfigurasi tahan atau toggle |
+| Melompat | Space |
+| Berinteraksi | E |
+| Buka / tutup inventaris dan jurnal | Tab |
+| Tutup inventaris / permintaan pause | Escape |
+| Pilih barang atau misi | Klik kiri |
+| Menu barang | Klik kanan |
+| Pindahkan barang | Drag and drop |
+
+Binding gamepad juga tersedia: stick kiri/kanan untuk bergerak/melihat, tekan stick kiri untuk berlari, B untuk merunduk, A untuk melompat, Y untuk berinteraksi, Select untuk jurnal, dan Start untuk pause. Dukungan ini masih memerlukan pengujian pada perangkat fisik.
+
+Header inventaris memiliki halaman **Inventory**, **Dokumen**, dan **Misi**, dengan pilihan klik atau navigasi panah. Dialog cerita maju otomatis sesuai durasi teks. Saat telepon, pemain tetap dapat bergerak dan melihat, sementara inventaris dan pause diblokir. Dalam mobil, kendaraan berjalan otomatis dan pemain dapat menggerakkan kamera. Dialog perjalanan selain telepon mengizinkan inventaris dan pause.
+
+`Escape` menutup inventaris terlebih dahulu jika sedang terbuka. [PlayerPauseController](Assets/_Project/Scripts/Runtime/Player/PlayerPauseController.cs) menyediakan mekanisme pause dan penghubung UI; permintaan pause memerlukan panel atau penanganan yang terpasang. Membuka inventaris mengunci kontrol pemain, tetapi tidak menghentikan waktu dunia.
+
+## Sistem gameplay
+
+### Pemain dan interaksi
+
+[PlayerController](Assets/_Project/Scripts/Runtime/Player/PlayerController.cs) menangani berjalan, berlari, merunduk, gravitasi, lompatan, dan gerak sinematik. [PlayerCameraController](Assets/_Project/Scripts/Runtime/Player/PlayerCameraController.cs) mengatur pandangan dan preview menu, sedangkan [PlayerInteractor](Assets/_Project/Scripts/Runtime/Interaction/PlayerInteractor.cs) mencari target interaksi dan menampilkan prompt.
+
+Gerak otomatis menggunakan pemeriksaan medan dan navigasi untuk mencari pijakan serta menghindari halangan. Persiapan percakapan NPC mencari posisi dengan jarak sekitar **2 meter**, sesuai ruang yang dapat dicapai. Idle napas dan gerakan melihat kanan-kiri pada menu memiliki penanganan terpisah.
+
+### Inventaris, dokumen, dan barang yang dipegang
+
+| Bagian | Perilaku |
+| --- | --- |
+| Grid barang | Default **3 × 3**; dapat diatur **1–8 kolom** dan **1–8 baris**, hingga **64 slot** |
+| Dokumen | Daftar terpisah; tidak memakai kapasitas grid barang dan tidak dapat dibuang seperti barang fisik |
+| Pemindahan | Barang dapat dipindah atau ditukar antar-slot melalui drag and drop |
+| Buang | Menu Buang atau drag ke luar batas panel barang membuat objek 3D dengan collider dan Rigidbody |
+| Ambil kembali | Objek pickup dapat diambil kembali dengan identitas instance yang dipertahankan |
+| Penuh | Penambahan barang ditolak dan notifikasi inventaris penuh ditampilkan |
+| Pegang | Maksimal dua barang; barang ketiga menggantikan yang paling lama dipegang |
+| Gunakan | Barang yang cocok di tangan dipakai langsung pada target; barang yang tersimpan dipilih lewat inventaris |
+
+Ukuran grid dapat diperbesar melalui `TrySetGridSize`; penemuan tas dan seluruh aturan upgrade masih merupakan konten yang perlu disambungkan. Slot diduplikasi dari template UI dengan jarak **100 unit**. Penanda genggam dan model tangan diperbarui mengikuti status barang.
+
+Definisi menggunakan [ItemDefinition](Assets/_Project/Scripts/Runtime/Inventory/ItemDefinition.cs), sebuah ScriptableObject:
+
+| Atribut | Isi |
+| --- | --- |
+| ID | Identitas tetap, misalnya `item.car_key` |
+| Nama | Key teks lokalisasi |
+| Deskripsi | Key teks lokalisasi |
+| Jenis | `Item` atau `Document` |
+| Icon | Sprite slot |
+| Prefab Model | Model 3D; boleh kosong untuk dokumen |
+| Isi Dokumen | Teks bacaan untuk dokumen |
+
+[Catalog barang](Assets/_Project/Resources/ItemDefinitionCatalog.asset) menghubungkan definisi dengan sistem. Definisi berada di [Items](Assets/_Project/Items), icon di [Items/Image](Assets/_Project/Items/Image), dan objek pickup di [Prefabs/Inventory/Pickups](Assets/_Project/Prefabs/Inventory/Pickups). Barang bermodel yang tersedia meliputi kunci/remote mobil, senter, baterai Li-ion 18650, power bank, tali tambang 10 meter, tali nilon 10 meter, nasi bungkus, kotak P3K, dan buku agenda.
+
+Efek penggunaan bergantung pada handler atau target yang dipasang; mempunyai model dan definisi belum berarti setiap barang memiliki efek gameplay lengkap. Alur utama terdapat dalam [InventoryPanelController](Assets/_Project/Scripts/Runtime/Inventory/InventoryPanelController.cs), dengan logika data di [InventoryState](Assets/_Project/Scripts/Runtime/Inventory/InventoryState.cs).
+
+### Quest, percabangan, dan dialog
+
+[ChapterOneProgress](Assets/_Project/Scripts/Runtime/Story/ChapterOneProgress.cs) mengatur tahapan Bab 1. [ChapterOneStoryState](Assets/_Project/Scripts/Runtime/Story/ChapterOneStoryState.cs) menyimpan pilihan dan fakta cerita, sedangkan [ChapterOneConditionEvaluator](Assets/_Project/Scripts/Runtime/Story/ChapterOneConditionEvaluator.cs) memeriksa syarat quest, dialog, barang, dan dokumen.
+
+Definisi [quest](Assets/_Project/Story/Quests) dan [dialog](Assets/_Project/Story/Dialogues) dipisahkan dari pengendali adegan. Aktivitas mencakup persiapan kantor, sarapan, pencarian rekan, makan bersama, ATM, pembelian perlengkapan, dan kegiatan SPBU. Penawaran toko yang tersedia mengikuti aktivitas Bab 1; ekonomi perdagangan umum belum menjadi sistem lengkap.
+
+Jurnal mendukung **Main**, **Side**, dan **Optional Quest**, termasuk status aktif, selesai, dan dilewati. Quest utama mengikuti progres cerita. Pemain dapat memilih satu quest pendukung untuk ditampilkan di bawahnya: **kuning** untuk utama, **hijau** untuk side, dan **biru** untuk optional. [QuestJournalCatalog](Assets/_Project/Resources/QuestJournalCatalog.asset) berisi definisi jurnal.
+
+Notifikasi memakai antrean agar tidak menumpuk. Saat checkpoint quest utama berubah, notifikasi quest selesai lebih dahulu, kemudian penyimpanan dilakukan dengan logo autosave yang berkedip perlahan.
+
+### NPC dan populasi dunia
+
+[NpcPopulationManager](Assets/_Project/Scripts/Runtime/Npc/NpcPopulationManager.cs) mengelola titik spawn, pemilihan profil, pool reuse, serta spawn/despawn berbasis jarak. Titik aktivitas mendukung berjalan, bekerja sambil duduk, mengetik, membersihkan, membawa dokumen, dan berjaga. NPC yang diperlukan misi, mempunyai perintah cerita, atau sedang bercakap mendapat perlindungan sesuai statusnya.
+
+Batas **15 NPC** adalah batas NPC yang ditampilkan oleh pengelola renderer dalam scene, termasuk NPC misi. Jumlah aktor aktif dapat lebih besar. NPC misi yang disembunyikan tetap dapat dipertahankan; berkurangnya jarak pandang tidak otomatis menghancurkan peserta misi.
+
+[NpcProfile](Assets/_Project/Scripts/Runtime/Npc/NpcProfile.cs) memuat identitas, peran, pekerjaan, departemen, konteks bangunan, rute, serta `interactable`. Nilai `false` menonaktifkan percakapan langsung dengan pemain, sementara percakapan ambient dan sapaan masih dapat berjalan. Konteks percakapan berbeda menurut bangunan dan pekerjaan; sapaan satu arah menggunakan memori pemicu agar tidak terus berulang.
+
+NPC berpapasan memakai prioritas **0–10**, default **1**. Nilai lebih rendah mengalah; prioritas sama memilih pihak yang mengalah secara acak untuk satu pertemuan. Pemain tidak memakai prioritas NPC ini. Navigasi memeriksa medan, passage, pintu, dan NavMesh/link; kelancaran tetap bergantung pada collider, lebar jalur, dan data navigasi scene.
+
+### Pintu dan kendaraan
+
+[DoorInteractable](Assets/_Project/Scripts/Runtime/Interaction/DoorInteractable.cs) mendukung pintu ayun, geser, dan roll-up, kunci barang, serta pemeriksaan jalur. Pintu yang dibuka pemain menjadwalkan tutup otomatis setelah **4–7 detik** secara acak; pembukaan NPC atau gerak otomatis menggunakan **1 detik**. Jalur yang masih ditempati menunda penutupan. Setiap pintu tetap memerlukan komponen dan konfigurasi yang sesuai.
+
+[VehicleKeyUse](Assets/_Project/Scripts/Runtime/VehicleKeyUse.cs) menangani remote mobil dengan jangkauan default **5 meter**, pembukaan pintu pengemudi, dan posisi duduk berdasarkan kondisi cerita. [VehicleSignalFeedback](Assets/_Project/Scripts/Runtime/VehicleSignalFeedback.cs) menyediakan lampu sein dan referensi audio yang dapat diisi.
+
+[VehicleJourneyDirector](Assets/_Project/Scripts/Runtime/VehicleJourneyDirector.cs), [AutomaticVehicleDriver](Assets/_Project/Scripts/Runtime/AutomaticVehicleDriver.cs), dan [VehicleRoutePath](Assets/_Project/Scripts/Runtime/VehicleRoutePath.cs) menjalankan rute otomatis kantor–SPBU dan keberangkatan dari SPBU. Kamera dapat digerakkan saat duduk; perjalanan dan posisi kendaraan ikut dalam snapshot simpanan.
+
+[FuelStationChapterDirector](Assets/_Project/Scripts/Runtime/Story/FuelStationChapterDirector.cs) mengelola kegiatan SPBU, pilihan dialog/dokumen, kembali ke mobil, dan penutup Bab 1. Lanjutan cerita desa belum disambungkan menjadi transisi bab yang lengkap.
+
+## Simpan, muat, dan menu utama
+
+[GameSessionController](Assets/_Project/Scripts/Runtime/Persistence/GameSessionController.cs) mengatur sesi dan menu:
+
+| Pilihan | Perilaku saat ini |
+| --- | --- |
+| Permainan Baru | Memuat ulang scene dengan kondisi permainan baru |
+| Lanjutkan | Melanjutkan snapshot yang sudah dimuat untuk preview menu, setelah animasi fade |
+| Muat Permainan | Membaca ulang autosave yang sama dan memuat ulang scene aktif |
+
+Tanpa simpanan valid, **Lanjutkan** dan **Muat Permainan** disembunyikan. Kontrol gameplay dihentikan selama menu utama terbuka. Preview memeriksa pandangan dan ruang di sekitar pemain; **Lanjutkan mempertahankan posisi/pandangan yang telah disesuaikan**, sesuai kondisi preview. Pemilihan banyak slot dan penyimpanan manual melalui UI belum tersedia.
+
+Autosave berada di `Application.persistentDataPath/autosave.json`. [GameSaveSnapshot](Assets/_Project/Scripts/Runtime/Persistence/GameSaveSnapshot.cs) dan [GameWorldSnapshot](Assets/_Project/Scripts/Runtime/Persistence/GameWorldSnapshot.cs) memuat progres/cabang, jurnal, pose pemain dan kamera, barang/dokumen, posisi slot dan genggaman, pintu, objek pickup/drop, sapaan, aktor cerita yang perlu dipertahankan, serta perjalanan kendaraan. Populasi ambient biasa dapat dibangun ulang dan tidak seluruhnya dimasukkan ke save.
+
+[ProtectedJsonSaveStore](Assets/_Project/Scripts/Runtime/Persistence/ProtectedJsonSaveStore.cs) menyimpan envelope JSON berversi dengan **AES-256-CBC**, IV acak, dan **HMAC-SHA256**. Penulisan memakai file sementara dan penggantian atomik; [GameSaveRepository](Assets/_Project/Scripts/Runtime/Persistence/GameSaveRepository.cs) dapat memulihkan cadangan `.bak` yang valid. Format ini menghambat modifikasi biasa dan mendeteksi kerusakan. Kunci berada dalam aplikasi, sehingga perlindungannya tidak kebal terhadap rekayasa balik. Steam Cloud belum diintegrasikan.
+
+## Waktu dan lokalisasi
+
+[TimeOfDayPreset](Assets/_Project/Scripts/Runtime/Environment/TimeOfDayPreset.cs) dan [TimeOfDayApplier](Assets/_Project/Scripts/Runtime/Environment/TimeOfDayApplier.cs) mengatur skybox, exposure/tint, cahaya matahari atau bulan, ambient, dan kabut. Tujuh preset tersedia di [Environment](Assets/_Project/Environment):
+
+| Preset | Waktu |
+| --- | --- |
+| Dini hari | 05.00 |
+| Pagi | 07.00 |
+| Siang pertama | 11.00 |
+| Siang kedua | 13.00 |
+| Sore | 17.00 |
+| Malam | 20.00 |
+| Tengah malam | 00.00 |
+
+Preset digunakan oleh menu dan cerita; simulasi cuaca serta siklus waktu bebas belum tersedia.
+
+[LocalizationTable.asset](Assets/_Project/Localization/LocalizationTable.asset) menyimpan teks Indonesia dan Inggris. [LocalizationManager](Assets/_Project/Scripts/Runtime/Localization/LocalizationManager.cs) mengelola key, fallback, pembaruan tampilan, dan preferensi bahasa melalui `PlayerPrefs`. Bahasa default aset saat ini adalah Indonesia. Judul Inggris dalam README merupakan terjemahan judul; nama proyek dan namespace kode tetap `SaksiTerakhir`.
+
+## Struktur proyek dan scene
+
+| Lokasi | Isi |
+| --- | --- |
+| [Assets/_Project/Scripts/Runtime](Assets/_Project/Scripts/Runtime) | Pemain, interaksi, inventaris, cerita, NPC, navigasi, penyimpanan, lingkungan, dan kendaraan |
+| [Assets/_Project/Scripts/Editor](Assets/_Project/Scripts/Editor) | Alat konfigurasi, pembuat aset, dan pemeriksaan Editor |
+| [Assets/_Project/Tests](Assets/_Project/Tests) | Pengujian EditMode dan PlayMode |
+| [Assets/_Project/Scenes](Assets/_Project/Scenes) | Scene gameplay, perakitan, dan studio potret |
+| [Assets/_Project/Prefabs](Assets/_Project/Prefabs) | Pemain, NPC, kendaraan, pickup, dan lingkungan gabungan |
+| [Assets/_Project/Art](Assets/_Project/Art) | Model, material, dan tekstur untuk konten utama |
+| [Assets/_Project/Items](Assets/_Project/Items) | Definisi barang/dokumen dan icon |
+| [Assets/_Project/Story](Assets/_Project/Story) | Definisi quest dan dialog |
+| [Assets/_Project/Npc](Assets/_Project/Npc) dan [Data/Npc](Assets/_Project/Data/Npc) | Profil NPC kantor dan populasi |
+| [Assets/_Project/Resources](Assets/_Project/Resources) | Catalog barang dan jurnal yang dimuat runtime |
+| [Assets/_Project/Navigation](Assets/_Project/Navigation) | Data navigasi lingkungan |
+| [Assets/_Project/UI](Assets/_Project/UI) | Font dan aset UI |
+| [Assets/ModularAsset](Assets/ModularAsset) | Kit bangunan, jalan, vegetasi, dan perlengkapan |
+| [Assets/Settings](Assets/Settings) | Konfigurasi render pipeline dan volume |
+| [Packages](Packages) / [ProjectSettings](ProjectSettings) | Dependensi dan konfigurasi Unity |
+| [SourceArt](SourceArt) | Sumber Blender `.blend` |
+
+| Scene | Kegunaan |
+| --- | --- |
+| [Regional Archive Office](Assets/_Project/Scenes/Regional%20Archive%20Office.unity) | Scene utama kawasan kantor dan gameplay Bab 1 |
+| [Regional Vilage](Assets/_Project/Scenes/Regional%20Vilage.unity) | Scene desa untuk pengembangan lanjutan; ejaan mengikuti nama berkas |
+| [OfficeArchive_Assembly](Assets/_Project/Scenes/OfficeArchive_Assembly.unity) | Perakitan kantor modular |
+| [WarehouseArchive_Assembly](Assets/_Project/Scenes/WarehouseArchive_Assembly.unity) | Perakitan gudang arsip |
+| [RoadLoop_Assembly](Assets/_Project/Scenes/RoadLoop_Assembly.unity) | Perakitan jaringan jalan dan kawasan |
+| [ItemShow](Assets/_Project/Scenes/ItemShow.unity) | Studio potret model barang untuk icon |
+
+Lingkungan mencakup kantor arsip empat lantai dan rooftop, parkiran, enam gudang, jalan loop dan trotoar, kawasan rumah/toko, kantin, gedung perkantoran, SPBU, taman, dan vegetasi batas dunia. Sebagian bangunan sekitar berfungsi sebagai dekorasi dengan interior kosong. Model pintu, lift, ATM, atau toko tidak selalu berarti seluruh fungsinya sudah disambungkan.
+
+Kit modular dikelompokkan dalam `Bangunan` (struktur, rumah, rumah panggung, pom bensin), `Lingkungan` (jalan dan vegetasi), serta `Perlengkapan`. Prefab lingkungan gabungan berada di [Prefabs/Environment](Assets/_Project/Prefabs/Environment). Sumber Blender dipisahkan dari aset hasil impor agar pencarian aset Unity lebih mudah.
+
+## Alat Editor
+
+Menu berikut berasal dari kode yang tersedia. Alat konfigurasi dapat mengubah scene/aset; simpan pekerjaan sebelum menjalankannya dan pilih alat sesuai kebutuhan.
+
+| Menu `Saksi Terakhir` | Sumber / fungsi |
+| --- | --- |
+| `Chapter One/Configure Active World` | [ChapterOneWorldSetup](Assets/_Project/Scripts/Editor/ChapterOneWorldSetup.cs): menghubungkan konten Bab 1 pada dunia aktif |
+| `Inventory/Hubungkan UI Inventory` | [InventorySceneSetup](Assets/_Project/Scripts/Editor/InventorySceneSetup.cs): menghubungkan UI inventaris |
+| `Inventory/Buat Catalog dan Prefab Pickup` | [InventoryItemAssetSetup](Assets/_Project/Scripts/Editor/InventoryItemAssetSetup.cs): menyiapkan catalog dan pickup |
+| `Inventory/Periksa Catalog dan Prefab Pickup` | Memeriksa referensi melalui alat yang sama |
+| `NPC/Set Up World Population` | [WorldNpcSceneSetup](Assets/_Project/Scripts/Editor/WorldNpcSceneSetup.cs): menyiapkan populasi NPC |
+| `Doors/Configure Active Scene` | [WorldDoorSetup](Assets/_Project/Scripts/Editor/WorldDoorSetup.cs): mengonfigurasi pintu |
+| `Vehicles/Connect Office To SPBU Journey` | [VehicleJourneySetup](Assets/_Project/Scripts/Editor/VehicleJourneySetup.cs): menyambungkan rute kendaraan |
+| `Connect Fuel Station Chapter Ending` | [FuelStationChapterSetup](Assets/_Project/Scripts/Editor/FuelStationChapterSetup.cs): menyambungkan kegiatan dan penutup SPBU |
+| `Create Time Of Day Presets` / `Time Of Day/Configure Active Scene` | [TimeOfDaySetup](Assets/_Project/Scripts/Editor/TimeOfDaySetup.cs): preset dan penerapan waktu |
+| `ItemShow/Buat Ulang Studio Foto` | [ItemShowPhotoStudioSetup](Assets/_Project/Scripts/Editor/ItemShowPhotoStudioSetup.cs): studio potret barang |
+
+## Pengujian dan pedoman perubahan
+
+[Pengujian Editor](Assets/_Project/Tests/Editor) mencakup state inventaris, penggunaan/drop, quest/kondisi, save, menu, pintu, NPC/navigasi, duduk, dan perjalanan kendaraan. [Pengujian PlayMode](Assets/_Project/Tests/PlayMode) mencakup alur kantor Bab 1, bootstrap sesi, serta fisika inventaris.
+
+Buka **Window > General > Test Runner** untuk menjalankan suite **EditMode** atau **PlayMode**. Pemeriksaan referensi berkas atau keberhasilan kompilasi tidak menggantikan pengujian alur permainan. Pengujian scene besar sebaiknya dilakukan pada satu Editor aktif untuk menghindari beban memori tambahan.
+
+Saat mengubah kode, gunakan nama yang menjelaskan maksud, konfigurasi Inspector yang terkontrol, dan tanggung jawab komponen yang jelas. Pertahankan ID barang/quest, key lokalisasi, kompatibilitas save, GUID, serta referensi scene/prefab. Pisahkan aturan data dari tampilan bila itu mempermudah pemeliharaan; perubahan UI dan layout perlu mengikuti scene yang dibuat pengembang.
+
+## Kebersihan repositori dan dokumentasi
+
+[.gitignore](.gitignore) mengabaikan cache Unity, hasil build, berkas IDE yang dihasilkan, konfigurasi pribadi agen, dump crash, cache Python, dan cadangan Blender. Aset sumber beserta `.meta`, `Packages`, `ProjectSettings`, sumber `.blend`, dan kedua README tetap dapat masuk version control. Perubahan aturan ignore tidak otomatis mengeluarkan berkas yang sudah dilacak Git.
+
+Dokumentasi cerita, catatan kode, dan alat pembuatan dokumen disimpan **di luar checkout**. Pada workspace pengembang, lokasinya adalah `/home/ikbal/Dokumen/Dokumentasi Saksi Terakhir`. Berkas sementara dibuat di `/tmp`. `SourceArt` di proyek hanya menampung sumber Blender. Folder dokumentasi eksternal bukan dependensi runtime untuk membuka game; README Indonesia dan Inggris ini tetap berada di root repositori.
+
+## Lisensi
+
+Belum ada berkas lisensi umum untuk kode dan aset proyek di root repositori. Lisensi font pihak ketiga tetap tersedia di [UI/Fonts/Licenses](Assets/_Project/UI/Fonts/Licenses). Periksa izin pemilik proyek sebelum menggunakan atau mendistribusikan kode dan aset di luar proyek ini.

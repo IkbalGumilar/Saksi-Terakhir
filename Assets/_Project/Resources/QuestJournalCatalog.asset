@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20850ed096bb1123098d92018ba82c28, type: 3}
+  m_Name: QuestJournalCatalog
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.QuestJournalCatalog
+  definitions:
+  - {fileID: 11400000, guid: f0ac4d49986e6de9781ce2e65391a6f2, type: 2}
+  - {fileID: 11400000, guid: 9a3e2e22e8593558ab0463737109ab9b, type: 2}
+  - {fileID: 11400000, guid: 3fee69c9e77ac679480f86c76fe53e43, type: 2}
+  - {fileID: 11400000, guid: 9ab4b301d5c4069c5a93d6b2b48fc21b, type: 2}
+  - {fileID: 11400000, guid: eccd5ba618636ca1785c2c51d5443ef0, type: 2}

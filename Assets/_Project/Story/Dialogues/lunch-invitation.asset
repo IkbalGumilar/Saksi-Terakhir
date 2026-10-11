@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: lunch-invitation
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.lunch_invitation
+  lines:
+  - speakerId: NPC-021
+    text: Ini punya kamu. Tadi sekalian beli, sebelum kamu bilang masih ada kerjaan
+      dan akhirnya makan jam dua lagi.
+  - speakerId: PLAYER
+    text: Saya baru mau turun. Kalian cepat sekali.
+  - speakerId: NPC-022
+    text: Kalau benar baru mau turun, biasanya kursinya sudah mundur. Ini kursi masih
+      rapat, tangan masih di mouse.
+  - speakerId: PLAYER
+    text: Bukti-buktinya lengkap, ya.
+  - speakerId: NPC-021
+    text: Sudah, simpan dulu. Ayamnya masih hangat. Kami mau makan di rooftop, kamu
+      tinggal ikut naik.
+  - speakerId: PLAYER
+    text: Di atas panas. Sambalnya juga panas. Lengkap.
+  - speakerId: NPC-022
+    text: Makanya ada es teh. Sekali makan, lihat yang jauh sedikit. Dari pagi yang
+      kamu lihat tabel terus.
+  - speakerId: PLAYER
+    text: Baik. Tapi kalau angin bawa terbang ayam saya, salah satu dari kalian harus
+      ganti.
+  - speakerId: NPC-021
+    text: Ayamnya dipegang. Kamu saja yang jangan terbang.
+  conditions: []

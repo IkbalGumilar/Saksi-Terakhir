@@ -16,3 +16,4 @@ MonoBehaviour:
   lines:
   - speakerId: NPC-006
     text: Semua sudah hadir, silakan duduk.
+  conditions: []

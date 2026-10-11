@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: travel-to-spbu
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.travel_to_spbu
+  lines:
+  - speakerId: NPC-003
+    text: Mampir SPBU dulu. Isi penuh, sekalian beli dua jerigen buat cadangan. Belum
+      tahu nanti kita bolak-balik sejauh apa.
+  - speakerId: NPC-004
+    text: Baru makan siang masih bahas Bali, sekarang sudah berangkat. Untung kopernya
+      belum saya keluarkan.
+  - speakerId: PLAYER
+    text: Kalau menunggu besok, satu hari habis. Berangkat sekarang, masih ada waktu
+      kalau penelusurannya molor. Saya juga mau pulang sebelum Jumat.
+  - speakerId: NPC-003
+    text: Sampai wilayahnya nanti, cari keterangan setempat dulu. Jangan habis bensin
+      mengelilingi gunung cuma karena berkasnya menulis kaki Cikuray.
+  - speakerId: NPC-004
+    text: Aku sempat baca cerita Sancang. Siliwangi pergi bersama pengikutnya, lalu
+      mereka berubah jadi maung. Ada juga cerita kerajaannya lenyap jadi hutan. Mirip
+      bagian orang mencari ayahnya itu.
+  - speakerId: PLAYER
+    text: Dalam kisah perjalanan Siliwangi juga ada persinggahan di kaki Cikuray.
+      Cikuray punya kaitan dengan penulisan naskah lama. Nama Gunung Larang Srimanganti
+      disebut dalam kajiannya.
+  - speakerId: NPC-004
+    text: Srimanganti. Kalau kampungnya memang pakai nama lain, kita bisa saja lewat
+      tanpa sadar.
+  - speakerId: PLAYER
+    text: Ada riwayat kampung Srimanganti yang ditinggalkan penduduknya. Tapi jangan
+      langsung disamakan dengan Wanaseta. Itu baru contoh bahwa nama dalam tulisan
+      lama perlu ditelusuri.
+  - speakerId: NPC-003
+    text: Bisa juga permukiman pindah, jalurnya berubah, atau nama lama cuma dipakai
+      beberapa keluarga. Kita tanya orangnya, cocokkan tempatnya. Kalau beda keterangan,
+      jangan dipaksa cocok.
+  - speakerId: NPC-004
+    text: Aku tadinya membayangkan tinggal ketemu papan desa, foto, selesai. Ternyata
+      nama gunung saja bisa punya riwayat sendiri.
+  - speakerId: PLAYER
+    text: Makanya cari dari petunjuk yang bisa diperiksa. Cerita rakyat membantu
+      kita bertanya, tapi belum membuktikan pengalaman penulis prasasti.
+  - speakerId: NPC-004
+    text: 'Baik. Yang pasti bisa diperiksa sekarang: kita butuh air minum.'
+  - speakerId: NPC-003
+    text: Itu tokonya kelihatan. Bensinnya dulu, lalu kamu boleh urus air minum.
+  conditions: []
+  phoneConversation: 0

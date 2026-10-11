@@ -17,3 +17,5 @@ MonoBehaviour:
   titleKey: quest.main.rooftop
   objectiveKeys:
   - quest.main.rooftop.talk
+  conditions: []
+  progressSource: 0

@@ -17,3 +17,5 @@ MonoBehaviour:
   titleKey: quest.main.call
   objectiveKeys:
   - quest.main.call.answer
+  conditions: []
+  progressSource: 0

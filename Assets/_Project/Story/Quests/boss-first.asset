@@ -17,3 +17,5 @@ MonoBehaviour:
   titleKey: quest.main.boss_first
   objectiveKeys:
   - quest.main.boss_first.talk
+  conditions: []
+  progressSource: 0

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e9a72c2c7f5ee9a87451199ec0d00d, type: 3}
   m_Name: TimeOfDay_Malam
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Environment.TimeOfDayPreset
+  hourOfDay: 20
   skybox: {fileID: 2100000, guid: c8ff210262492736c8276722e4a3873b, type: 2}
   skyRotation: 0
   skyExposure: 2
+  skyTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sunElevation: 38.06
   sunAzimuth: 250.05
   sunColor: {r: 0.647, g: 0.749, b: 1, a: 1}

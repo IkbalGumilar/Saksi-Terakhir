@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using SaksiTerakhir.Npc;
+using SaksiTerakhir.Player;
 using UnityEngine;
 
 namespace SaksiTerakhir.Tests
@@ -16,6 +17,31 @@ namespace SaksiTerakhir.Tests
             if (actorObject != null) Object.DestroyImmediate(actorObject);
             if (playerObject != null) Object.DestroyImmediate(playerObject);
             if (profile != null) Object.DestroyImmediate(profile);
+        }
+
+        [Test]
+        public void CloseConversationDoesNotStartWithoutASafeRetreatAndReleasesTheNpc()
+        {
+            profile = ScriptableObject.CreateInstance<NpcProfile>();
+            profile.Configure("NPC-TEST", "Pekerja", 31, 2.5f, NpcRole.Worker,
+                true, null, null, new[] { "Selamat pagi." }, new[] { "Selamat pagi." });
+            actorObject = new GameObject("Worker test");
+            actorObject.SetActive(false);
+            OfficeNpcAgent agent = actorObject.AddComponent<OfficeNpcAgent>();
+            agent.SetProfile(profile);
+            NpcInteractable npc = actorObject.AddComponent<NpcInteractable>();
+            playerObject = new GameObject("Player without a safe walking surface");
+            playerObject.SetActive(false);
+            playerObject.AddComponent<CharacterController>();
+            PlayerController movement = playerObject.AddComponent<PlayerController>();
+            playerObject.transform.position = Vector3.forward * 0.4f;
+            actorObject.SetActive(true);
+
+            npc.Interact(playerObject.transform);
+
+            Assert.That(npc.DialogueActive, Is.False, "Do not converse inside the NPC capsule when no safe path exists.");
+            Assert.That(agent.CurrentState, Is.Not.EqualTo(NpcState.PlayerConversation));
+            Assert.That(movement.StoryMovementLocked, Is.False, "Failed preparation must return control.");
         }
 
         [Test]

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e351c6e6fe46494987ed5c59a063121c, type: 3}
+  m_Name: Agenda_24_Agustus_2026
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Inventory.ItemDefinition
+  id: document.agenda_2026_08_24
+  nameKey: document.agenda_2026_08_24.name
+  descriptionKey: document.agenda_2026_08_24.description
+  type: 1
+  icon: {fileID: 0}
+  modelPrefab: {fileID: 0}
+  documentText: '24 Agustus 2026
+
+
+    Hari ini aku, A, dan B mendapat tugas verifikasi
+    lapangan mengenai arsip sebuah desa bernama Wanaseta.
+
+
+    Data modern tidak
+    menunjukkan keberadaan desa tersebut, jadi kami diminta mencari lokasi dan memastikan
+    riwayat administrasinya secara langsung.
+
+
+    Kami membawa arsip asli beserta
+    terjemahannya.
+
+
+    Rencananya kami berangkat hari ini menggunakan mobil dinas
+    dan kembali sebelum akhir pekan.
+
+
+    Semoga cepat selesai.
+
+
+    Kami masih
+    punya Bali.'

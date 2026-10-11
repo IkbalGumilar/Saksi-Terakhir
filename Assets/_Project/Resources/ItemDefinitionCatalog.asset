@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff606902a4f6ac4bcac6cabb846829da, type: 3}
+  m_Name: ItemDefinitionCatalog
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Inventory.ItemDefinitionCatalog
+  definitions:
+  - {fileID: 11400000, guid: ed9b3ac45dd4aff2c8a62f65f5a90141, type: 2}
+  - {fileID: 11400000, guid: 875ac81355d16dc719b52ba127425a48, type: 2}
+  - {fileID: 11400000, guid: e07b1bd7646b8f20f937610cf3b6020f, type: 2}
+  - {fileID: 11400000, guid: 51c127c5846c84c15b622a26ceeb57fd, type: 2}
+  - {fileID: 11400000, guid: 5dc54a6cef98deb3ca826b240a07d288, type: 2}
+  - {fileID: 11400000, guid: d6e7a5f16956ba1d1b9c4463b7f6ffd2, type: 2}
+  - {fileID: 11400000, guid: b97617272ecfe0d51ba06a4c199e89d3, type: 2}
+  - {fileID: 11400000, guid: 32a5c25f1118e3a79b819ca0d01fa91c, type: 2}
+  - {fileID: 11400000, guid: b5ff6dad511e4c06cbc4ab0f5887211f, type: 2}
+  - {fileID: 11400000, guid: 8dddcee9d3bb0193ba3141efbc55e8d2, type: 2}
+  - {fileID: 11400000, guid: b71f4f4d8c11f2b1c91e313559d88b67, type: 2}
+  - {fileID: 11400000, guid: bb155f52d7a97c05ba11cd634d8dbe61, type: 2}
+  - {fileID: 11400000, guid: c3e72fe03596881eeb2a66e68eec41c6, type: 2}
+  - {fileID: 11400000, guid: 78466504eea0cd2f0a9d458dc6367f50, type: 2}
+  - {fileID: 11400000, guid: 5607a48eb3c3338a3bac7f16e5072826, type: 2}

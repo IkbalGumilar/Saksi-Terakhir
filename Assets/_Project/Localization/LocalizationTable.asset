@@ -29,6 +29,9 @@ MonoBehaviour:
   - key: interact.npc.talk
     english: Talk to {0}
     indonesian: Bicara dengan {0}
+  - key: interact.npc.make_space
+    english: Make a little room so we can talk.
+    indonesian: Beri sedikit ruang agar bisa berbicara.
   - key: interact.story.find_both
     english: Find Raka and Sinta
     indonesian: Temukan Raka dan Sinta
@@ -51,29 +54,29 @@ MonoBehaviour:
     english: Main quest updated
     indonesian: Misi utama diperbarui
   - key: story.call.incoming
-    english: "Incoming call: Arya. Press E to answer."
-    indonesian: "Panggilan masuk: Arya. Tekan E untuk menjawab."
+    english: 'Incoming call: Arya. Press E to answer.'
+    indonesian: 'Panggilan masuk: Arya. Tekan E untuk menjawab.'
   - key: quest.main.rooftop
-    english: Meet the rooftop workers
-    indonesian: Temui rekan kerja di rooftop
+    english: Lunch Break
+    indonesian: Jam Istirahat
   - key: quest.main.rooftop.talk
-    english: Talk to Bima and Yuni
-    indonesian: Bicara dengan Bima dan Yuni
+    english: Meet your colleagues on the rooftop
+    indonesian: Temui rekan kerja di rooftop
   - key: quest.main.call
-    english: Answer Arya's call
-    indonesian: Jawab telepon Bos Arya
+    english: An Unexpected Call
+    indonesian: Panggilan Mendadak
   - key: quest.main.call.answer
     english: Press E to answer
     indonesian: Tekan E untuk menjawab
   - key: quest.main.boss_first
-    english: Meet Arya in his office
-    indonesian: Temui Bos Arya di ruangannya
+    english: An Unexpected Call
+    indonesian: Panggilan Mendadak
   - key: quest.main.boss_first.talk
-    english: Listen to Arya's request
-    indonesian: Dengarkan permintaan Bos Arya
+    english: Visit the boss on floor 3
+    indonesian: Pergi ke ruangan bos di lantai 3
   - key: quest.main.find
-    english: Find your colleagues
-    indonesian: Cari rekan-rekan
+    english: Find A and B
+    indonesian: Cari A dan B
   - key: quest.main.find.raka
     english: Find colleague A (Raka)
     indonesian: Cari Rekan A (Raka)
@@ -87,17 +90,231 @@ MonoBehaviour:
     english: Listen to Arya's briefing
     indonesian: Dengarkan pengarahan Bos Arya
   - key: quest.main.boss_final.listen
-    english: Hear the location in the old archive
-    indonesian: Dengarkan petunjuk lokasi dalam arsip
+    english: Listen to the archive briefing
+    indonesian: Dengarkan briefing arsip Wanaseta
   - key: quest.main.key
-    english: Get the car key from Nadia
-    indonesian: Ambil kunci mobil dari Nadia
+    english: Field Preparations
+    indonesian: Persiapan Lapangan
   - key: quest.main.key.collect
-    english: Talk to Nadia at reception
-    indonesian: Bicara dengan Nadia di resepsionis
+    english: Collect the office car key at reception
+    indonesian: Ambil kunci mobil dinas di resepsionis
   - key: quest.main.vehicle
-    english: Go to the office car
-    indonesian: Pergi ke mobil kantor
+    english: Departure
+    indonesian: Keberangkatan
   - key: quest.main.vehicle.reach
-    english: Approach the black SUV
-    indonesian: Dekati SUV hitam di depan gedung
+    english: Go to the office car
+    indonesian: Pergi ke mobil dinas
+  - key: item.battery_18650.name
+    english: 18650 Lithium-ion Battery
+    indonesian: Baterai Litium-ion 18650
+  - key: item.battery_18650.description
+    english: A blue-wrapped 18650 battery cell labelled 3.7 V and 2200 mAh.
+    indonesian: Sel baterai 18650 berlapis biru dengan label 3,7 V dan 2200 mAh.
+  - key: item.agenda_book.name
+    english: A5 Planner
+    indonesian: Buku Agenda A5
+  - key: item.agenda_book.description
+    english: An A5 planner with a blue leather cover and 80 sheets of lined cream
+      paper.
+    indonesian: Buku agenda A5 bersampul kulit biru dengan 80 lembar kertas krem
+      bergaris.
+  - key: item.flashlight.name
+    english: Flashlight
+    indonesian: Senter
+  - key: item.flashlight.description
+    english: A cylindrical handheld flashlight with a wrist strap.
+    indonesian: Senter genggam berbadan silinder dengan tali gantung.
+  - key: item.first_aid_kit.name
+    english: First Aid Case
+    indonesian: Kotak P3K
+  - key: item.first_aid_kit.description
+    english: A white vinyl first aid case with a red cross and two metal fasteners.
+    indonesian: Kotak P3K vinil putih dengan lambang palang merah dan dua kancing
+      logam.
+  - key: item.nasi_uduk.name
+    english: Wrapped Nasi Uduk
+    indonesian: Nasi Uduk Bungkus
+  - key: item.nasi_uduk.description
+    english: A portion of nasi uduk wrapped in kraft paper with a green leaf band.
+    indonesian: Sebungkus nasi uduk dalam kertas kraft dengan pita daun hijau.
+  - key: item.power_bank.name
+    english: Power Bank
+    indonesian: Powerbank
+  - key: item.power_bank.description
+    english: A slim power bank with two USB-A ports, one USB-C port, and a USB-A
+      to USB-C cable.
+    indonesian: Powerbank tipis dengan dua port USB-A, satu port USB-C, dan kabel
+      USB-A ke USB-C.
+  - key: item.car_key.name
+    english: Car Key
+    indonesian: Kunci Mobil
+  - key: item.car_key.description
+    english: A car key remote with an emergency key and a small leather pouch.
+    indonesian: Remote kunci mobil dengan kunci darurat dan dompet kulit kecil.
+  - key: item.nylon_rope_10m.name
+    english: 10 m Nylon Rope
+    indonesian: Tali Nilon 10 m
+  - key: item.nylon_rope_10m.description
+    english: A coil of green nylon rope with red flecks, measuring 10 metres long
+      and 8 mm in diameter.
+    indonesian: Gulungan tali nilon hijau berbintik merah sepanjang 10 meter dengan
+      diameter 8 mm.
+  - key: item.fiber_rope_10m.name
+    english: 10 m Fibre Rope
+    indonesian: Tali Tambang 10 m
+  - key: item.fiber_rope_10m.description
+    english: A coil of cream natural-fibre rope, measuring 10 metres long and 12
+      mm in diameter.
+    indonesian: Gulungan tali tambang serat alami berwarna krem sepanjang 10 meter
+      dengan diameter 12 mm.
+  - key: inventory.action.use
+    english: Use
+    indonesian: Gunakan
+  - key: inventory.action.hold
+    english: Hold
+    indonesian: Pegang
+  - key: inventory.action.release
+    english: Release
+    indonesian: Lepas
+  - key: inventory.action.drop
+    english: Drop
+    indonesian: Buang
+  - key: inventory.type.item
+    english: Item
+    indonesian: Barang
+  - key: inventory.type.document
+    english: Document
+    indonesian: Dokumen
+  - key: inventory.full
+    english: Inventory is full. Free a slot first.
+    indonesian: Inventory penuh. Kosongkan satu slot terlebih dahulu.
+  - key: inventory.cannot_use_yet
+    english: This item cannot be used here yet.
+    indonesian: Barang ini belum bisa digunakan di sini.
+  - key: inventory.drop_failed
+    english: This item could not be dropped.
+    indonesian: Barang ini belum bisa dibuang.
+  - key: inventory.required_item_missing
+    english: You do not have the required item.
+    indonesian: Kamu belum memiliki barang yang dibutuhkan.
+  - key: inventory.wrong_item
+    english: This item does not work here.
+    indonesian: Barang ini tidak cocok untuk digunakan di sini.
+  - key: inventory.unavailable
+    english: Inventory is unavailable.
+    indonesian: Inventory belum tersedia.
+  - key: interact.item.pickup
+    english: Pick up {0}
+    indonesian: Ambil {0}
+  - key: interact.item.use
+    english: Use {0}
+    indonesian: Gunakan {0}
+  - key: quest.side.wrong_route
+    english: Wrong Route
+    indonesian: Salah Jalur
+  - key: quest.side.wrong_route.talk
+    english: Deliver the file to digitization
+    indonesian: Antar berkas ke ruang digitalisasi
+  - key: quest.optional.shared_meal
+    english: Have a Meal with A and B
+    indonesian: Makan Bersama A dan B
+  - key: quest.optional.shared_meal.talk
+    english: Sit with A and B before collecting the key
+    indonesian: Duduk bersama A dan B sebelum mengambil kunci
+  - key: quest.optional.desk_preparation
+    english: Before You Leave
+    indonesian: Sebelum Pergi
+  - key: quest.optional.desk_preparation.finish
+    english: Tidy the desk before leaving
+    indonesian: Rapikan meja sebelum pergi
+  - key: quest.optional.supplies
+    english: Field Supplies
+    indonesian: Perbekalan Lapangan
+  - key: quest.optional.supplies.buy
+    english: Buy the supplies you need
+    indonesian: Beli perbekalan yang dibutuhkan
+  - key: document.wanaseta_original.name
+    english: "Wanaseta Archive \u2014 Original Document"
+    indonesian: "Arsip Wanaseta \u2014 Dokumen Asli"
+  - key: document.wanaseta_original.description
+    english: Original archive carried in a protective case with its official handover
+      record.
+    indonesian: Arsip asli dibawa menggunakan kotak pelindung dan dokumen serah-terima
+      resmi.
+  - key: document.wanaseta_translation.name
+    english: Wanaseta Archive Translation
+    indonesian: Terjemahan Arsip Wanaseta
+  - key: document.wanaseta_translation.description
+    english: A travel account and warning by someone who claims to have stayed in
+      the village.
+    indonesian: Catatan perjalanan dan peringatan dari seseorang yang mengaku singgah
+      di desa tersebut.
+  - key: document.field_assignment.name
+    english: Field Verification Assignment
+    indonesian: Surat Tugas Verifikasi Lapangan
+  - key: document.field_assignment.description
+    english: Field verification assignment for MC, A, and B.
+    indonesian: Tugas verifikasi lapangan untuk MC, A, dan B.
+  - key: document.agenda_2026_08_24.name
+    english: "Agenda \u2014 24 August 2026"
+    indonesian: "Agenda \u2014 24 Agustus 2026"
+  - key: document.agenda_2026_08_24.description
+    english: A diary entry about the Wanaseta archive assignment.
+    indonesian: Catatan agenda mengenai tugas verifikasi arsip Wanaseta.
+  - key: document.travel_receipt.name
+    english: Payment Receipt
+    indonesian: Struk Pembayaran
+  - key: document.travel_receipt.description
+    english: Proof of supply expenses after the assignment.
+    indonesian: Bukti pengeluaran perbekalan setelah penugasan.
+  - key: interact.chapter.activity
+    english: Interact
+    indonesian: Berinteraksi
+  - key: interact.chapter.shop
+    english: Shop
+    indonesian: Belanja
+  - key: inventory.purchase_complete
+    english: The item and receipt were added to inventory.
+    indonesian: Barang dan struk masuk inventory.
+  - key: quest.main.morning
+    english: Morning Routine
+    indonesian: Rutinitas Pagi
+  - key: quest.main.morning.enter
+    english: Enter the archive office
+    indonesian: Masuk ke gedung ANRI
+  - key: quest.main.morning.desk
+    english: Go to your workstation
+    indonesian: Menuju ruang kerja
+  - key: quest.optional.breakfast
+    english: Morning Breakfast
+    indonesian: Sarapan Pagi
+  - key: quest.optional.breakfast.eat
+    english: Have breakfast before work
+    indonesian: Sarapan sebelum bekerja
+  - key: interact.chapter.bulletin
+    english: Read the notice board
+    indonesian: Baca papan pengumuman
+  - key: story.quest.travel_spbu
+    english: Travel to the fuel station with Raka and Sinta
+    indonesian: Menuju SPBU bersama Raka dan Sinta
+  - key: document.spbu_receipt.name
+    english: "Fuel Station Receipt \u2014 Vehicle Fuel and Supplies"
+    indonesian: "Struk SPBU \u2014 Pengisian dan Perbekalan Kendaraan"
+  - key: document.spbu_receipt.description
+    english: Receipt for filling the vehicle and buying and filling two reserve fuel
+      containers.
+    indonesian: Bukti pengisian tangki dan pembelian serta pengisian dua jerigen
+      cadangan.
+  - key: document.spbu_trip_photo.name
+    english: "Travel Photo \u2014 Fuel Station Stop"
+    indonesian: "Foto Perjalanan \u2014 Persinggahan SPBU"
+  - key: document.spbu_trip_photo.description
+    english: A photo of MC, A and B in the parking area with the fuel station sign
+      behind them.
+    indonesian: Foto MC, A dan B di area parkir, dengan papan SPBU di belakang mereka.
+  - key: story.quest.spbu_return
+    english: Return to the car with Raka and Sinta
+    indonesian: Kembali ke mobil bersama Raka dan Sinta
+  - key: story.quest.spbu_departure
+    english: Leave for Giriawas with Raka and Sinta
+    indonesian: Menuju Giriawas bersama Raka dan Sinta

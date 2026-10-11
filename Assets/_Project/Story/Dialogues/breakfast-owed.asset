@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d5044aed1d6471cad6c80b2a45ece0, type: 3}
+  m_Name: breakfast-owed
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
+  id: chapter.breakfast_owed
+  lines:
+  - speakerId: PLAYER
+    text: Ngutang dulu ya, Bu. Nanti pas turun lagi saya bayar sekalian.
+  - speakerId: Bu Kantin
+    text: Boleh. Tapi jangan sampai saya harus ikut naik bawa buku ini.
+  - speakerId: PLAYER
+    text: Kalau Ibu sampai naik, satu lantai bisa tahu saya belum bayar sarapan.
+  - speakerId: Bu Kantin
+    text: Makanya turun sendiri. Saya masih banyak yang harus disiapkan di sini.
+  - speakerId: Bu Kantin
+    text: Sudah saya tulis. Sana, nanti teman-temanmu nyari.
+  - speakerId: PLAYER
+    text: Terima kasih, Bu. Nanti saya mampir lagi.
+  conditions: []

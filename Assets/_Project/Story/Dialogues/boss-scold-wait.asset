@@ -15,6 +15,6 @@ MonoBehaviour:
   id: chapter.boss_scold_wait
   lines:
   - speakerId: NPC-006
-    text: Tunggu sampai kedua rekanmu berada di sini.
-  - speakerId: PLAYER
-    text: Saya tunggu mereka masuk, Pak.
+    text: Yang ketemu duluan suruh langsung ke sini. Kamu lanjut cari satunya. Saya
+      siapkan berkasnya sambil menunggu.
+  conditions: []

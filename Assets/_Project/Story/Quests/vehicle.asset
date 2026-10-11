@@ -17,3 +17,5 @@ MonoBehaviour:
   titleKey: quest.main.vehicle
   objectiveKeys:
   - quest.main.vehicle.reach
+  conditions: []
+  progressSource: 0
