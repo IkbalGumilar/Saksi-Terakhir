@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using NUnit.Framework;
 using SaksiTerakhir.Inventory;
 using SaksiTerakhir.Npc;
 using SaksiTerakhir.Player;
+using SaksiTerakhir.Persistence;
 using SaksiTerakhir.Story;
 using UnityEngine;
 using UnityEngine.AI;
@@ -113,6 +115,7 @@ namespace SaksiTerakhir.Tests
             Assert.That(dialogue.ActiveSequence.Id, Is.EqualTo("chapter.boss_final"));
             FinishCurrentDialogue();
             Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.CollectCarKey));
+            AssertBriefingDocuments(player.GetComponent<InventoryPanelController>().State);
             director.TryBeginNpcDialogue(cast["NPC-002"], player);
             FinishCurrentDialogue();
             Assert.That(director.Progress.HasCarKey, Is.True);
@@ -382,6 +385,87 @@ namespace SaksiTerakhir.Tests
             Assert.That(director.Progress.LastColleagueIntroComplete, Is.True);
         }
 
+        [TestCase("NPC-004", "NPC-003", "chapter.raka_last_intro", ChapterOneConditionId.ColleagueAFoundLast)]
+        [TestCase("NPC-003", "NPC-004", "chapter.sinta_last_intro", ChapterOneConditionId.ColleagueBFoundLast)]
+        public void ProtectedCheckpointReplaysTheIntroductionBranchChosenByNormalDialogue(string first,
+            string last, string introId, ChapterOneConditionId lastCondition)
+        {
+            CreateChapter();
+            ReachColleagueSearch();
+            Assert.That(director.TryBeginNpcDialogue(cast[first], player), Is.True);
+            FinishCurrentDialogue();
+            DialogueSequence intro = sequences[introId];
+            intro.Configure(intro.Id, new List<DialogueLine>(intro.Lines).ToArray(), new[]
+            {
+                new ChapterOneStoryCondition(lastCondition, false)
+            });
+            Assert.That(director.TryBeginNpcDialogue(cast[last], player), Is.True);
+            Assert.That(dialogue.ActiveSequence, Is.SameAs(intro));
+            typeof(StoryDialogueController).GetMethod("Advance", BindingFlags.NonPublic | BindingFlags.Instance)
+                .Invoke(dialogue, null);
+            Assert.That(dialogue.LineIndex, Is.EqualTo(1));
+
+            GameSaveSnapshot loaded = RoundTripCurrentCheckpoint();
+            player.GetComponent<InventoryPanelController>().RestoreState(loaded.inventory.CreateState());
+            director.RestoreProgress(loaded.chapter);
+
+            Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.EscortLastColleague));
+            Assert.That(director.Progress.FirstColleagueId, Is.EqualTo(first));
+            Assert.That(director.Progress.LastColleagueId, Is.EqualTo(last));
+            Assert.That(director.Progress.LastColleagueIntroComplete, Is.False);
+            Assert.That(dialogue.ActiveSequence, Is.SameAs(intro));
+            Assert.That(dialogue.LineIndex, Is.Zero,
+                "Autosaves resume the unfinished introduction from its start, using its saved branch.");
+            FinishCurrentDialogue();
+            Assert.That(director.Progress.LastColleagueIntroComplete, Is.True);
+            Assert.That(director.Progress.LastColleagueIntroSelectionKey, Is.EqualTo(intro.SelectionKey));
+        }
+
+        [TestCase("NPC-003", "NPC-004")]
+        [TestCase("NPC-004", "NPC-003")]
+        public void ProtectedCheckpointAfterNormalReceptionDialogueRestoresExactlyOneKey(string first, string last)
+        {
+            CreateChapter();
+            ReachColleagueSearch();
+            Assert.That(director.TryBeginNpcDialogue(cast[first], player), Is.True);
+            FinishCurrentDialogue();
+            Assert.That(director.TryBeginNpcDialogue(cast[last], player), Is.True);
+            FinishCurrentDialogue();
+            FinishCurrentDialogue();
+            director.OnStoryActorArrived(first);
+            director.OnStoryActorArrived(last);
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-006"], player), Is.True);
+            FinishCurrentDialogue();
+            FinishCurrentDialogue();
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-002"], player), Is.True);
+            FinishCurrentDialogue();
+            InventoryPanelController inventory = player.GetComponent<InventoryPanelController>();
+            AssertBriefingDocuments(inventory.State);
+            string keyInstanceId = inventory.State.Items[0].InstanceId;
+            Assert.That(inventory.State.TryMoveToSlot(inventory.State.Items[0], 7), Is.True);
+            Assert.That(inventory.State.TryHold(inventory.State.Items[0]), Is.True);
+
+            GameSaveSnapshot loaded = RoundTripCurrentCheckpoint();
+            inventory.RestoreState(loaded.inventory.CreateState(resolveDefinition: inventory.FindDefinition));
+            director.RestoreProgress(loaded.chapter);
+
+            Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.ReachVehicle));
+            Assert.That(director.Progress.HasCarKey, Is.True);
+            Assert.That(inventory.State.Items.Count, Is.EqualTo(1));
+            Assert.That(inventory.State.GetItemAtSlot(7).Id, Is.EqualTo(CarKeyInventory.CarKeyId));
+            Assert.That(inventory.State.GetItemAtSlot(7).InstanceId, Is.EqualTo(keyInstanceId));
+            Assert.That(inventory.State.HeldItems[0], Is.SameAs(inventory.State.GetItemAtSlot(7)));
+            AssertBriefingDocuments(inventory.State);
+            Assert.That(ChapterOneDocumentRewards.GrantBriefingDocuments(inventory), Is.True);
+            AssertBriefingDocuments(inventory.State);
+            Assert.That(ChapterOneDocumentRewards.Grant(inventory, "document.wanaseta_translation"), Is.True);
+            AssertBriefingDocuments(inventory.State);
+            Assert.That(director.TryBeginNpcDialogue(cast["NPC-002"], player), Is.False);
+            Assert.That(inventory.State.Items.Count, Is.EqualTo(1));
+            Assert.That(director.TryReachVehicle(player), Is.True);
+            Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.Complete));
+        }
+
         [Test]
         public void DialogueSelectionKeySurvivesConditionReorderingAndTextEdits()
         {
@@ -473,15 +557,16 @@ namespace SaksiTerakhir.Tests
             playerObject.SetActive(false);
             InventoryPanelController itemInventory = playerObject.AddComponent<InventoryPanelController>();
             itemInventory.RestoreState(new InventoryState());
-            ItemDefinition keyDefinition = ScriptableObject.CreateInstance<ItemDefinition>();
-            typeof(ItemDefinition).GetField("id", BindingFlags.Instance | BindingFlags.NonPublic)
-                .SetValue(keyDefinition, CarKeyInventory.CarKeyId);
+            ItemDefinition[] definitions = {
+                Definition(CarKeyInventory.CarKeyId, InventoryEntryType.Item),
+                Definition("document.wanaseta_original", InventoryEntryType.Document),
+                Definition("document.field_assignment", InventoryEntryType.Document)
+            };
             ItemDefinitionCatalog catalog = ScriptableObject.CreateInstance<ItemDefinitionCatalog>();
             typeof(ItemDefinitionCatalog).GetField("definitions", BindingFlags.Instance | BindingFlags.NonPublic)
-                .SetValue(catalog, new[] { keyDefinition });
+                .SetValue(catalog, definitions);
             typeof(InventoryPanelController).GetField("itemCatalog", BindingFlags.Instance | BindingFlags.NonPublic)
                 .SetValue(itemInventory, catalog);
-            created.Add(keyDefinition);
             created.Add(catalog);
             player = playerObject.transform;
             created.Add(playerObject);
@@ -516,6 +601,63 @@ namespace SaksiTerakhir.Tests
             director.TryBeginNpcDialogue(cast["NPC-006"], player);
             FinishCurrentDialogue();
             Assert.That(director.Progress.Stage, Is.EqualTo(ChapterOneStage.FindColleagues));
+        }
+
+        private ItemDefinition Definition(string id, InventoryEntryType type)
+        {
+            ItemDefinition definition = ScriptableObject.CreateInstance<ItemDefinition>();
+            typeof(ItemDefinition).GetField("id", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(definition, id);
+            typeof(ItemDefinition).GetField("type", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(definition, type);
+            created.Add(definition);
+            return definition;
+        }
+
+        private static void AssertBriefingDocuments(InventoryState state)
+        {
+            Assert.That(state.Documents.Count, Is.EqualTo(2));
+            var ids = new string[state.Documents.Count];
+            for (int index = 0; index < state.Documents.Count; index++)
+            {
+                InventoryEntry document = state.Documents[index];
+                ids[index] = document.Id;
+                Assert.That(document.Type, Is.EqualTo(InventoryEntryType.Document));
+                Assert.That(document.InstanceId, Is.EqualTo("chapter1:" + document.Id));
+            }
+            Assert.That(ids, Is.EquivalentTo(new[] {
+                "document.wanaseta_original", "document.field_assignment"
+            }));
+        }
+
+        private GameSaveSnapshot RoundTripCurrentCheckpoint()
+        {
+            string directory = Path.Combine(Path.GetTempPath(), "saksi-normal-gameplay-"
+                + System.Guid.NewGuid().ToString("N"));
+            string path = Path.Combine(directory, "checkpoint.json");
+            try
+            {
+                var checkpoint = new GameSaveSnapshot
+                {
+                    runId = System.Guid.NewGuid().ToString("D"),
+                    scenePath = "Assets/_Project/Scenes/Regional Archive Office.unity",
+                    savedUtc = "2026-10-11T12:00:00Z",
+                    chapter = director.Progress,
+                    player = new SavedPose(player.position, player.rotation),
+                    inventory = SavedInventory.Capture(player.GetComponent<InventoryPanelController>().State)
+                };
+                Assert.That(checkpoint.Validate(out string validationError), Is.True, validationError);
+                ProtectedJsonSaveStore.Save(path, JsonUtility.ToJson(checkpoint));
+                Assert.That(GameSaveRepository.TryLoadLatest(path, out GameSaveSnapshot loaded, out string error),
+                    Is.True, error);
+                Assert.That(error, Is.Empty);
+                Assert.That(loaded.chapter, Is.Not.SameAs(director.Progress));
+                return loaded;
+            }
+            finally
+            {
+                if (Directory.Exists(directory)) Directory.Delete(directory, true);
+            }
         }
 
         private void FinishCurrentDialogue()

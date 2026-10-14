@@ -36,6 +36,8 @@ namespace SaksiTerakhir.Npc
         private float nextPopulationUpdate;
         private int instantiatedCount;
         private bool warnedMissingNavigation;
+        private Comparison<NpcSpawnPoint> spawnScoreComparison;
+        private Comparison<NpcPopulationMember> renderPriorityComparison;
         public int VisibleNpcCount { get; private set; }
         public int ActivePopulationCount => active.Count;
         public int PooledCount => pool.Count;
@@ -53,6 +55,8 @@ namespace SaksiTerakhir.Npc
         private void Awake()
         {
             spawnPath = new NavMeshPath();
+            spawnScoreComparison = (a, b) => SpawnScore(a).CompareTo(SpawnScore(b));
+            renderPriorityComparison = CompareRenderPriority;
             activeRoot = new GameObject("Active Population").transform;
             activeRoot.SetParent(transform, false);
             poolRoot = new GameObject("Inactive NPC Pool").transform;
@@ -94,7 +98,7 @@ namespace SaksiTerakhir.Npc
                 if (!point.TryChooseProfile(out _)) continue;
                 spawnCandidates.Add(point);
             }
-            spawnCandidates.Sort((a, b) => SpawnScore(a).CompareTo(SpawnScore(b)));
+            spawnCandidates.Sort(spawnScoreComparison);
             int createdThisUpdate = 0;
             foreach (NpcSpawnPoint point in spawnCandidates)
             {
@@ -310,8 +314,12 @@ namespace SaksiTerakhir.Npc
             foreach (OfficeNpcAgent actor in OfficeNpcAgent.ActiveActors)
             {
                 if (actor == null || actor.gameObject.scene != gameObject.scene) continue;
-                NpcPopulationMember member = actor.GetComponent<NpcPopulationMember>();
-                if (member == null) member = actor.gameObject.AddComponent<NpcPopulationMember>();
+                NpcPopulationMember member = actor.PopulationMember;
+                if (member == null)
+                {
+                    member = actor.gameObject.AddComponent<NpcPopulationMember>();
+                    actor.PopulationMember = member;
+                }
                 Vector3 delta = actor.transform.position - (viewingCamera != null ? viewingCamera.transform.position : transform.position);
                 bool essential = member.IsMissionPinned || actor.HasStoryOrder || actor.IsDialogueBusy;
                 bool eligible = viewingCamera != null && (essential || delta.sqrMagnitude <= renderDistance * renderDistance)
@@ -319,7 +327,7 @@ namespace SaksiTerakhir.Npc
                 member.SetRenderSuppressed(!eligible);
                 if (eligible) renderCandidates.Add(member);
             }
-            renderCandidates.Sort(CompareRenderPriority);
+            renderCandidates.Sort(renderPriorityComparison);
             foreach (NpcPopulationMember member in renderCandidates)
             {
                 bool allowed = VisibleNpcCount < MaximumVisible;

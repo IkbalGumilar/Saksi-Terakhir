@@ -74,6 +74,7 @@ namespace SaksiTerakhir.Interaction
         {
             interactor.TargetChanged += OnTargetChanged;
             LocalizationManager.LanguageChanged += Refresh;
+            SaksiTerakhir.Settings.GameSettingsManager.SettingsChanged += OnSettingsChanged;
             OnTargetChanged(interactor.Current);
         }
 
@@ -81,15 +82,23 @@ namespace SaksiTerakhir.Interaction
         {
             if (interactor != null) interactor.TargetChanged -= OnTargetChanged;
             LocalizationManager.LanguageChanged -= Refresh;
+            SaksiTerakhir.Settings.GameSettingsManager.SettingsChanged -= OnSettingsChanged;
             if (npcDialogueRoot != null) npcDialogueRoot.SetActive(false);
             if (promptRoot != null) promptRoot.SetActive(false);
+        }
+
+        private void OnSettingsChanged(SaksiTerakhir.Settings.GameSettingsData _)
+        {
+            OnTargetChanged(interactor != null ? interactor.Current : null);
         }
 
         private void OnTargetChanged(Interactable target)
         {
             // Target loss also happens during the owned conversation retreat.
             // The interactor and NPC own dialogue cancellation; this view only renders it.
-            promptRoot.SetActive(target != null && !storyDialogueActive);
+            var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+            bool showPrompt = settings == null || settings.interactionPrompt;
+            promptRoot.SetActive(target != null && !storyDialogueActive && showPrompt);
             Refresh();
         }
 

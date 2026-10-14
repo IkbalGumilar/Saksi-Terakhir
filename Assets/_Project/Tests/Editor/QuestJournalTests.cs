@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.Reflection;
 using NUnit.Framework;
 using SaksiTerakhir.Inventory;
+using SaksiTerakhir.Localization;
 using SaksiTerakhir.Story;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 namespace SaksiTerakhir.Tests
@@ -126,7 +128,7 @@ namespace SaksiTerakhir.Tests
             {
                 view.Bind(journal);
                 Transform mainRow = content.transform.Find("Mission main");
-                Assert.That(mainRow.GetComponent<UnityEngine.UI.Button>().interactable, Is.False);
+                Assert.That(mainRow.GetComponent<UnityEngine.UI.Button>().interactable, Is.True);
                 Transform row = content.transform.Find("Mission optional");
                 row.GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
                 Assert.That(journal.SelectedQuestId, Is.EqualTo(optional.Id));
@@ -136,9 +138,104 @@ namespace SaksiTerakhir.Tests
                     Is.EqualTo(QuestTrackerView.SideDotColor));
                 journal.TryFinish(optional.Id);
                 row = content.transform.Find("Mission optional");
-                Assert.That(row.GetComponent<UnityEngine.UI.Button>().interactable, Is.False);
+                Assert.That(row.GetComponent<UnityEngine.UI.Button>().interactable, Is.True);
                 Assert.That(row.Find("'Title '").GetComponent<TMP_Text>().text, Does.Contain("<s>"));
             }
+        }
+
+        [Test]
+        public void QuestDetailsUseLocalizedDescriptionAndLocationWithoutChangingHudObjectives()
+        {
+            const string preferenceKey = "Localization.Language";
+            bool hadPreference = PlayerPrefs.HasKey(preferenceKey);
+            string originalPreference = PlayerPrefs.GetString(preferenceKey);
+            const BindingFlags staticPrivate = BindingFlags.Static | BindingFlags.NonPublic;
+            FieldInfo tableField = typeof(LocalizationManager).GetField("table", staticPrivate);
+            FieldInfo languageField = typeof(LocalizationManager).GetField("currentLanguage", staticPrivate);
+            FieldInfo initializedField = typeof(LocalizationManager).GetField("isInitialized", staticPrivate);
+            object originalTable = tableField.GetValue(null);
+            object originalLanguage = languageField.GetValue(null);
+            object originalInitialized = initializedField.GetValue(null);
+            var table = ScriptableObject.CreateInstance<LocalizationTable>();
+            created.Add(table);
+            table.entries = new[] {
+                new LocalizedTextEntry { key = "journal.description", english = "Find both colleagues.", indonesian = "Cari kedua rekan kerja." },
+                new LocalizedTextEntry { key = "journal.location", english = "Floor 2, Archive Staff.", indonesian = "Lantai 2, Petugas Arsip." },
+                new LocalizedTextEntry { key = "objective.main", english = "Find Raka", indonesian = "Temukan Raka" },
+                new LocalizedTextEntry { key = "quest.journal.location_label", english = "Location", indonesian = "Lokasi" },
+                new LocalizedTextEntry { key = "quest.journal.objectives_label", english = "Objectives", indonesian = "Tujuan" }
+            };
+            main.ConfigureDetails("journal.description", "journal.location", new[] { "car-key" });
+            try
+            {
+                LocalizationManager.Initialize(table);
+                LocalizationManager.SetLanguage(GameLanguage.Indonesian);
+                Assert.That(InventoryMissionView.DetailsText(main), Does.Contain("Cari kedua rekan kerja."));
+                Assert.That(InventoryMissionView.DetailsText(main), Does.Contain("Lokasi: Lantai 2, Petugas Arsip."));
+                Assert.That(InventoryMissionView.ObjectivesText(main), Is.EqualTo("Temukan Raka"));
+                LocalizationManager.SetLanguage(GameLanguage.English);
+                Assert.That(InventoryMissionView.DetailsText(main), Does.Contain("Location: Floor 2, Archive Staff."));
+                Assert.That(InventoryMissionView.ObjectivesText(main), Is.EqualTo("Find Raka"));
+                main.Configure("main", QuestCategory.Main, "quest.main", new[] { "objective.main" });
+                Assert.That(main.DescriptionKey, Is.EqualTo("journal.description"));
+                Assert.That(main.RequiredItemIds, Is.EquivalentTo(new[] { "car-key" }));
+            }
+            finally
+            {
+                if (hadPreference) PlayerPrefs.SetString(preferenceKey, originalPreference);
+                else PlayerPrefs.DeleteKey(preferenceKey);
+                PlayerPrefs.Save();
+                tableField.SetValue(null, originalTable);
+                languageField.SetValue(null, originalLanguage);
+                initializedField.SetValue(null, originalInitialized);
+                (typeof(LocalizationManager).GetField("LanguageChanged", staticPrivate).GetValue(null) as System.Action)?.Invoke();
+            }
+        }
+
+        [Test]
+        public void QuestRequiredItemsRejectEmptyAndDuplicateIdentities()
+        {
+            main.ConfigureDetails("description", "location", new[] { "car-key", "car-key" });
+            Assert.That(main.Validate(out _), Is.False);
+            main.ConfigureDetails("description", "location", new[] { "" });
+            Assert.That(main.Validate(out _), Is.False);
+            main.ConfigureDetails("description", "location", new[] { "car-key" });
+            Assert.That(main.Validate(out _), Is.True);
+        }
+
+        [Test]
+        public void ChapterOneQuestAssetsHaveIndonesianAndEnglishJournalDetails()
+        {
+            LocalizationTable table = AssetDatabase.LoadAssetAtPath<LocalizationTable>(
+                "Assets/_Project/Localization/LocalizationTable.asset");
+            ItemDefinitionCatalog items = AssetDatabase.LoadAssetAtPath<ItemDefinitionCatalog>(
+                "Assets/_Project/Resources/ItemDefinitionCatalog.asset");
+            Assert.That(table, Is.Not.Null);
+            Assert.That(items, Is.Not.Null);
+            string[] guids = AssetDatabase.FindAssets("t:QuestDefinition", new[] { "Assets/_Project/Story/Quests" });
+            Assert.That(guids.Length, Is.GreaterThanOrEqualTo(17));
+            foreach (string guid in guids)
+            {
+                QuestDefinition quest = AssetDatabase.LoadAssetAtPath<QuestDefinition>(AssetDatabase.GUIDToAssetPath(guid));
+                Assert.That(quest.Validate(out string error), Is.True, error);
+                foreach (string itemId in quest.RequiredItemIds)
+                    Assert.That(items.Find(itemId), Is.Not.Null, quest.Id + ": " + itemId);
+                Assert.That(quest.DescriptionKey, Is.Not.Empty, quest.Id);
+                Assert.That(quest.LocationKey, Is.Not.Empty, quest.Id);
+                foreach (string key in new[] { quest.DescriptionKey, quest.LocationKey })
+                {
+                    LocalizedTextEntry entry = System.Array.Find(table.entries, value => value != null && value.key == key);
+                    Assert.That(entry, Is.Not.Null, quest.Id);
+                    Assert.That(entry.english, Is.Not.Empty, key);
+                    Assert.That(entry.indonesian, Is.Not.Empty, key);
+                }
+            }
+            QuestDefinition find = AssetDatabase.LoadAssetAtPath<QuestDefinition>(
+                "Assets/_Project/Story/Quests/find-colleagues.asset");
+            string location = table.GetText(find.LocationKey, GameLanguage.Indonesian);
+            Assert.That(location, Does.Contain("lantai 2"));
+            Assert.That(location, Does.Contain("Ruang Kerja Raka"));
+            Assert.That(location, Does.Contain("Ruang Kerja MC dan Sinta"));
         }
 
         [Test]

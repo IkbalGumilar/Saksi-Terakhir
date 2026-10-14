@@ -234,7 +234,7 @@ When changing code, use intent-revealing names, controlled Inspector configurati
 
 [.gitignore](.gitignore) excludes Unity caches, build outputs, generated IDE files, private agent configuration, crash dumps, Python caches, and Blender backups. Source assets and `.meta` files, `Packages`, `ProjectSettings`, `.blend` sources, and both READMEs remain eligible for version control. Changing ignore rules does not automatically remove already-tracked files from Git.
 
-Story documentation, code notes, and document-generation tools are stored **outside the checkout**. In the developer workspace, their location is `/home/ikbal/Dokumen/Dokumentasi Saksi Terakhir`. Temporary files go in `/tmp`. The project's `SourceArt` contains only Blender sources. The external documentation folder is not a runtime dependency for opening the game; these Indonesian and English READMEs remain at the repository root.
+Code notes, supporting documentation, and document-generation tools are stored **outside the checkout**, at `/home/ikbal/Dokumen/Dokumentasi Saksi Terakhir` in the developer workspace. The two Chapter 1 dialogue manuscripts are kept locally at `docs/bab-01.md` and `docs/bab-01-branch.md`; Git ignores them to keep spoilers out of the public repository. Regenerating dialogue content requires these manuscripts, while the game uses the existing dialogue assets. Temporary files go in `/tmp`. The project's `SourceArt` contains only Blender sources. The Indonesian and English READMEs remain at the repository root.
 
 ## License
 

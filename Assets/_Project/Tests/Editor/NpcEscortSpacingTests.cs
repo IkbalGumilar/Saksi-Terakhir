@@ -89,6 +89,51 @@ namespace SaksiTerakhir.Tests
         }
 
         [UnityTest]
+        public IEnumerator MovingColleagueKeepsMcWalkingWithoutPeriodicStops()
+        {
+            const float colleagueSpeed = 2.2f;
+            const float escortGap = 2.2f;
+            GameObject colleague = Root("Colleague walking at the chapter escort speed");
+            AddBody(colleague);
+            Assert.That(mover.BeginFollow(colleague.transform, escortGap, 2.5f), Is.True);
+            int stoppedFrames = 0;
+            int sampledFrames = 0;
+            float largestGap = 0f;
+            float startedAt = Time.time;
+            while (Time.time - startedAt < 2.2f)
+            {
+                Vector3 previousPosition = movement.transform.position;
+                colleague.transform.position += Vector3.forward * colleagueSpeed * Time.deltaTime;
+                Physics.SyncTransforms();
+                yield return null;
+                if (Time.time - startedAt < 0.75f) continue;
+                float stride = Vector3.ProjectOnPlane(movement.transform.position - previousPosition,
+                    Vector3.up).magnitude;
+                if (stride < colleagueSpeed * Time.deltaTime * 0.05f) stoppedFrames++;
+                sampledFrames++;
+                largestGap = Mathf.Max(largestGap, FlatGap(colleague.transform));
+                Assert.That(FlatGap(colleague.transform), Is.GreaterThanOrEqualTo(escortGap - 0.05f),
+                    "Following a moving colleague must also retain the safe gap.");
+            }
+            Assert.That(sampledFrames, Is.GreaterThan(30), "Observe sustained following after startup.");
+            Assert.That(stoppedFrames, Is.Zero,
+                "On a clear floor, a continuously walking colleague must not cause periodic stops at stale path endpoints.");
+            Assert.That(largestGap, Is.LessThan(escortGap + 0.15f));
+
+            float deadline = Time.time + 1.5f;
+            while (Time.time < deadline)
+            {
+                yield return null;
+                Assert.That(FlatGap(colleague.transform), Is.GreaterThanOrEqualTo(escortGap - 0.05f),
+                    "Continuous following must still preserve the safe distance when the colleague stops.");
+            }
+            Assert.That(FlatGap(colleague.transform), Is.LessThan(escortGap + 0.05f));
+            Assert.That(movement.CurrentSpeed, Is.LessThan(0.02f));
+            Assert.That(movement.StoryCinematicMovementLocked, Is.True);
+            Assert.That(mover.IsFollowing, Is.True);
+        }
+
+        [UnityTest]
         public IEnumerator AnotherNpcBlockingViewDoesNotPullMcCloserThanTheExistingEscortGap()
         {
             GameObject colleague = Root("Escort colleague facing MC");

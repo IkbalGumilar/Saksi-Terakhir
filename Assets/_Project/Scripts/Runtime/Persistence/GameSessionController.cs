@@ -34,6 +34,8 @@ namespace SaksiTerakhir.Persistence
         private Button continueButton;
         private Button newGameButton;
         private Button loadGameButton;
+        private Button settingsButton;
+        private SettingsMenuPresentation settingsMenu;
         private bool inputWasEnabled;
         private bool previousMovementLock;
         private bool previousLookLock;
@@ -128,6 +130,11 @@ namespace SaksiTerakhir.Persistence
             {
                 loadGameButton = options[2];
                 loadGameButton?.onClick.AddListener(LoadGame);
+            }
+            if (options != null && options.Length > 3)
+            {
+                settingsButton = options[3];
+                settingsButton?.onClick.AddListener(OpenSettings);
             }
             if (chapter != null)
             {
@@ -242,6 +249,34 @@ namespace SaksiTerakhir.Persistence
                 return;
             }
             StartCoroutine(ReloadScene(Startup.LoadGame));
+        }
+
+        public void OpenSettings()
+        {
+            if (!MenuOpen || loading) return;
+            if (settingsMenu == null)
+            {
+                settingsMenu = GameWorldSnapshot.Find<SettingsMenuPresentation>(gameObject.scene);
+            }
+            if (settingsMenu == null)
+            {
+                Debug.LogWarning("[GameSessionController] SettingsMenuPresentation not found in scene.");
+                return;
+            }
+
+            menu.MenuRoot.SetActive(false);
+            settingsMenu.Open(() =>
+            {
+                if (menu != null && menu.MenuRoot != null)
+                {
+                    menu.MenuRoot.SetActive(true);
+                    menu.RefreshRuntimeSelection();
+                    if (settingsButton != null && settingsButton.isActiveAndEnabled && settingsButton.interactable)
+                    {
+                        settingsButton.Select();
+                    }
+                }
+            });
         }
 
         private IEnumerator ReloadScene(Startup startup)

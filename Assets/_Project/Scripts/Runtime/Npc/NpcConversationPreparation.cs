@@ -11,6 +11,11 @@ namespace SaksiTerakhir.Npc
     [DisallowMultipleComponent]
     public sealed class NpcConversationPreparation : MonoBehaviour
     {
+        private static readonly NavMeshPath RetreatPath = new NavMeshPath();
+        private static readonly Vector3[] PathCorners = new Vector3[64];
+        private static readonly RaycastHit[] SharedHits = new RaycastHit[32];
+        private static readonly Collider[] SharedColliders = new Collider[32];
+
         private NpcInteractable speaker;
         private OfficeNpcAgent agent;
         private PlayerController movement;
@@ -86,13 +91,14 @@ namespace SaksiTerakhir.Npc
             float startAllowance = Mathf.Min(0.35f, body.stepOffset + 0.035f);
             if (!NavMesh.SamplePosition(transform.position, out NavMeshHit start, 0.6f, filter)
                 || Mathf.Abs(start.position.y - transform.position.y) > startAllowance) return false;
-            var path = new NavMeshPath();
-            if (!NavMesh.CalculatePath(start.position, target, filter, path)
-                || path.status != NavMeshPathStatus.PathComplete) return false;
+            if (!NavMesh.CalculatePath(start.position, target, filter, RetreatPath)
+                || RetreatPath.status != NavMeshPathStatus.PathComplete) return false;
+            int cornerCount = RetreatPath.GetCornersNonAlloc(PathCorners);
             float length = 0f;
             Vector3 previous = start.position;
-            foreach (Vector3 corner in path.corners)
+            for (int i = 0; i < cornerCount; i++)
             {
+                Vector3 corner = PathCorners[i];
                 length += Vector3.Distance(previous, corner);
                 previous = corner;
             }
@@ -103,16 +109,27 @@ namespace SaksiTerakhir.Npc
 
         private bool ClearAt(Vector3 feet, CharacterController body, Transform npc)
         {
-            foreach (Collider other in Physics.OverlapCapsule(feet + Vector3.up * (body.radius + 0.04f),
-                feet + Vector3.up * (body.height - body.radius), body.radius + 0.035f, ~0,
-                QueryTriggerInteraction.Ignore))
-                if (!other.transform.IsChildOf(transform)) return false;
+            int colliderCount = Physics.OverlapCapsuleNonAlloc(feet + Vector3.up * (body.radius + 0.04f),
+                feet + Vector3.up * (body.height - body.radius), body.radius + 0.035f, SharedColliders, ~0,
+                QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < colliderCount; i++)
+            {
+                Collider other = SharedColliders[i];
+                if (other != null && !other.transform.IsChildOf(transform)) return false;
+            }
             Vector3 start = feet + Vector3.up * (body.height * 0.7f);
             Vector3 end = npc.position + Vector3.up * (body.height * 0.7f);
-            foreach (RaycastHit hit in Physics.RaycastAll(start, (end - start).normalized,
-                Vector3.Distance(start, end), ~0, QueryTriggerInteraction.Ignore))
-                if (!hit.collider.transform.IsChildOf(transform) && !hit.collider.transform.IsChildOf(npc)
+            Vector3 delta = end - start;
+            float dist = delta.magnitude;
+            if (dist < 0.001f) return true;
+            int hitCount = Physics.RaycastNonAlloc(start, delta / dist, SharedHits,
+                dist, ~0, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < hitCount; i++)
+            {
+                RaycastHit hit = SharedHits[i];
+                if (hit.collider != null && !hit.collider.transform.IsChildOf(transform) && !hit.collider.transform.IsChildOf(npc)
                     && hit.collider.GetComponentInParent<OfficeNpcAgent>() == null) return false;
+            }
             return true;
         }
 

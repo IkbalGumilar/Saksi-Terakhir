@@ -614,8 +614,9 @@ namespace SaksiTerakhir.Story
                     if (!NavMesh.CalculatePath(hit.position, lastHit.position, filter, route)
                         || route.status != NavMeshPathStatus.PathComplete) continue;
                     float routeLength = 0f;
-                    for (int corner = 1; corner < route.corners.Length; corner++)
-                        routeLength += Vector3.Distance(route.corners[corner - 1], route.corners[corner]);
+                    Vector3[] routeCorners = route.corners;
+                    for (int corner = 1; corner < routeCorners.Length; corner++)
+                        routeLength += Vector3.Distance(routeCorners[corner - 1], routeCorners[corner]);
                     if (routeLength > 6f) continue;
 
                     Vector3 capsuleBottom = hit.position + Vector3.up * (radius + 0.08f);
@@ -658,8 +659,9 @@ namespace SaksiTerakhir.Story
                 if (!NavMesh.CalculatePath(feet, colleagueFeet, filter, route)
                     || route.status != NavMeshPathStatus.PathComplete) return false;
                 float length = 0f;
-                for (int corner = 1; corner < route.corners.Length; corner++)
-                    length += Vector3.Distance(route.corners[corner - 1], route.corners[corner]);
+                Vector3[] routeCorners = route.corners;
+                for (int corner = 1; corner < routeCorners.Length; corner++)
+                    length += Vector3.Distance(routeCorners[corner - 1], routeCorners[corner]);
                 return length <= 6f;
             }
         }

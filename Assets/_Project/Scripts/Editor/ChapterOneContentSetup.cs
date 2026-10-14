@@ -31,8 +31,6 @@ namespace SaksiTerakhir.EditorTools
                 throw new InvalidOperationException("Chapter-one content must be prepared outside Play Mode.");
             var manuscript = new ChapterOneManuscript();
             Dictionary<string, DialogueLine[]> speech = ReadCanonicalDialogues(manuscript);
-            string translation = ChapterOneManuscript.QuotedDocument(ChapterOneManuscript.Between(
-                manuscript.Main, "## TEKS TERJEMAHAN INDONESIA", "Terjemahan ini berupa catatan perjalanan"));
             string agenda = ChapterOneManuscript.QuotedDocument(ChapterOneManuscript.Between(
                 manuscript.Main, "## CATATAN AGENDA — 24 AGUSTUS 2026", "MC menutup buku."));
             // Validate source boundaries before creating any assets.
@@ -92,15 +90,7 @@ namespace SaksiTerakhir.EditorTools
                 new[] { sequences["boss-first"], sequences["boss-seating"], sequences["boss-final"] }, changed);
             Offer("NPC-002-Resepsionis", new[] { key }, new[] { sequences["nadia-key"] }, changed);
 
-            ItemDefinition original = Document("Arsip_Wanaseta_Original", "document.wanaseta_original",
-                "Arsip Wanaseta — Dokumen Asli", "Wanaseta Archive — Original Document",
-                "Arsip asli dibawa menggunakan kotak pelindung dan dokumen serah-terima resmi.",
-                "Original archive carried in a protective case with its official handover record.",
-                "Arsip Wanaseta — Dokumen Asli\n\nPrasasti terbelah. Kelanjutan tulisan tidak ditemukan.", changed);
-            ItemDefinition translated = Document("Terjemahan_Arsip_Wanaseta", "document.wanaseta_translation",
-                "Terjemahan Arsip Wanaseta", "Wanaseta Archive Translation",
-                "Catatan perjalanan dan peringatan dari seseorang yang mengaku singgah di desa tersebut.",
-                "A travel account and warning by someone who claims to have stayed in the village.", translation, changed);
+            ItemDefinition original = ArchiveDocument(manuscript, changed);
             string assignment = speech["boss-final"].First(line => line.Text.StartsWith("Itu yang saya perlukan.", StringComparison.Ordinal)).Text;
             ItemDefinition letter = Document("Surat_Tugas_Verifikasi_Lapangan", "document.field_assignment",
                 "Surat Tugas Verifikasi Lapangan", "Field Verification Assignment",
@@ -114,11 +104,88 @@ namespace SaksiTerakhir.EditorTools
             Document("Struk_Pembayaran_Template", "document.travel_receipt", "Struk Pembayaran", "Payment Receipt",
                 "Bukti pengeluaran perbekalan setelah penugasan.", "Proof of supply expenses after the assignment.",
                 "Nama toko\nTanggal\nWaktu\nBarang\nJumlah pembayaran", changed);
-            MergeItemCatalog(new[] { original, translated, letter, diary }, changed);
+            MergeItemCatalog(new[] { original, letter, diary }, changed);
             UpdateQuestTexts(changed);
             foreach (UnityEngine.Object asset in changed.Distinct()) AssetDatabase.SaveAssetIfDirty(asset);
-            return $"Canonical Bab 1 content: {speech.Count} dialogues, 9 main quest stages, 5 optional/side quests, 4 readable documents; vehicle departure remains deferred.";
+            return $"Canonical Bab 1 content: {speech.Count} dialogues, 9 main quest stages, 5 optional/side quests, 3 readable documents.";
         }
+
+        [MenuItem("Saksi Terakhir/Update Inscription Document")]
+        public static void UpdateArchiveDocumentFromMenu() => Debug.Log(EnsureArchiveDocument().name);
+
+        // A narrow update for the combined document, without regenerating dialogue
+        // or modifying scenes while the author is working on the UI and manuscript.
+        public static ItemDefinition EnsureArchiveDocument()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode)
+                throw new InvalidOperationException("Update the inscription outside Play Mode.");
+            var changed = new List<UnityEngine.Object>();
+            ItemDefinition original = ArchiveDocument(new ChapterOneManuscript(), changed);
+            MergeItemCatalog(new[] { original }, changed);
+            foreach (string guid in AssetDatabase.FindAssets("t:QuestDefinition", new[] { Quests }))
+            {
+                QuestDefinition quest = AssetDatabase.LoadAssetAtPath<QuestDefinition>(AssetDatabase.GUIDToAssetPath(guid));
+                if (!quest.RequiredItemIds.Contains(ItemDefinitionCatalog.LegacyWanasetaTranslationId)) continue;
+                string[] ids = quest.RequiredItemIds.Select(ItemDefinitionCatalog.CanonicalId).Distinct().ToArray();
+                var fields = new SerializedObject(quest);
+                SerializedProperty required = fields.FindProperty("requiredItemIds");
+                required.arraySize = ids.Length;
+                for (int index = 0; index < ids.Length; index++) required.GetArrayElementAtIndex(index).stringValue = ids[index];
+                fields.ApplyModifiedPropertiesWithoutUndo();
+                changed.Add(quest);
+            }
+            foreach (UnityEngine.Object asset in changed.Distinct()) AssetDatabase.SaveAssetIfDirty(asset);
+            AssetDatabase.DeleteAsset(Documents + "/Terjemahan_Arsip_Wanaseta.asset");
+            return original;
+        }
+
+        private static ItemDefinition ArchiveDocument(ChapterOneManuscript manuscript, List<UnityEngine.Object> changed)
+        {
+            string originalText = ChapterOneManuscript.QuotedDocument(ChapterOneManuscript.Between(
+                manuscript.Main, "## TEKS ASLI PRASASTI", "## TEKS TERJEMAHAN INDONESIA"));
+            string translation = ChapterOneManuscript.QuotedDocument(ChapterOneManuscript.Between(
+                manuscript.Main, "## TEKS TERJEMAHAN INDONESIA", "Terjemahan ini berupa catatan perjalanan"));
+            ItemDefinition original = Document("Arsip_Wanaseta_Original", ItemDefinitionCatalog.WanasetaArchiveId,
+                "Prasasti Cikapohon", "Cikapohon Inscription",
+                "Salinan prasasti beserta terjemahan tim verifikasi. Bagian akhir prasasti terbelah.",
+                "A copy of the inscription with the verification team's translation. Its ending is broken.", originalText, changed);
+            var fields = new SerializedObject(original);
+            fields.FindProperty("documentTranslationKey").stringValue = ItemDefinitionCatalog.WanasetaArchiveId + ".translation";
+            fields.FindProperty("documentFont").objectReferenceValue = ArchiveDocumentFontSetup.Ensure(originalText);
+            fields.ApplyModifiedPropertiesWithoutUndo();
+            Text(original.DocumentTranslationKey, EnglishArchiveTranslation, translation, changed);
+            Text("inventory.document.translate", "Translate", "Terjemahkan", changed);
+            Text("inventory.document.original", "Original text", "Teks asli", changed);
+            return original;
+        }
+
+        private const string EnglishArchiveTranslation = @"TRAVEL ACCOUNT — RADEN KIAN SANTANG
+
+I stopped in the village of Cikapohon at the foot of Mount Cikuray while searching for my father, Prabu Siliwangi, who had gone ahead to Sancang.
+
+The village was beautiful and peaceful. I decided to stay for three days before continuing my journey.
+
+The first day. I spent time among the villagers and helped with their work. Each night, the village fell silent. That night I woke on a large rock, far from where I had rested. I did not know how I had got there. I was overcome by sleepiness and fell asleep again.
+
+Morning came. The village was beautiful and peaceful again, as though the night had been only a dream. Yet the dream felt too real to forget.
+
+The second day. I had to leave soon. I still had to find my father. But my supplies were dwindling too quickly, as though someone took my food whenever I was not looking. To keep track, I recorded every meal and activity on white cloth with bamboo charcoal.
+
+Tonight I read those notes again. My writing covered the cloth. It showed that I had been in this village for eight days.
+
+That was impossible. I had only begun writing that morning.
+
+Whatever was happening, I had to leave tomorrow.
+
+The next night I woke among the bushes. I could not remember how I had got there. Something was wrong. I ran without knowing the way, wanting only to get away from the village.
+
+As I remembered it, I had been here only three days. My notes showed the ninth day. My supplies were almost gone. The village seemed to prevent me from leaving.
+
+I finally escaped. I was exhausted and nearly out of supplies, but still alive. I continued my journey to Sancang.
+
+Do not trust what you see. Do not trust what you remember. The demons within this village are very powerful. What appears real may not be real. Get out p—
+
+[The inscription is broken. The rest of the writing has not been found.]";
 
         private static Dictionary<string, DialogueLine[]> ReadCanonicalDialogues(ChapterOneManuscript book)
         {
@@ -190,6 +257,7 @@ namespace SaksiTerakhir.EditorTools
             QuestDefinition asset = LoadOrCreate<QuestDefinition>(Quests + "/" + file + ".asset");
             asset.Configure(id, category, title, objectives, asset.Conditions?.ToArray());
             asset.BindProgress(source);
+            QuestJournalContentSetup.ConfigureDetails(asset);
             if (!asset.Validate(out string error)) throw new InvalidOperationException(error);
             EditorUtility.SetDirty(asset);
             changed.Add(asset);
@@ -238,7 +306,8 @@ namespace SaksiTerakhir.EditorTools
         private static void MergeItemCatalog(ItemDefinition[] additions, List<UnityEngine.Object> changed)
         {
             ItemDefinitionCatalog catalog = LoadOrCreate<ItemDefinitionCatalog>("Assets/_Project/Resources/ItemDefinitionCatalog.asset");
-            ItemDefinition[] definitions = catalog.Definitions.Concat(additions).Where(item => item != null).Distinct().ToArray();
+            ItemDefinition[] definitions = catalog.Definitions.Concat(additions).Where(item => item != null
+                && item.Id != ItemDefinitionCatalog.LegacyWanasetaTranslationId).Distinct().ToArray();
             var serialized = new SerializedObject(catalog);
             SerializedProperty field = serialized.FindProperty("definitions");
             field.arraySize = definitions.Length;

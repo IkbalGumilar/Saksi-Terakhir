@@ -15,6 +15,9 @@ namespace SaksiTerakhir.Story
         [SerializeField] private QuestCategory category = QuestCategory.Main;
         [SerializeField] private string titleKey = string.Empty;
         [SerializeField] private string[] objectiveKeys = Array.Empty<string>();
+        [SerializeField] private string descriptionKey = string.Empty;
+        [SerializeField] private string locationKey = string.Empty;
+        [SerializeField] private string[] requiredItemIds = Array.Empty<string>();
         [SerializeField] private ChapterOneStoryCondition[] conditions = Array.Empty<ChapterOneStoryCondition>();
         [SerializeField] private QuestProgressSource progressSource;
 
@@ -22,6 +25,9 @@ namespace SaksiTerakhir.Story
         public QuestCategory Category => category;
         public string TitleKey => titleKey;
         public IReadOnlyList<string> ObjectiveKeys => objectiveKeys;
+        public string DescriptionKey => descriptionKey;
+        public string LocationKey => locationKey;
+        public IReadOnlyList<string> RequiredItemIds => requiredItemIds ?? Array.Empty<string>();
         public IReadOnlyList<ChapterOneStoryCondition> Conditions => conditions;
         public QuestProgressSource ProgressSource => progressSource;
         public void BindProgress(QuestProgressSource source) => progressSource = source;
@@ -39,6 +45,13 @@ namespace SaksiTerakhir.Story
             conditions = requirements ?? Array.Empty<ChapterOneStoryCondition>();
         }
 
+        public void ConfigureDetails(string description, string location, string[] requiredItems = null)
+        {
+            descriptionKey = description ?? string.Empty;
+            locationKey = location ?? string.Empty;
+            requiredItemIds = requiredItems ?? Array.Empty<string>();
+        }
+
         public bool Validate(out string error)
         {
             if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(titleKey))
@@ -52,6 +65,15 @@ namespace SaksiTerakhir.Story
                 if (string.IsNullOrWhiteSpace(key) || !seen.Add(key))
                 {
                     error = $"Quest {id} has an empty or duplicate objective key.";
+                    return false;
+                }
+            }
+            seen.Clear();
+            foreach (string itemId in RequiredItemIds)
+            {
+                if (string.IsNullOrWhiteSpace(itemId) || !seen.Add(itemId))
+                {
+                    error = $"Quest {id} has an empty or duplicate required item ID.";
                     return false;
                 }
             }

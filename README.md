@@ -232,7 +232,7 @@ Saat mengubah kode, gunakan nama yang menjelaskan maksud, konfigurasi Inspector 
 
 [.gitignore](.gitignore) mengabaikan cache Unity, hasil build, berkas IDE yang dihasilkan, konfigurasi pribadi agen, dump crash, cache Python, dan cadangan Blender. Aset sumber beserta `.meta`, `Packages`, `ProjectSettings`, sumber `.blend`, dan kedua README tetap dapat masuk version control. Perubahan aturan ignore tidak otomatis mengeluarkan berkas yang sudah dilacak Git.
 
-Dokumentasi cerita, catatan kode, dan alat pembuatan dokumen disimpan **di luar checkout**. Pada workspace pengembang, lokasinya adalah `/home/ikbal/Dokumen/Dokumentasi Saksi Terakhir`. Berkas sementara dibuat di `/tmp`. `SourceArt` di proyek hanya menampung sumber Blender. Folder dokumentasi eksternal bukan dependensi runtime untuk membuka game; README Indonesia dan Inggris ini tetap berada di root repositori.
+Catatan kode, dokumentasi pendukung, dan alat pembuatan dokumen disimpan **di luar checkout**, di `/home/ikbal/Dokumen/Dokumentasi Saksi Terakhir` pada workspace pengembang. Dua naskah sumber dialog Bab 1 berada secara lokal di `docs/bab-01.md` dan `docs/bab-01-branch.md`; keduanya diabaikan Git untuk menjaga spoiler. Naskah tersebut diperlukan saat membuat ulang konten dialog, sementara permainan memakai aset dialog yang sudah tersimpan. Berkas sementara dibuat di `/tmp`. `SourceArt` di proyek hanya menampung sumber Blender. README Indonesia dan Inggris tetap berada di root repositori.
 
 ## Lisensi
 

@@ -177,6 +177,30 @@ namespace SaksiTerakhir.Tests
             Assert.That(native.gameObject.activeSelf, Is.False);
         }
 
+        [TestCase(false)]
+        [TestCase(true)]
+        public void RetiredStoryItemStaysRemovedWhenNativeWorldRecordsAreMissingOrUseAnOldIdentity(bool hasOldRecord)
+        {
+            ItemDefinition definition = Definition(CarKeyInventory.CarKeyId);
+            ItemPickupInteractable native = Pickup(definition, "current-native-key");
+            var state = new InventoryState();
+            state.RetireStoryItem(definition.Id);
+            SavedInventory inventory = SavedInventory.Capture(state);
+            SavedWorldItem[] records = hasOldRecord
+                ? new[] { Record(definition.Id, "old-native-key", false, true) }
+                : Array.Empty<SavedWorldItem>();
+
+            WorldItemSnapshot.Restore(scene, records, inventory);
+
+            Assert.That(native.Collected, Is.True);
+            Assert.That(native.gameObject.activeSelf, Is.False);
+            Assert.That(WorldItemSnapshot.Validate(WorldItemSnapshot.Capture(scene), inventory,
+                out string error), Is.True, error);
+            WorldItemSnapshot.Restore(scene, null);
+            Assert.That(native.Collected, Is.False, "New Game restores the original native pickup.");
+            Assert.That(native.gameObject.activeSelf, Is.True);
+        }
+
         private ItemDefinition Definition(string id, bool withModel = false)
         {
             var definition = ScriptableObject.CreateInstance<ItemDefinition>();

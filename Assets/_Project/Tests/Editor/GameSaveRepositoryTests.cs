@@ -145,6 +145,50 @@ namespace SaksiTerakhir.Tests
             Assert.That(loaded.chapter.Story.SharedMealQuest, Is.EqualTo(StoryQuestStatus.Completed));
         }
 
+        [Test]
+        public void ProtectedCheckpointRestoresCapturedSparseSlotsAndHeldPairWithoutDuplicatingInstances()
+        {
+            var inventory = new InventoryState(3, 3);
+            var firstBattery = new InventoryEntry("battery", "First battery", InventoryEntryType.Item,
+                instanceId: "battery:first");
+            var secondBattery = new InventoryEntry("battery", "Second battery", InventoryEntryType.Item,
+                instanceId: "battery:second");
+            var key = new InventoryEntry(CarKeyInventory.CarKeyId, "Car key", InventoryEntryType.Item,
+                instanceId: "reception:key");
+            var document = new InventoryEntry("archive-note", "Archive note", InventoryEntryType.Document,
+                instanceId: "briefing:archive-note");
+            Assert.That(inventory.TryAdd(firstBattery), Is.True);
+            Assert.That(inventory.TryAdd(secondBattery), Is.True);
+            Assert.That(inventory.TryAdd(key), Is.True);
+            Assert.That(inventory.TryAdd(document), Is.True);
+            Assert.That(inventory.TryMoveToSlot(firstBattery, 8), Is.True);
+            Assert.That(inventory.TryMoveToSlot(secondBattery, 5), Is.True);
+            Assert.That(inventory.TryMoveToSlot(key, 0), Is.True);
+            Assert.That(inventory.TryHold(secondBattery), Is.True);
+            Assert.That(inventory.TryHold(firstBattery), Is.True);
+            GameSaveSnapshot original = Snapshot(CompletedChapter(false));
+            original.inventory = SavedInventory.Capture(inventory);
+            WriteSnapshot(original);
+
+            Assert.That(GameSaveRepository.TryLoadLatest(path, out GameSaveSnapshot loaded, out string error),
+                Is.True, error);
+            InventoryState restored = loaded.inventory.CreateState(resolveDefinition: _ => null);
+            Assert.That(restored.Items.Count, Is.EqualTo(3));
+            Assert.That(restored.Documents.Count, Is.EqualTo(1));
+            Assert.That(restored.GetItemAtSlot(0).InstanceId, Is.EqualTo("reception:key"));
+            Assert.That(restored.GetItemAtSlot(5).InstanceId, Is.EqualTo("battery:second"));
+            Assert.That(restored.GetItemAtSlot(8).InstanceId, Is.EqualTo("battery:first"));
+            Assert.That(restored.GetItemAtSlot(1), Is.Null);
+            Assert.That(restored.GetItemAtSlot(2), Is.Null);
+            Assert.That(restored.HeldItems.Count, Is.EqualTo(2));
+            Assert.That(restored.HeldItems[0], Is.SameAs(restored.GetItemAtSlot(5)));
+            Assert.That(restored.HeldItems[1], Is.SameAs(restored.GetItemAtSlot(8)));
+            Assert.That(restored.Documents[0].InstanceId, Is.EqualTo("briefing:archive-note"));
+            Assert.That(restored.TryAdd(new InventoryEntry("battery", "Duplicate", InventoryEntryType.Item,
+                instanceId: "battery:first")), Is.False);
+            Assert.That(restored.Items.Count, Is.EqualTo(3));
+        }
+
         [TestCase("version")]
         [TestCase("run-id")]
         [TestCase("player")]

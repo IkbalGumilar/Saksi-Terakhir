@@ -19,3 +19,6 @@ MonoBehaviour:
   - quest.optional.supplies.buy
   conditions: []
   progressSource: 4
+  descriptionKey: quest.optional.supplies.description
+  locationKey: quest.optional.supplies.location
+  requiredItemIds: []

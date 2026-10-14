@@ -46,6 +46,8 @@ namespace SaksiTerakhir.Story
         private Coroutine endingRoutine;
         private DialogueSequence casualReadyConversation;
 
+        public float EndingFadeSeconds => Mathf.Max(.1f, fadeSeconds);
+
         private FuelStationProgress State => chapter != null && chapter.Progress != null
             ? chapter.Progress.Story.FuelStation : null;
         private bool Exploring => State != null && !ending && chapter != null && !chapter.GameplaySuspended
@@ -290,10 +292,10 @@ namespace SaksiTerakhir.Story
             player?.GetComponent<PlayerInteractor>()?.SetUiInteractionBlocked(true);
             CreateEndingCurtain();
             float elapsed = 0f;
-            while (elapsed < fadeSeconds)
+            while (elapsed < EndingFadeSeconds)
             {
                 elapsed += Time.unscaledDeltaTime;
-                endingCurtain.color = new Color(0f, 0f, 0f, Mathf.Clamp01(elapsed / Mathf.Max(.1f, fadeSeconds)));
+                endingCurtain.color = new Color(0f, 0f, 0f, Mathf.Clamp01(elapsed / EndingFadeSeconds));
                 yield return null;
             }
             endingCurtain.color = Color.black;

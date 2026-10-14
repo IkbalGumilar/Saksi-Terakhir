@@ -15,6 +15,8 @@ namespace SaksiTerakhir.Inventory
         private RectTransform popup;
         private GameObject owner;
         private TMP_Text holdLabel;
+        private UnityEngine.UI.Button dropButton;
+        private bool hasDropAction;
         private InventoryEntry entry;
         private bool disposed;
 
@@ -49,15 +51,17 @@ namespace SaksiTerakhir.Inventory
             menu.AddAction(0, "Use", "inventory.action.use", textStyle, background.color, use);
             menu.holdLabel = menu.AddAction(1, "Hold", "inventory.action.hold", textStyle, background.color, hold);
             menu.AddAction(2, "Drop", "inventory.action.drop", textStyle, background.color, drop);
+            menu.dropButton = menu.popup.Find("Drop").GetComponent<UnityEngine.UI.Button>();
+            menu.hasDropAction = drop != null;
             overlay.gameObject.SetActive(false);
             return menu;
         }
 
-        public void Show(InventoryEntry value, bool held, PointerEventData pointer)
+        public void Show(InventoryEntry value, bool held, PointerEventData pointer, bool canDrop = true)
         {
             if (disposed || value == null || value.Type != InventoryEntryType.Item) return;
             entry = value;
-            RefreshLabels(held);
+            RefreshLabels(held, canDrop);
             gameObject.SetActive(true);
             transform.SetAsLastSibling();
             RectTransform overlay = (RectTransform)transform;
@@ -70,12 +74,13 @@ namespace SaksiTerakhir.Inventory
             popup.anchoredPosition = local;
         }
 
-        public void RefreshLabels(bool held)
+        public void RefreshLabels(bool held, bool canDrop = true)
         {
             if (disposed) return;
             popup.Find("Use/Label").GetComponent<TMP_Text>().text = LocalizationManager.Get("inventory.action.use");
             holdLabel.text = LocalizationManager.Get(held ? "inventory.action.release" : "inventory.action.hold");
             popup.Find("Drop/Label").GetComponent<TMP_Text>().text = LocalizationManager.Get("inventory.action.drop");
+            if (dropButton != null) dropButton.interactable = canDrop && hasDropAction;
         }
 
         public void OnPointerDown(PointerEventData eventData)

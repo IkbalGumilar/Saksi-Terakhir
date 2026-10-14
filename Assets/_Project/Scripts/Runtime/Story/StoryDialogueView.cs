@@ -44,7 +44,12 @@ namespace SaksiTerakhir.Story
             if (panelRoot != null) panelRoot.SetActive(true);
             if (genericPrompt != null) genericPrompt.SetStoryDialogueActive(true);
             DialogueLine line = sequence.Lines[lineIndex];
-            if (speakerLabel != null) speakerLabel.text = SpeakerName(line.SpeakerId);
+            if (speakerLabel != null)
+            {
+                var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+                speakerLabel.gameObject.SetActive(settings == null || settings.showSpeakerName);
+                speakerLabel.text = SpeakerName(line.SpeakerId);
+            }
             StartTypewriter(line.Text);
         }
 
@@ -67,21 +72,36 @@ namespace SaksiTerakhir.Story
             if (lineLabel == null) return;
 
             lineLabel.text = text ?? string.Empty;
-            lineLabel.maxVisibleCharacters = 0;
             lineLabel.ForceMeshUpdate();
             // TextMeshPro has no generated mesh yet in some editor/UI test contexts.
             // Dialogue content is plain text, so source length is the stable reveal count.
             visibleCharacterCount = lineLabel.text.Length;
             revealedCharacters = 0f;
-            isRevealing = visibleCharacterCount > 0;
+
+            var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+            bool animate = settings == null || settings.textAnimation;
+            if (!animate)
+            {
+                lineLabel.maxVisibleCharacters = visibleCharacterCount;
+                isRevealing = false;
+            }
+            else
+            {
+                lineLabel.maxVisibleCharacters = 0;
+                isRevealing = visibleCharacterCount > 0;
+            }
         }
 
         private void AdvanceTypewriter(float deltaTime)
         {
             if (!isRevealing || lineLabel == null) return;
 
-            float rate = dialogue != null ? dialogue.CharactersPerSecond : fallbackCharactersPerSecond;
-            revealedCharacters += Mathf.Max(0f, deltaTime) * Mathf.Max(1f, rate);
+            var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+            float rate = settings != null
+                ? settings.textSpeed
+                : (dialogue != null ? dialogue.CharactersPerSecond : fallbackCharactersPerSecond);
+            rate = Mathf.Max(10f, rate);
+            revealedCharacters += Mathf.Max(0f, deltaTime) * rate;
             int nextVisibleCount = Mathf.Min(visibleCharacterCount, Mathf.FloorToInt(revealedCharacters));
             lineLabel.maxVisibleCharacters = nextVisibleCount;
             if (nextVisibleCount >= visibleCharacterCount)

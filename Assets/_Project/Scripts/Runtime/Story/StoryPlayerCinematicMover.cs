@@ -31,6 +31,12 @@ namespace SaksiTerakhir.Story
         [SerializeField, Min(0.05f)] private float followRepathDistance = 0.4f;
         [SerializeField, Min(0.1f)] private float turnSmoothing = 12f;
 
+        private static readonly RaycastHit[] SharedHits = new RaycastHit[32];
+        private static readonly Collider[] SharedColliders = new Collider[32];
+        private NavMeshPath calculatedPath;
+        private readonly Vector3[] pathCorners = new Vector3[128];
+        private int pathCornerCount;
+
         private MotionMode mode;
         private NavMeshPath currentPath;
         private int nextCorner;
@@ -104,20 +110,32 @@ namespace SaksiTerakhir.Story
         private bool HasDialogueClearance(Vector3 feet, Transform speaker)
         {
             float radius = characterController.radius;
-            foreach (Collider blocker in Physics.OverlapCapsule(feet + Vector3.up * (radius + 0.04f),
+            int colliderCount = Physics.OverlapCapsuleNonAlloc(feet + Vector3.up * (radius + 0.04f),
                 feet + Vector3.up * (characterController.height - radius + 0.04f),
-                radius + 0.01f, ~0, QueryTriggerInteraction.Ignore))
-                if (!blocker.transform.IsChildOf(transform) && !blocker.transform.IsChildOf(speaker)) return false;
+                radius + 0.01f, SharedColliders, ~0, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < colliderCount; i++)
+            {
+                Collider blocker = SharedColliders[i];
+                if (blocker != null && !blocker.transform.IsChildOf(transform) && !blocker.transform.IsChildOf(speaker)) return false;
+            }
             Vector3 from = feet + Vector3.up * characterController.height * 0.7f;
             Vector3 to = speaker.position + Vector3.up * characterController.height * 0.7f;
-            foreach (RaycastHit hit in Physics.RaycastAll(from, (to - from).normalized,
-                Vector3.Distance(from, to), ~0, QueryTriggerInteraction.Ignore))
-                if (!hit.collider.transform.IsChildOf(transform) && !hit.collider.transform.IsChildOf(speaker)) return false;
+            Vector3 delta = to - from;
+            float dist = delta.magnitude;
+            if (dist < 0.001f) return true;
+            int hitCount = Physics.RaycastNonAlloc(from, delta / dist, SharedHits,
+                dist, ~0, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < hitCount; i++)
+            {
+                RaycastHit hit = SharedHits[i];
+                if (hit.collider != null && !hit.collider.transform.IsChildOf(transform) && !hit.collider.transform.IsChildOf(speaker)) return false;
+            }
             return true;
         }
 
         private void Awake()
         {
+            calculatedPath ??= new NavMeshPath();
             ResolveDependencies();
         }
 
@@ -188,6 +206,7 @@ namespace SaksiTerakhir.Story
             followTarget = null;
             currentPath = null;
             nextCorner = 0;
+            pathCornerCount = 0;
             waitingForDialogue = false;
             nextFollowRepathAt = 0f;
             lastFollowDestination = Vector3.zero;
@@ -243,10 +262,10 @@ namespace SaksiTerakhir.Story
 
             // Recheck actual space and footing before crossing a mesh seam. Retrying the
             // same push against a wall can never recover a blocked cinematic walk.
-            if (currentPath != null && nextCorner < currentPath.corners.Length)
+            if (currentPath != null && nextCorner < pathCornerCount)
             {
                 Vector3 direction = Vector3.ProjectOnPlane(
-                    currentPath.corners[nextCorner] - transform.position, Vector3.up).normalized;
+                    pathCorners[nextCorner] - transform.position, Vector3.up).normalized;
                 if (TryResolveDirection(direction, RecoveryStepMeters, out Vector3 safeDirection))
                     characterController.Move(safeDirection * RecoveryStepMeters);
             }
@@ -297,29 +316,29 @@ namespace SaksiTerakhir.Story
                 Drive(Vector3.zero);
                 return;
             }
-            if (currentPath == null || currentPath.corners == null || currentPath.corners.Length == 0)
+            if (currentPath == null || pathCornerCount == 0)
             {
                 Drive(Vector3.zero);
                 return;
             }
 
-            while (nextCorner < currentPath.corners.Length)
+            while (nextCorner < pathCornerCount)
             {
-                Vector3 corner = currentPath.corners[nextCorner];
+                Vector3 corner = pathCorners[nextCorner];
                 Vector3 flatOffset = Vector3.ProjectOnPlane(corner - transform.position, Vector3.up);
                 if (flatOffset.sqrMagnitude > stoppingDistance * stoppingDistance
                     || Mathf.Abs(corner.y - transform.position.y) > 0.5f) break;
                 nextCorner++;
             }
 
-            if (nextCorner >= currentPath.corners.Length)
+            if (nextCorner >= pathCornerCount)
             {
                 Drive(Vector3.zero);
                 if (mode == MotionMode.Destination && IsNearDestination()) CompleteDestination();
                 return;
             }
 
-            Vector3 target = currentPath.corners[nextCorner];
+            Vector3 target = pathCorners[nextCorner];
             if (doorDirector == null)
                 doorDirector = FindFirstObjectByType<SaksiTerakhir.Npc.OfficeNpcDirector>();
             if (doorDirector != null && doorDirector.TryOpenDoorAhead(transform, target, out doorWaitUntil))
@@ -362,10 +381,16 @@ namespace SaksiTerakhir.Story
             // A colleague on the other side of a wall has not been caught up with.
             Vector3 start = transform.position + Vector3.up * characterController.height * 0.7f;
             Vector3 end = followTarget.position + Vector3.up * characterController.height * 0.7f;
-            foreach (RaycastHit hit in Physics.RaycastAll(start, (end - start).normalized,
-                Vector3.Distance(start, end), ~0, QueryTriggerInteraction.Ignore))
+            Vector3 delta = end - start;
+            float dist = delta.magnitude;
+            if (dist < 0.001f) return true;
+            int count = Physics.RaycastNonAlloc(start, delta / dist, SharedHits,
+                dist, ~0, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < count; i++)
             {
-                if (hit.collider.transform.IsChildOf(transform)
+                RaycastHit hit = SharedHits[i];
+                if (hit.collider == null
+                    || hit.collider.transform.IsChildOf(transform)
                     || hit.collider.transform.IsChildOf(followTarget)) continue;
                 // A crowd member hiding the colleague does not make the MC too far
                 // away. Keep the gap while it clears; walls still require a route around.
@@ -449,14 +474,15 @@ namespace SaksiTerakhir.Story
                 || Mathf.Abs(source.position.y - transform.position.y) > 0.5f
                 || Mathf.Abs(destinationHit.position.y - target.y) > 0.5f) return false;
 
-            NavMeshPath candidate = new NavMeshPath();
+            calculatedPath ??= new NavMeshPath();
             if (!NavMesh.CalculatePath(source.position, destinationHit.position,
-                    filter, candidate)
-                || candidate.status != NavMeshPathStatus.PathComplete) return false;
+                    filter, calculatedPath)
+                || calculatedPath.status != NavMeshPathStatus.PathComplete) return false;
 
-            currentPath = candidate;
+            currentPath = calculatedPath;
             pathDestination = destinationHit.position;
-            nextCorner = candidate.corners != null && candidate.corners.Length > 1 ? 1 : 0;
+            pathCornerCount = calculatedPath.GetCornersNonAlloc(pathCorners);
+            nextCorner = pathCornerCount > 1 ? 1 : 0;
             return true;
         }
 
@@ -471,6 +497,11 @@ namespace SaksiTerakhir.Story
             if (!TryBuildPath(target.position)) return false;
             lastFollowDestination = trailingPoint;
             return true;
+        }
+
+        private static Vector3 ResolveFollowDestination(Transform target, float distance)
+        {
+            return target.position - target.forward * distance;
         }
 
         private void CompleteDestination()
@@ -498,10 +529,5 @@ namespace SaksiTerakhir.Story
 
         private float ResolveStopDistance(float requestedDistance) => requestedDistance > 0f
             ? requestedDistance : defaultStoppingDistance;
-
-        private static Vector3 ResolveFollowDestination(Transform target, float distance)
-        {
-            return target.position - target.forward * distance;
-        }
     }
 }

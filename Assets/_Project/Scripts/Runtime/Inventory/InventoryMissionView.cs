@@ -20,6 +20,7 @@ namespace SaksiTerakhir.Inventory
         private readonly List<GameObject> rows = new List<GameObject>();
         private readonly Action<QuestJournalEntry> selected;
         private QuestJournalController journal;
+        private string displayedQuestId = string.Empty;
         private bool disposed;
 
         public GameObject FirstSelectable { get; private set; }
@@ -70,6 +71,8 @@ namespace SaksiTerakhir.Inventory
             foreach (GameObject row in rows) DestroyOwned(row);
             rows.Clear();
             FirstSelectable = null;
+            QuestJournalEntry firstEntry = null;
+            QuestJournalEntry displayedEntry = null;
             float height = 0f;
             for (int categoryIndex = 0; categoryIndex < templates.Length; categoryIndex++)
             {
@@ -106,13 +109,17 @@ namespace SaksiTerakhir.Inventory
                     BindRow(row, entry);
                     row.gameObject.SetActive(true);
                     rows.Add(row.gameObject);
-                    if (entry.IsSelected && page.activeSelf) selected?.Invoke(entry);
+                    if (firstEntry == null) firstEntry = entry;
+                    if (entry.Definition.Id == displayedQuestId) displayedEntry = entry;
                 }
             }
             float viewportHeight = scroll != null && scroll.viewport != null ? scroll.viewport.rect.height : 0f;
             Vector2 size = content.sizeDelta;
             size.y = Mathf.Max(viewportHeight, height);
             content.sizeDelta = size;
+            displayedEntry = displayedEntry ?? firstEntry;
+            displayedQuestId = displayedEntry?.Definition.Id ?? string.Empty;
+            if (page.activeSelf) selected?.Invoke(displayedEntry);
             if (focusedName != null && events != null && page.activeInHierarchy)
             {
                 GameObject target = rows.Find(row => row != null && row.name == focusedName
@@ -128,14 +135,19 @@ namespace SaksiTerakhir.Inventory
             bool finished = entry.Status == StoryQuestStatus.Completed || entry.Status == StoryQuestStatus.Skipped;
             string name = LocalizationManager.Get(entry.Definition.TitleKey);
             if (title != null) title.text = finished ? "<s>" + name + "</s>" : name;
-            if (description != null) description.text = StatusText(entry.Status) + " · " + ObjectivesText(entry.Definition);
+            if (description != null)
+            {
+                string location = LocationText(entry.Definition);
+                description.text = StatusText(entry.Status) + " · " + (string.IsNullOrWhiteSpace(location)
+                    ? ObjectivesText(entry.Definition) : location);
+            }
             Transform icon = row.Find("Icon");
             if (icon != null && icon.TryGetComponent(out UnityEngine.UI.Image image))
                 image.color = CategoryColor(entry.Definition.Category);
             UnityEngine.UI.Button button = row.GetComponent<UnityEngine.UI.Button>();
             if (button == null) button = row.gameObject.AddComponent<UnityEngine.UI.Button>();
             button.targetGraphic = row.GetComponent<UnityEngine.UI.Graphic>();
-            button.interactable = entry.Definition.Category != QuestCategory.Main && entry.Status == StoryQuestStatus.Active;
+            button.interactable = true;
             if (button.targetGraphic != null) button.targetGraphic.raycastTarget = true;
             UnityEngine.UI.ColorBlock colors = button.colors;
             colors.normalColor = entry.IsSelected ? new Color(1f, 0.9f, 0.65f, 1f) : Color.white;
@@ -145,7 +157,10 @@ namespace SaksiTerakhir.Inventory
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() =>
             {
-                if (journal == null || !journal.TrySelect(entry.Definition.Id)) return;
+                displayedQuestId = entry.Definition.Id;
+                // Reading a main or finished entry does not change HUD tracking.
+                if (journal != null && entry.Definition.Category != QuestCategory.Main
+                    && entry.Status == StoryQuestStatus.Active && journal.TrySelect(entry.Definition.Id)) return;
                 selected?.Invoke(entry);
             });
             if (FirstSelectable == null && button.interactable) FirstSelectable = row.gameObject;
@@ -154,8 +169,8 @@ namespace SaksiTerakhir.Inventory
         public void StopMovement() { if (scroll != null) scroll.StopMovement(); }
 
         public static Color CategoryColor(QuestCategory category) => category == QuestCategory.Main
-            ? new Color(1f, 0.82f, 0.12f, 1f) : category == QuestCategory.Optional
-                ? new Color(0.27f, 0.63f, 1f, 1f) : new Color(0.3f, 0.8f, 0.4f, 1f);
+            ? QuestTrackerView.MainDotColor : category == QuestCategory.Optional
+                ? QuestTrackerView.OptionalDotColor : QuestTrackerView.SideDotColor;
 
         public static string StatusText(StoryQuestStatus status)
         {
@@ -173,6 +188,33 @@ namespace SaksiTerakhir.Inventory
             {
                 if (text.Length > 0) text.Append('\n');
                 text.Append(LocalizationManager.Get(key));
+            }
+            return text.ToString();
+        }
+
+        public static string DescriptionText(QuestDefinition quest)
+            => quest == null || string.IsNullOrWhiteSpace(quest.DescriptionKey)
+                ? string.Empty : LocalizationManager.Get(quest.DescriptionKey);
+
+        public static string LocationText(QuestDefinition quest)
+            => quest == null || string.IsNullOrWhiteSpace(quest.LocationKey)
+                ? string.Empty : LocalizationManager.Get(quest.LocationKey);
+
+        public static string DetailsText(QuestDefinition quest)
+        {
+            if (quest == null) return string.Empty;
+            var text = new StringBuilder(DescriptionText(quest));
+            string location = LocationText(quest);
+            if (!string.IsNullOrWhiteSpace(location))
+            {
+                if (text.Length > 0) text.Append("\n\n");
+                text.Append(LocalizationManager.Get("quest.journal.location_label")).Append(": ").Append(location);
+            }
+            string objectives = ObjectivesText(quest);
+            if (!string.IsNullOrWhiteSpace(objectives))
+            {
+                if (text.Length > 0) text.Append("\n\n");
+                text.Append(LocalizationManager.Get("quest.journal.objectives_label")).Append(":\n").Append(objectives);
             }
             return text.ToString();
         }

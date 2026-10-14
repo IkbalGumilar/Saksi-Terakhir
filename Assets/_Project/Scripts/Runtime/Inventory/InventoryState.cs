@@ -8,6 +8,8 @@ namespace SaksiTerakhir.Inventory
         private readonly List<InventoryEntry> items = new List<InventoryEntry>();
         private readonly List<InventoryEntry> documents = new List<InventoryEntry>();
         private readonly List<InventoryEntry> heldItems = new List<InventoryEntry>();
+        private readonly List<string> releasedQuestItemIds = new List<string>();
+        private readonly List<string> retiredStoryItemIds = new List<string>();
         private InventoryEntry[] slots;
 
         public int Columns { get; private set; }
@@ -16,6 +18,8 @@ namespace SaksiTerakhir.Inventory
         public IReadOnlyList<InventoryEntry> Items { get; }
         public IReadOnlyList<InventoryEntry> Documents { get; }
         public IReadOnlyList<InventoryEntry> HeldItems { get; }
+        public IReadOnlyList<string> ReleasedQuestItemIds { get; }
+        public IReadOnlyList<string> RetiredStoryItemIds { get; }
         public event Action Changed;
 
         public InventoryState(int columns = 3, int rows = 3)
@@ -30,12 +34,15 @@ namespace SaksiTerakhir.Inventory
             Items = items.AsReadOnly();
             Documents = documents.AsReadOnly();
             HeldItems = heldItems.AsReadOnly();
+            ReleasedQuestItemIds = releasedQuestItemIds.AsReadOnly();
+            RetiredStoryItemIds = retiredStoryItemIds.AsReadOnly();
             slots = new InventoryEntry[Capacity];
         }
 
         public bool TryAdd(InventoryEntry entry)
         {
-            if (entry == null || ContainsInstance(entry.InstanceId)) return false;
+            if (entry == null || ContainsInstance(entry.InstanceId)
+                || (entry.Type == InventoryEntryType.Item && IsStoryItemRetired(entry.Id))) return false;
             List<InventoryEntry> destination;
             switch (entry.Type)
             {
@@ -93,6 +100,42 @@ namespace SaksiTerakhir.Inventory
             return true;
         }
 
+        public bool IsQuestItemReleased(string itemId) =>
+            releasedQuestItemIds.Contains(InventoryQuestProtection.CanonicalId(itemId));
+
+        public bool IsStoryItemRetired(string itemId) =>
+            retiredStoryItemIds.Contains(InventoryQuestProtection.CanonicalId(itemId));
+
+        // Future story events use this at arrival, rather than treating the
+        // Chapter 1 blackout as arrival in the village.
+        public bool ReleaseQuestItem(string itemId)
+        {
+            itemId = InventoryQuestProtection.CanonicalId(itemId);
+            if (string.IsNullOrWhiteSpace(itemId) || IsQuestItemReleased(itemId) || IsStoryItemRetired(itemId)) return false;
+            releasedQuestItemIds.Add(itemId);
+            Changed?.Invoke();
+            return true;
+        }
+
+        public bool RetireStoryItem(string itemId)
+        {
+            itemId = InventoryQuestProtection.CanonicalId(itemId);
+            if (string.IsNullOrWhiteSpace(itemId) || IsStoryItemRetired(itemId)) return false;
+            retiredStoryItemIds.Add(itemId);
+            releasedQuestItemIds.Remove(itemId);
+            for (int index = items.Count - 1; index >= 0; index--)
+            {
+                InventoryEntry entry = items[index];
+                if (InventoryQuestProtection.CanonicalId(entry.Id) != itemId) continue;
+                int slot = GetSlotIndex(entry);
+                if (slot >= 0) slots[slot] = null;
+                heldItems.Remove(entry);
+                items.RemoveAt(index);
+            }
+            Changed?.Invoke();
+            return true;
+        }
+
         public bool Remove(InventoryEntry entry)
         {
             if (entry == null) return false;
@@ -124,10 +167,13 @@ namespace SaksiTerakhir.Inventory
 
         public void Clear()
         {
-            if (items.Count == 0 && documents.Count == 0) return;
+            if (items.Count == 0 && documents.Count == 0
+                && releasedQuestItemIds.Count == 0 && retiredStoryItemIds.Count == 0) return;
             items.Clear();
             documents.Clear();
             heldItems.Clear();
+            releasedQuestItemIds.Clear();
+            retiredStoryItemIds.Clear();
             Array.Clear(slots, 0, slots.Length);
             Changed?.Invoke();
         }

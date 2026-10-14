@@ -106,8 +106,20 @@ namespace SaksiTerakhir.Story
         public float GetLineDuration(string text)
         {
             int characterCount = string.IsNullOrEmpty(text) ? 0 : text.Length;
-            float revealSeconds = characterCount / Mathf.Max(1f, charactersPerSecond);
-            return Mathf.Max(minimumLineSeconds, revealSeconds + postRevealSeconds);
+            float cps = charactersPerSecond;
+            float postReveal = postRevealSeconds;
+            if (Application.isPlaying)
+            {
+                var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+                if (settings != null)
+                {
+                    cps = settings.textSpeed;
+                    postReveal = settings.autoAdvanceDelay;
+                }
+            }
+            cps = Mathf.Max(10f, cps);
+            float revealSeconds = characterCount / cps;
+            return Mathf.Max(minimumLineSeconds, revealSeconds + postReveal);
         }
 
         public void Stop()
@@ -133,8 +145,13 @@ namespace SaksiTerakhir.Story
 
         private void Update()
         {
-            if (Time.timeScale > 0f && IsPlaying && !automaticPaused && Time.time >= nextLineAt)
-                Advance();
+            if (Time.timeScale > 0f && IsPlaying && !automaticPaused)
+            {
+                var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+                bool shouldAuto = settings == null || settings.autoAdvance;
+                if (shouldAuto && Time.time >= nextLineAt)
+                    Advance();
+            }
         }
 
         private void OnDisable() => Stop();

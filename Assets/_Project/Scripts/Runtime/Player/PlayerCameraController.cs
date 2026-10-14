@@ -131,15 +131,37 @@ namespace SaksiTerakhir.Player
             if (breathing == null) breathing = gameObject.AddComponent<PlayerIdleBreathing>();
         }
 
+        private Camera cachedCamera;
+
         private void OnEnable()
         {
             SetCursorLocked(true);
+            SaksiTerakhir.Settings.GameSettingsManager.SettingsChanged += OnSettingsChanged;
+            UpdateCameraFov();
         }
 
         private void OnDisable()
         {
+            SaksiTerakhir.Settings.GameSettingsManager.SettingsChanged -= OnSettingsChanged;
             EndMenuPreview(false);
             SetCursorLocked(false);
+        }
+
+        private void OnSettingsChanged(SaksiTerakhir.Settings.GameSettingsData _)
+        {
+            UpdateCameraFov();
+        }
+
+        private void UpdateCameraFov()
+        {
+            if (cachedCamera == null && cameraTransform != null)
+                cachedCamera = cameraTransform.GetComponentInChildren<Camera>();
+            if (cachedCamera != null)
+            {
+                var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+                if (settings != null)
+                    cachedCamera.fieldOfView = settings.fieldOfView;
+            }
         }
 
         private void LateUpdate()
@@ -198,11 +220,43 @@ namespace SaksiTerakhir.Player
                 ? pointerSensitivity
                 : stickSensitivity * Time.deltaTime;
 
+            float speedMult = 1f;
+            float hSens = 1f;
+            float vSens = 1f;
+            bool invertY = false;
+
+            if (Application.isPlaying)
+            {
+                var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+                if (settings != null)
+                {
+                    switch (settings.cameraSpeed)
+                    {
+                        case SaksiTerakhir.Settings.CameraSpeedSetting.Slow: speedMult = 0.75f; break;
+                        case SaksiTerakhir.Settings.CameraSpeedSetting.Fast: speedMult = 1.35f; break;
+                    }
+
+                    hSens = (settings.horizontalSensitivity / 50f) * speedMult;
+                    vSens = (settings.verticalSensitivity / 50f) * speedMult;
+                    invertY = settings.invertVerticalAxis;
+
+                    if (input.IsLookFromPointer)
+                    {
+                        float mouseSens = settings.mouseSensitivity / 50f;
+                        hSens *= mouseSens;
+                        vSens *= mouseSens;
+                    }
+                }
+            }
+
+            float deltaX = lookDelta.x * scale * hSens;
+            float deltaY = lookDelta.y * scale * vSens * (invertY ? -1f : 1f);
+
             if (storySeated)
-                seatedYaw = Mathf.Clamp(seatedYaw + lookDelta.x * scale, -seatedYawLimit, seatedYawLimit);
+                seatedYaw = Mathf.Clamp(seatedYaw + deltaX, -seatedYawLimit, seatedYawLimit);
             else
-                yawTransform.Rotate(0f, lookDelta.x * scale, 0f, Space.Self);
-            pitch = Mathf.Clamp(pitch - lookDelta.y * scale, minPitch, maxPitch);
+                yawTransform.Rotate(0f, deltaX, 0f, Space.Self);
+            pitch = Mathf.Clamp(pitch - deltaY, minPitch, maxPitch);
         }
 
         private void ApplyEyeHeight()

@@ -176,12 +176,19 @@ namespace SaksiTerakhir.Player
                 Vector3 edge = sample == 0 ? Vector3.zero
                     : Quaternion.Euler(0f, (sample - 1) * 90f, 0f) * Vector3.forward * radius;
                 Vector3 origin = new Vector3(candidate.x, originalFeet + 0.3f, candidate.z) + edge;
-                RaycastHit[] hits = Physics.RaycastAll(origin, Vector3.down, 0.6f,
+                int count = Physics.RaycastNonAlloc(origin, Vector3.down, RayHits, 0.6f,
                     MovementLayers, QueryTriggerInteraction.Ignore);
+                RaycastHit[] hits = RayHits;
+                if (count == RayHits.Length)
+                {
+                    hits = Physics.RaycastAll(origin, Vector3.down, 0.6f, MovementLayers, QueryTriggerInteraction.Ignore);
+                    count = hits.Length;
+                }
                 float nearest = float.PositiveInfinity;
                 float height = 0f;
-                foreach (RaycastHit hit in hits)
+                for (int i = 0; i < count; i++)
                 {
+                    RaycastHit hit = hits[i];
                     if (!IsObstacle(hit.collider, body.transform) || hit.distance >= nearest || hit.normal.y < slope) continue;
                     nearest = hit.distance;
                     height = hit.point.y;

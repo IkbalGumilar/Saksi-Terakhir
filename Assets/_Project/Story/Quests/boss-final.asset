@@ -19,3 +19,6 @@ MonoBehaviour:
   - quest.main.boss_final.listen
   conditions: []
   progressSource: 0
+  descriptionKey: quest.main.boss_final.description
+  locationKey: quest.main.boss_final.location
+  requiredItemIds: []

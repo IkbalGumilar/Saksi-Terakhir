@@ -83,6 +83,11 @@ namespace SaksiTerakhir.Npc
         public NpcActivityPoint Home => home;
         public NpcActivityPoint[] Route => route;
         public bool Stationary => profile != null ? profile.Stationary : stationary;
+        public NpcPopulationMember PopulationMember
+        {
+            get => populationMember != null ? populationMember : (populationMember = GetComponent<NpcPopulationMember>());
+            internal set => populationMember = value;
+        }
         public NpcState CurrentState { get; private set; } = NpcState.Waiting;
         public int CompletedActivities { get; private set; }
         public int Conversations { get; private set; }
@@ -264,7 +269,12 @@ namespace SaksiTerakhir.Npc
                 }
                 if (storyFacingMarker != null) storyFacingMarker.localPosition = standingMarkerPosition;
                 if (storyLabelRoot != null) storyLabelRoot.localPosition = standingLabelPosition;
-                if (navigation != null) navigation.updatePosition = standingNavigationUpdatePosition;
+                if (navigation != null)
+                {
+                    navigation.updatePosition = standingNavigationUpdatePosition;
+                    if (navigation.enabled && navigation.isOnNavMesh)
+                        transform.position = navigation.nextPosition;
+                }
                 if (seatedBody != null && seatedBody.isKinematic)
                     seatedBody.interpolation = standingBodyInterpolation;
             }

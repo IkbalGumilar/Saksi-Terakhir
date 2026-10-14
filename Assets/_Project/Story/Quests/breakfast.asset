@@ -19,3 +19,6 @@ MonoBehaviour:
   - quest.optional.breakfast.eat
   conditions: []
   progressSource: 5
+  descriptionKey: quest.optional.breakfast.description
+  locationKey: quest.optional.breakfast.location
+  requiredItemIds: []

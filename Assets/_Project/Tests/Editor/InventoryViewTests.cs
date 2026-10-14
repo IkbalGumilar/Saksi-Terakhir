@@ -1,7 +1,10 @@
 using System;
 using NUnit.Framework;
 using SaksiTerakhir.Inventory;
+using SaksiTerakhir.Localization;
+using SaksiTerakhir.Story;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -38,6 +41,75 @@ namespace SaksiTerakhir.Tests
             view?.Dispose();
             if (canvasObject != null) UnityEngine.Object.DestroyImmediate(canvasObject);
             if (eventObject != null) UnityEngine.Object.DestroyImmediate(eventObject);
+        }
+
+        [Test]
+        public void OneArchiveDocumentOpensOriginalAndTranslatesWithoutAddingAnotherSlot()
+        {
+            CreateView();
+            var definition = ScriptableObject.CreateInstance<ItemDefinition>();
+            var table = ScriptableObject.CreateInstance<LocalizationTable>();
+            var tableField = typeof(LocalizationManager).GetField("table",
+                System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+            var previousTable = (LocalizationTable)tableField.GetValue(null);
+            try
+            {
+                const string original = "Original inscription\n\nA long document with its own original writing.";
+                table.entries = new[] { new LocalizedTextEntry { key = "test.archive.translation",
+                    english = "Translated inscription", indonesian = "Terjemahan prasasti" } };
+                LocalizationManager.Initialize(table);
+                var fields = new SerializedObject(definition);
+                fields.FindProperty("id").stringValue = "document.wanaseta_original";
+                fields.FindProperty("type").enumValueIndex = (int)InventoryEntryType.Document;
+                fields.FindProperty("documentText").stringValue = original;
+                SerializedProperty translation = fields.FindProperty("documentTranslationKey");
+                if (translation != null) translation.stringValue = "test.archive.translation";
+                fields.ApplyModifiedPropertiesWithoutUndo();
+                var state = new InventoryState();
+                InventoryEntry archive = definition.CreateEntry();
+                state.TryAdd(archive);
+                view.Refresh(state);
+                view.SelectEntry(archive);
+
+                Transform reader = information.Find("Document Reader");
+                Assert.That(reader, Is.Not.Null, "The single archive needs a reader with a translation action.");
+                TMP_Text body = reader.Find("Scroll View/Viewport/Content/Text").GetComponent<TMP_Text>();
+                var translate = reader.Find("Translate").GetComponent<UnityEngine.UI.Button>();
+                Assert.That(body.text, Is.EqualTo(original));
+                Assert.That(translate.gameObject.activeSelf, Is.True);
+                Assert.That(((RectTransform)translate.transform).anchorMin, Is.EqualTo(new Vector2(1f, 0f)));
+                translate.onClick.Invoke();
+                Assert.That(body.text, Is.EqualTo(LocalizationManager.Get("test.archive.translation")));
+                view.Refresh(state);
+                Assert.That(body.text, Is.EqualTo(LocalizationManager.Get("test.archive.translation")),
+                    "An inventory refresh should preserve the page being read.");
+                translate.onClick.Invoke();
+                Assert.That(body.text, Is.EqualTo(original));
+                Assert.That(state.Documents.Count, Is.EqualTo(1));
+                Assert.That(state.Documents[0], Is.SameAs(archive));
+                view.OnClosed();
+                Assert.That(reader.gameObject.activeSelf, Is.False);
+                view.OnOpened();
+                Assert.That(body.text, Is.EqualTo(original));
+                view.ShowPage(InventoryPage.Items);
+                Assert.That(reader.gameObject.activeSelf, Is.False);
+            }
+            finally
+            {
+                view.Dispose();
+                LocalizationManager.Initialize(previousTable);
+                UnityEngine.Object.DestroyImmediate(definition);
+                UnityEngine.Object.DestroyImmediate(table);
+            }
+        }
+
+        [Test]
+        public void DestroyedDocumentReaderDoesNotBreakInventoryCleanup()
+        {
+            CreateView();
+            UnityEngine.Object.DestroyImmediate(information.Find("Document Reader").gameObject);
+            Assert.DoesNotThrow(() => view.OnClosed());
+            Assert.DoesNotThrow(() => view.Dispose());
         }
 
         [TestCase("image Item", "mark", false)]
@@ -273,8 +345,52 @@ namespace SaksiTerakhir.Tests
             }
         }
 
+        [TestCase(QuestCategory.Main)]
+        [TestCase(QuestCategory.Side)]
+        [TestCase(QuestCategory.Optional)]
+        public void RequiredItemFrameUsesTheQuestColorWithoutInterceptingInput(QuestCategory category)
+        {
+            CreateView(questCategory: _ => category);
+            var state = new InventoryState(1, 1);
+            state.TryAdd(Item());
+            view.Refresh(state);
+            InventoryQuestFrame frame = Slot(0).GetComponentInChildren<InventoryQuestFrame>(true);
+            Assert.That(frame.Category, Is.EqualTo(category));
+            Assert.That(frame.gameObject.activeSelf, Is.True);
+            foreach (UnityEngine.UI.Image border in frame.GetComponentsInChildren<UnityEngine.UI.Image>())
+            {
+                Assert.That(border.color, Is.EqualTo(QuestTrackerView.DotColor(category)));
+                Assert.That(border.raycastTarget, Is.False);
+            }
+        }
+
+        [Test]
+        public void JourneyKeyFrameAndDropOptionUpdateAfterReleaseWhileTheHeldMarkRemains()
+        {
+            CreateView();
+            var state = new InventoryState(1, 1);
+            var key = new InventoryEntry(CarKeyInventory.CarKeyId, "Key", InventoryEntryType.Item);
+            state.TryAdd(key);
+            state.TryHold(key);
+            view.Refresh(state);
+            var frame = Slot(0).GetComponentInChildren<InventoryQuestFrame>(true);
+            PointerEventData pointer = Pointer(Point(Slot(0)));
+            pointer.button = PointerEventData.InputButton.Right;
+            ExecuteEvents.Execute(Slot(0).gameObject, pointer, ExecuteEvents.pointerClickHandler);
+            var dropButton = canvasObject.transform.Find("Inventory Context Menu/Actions/Drop")
+                .GetComponent<UnityEngine.UI.Button>();
+            Assert.That(dropButton.interactable, Is.False);
+            Assert.That(frame.gameObject.activeSelf, Is.True);
+            state.ReleaseQuestItem(key.Id);
+            view.Refresh(state);
+            Assert.That(dropButton.interactable, Is.True);
+            Assert.That(frame.gameObject.activeSelf, Is.False);
+            Assert.That(Slot(0).Find("image Item/mark").gameObject.activeSelf, Is.True);
+        }
+
         private void CreateView(string iconName = "image Item", string markName = "mark",
-            Action<InventoryEntry> dropAction = null, bool textMark = false, bool includeMissions = false)
+            Action<InventoryEntry> dropAction = null, bool textMark = false, bool includeMissions = false,
+            Func<InventoryEntry, QuestCategory?> questCategory = null)
         {
             canvasObject = new GameObject("Inventory Test Canvas", typeof(RectTransform), typeof(Canvas));
             canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
@@ -324,7 +440,7 @@ namespace SaksiTerakhir.Tests
             }
             view = new InventoryView(panel, () => { }, _ => { }, _ => { },
                 entry => { dropped = entry; dropCount++; dropAction?.Invoke(entry); },
-                (entry, index) => { moved = entry; destination = index; moveCount++; });
+                (entry, index) => { moved = entry; destination = index; moveCount++; }, questCategory);
             Canvas.ForceUpdateCanvases();
         }
 

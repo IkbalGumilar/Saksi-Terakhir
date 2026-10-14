@@ -19,3 +19,6 @@ MonoBehaviour:
   - quest.main.rooftop.talk
   conditions: []
   progressSource: 0
+  descriptionKey: quest.main.rooftop.description
+  locationKey: quest.main.rooftop.location
+  requiredItemIds: []

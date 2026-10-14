@@ -33,6 +33,8 @@ namespace SaksiTerakhir.Vehicles
         public bool IsBlocked { get; private set; }
         public float Distance => distance;
         public float Speed => speed;
+        public float RemainingDistance => path != null ? Mathf.Max(0f, path.Length - distance) : 0f;
+        public float StoppingDistance => speed * speed / (2f * Mathf.Max(.1f, braking));
         public event Action Arrived;
 
         public VehicleRoutePath BuildPath(bool parking)

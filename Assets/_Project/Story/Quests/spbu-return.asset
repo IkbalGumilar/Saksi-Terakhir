@@ -16,5 +16,11 @@ MonoBehaviour:
   category: 0
   titleKey: story.quest.spbu_return
   objectiveKeys: []
+  descriptionKey: story.quest.spbu_return.description
+  locationKey: story.quest.spbu_return.location
+  requiredItemIds:
+  - car-key
+  - document.wanaseta_original
+  - document.field_assignment
   conditions: []
   progressSource: 0

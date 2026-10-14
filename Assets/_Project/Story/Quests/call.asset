@@ -19,3 +19,6 @@ MonoBehaviour:
   - quest.main.call.answer
   conditions: []
   progressSource: 0
+  descriptionKey: quest.main.call.description
+  locationKey: quest.main.call.location
+  requiredItemIds: []

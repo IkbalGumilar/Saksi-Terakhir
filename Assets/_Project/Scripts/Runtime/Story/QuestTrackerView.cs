@@ -9,8 +9,8 @@ namespace SaksiTerakhir.Story
     public sealed class QuestTrackerView : MonoBehaviour
     {
         public static readonly Color MainDotColor = new Color(1f, 0.82f, 0.12f, 1f);
-        public static readonly Color OptionalDotColor = new Color(0.27f, 0.63f, 1f, 1f);
-        public static readonly Color SideDotColor = new Color(0.3f, 0.8f, 0.4f, 1f);
+        public static readonly Color OptionalDotColor = new Color(0.3f, 0.8f, 0.4f, 1f);
+        public static readonly Color SideDotColor = new Color(0.27f, 0.63f, 1f, 1f);
 
         [SerializeField] private ChapterOneDirector chapter;
         [SerializeField] private GameObject trackerRoot;
@@ -37,7 +37,9 @@ namespace SaksiTerakhir.Story
         public void Render(QuestDefinition quest, ChapterOneProgress progress)
         {
             if (trackerRoot == null) return;
-            bool visible = quest != null && progress != null
+            var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+            bool showMain = settings == null || settings.showMainQuest;
+            bool visible = showMain && quest != null && progress != null
                 && progress.Stage != ChapterOneStage.Complete;
             trackerRoot.SetActive(visible);
             RenderSupporting();
@@ -83,6 +85,7 @@ namespace SaksiTerakhir.Story
             if (chapter != null) chapter.ProgressChanged += OnProgressChanged;
             BindJournal();
             LocalizationManager.LanguageChanged += Refresh;
+            SaksiTerakhir.Settings.GameSettingsManager.SettingsChanged += OnSettingsChanged;
             Refresh();
         }
 
@@ -91,7 +94,10 @@ namespace SaksiTerakhir.Story
             if (chapter != null) chapter.ProgressChanged -= OnProgressChanged;
             if (journal != null) journal.Changed -= Refresh;
             LocalizationManager.LanguageChanged -= Refresh;
+            SaksiTerakhir.Settings.GameSettingsManager.SettingsChanged -= OnSettingsChanged;
         }
+
+        private void OnSettingsChanged(SaksiTerakhir.Settings.GameSettingsData _) => Refresh();
 
         private void OnProgressChanged(ChapterOneProgress _) => Refresh();
         private void Refresh()
@@ -111,6 +117,15 @@ namespace SaksiTerakhir.Story
 
         private void RenderSupporting()
         {
+            var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+            bool showMain = settings == null || settings.showMainQuest;
+            bool showTracked = settings == null || settings.showTrackedQuest;
+            if (!showMain || !showTracked)
+            {
+                if (supportingRoot != null) supportingRoot.SetActive(false);
+                return;
+            }
+
             QuestDefinition quest = journal != null ? journal.SelectedQuest : null;
             if (quest == null)
             {

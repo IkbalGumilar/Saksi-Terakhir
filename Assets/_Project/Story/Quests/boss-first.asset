@@ -19,3 +19,6 @@ MonoBehaviour:
   - quest.main.boss_first.talk
   conditions: []
   progressSource: 0
+  descriptionKey: quest.main.boss_first.description
+  locationKey: quest.main.boss_first.location
+  requiredItemIds: []

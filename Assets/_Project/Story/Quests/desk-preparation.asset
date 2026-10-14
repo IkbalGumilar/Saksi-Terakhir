@@ -19,3 +19,6 @@ MonoBehaviour:
   - quest.optional.desk_preparation.finish
   conditions: []
   progressSource: 3
+  descriptionKey: quest.optional.desk_preparation.description
+  locationKey: quest.optional.desk_preparation.location
+  requiredItemIds: []

@@ -62,11 +62,14 @@ namespace SaksiTerakhir.Persistence
             }
             var nativeRecords = new HashSet<string>(StringComparer.Ordinal);
             var runtimeRecords = new HashSet<string>(StringComparer.Ordinal);
+            HashSet<string> retired = RetiredDefinitions(inventory);
             foreach (SavedWorldItem record in records)
             {
                 if (record == null || string.IsNullOrWhiteSpace(record.definitionId)
                     || string.IsNullOrWhiteSpace(record.instanceId) || record.pose == null || !record.pose.IsValid())
                 { error = "Invalid world inventory item."; return false; }
+                if (!record.collected && retired.Contains(InventoryQuestProtection.CanonicalId(record.definitionId)))
+                { error = "Retired story item cannot remain available in the world."; return false; }
                 HashSet<string> identities = record.runtimeSpawned ? runtimeRecords : nativeRecords;
                 if (!identities.Add(record.instanceId))
                 { error = "Duplicate world inventory record."; return false; }
@@ -99,6 +102,7 @@ namespace SaksiTerakhir.Persistence
             }
             var savedNative = new Dictionary<string, SavedWorldItem>(StringComparer.Ordinal);
             var ownedInstances = CarriedInstances(inventory);
+            HashSet<string> retired = RetiredDefinitions(inventory);
             foreach (SavedWorldItem record in records ?? Array.Empty<SavedWorldItem>())
             {
                 if (!record.runtimeSpawned) savedNative.Add(record.instanceId, record);
@@ -140,7 +144,8 @@ namespace SaksiTerakhir.Persistence
             foreach (ItemPickupInteractable native in natives)
             {
                 bool hasRecord = savedNative.TryGetValue(native.InstanceId, out SavedWorldItem saved);
-                bool collected = hasRecord ? saved.collected : ownedInstances.Contains(native.InstanceId);
+                bool collected = retired.Contains(InventoryQuestProtection.CanonicalId(native.Definition.Id))
+                    || (hasRecord ? saved.collected : ownedInstances.Contains(native.InstanceId));
                 native.RestoreCollected(collected);
                 if (!collected)
                     native.gameObject.SetActive(hasRecord ? saved.activeSelf : nativeActiveBaseline[native]);
@@ -164,6 +169,14 @@ namespace SaksiTerakhir.Persistence
                 if (entries != null)
                     foreach (SavedInventoryEntry entry in entries)
                         if (entry != null && !string.IsNullOrWhiteSpace(entry.instanceId)) result.Add(entry.instanceId);
+            return result;
+        }
+
+        private static HashSet<string> RetiredDefinitions(SavedInventory inventory)
+        {
+            var result = new HashSet<string>(StringComparer.Ordinal);
+            foreach (string id in inventory?.retiredStoryItemIds ?? Array.Empty<string>())
+                result.Add(InventoryQuestProtection.CanonicalId(id));
             return result;
         }
 

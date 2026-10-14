@@ -34,6 +34,8 @@ namespace SaksiTerakhir.Player
         private bool storyDialogueMovementLocked;
         private bool storyCinematicMovementLocked;
         private bool uiMovementLocked;
+        private bool sprintToggleActive;
+        private bool lastSprintInputState;
 
         public bool IsCrouching { get; private set; }
         public bool IsSprinting { get; private set; }
@@ -181,7 +183,24 @@ namespace SaksiTerakhir.Player
             Vector2 moveInput = Vector2.ClampMagnitude(input.MoveValue, 1f);
             Vector3 desiredDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
 
-            IsSprinting = input.IsSprintHeld && !IsCrouching && moveInput.y > 0.1f;
+            bool sprintHeld = input.IsSprintHeld;
+            bool sprintPressed = sprintHeld && !lastSprintInputState;
+            lastSprintInputState = sprintHeld;
+
+            var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+            bool isToggle = settings != null && settings.sprintMode == SaksiTerakhir.Settings.SprintMode.Toggle;
+
+            if (isToggle)
+            {
+                if (sprintPressed) sprintToggleActive = !sprintToggleActive;
+                if (moveInput.y <= 0.1f || IsCrouching) sprintToggleActive = false;
+                IsSprinting = sprintToggleActive && !IsCrouching && moveInput.y > 0.1f;
+            }
+            else
+            {
+                sprintToggleActive = false;
+                IsSprinting = sprintHeld && !IsCrouching && moveInput.y > 0.1f;
+            }
 
             float targetSpeed;
             if (IsCrouching)

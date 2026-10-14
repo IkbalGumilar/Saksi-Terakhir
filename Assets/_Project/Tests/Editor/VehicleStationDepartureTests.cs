@@ -108,6 +108,43 @@ namespace SaksiTerakhir.Tests
         }
 
         [Test]
+        public void ChapterEndingBeginsWhileDrivingAndKeepsMovingThroughTheFade()
+        {
+            Set(progress, "stage", ChapterOneStage.LeavingFuelStation);
+            Set(journey, "<Phase>k__BackingField", VehicleJourneyPhase.LeavingStation);
+            var dialogue = car.AddComponent<StoryDialogueController>();
+            Set(journey, "dialogue", dialogue);
+            var station = car.AddComponent<FuelStationChapterDirector>();
+            Set(station, "chapter", car.GetComponent<ChapterOneDirector>());
+            Set(station, "fadeSeconds", 2.5f);
+            Set(journey, "fuelStation", station);
+            driver.BeginStationDeparture();
+            MethodInfo checkEnding = typeof(VehicleJourneyDirector).GetMethod("TryBeginEndingWhileDriving",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            Assert.That(checkEnding, Is.Not.Null, "Departure needs an ending transition before the driver stops at arrival.");
+
+            for (int frame = 0; frame < 1200 && journey.Phase == VehicleJourneyPhase.LeavingStation; frame++)
+            {
+                driver.Advance(.02f);
+                checkEnding.Invoke(journey, null);
+            }
+
+            Assert.That(journey.Phase, Is.EqualTo(VehicleJourneyPhase.ChapterFinished));
+            Assert.That(driver.IsMoving, Is.True, "Fade must start before the route's arrival stops the car.");
+            Assert.That(driver.Speed, Is.GreaterThan(0f));
+            // This fixture keeps the Rigidbody inactive; no physics step updates its Transform.
+            // The first 10 m leave the forecourt and the next segment is the right-turn lane.
+            Assert.That(driver.Distance, Is.GreaterThan(10.6f),
+                "The exit's right turn must finish before the ending fade.");
+            float fadeStartDistance = driver.Distance;
+            for (int frame = 0; frame < 126; frame++) driver.Advance(.02f);
+            Assert.That(driver.Distance, Is.GreaterThan(fadeStartDistance));
+            Assert.That(driver.IsMoving, Is.True, "The car must still be travelling when the fade becomes fully black.");
+            Assert.That(driver.Speed, Is.GreaterThan(0f));
+            Assert.That(journey.Capture().MatchesChapter(progress), Is.True);
+        }
+
+        [Test]
         public void ReturningToCarBoardsWhileStationActivitiesStillPreventBoarding()
         {
             Set(progress, "stage", ChapterOneStage.AtFuelStation);
@@ -131,6 +168,60 @@ namespace SaksiTerakhir.Tests
             Assert.That(car.transform.position, Is.EqualTo(Origin + new Vector3(-40f, 0f, 20f)));
             Assert.That(journey.Phase, Is.EqualTo((VehicleJourneyPhase)8));
             Assert.That(journey.Capture().MatchesChapter(progress), Is.True);
+        }
+
+        [Test]
+        public void FinishedCheckpointPreservesTheMovingFadeSavePositionInsteadOfJumpingToTheRouteEnd()
+        {
+            Set(progress, "stage", ChapterOneStage.Complete);
+            journey.Restore(new SavedVehicleJourney { version = 1, phase = VehicleJourneyPhase.ChapterFinished,
+                routeDistance = 37f, playerSeated = true, keyUnlocked = true });
+
+            Assert.That(driver.IsMoving, Is.False, "A completed save must not restart driving.");
+            Assert.That(driver.Distance, Is.EqualTo(37f));
+            Assert.That(car.transform.position, Is.EqualTo(Origin + new Vector3(-27f, 0f, 20f)),
+                "The final checkpoint is captured while the car moves under black; restore must retain that position.");
+            Assert.That(journey.Capture().routeDistance, Is.EqualTo(37f));
+            Assert.That(journey.Capture().MatchesChapter(progress), Is.True);
+        }
+
+        [Test]
+        public void RestoringAnUnfinishedFadeResumesDrivingFromTheSavedExitCursor()
+        {
+            Set(progress, "stage", ChapterOneStage.LeavingFuelStation);
+            var checkpoint = new SavedVehicleJourney { version = 1, phase = VehicleJourneyPhase.ChapterFinished,
+                routeDistance = 37f, playerSeated = true, keyUnlocked = true };
+            Assert.That(checkpoint.Validate() && checkpoint.MatchesChapter(progress), Is.True);
+
+            journey.Restore(checkpoint);
+
+            Assert.That(journey.Phase, Is.EqualTo(VehicleJourneyPhase.ChapterFinished));
+            Assert.That(driver.Distance, Is.EqualTo(37f));
+            Assert.That(driver.IsStationDepartureRoute && driver.IsMoving, Is.True,
+                "A checkpoint taken before full black must resume its fade while the car keeps travelling.");
+            driver.Advance(.5f);
+            Assert.That(driver.Distance, Is.GreaterThan(37f));
+            Assert.That(journey.Capture().MatchesChapter(progress), Is.True);
+        }
+
+        [Test]
+        public void LegacyFinishedCheckpointWithoutARouteCursorKeepsTheExitEndpoint()
+        {
+            FuelStationProgress station = progress.Story.FuelStation;
+            Assert.That(station.BeginExploration(), Is.True);
+            Assert.That(station.AdvanceTime(FuelStationProgress.FreeTimeSeconds, 5f), Is.True);
+            Assert.That(station.MarkCallDelivered(), Is.True);
+            Assert.That(station.ChooseDestination(), Is.True);
+            Assert.That(station.Depart(), Is.True);
+            Assert.That(station.Finish(), Is.True);
+            Set(progress, "stage", ChapterOneStage.Complete);
+
+            journey.Restore(new SavedVehicleJourney());
+
+            Assert.That(journey.Phase, Is.EqualTo(VehicleJourneyPhase.ChapterFinished));
+            Assert.That(driver.IsMoving, Is.False);
+            Assert.That(driver.Distance, Is.EqualTo(50f));
+            Assert.That(car.transform.position, Is.EqualTo(Origin + new Vector3(-40f, 0f, 20f)));
         }
 
         [Test]

@@ -19,3 +19,6 @@ MonoBehaviour:
   - quest.side.wrong_route.talk
   conditions: []
   progressSource: 1
+  descriptionKey: quest.side.wrong_route.description
+  locationKey: quest.side.wrong_route.location
+  requiredItemIds: []

@@ -36,9 +36,11 @@ namespace SaksiTerakhir.Inventory
         private readonly TMP_Text title;
         private readonly TMP_Text status;
         private readonly TMP_Text description;
+        private readonly InventoryDocumentView documentReader;
         private readonly Action<InventoryEntry> drop;
         private readonly Action<InventoryEntry, int> move;
         private readonly InventoryContextMenu contextMenu;
+        private readonly Func<InventoryEntry, QuestCategory?> questCategory;
         private InventoryState state;
         private InventoryEntry draggedEntry;
         private InventorySlotPointer dragSource;
@@ -51,6 +53,7 @@ namespace SaksiTerakhir.Inventory
 
         private sealed class Slot
         {
+            public InventoryQuestFrame QuestFrame;
             public RectTransform Rect;
             public UnityEngine.UI.Button Button;
             public UnityEngine.UI.Image Icon;
@@ -67,11 +70,12 @@ namespace SaksiTerakhir.Inventory
 
         public InventoryView(GameObject panel, Action close,
             Action<InventoryEntry> use, Action<InventoryEntry> hold, Action<InventoryEntry> drop,
-            Action<InventoryEntry, int> move)
+            Action<InventoryEntry, int> move, Func<InventoryEntry, QuestCategory?> questCategory = null)
         {
             if (!CanBind(panel)) throw new ArgumentException("Inventory panel hierarchy is incomplete.", nameof(panel));
             this.drop = drop;
             this.move = move;
+            this.questCategory = questCategory;
             Transform root = panel.transform;
             gridPage = root.Find("Inventory").gameObject;
             gridBoundary = (RectTransform)gridPage.transform;
@@ -118,6 +122,7 @@ namespace SaksiTerakhir.Inventory
             title = info.Find("Name Item").GetComponent<TMP_Text>();
             status = info.Find("Item Status").GetComponent<TMP_Text>();
             description = info.Find("Informations Text").GetComponent<TMP_Text>();
+            documentReader = new InventoryDocumentView((RectTransform)info, title);
             contextMenu = InventoryContextMenu.Create(overlayRoot, panel, title,
                 root.GetComponent<UnityEngine.UI.Image>() ?? gridTemplate.GetComponent<UnityEngine.UI.Image>(), use, hold, drop);
             gridTemplate.gameObject.SetActive(false);
@@ -152,7 +157,8 @@ namespace SaksiTerakhir.Inventory
             this.state = state;
             if (draggedEntry != null && !Contains(state, draggedEntry)) CancelDrag();
             if (contextMenu.Entry != null && !Contains(state, contextMenu.Entry)) contextMenu.Close();
-            else if (contextMenu.Entry != null) contextMenu.RefreshLabels(state.IsHeld(contextMenu.Entry));
+            else if (contextMenu.Entry != null) contextMenu.RefreshLabels(state.IsHeld(contextMenu.Entry),
+                !QuestCategoryFor(contextMenu.Entry).HasValue);
             EnsureCount(gridSlots, state.Capacity, gridTemplate, gridContent, false);
             gridContent.sizeDelta = new Vector2(state.Columns * SlotStep, state.Rows * SlotStep);
             for (int i = 0; i < gridSlots.Count; i++)
@@ -233,6 +239,7 @@ namespace SaksiTerakhir.Inventory
             gridScroll.StopMovement();
             documentScroll.StopMovement();
             if (ActivePage == InventoryPage.Missions) missions?.Refresh();
+            else Select(selected);
             FocusFirstSlot();
         }
 
@@ -243,6 +250,7 @@ namespace SaksiTerakhir.Inventory
             if (gridScroll != null) gridScroll.StopMovement();
             if (documentScroll != null) documentScroll.StopMovement();
             missions?.StopMovement();
+            documentReader?.Hide();
         }
 
         public void SelectEntry(InventoryEntry entry)
@@ -318,6 +326,7 @@ namespace SaksiTerakhir.Inventory
                 slot.Button.onClick.AddListener(() => { contextMenu.Close(); Select(slot.Entry); });
                 if (!document)
                 {
+                    slot.QuestFrame = InventoryQuestFrame.Create(rect);
                     slot.Pointer = rect.GetComponent<InventorySlotPointer>();
                     if (slot.Pointer == null) slot.Pointer = rect.gameObject.AddComponent<InventorySlotPointer>();
                 }
@@ -342,6 +351,7 @@ namespace SaksiTerakhir.Inventory
             if (slot.Title != null) slot.Title.text = entry?.DisplayName ?? string.Empty;
             if (slot.Description != null) slot.Description.text = entry?.Description ?? string.Empty;
             if (slot.Mark != null) slot.Mark.SetActive(entry != null && state.IsHeld(entry));
+            slot.QuestFrame?.SetCategory(QuestCategoryFor(entry));
             if (slot.Pointer != null)
                 slot.Pointer.Configure(entry, OpenContextMenu,
                     (value, pointer) => BeginDrag(slot, value, pointer), UpdateDrag, EndDrag, CancelDrag, gridScroll);
@@ -357,19 +367,23 @@ namespace SaksiTerakhir.Inventory
             status.text = entry == null ? string.Empty : LocalizationManager.Get(
                 entry.Type == InventoryEntryType.Document ? "inventory.type.document" : "inventory.type.item");
             description.text = entry != null && entry.Type == InventoryEntryType.Document
-                && entry.Definition != null && !string.IsNullOrEmpty(entry.Definition.DocumentText)
+                && entry.Definition != null && !entry.Definition.HasDocumentTranslation
+                && !string.IsNullOrEmpty(entry.Definition.DocumentText)
                 ? entry.Definition.DocumentText : entry?.Description ?? string.Empty;
+            documentReader.Show(entry);
         }
 
         private void ShowQuestDetails(QuestJournalEntry entry)
         {
-            if (entry == null || entry.Definition == null) return;
+            if (ActivePage != InventoryPage.Missions) return;
+            if (entry == null || entry.Definition == null) { Select(null); return; }
             selected = null;
+            documentReader.Hide();
             preview.sprite = null;
             preview.enabled = false;
             title.text = LocalizationManager.Get(entry.Definition.TitleKey);
             status.text = InventoryMissionView.StatusText(entry.Status);
-            description.text = InventoryMissionView.ObjectivesText(entry.Definition);
+            description.text = InventoryMissionView.DetailsText(entry.Definition);
         }
 
         private void Wire(Transform target, UnityAction action)
@@ -438,8 +452,11 @@ namespace SaksiTerakhir.Inventory
             if (disposed || ShowingDocuments || draggedEntry != null || entry == null
                 || state == null || !Contains(state, entry)) return;
             Select(entry);
-            contextMenu.Show(entry, state.IsHeld(entry), pointer);
+            contextMenu.Show(entry, state.IsHeld(entry), pointer, !QuestCategoryFor(entry).HasValue);
         }
+
+        private QuestCategory? QuestCategoryFor(InventoryEntry entry) => questCategory != null
+            ? questCategory(entry) : InventoryQuestProtection.CategoryFor(entry, state, null);
 
         private bool BeginDrag(Slot slot, InventoryEntry entry, PointerEventData pointer)
         {
@@ -531,6 +548,7 @@ namespace SaksiTerakhir.Inventory
             disposed = true;
             if (contextMenu != null) contextMenu.Dispose();
             missions?.Dispose();
+            documentReader?.Dispose();
             foreach (Action remove in removeListeners) remove();
             foreach (Slot slot in gridSlots) if (slot.Rect != null) DestroyRuntime(slot.Rect.gameObject);
             foreach (Slot slot in documentSlots) if (slot.Rect != null) DestroyRuntime(slot.Rect.gameObject);

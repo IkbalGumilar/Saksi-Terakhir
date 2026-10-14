@@ -9,14 +9,14 @@ namespace SaksiTerakhir.Story
 
         public static bool GrantBriefingDocuments(InventoryPanelController inventory)
         {
-            return Grant(inventory, "document.wanaseta_original")
-                && Grant(inventory, "document.wanaseta_translation")
+            return Grant(inventory, ItemDefinitionCatalog.WanasetaArchiveId)
                 && Grant(inventory, "document.field_assignment");
         }
 
         public static bool Grant(InventoryPanelController inventory, string id)
         {
             if (inventory == null || inventory.State == null) return false;
+            id = ItemDefinitionCatalog.CanonicalId(id);
             foreach (InventoryEntry document in inventory.State.Documents)
                 if (document.Id == id) return true;
             ItemDefinition definition = inventory.FindDefinition(id);

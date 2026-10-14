@@ -20,3 +20,6 @@ MonoBehaviour:
   - quest.main.morning.desk
   conditions: []
   progressSource: 0
+  descriptionKey: quest.main.morning.description
+  locationKey: quest.main.morning.location
+  requiredItemIds: []

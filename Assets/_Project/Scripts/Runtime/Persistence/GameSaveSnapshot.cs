@@ -58,6 +58,9 @@ namespace SaksiTerakhir.Persistence
         public SavedInventoryEntry[] items = Array.Empty<SavedInventoryEntry>();
         public SavedInventoryEntry[] documents = Array.Empty<SavedInventoryEntry>();
         public string[] heldInstanceIds = Array.Empty<string>();
+        // Optional additions: old saves restore the original journey-key requirement.
+        public string[] releasedQuestItemIds = Array.Empty<string>();
+        public string[] retiredStoryItemIds = Array.Empty<string>();
 
         public bool Validate(out string error)
         {
@@ -66,6 +69,13 @@ namespace SaksiTerakhir.Persistence
             { error = "Invalid inventory capacity."; return false; }
             if (slotLayoutVersion < 0 || slotLayoutVersion > 1)
             { error = "Invalid inventory layout version."; return false; }
+            var retired = new HashSet<string>(StringComparer.Ordinal);
+            if (!ValidateStoryItems(retiredStoryItemIds, retired)
+                || !ValidateStoryItems(releasedQuestItemIds, new HashSet<string>(StringComparer.Ordinal)))
+            { error = "Invalid or duplicate story inventory rule."; return false; }
+            foreach (string id in releasedQuestItemIds ?? Array.Empty<string>())
+                if (retired.Contains(InventoryQuestProtection.CanonicalId(id)))
+                { error = "Retired inventory item cannot be released."; return false; }
             var instanceIds = new HashSet<string>(StringComparer.Ordinal);
             var itemInstanceIds = new HashSet<string>(StringComparer.Ordinal);
             var occupiedSlots = new HashSet<int>();
@@ -80,6 +90,8 @@ namespace SaksiTerakhir.Persistence
                     if (!string.IsNullOrWhiteSpace(entry.instanceId) && !instanceIds.Add(entry.instanceId))
                     { error = "Duplicate inventory instance identity."; return false; }
                     if (entries != items) continue;
+                    if (retired.Contains(InventoryQuestProtection.CanonicalId(entry.id)))
+                    { error = "Retired story item cannot remain in inventory."; return false; }
                     if (!string.IsNullOrWhiteSpace(entry.instanceId)) itemInstanceIds.Add(entry.instanceId);
                     if (slotLayoutVersion == 1 && (entry.slotIndex < 0 || entry.slotIndex >= columns * rows
                         || !occupiedSlots.Add(entry.slotIndex)))
@@ -98,6 +110,13 @@ namespace SaksiTerakhir.Persistence
             return true;
         }
 
+        private static bool ValidateStoryItems(string[] ids, HashSet<string> seen)
+        {
+            foreach (string id in ids ?? Array.Empty<string>())
+                if (string.IsNullOrWhiteSpace(id) || !seen.Add(InventoryQuestProtection.CanonicalId(id))) return false;
+            return true;
+        }
+
         public InventoryState CreateState(Func<string, Sprite> resolveIcon = null,
             Func<string, ItemDefinition> resolveDefinition = null)
         {
@@ -108,6 +127,8 @@ namespace SaksiTerakhir.Persistence
                 if (catalog != null) resolveDefinition = catalog.Find;
             }
             var result = new InventoryState(columns, rows);
+            foreach (string id in releasedQuestItemIds ?? Array.Empty<string>()) result.ReleaseQuestItem(id);
+            foreach (string id in retiredStoryItemIds ?? Array.Empty<string>()) result.RetireStoryItem(id);
             var restoredItems = new Dictionary<string, InventoryEntry>(StringComparer.Ordinal);
             Add(result, items, InventoryEntryType.Item, resolveIcon, resolveDefinition, restoredItems);
             Add(result, documents, InventoryEntryType.Document, resolveIcon, resolveDefinition, restoredItems);
@@ -127,7 +148,15 @@ namespace SaksiTerakhir.Persistence
                 heldIds[index] = state.HeldItems[index].InstanceId;
             return new SavedInventory { columns = state.Columns, rows = state.Rows, slotLayoutVersion = 1,
                 items = CaptureEntries(state, state.Items), documents = CaptureEntries(state, state.Documents),
-                heldInstanceIds = heldIds };
+                heldInstanceIds = heldIds, releasedQuestItemIds = CopyIds(state.ReleasedQuestItemIds),
+                retiredStoryItemIds = CopyIds(state.RetiredStoryItemIds) };
+        }
+
+        private static string[] CopyIds(IReadOnlyList<string> ids)
+        {
+            var result = new string[ids.Count];
+            for (int index = 0; index < ids.Count; index++) result[index] = ids[index];
+            return result;
         }
 
         private static SavedInventoryEntry[] CaptureEntries(InventoryState state, IReadOnlyList<InventoryEntry> entries)
@@ -145,17 +174,34 @@ namespace SaksiTerakhir.Persistence
             InventoryEntryType type, Func<string, Sprite> resolveIcon,
             Func<string, ItemDefinition> resolveDefinition, IDictionary<string, InventoryEntry> restoredItems)
         {
+            SavedInventoryEntry archive = type == InventoryEntryType.Document ? SelectArchiveDocument(entries) : null;
             foreach (SavedInventoryEntry entry in entries)
             {
-                ItemDefinition definition = resolveDefinition?.Invoke(entry.id);
+                string id = type == InventoryEntryType.Document ? ItemDefinitionCatalog.CanonicalId(entry.id) : entry.id;
+                if (archive != null && id == ItemDefinitionCatalog.WanasetaArchiveId
+                    && !ReferenceEquals(entry, archive)) continue;
+                ItemDefinition definition = resolveDefinition?.Invoke(id);
                 InventoryEntry restored = definition != null && definition.Type == type
-                    && string.Equals(definition.Id, entry.id, StringComparison.Ordinal)
+                    && string.Equals(definition.Id, id, StringComparison.Ordinal)
                     ? new InventoryEntry(definition, entry.instanceId)
-                    : new InventoryEntry(entry.id, entry.displayName, type,
+                    : new InventoryEntry(id, entry.displayName, type,
                         resolveIcon?.Invoke(entry.iconName), entry.description, entry.instanceId);
                 if (!state.TryAdd(restored)) throw new InvalidOperationException("Inventory entry could not be restored.");
                 if (type == InventoryEntryType.Item) restoredItems.Add(restored.InstanceId, restored);
             }
+        }
+
+        private static SavedInventoryEntry SelectArchiveDocument(SavedInventoryEntry[] documents)
+        {
+            SavedInventoryEntry translation = null;
+            foreach (SavedInventoryEntry document in documents)
+            {
+                // Prefer the original record's identity even when the old translation came first.
+                if (document.id == ItemDefinitionCatalog.WanasetaArchiveId) return document;
+                if (translation == null && document.id == ItemDefinitionCatalog.LegacyWanasetaTranslationId)
+                    translation = document;
+            }
+            return translation;
         }
     }
 

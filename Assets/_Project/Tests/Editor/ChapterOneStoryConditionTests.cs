@@ -579,7 +579,7 @@ namespace SaksiTerakhir.Tests
 
         [TestCase("version", 0)]
         [TestCase("version", 2)]
-        [TestCase("stage", -1)]
+        [TestCase("stage", -2)]
         [TestCase("stage", 999)]
         public void SaveIntegrityRejectsUnknownChapterVersionOrStage(string fieldName, int value)
         {

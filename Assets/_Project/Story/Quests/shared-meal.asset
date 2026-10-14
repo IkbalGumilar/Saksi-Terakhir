@@ -19,3 +19,6 @@ MonoBehaviour:
   - quest.optional.shared_meal.talk
   conditions: []
   progressSource: 2
+  descriptionKey: quest.optional.shared_meal.description
+  locationKey: quest.optional.shared_meal.location
+  requiredItemIds: []

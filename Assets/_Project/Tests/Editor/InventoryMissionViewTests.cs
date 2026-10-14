@@ -19,6 +19,7 @@ namespace SaksiTerakhir.Tests
         private QuestJournalController journal;
         private InventoryMissionView view;
         private RectTransform content;
+        private QuestJournalEntry displayedEntry;
 
         [SetUp]
         public void SetUp()
@@ -55,7 +56,7 @@ namespace SaksiTerakhir.Tests
             journal.Configure(director, catalog);
             Assert.That(journal.TryAccept(side), Is.True);
             Assert.That(journal.TryAccept(optional), Is.True);
-            view = new InventoryMissionView(page, _ => { });
+            view = new InventoryMissionView(page, entry => displayedEntry = entry);
             view.Bind(journal);
         }
 
@@ -71,12 +72,13 @@ namespace SaksiTerakhir.Tests
         public void AcquiredRowsReuseTemplatesAndSelectionOnlyTracksAnActiveSupportingQuest()
         {
             Assert.That(content.Find("Mission unavailable"), Is.Null);
-            Assert.That(Row("main").GetComponent<UnityEngine.UI.Button>().interactable, Is.False);
+            Assert.That(Row("main").GetComponent<UnityEngine.UI.Button>().interactable, Is.True);
+            Assert.That(displayedEntry.Definition, Is.SameAs(main));
             Assert.That(Row("optional").Find("'Title '").GetComponent<TMP_Text>().text, Is.EqualTo("optional.title"));
             Assert.That(Row("optional").Find("Icon").GetComponent<UnityEngine.UI.Image>().color,
-                Is.EqualTo(new Color(0.27f, 0.63f, 1f, 1f)));
+                Is.EqualTo(QuestTrackerView.OptionalDotColor));
             Assert.That(Row("side").Find("Icon").GetComponent<UnityEngine.UI.Image>().color,
-                Is.EqualTo(new Color(0.3f, 0.8f, 0.4f, 1f)));
+                Is.EqualTo(QuestTrackerView.SideDotColor));
             Row("optional").GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
             Assert.That(journal.SelectedQuestId, Is.EqualTo("optional"));
             Row("side").GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
@@ -87,7 +89,7 @@ namespace SaksiTerakhir.Tests
         }
 
         [Test]
-        public void RefreshDoesNotDuplicateRowsAndCompletingSelectionDisablesItsRow()
+        public void RefreshDoesNotDuplicateRowsAndCompletedDetailsRemainReadable()
         {
             view.Refresh();
             view.Refresh();
@@ -95,10 +97,36 @@ namespace SaksiTerakhir.Tests
             Row("optional").GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
             Assert.That(journal.TryFinish("optional"), Is.True);
             Assert.That(journal.SelectedQuestId, Is.Empty);
-            Assert.That(Row("optional").GetComponent<UnityEngine.UI.Button>().interactable, Is.False);
+            Assert.That(Row("optional").GetComponent<UnityEngine.UI.Button>().interactable, Is.True);
+            Assert.That(displayedEntry.Status, Is.EqualTo(StoryQuestStatus.Completed));
             Assert.That(Row("optional").Find("'Title '").GetComponent<TMP_Text>().text, Does.Contain("<s>"));
             Assert.That(content.childCount, Is.EqualTo(9));
             Assert.That(content.sizeDelta.y, Is.GreaterThanOrEqualTo(600f));
+        }
+
+        [Test]
+        public void ReadingMainOrFinishedMissionPreservesTheTrackedSupportingQuest()
+        {
+            Row("side").GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
+            Row("main").GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
+            Assert.That(displayedEntry.Definition, Is.SameAs(main));
+            Assert.That(journal.SelectedQuestId, Is.EqualTo("side"));
+            Assert.That(journal.TryFinish("optional"), Is.True);
+            Row("optional").GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
+            Assert.That(displayedEntry.Definition, Is.SameAs(optional));
+            Assert.That(displayedEntry.Status, Is.EqualTo(StoryQuestStatus.Completed));
+            Assert.That(journal.SelectedQuestId, Is.EqualTo("side"));
+        }
+
+        [Test]
+        public void MissionRowsShowLocationAndKeepObjectivesAsFallbackForOlderDefinitions()
+        {
+            side.ConfigureDetails("side.description", "side.location");
+            view.Refresh();
+            string description = Row("side").Find("Description").GetComponent<TMP_Text>().text;
+            Assert.That(description, Does.Contain("side.location"));
+            Assert.That(description, Does.Not.Contain("side.objective"));
+            Assert.That(Row("main").Find("Description").GetComponent<TMP_Text>().text, Does.Contain("main.objective"));
         }
 
         private Transform Row(string id) => content.Find("Mission " + id);

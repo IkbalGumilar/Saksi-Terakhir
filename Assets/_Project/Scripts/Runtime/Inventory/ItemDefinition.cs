@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Serialization;
+using TMPro;
 
 namespace SaksiTerakhir.Inventory
 {
@@ -31,6 +32,12 @@ namespace SaksiTerakhir.Inventory
         [SerializeField, InspectorName("Isi Dokumen"), TextArea(3, 12)]
         private string documentText = string.Empty;
 
+        [SerializeField, InspectorName("Key Terjemahan Dokumen")]
+        private string documentTranslationKey = string.Empty;
+
+        [SerializeField, InspectorName("Font Teks Asli")]
+        private TMP_FontAsset documentFont;
+
         public string Id => id;
         public string NameKey => nameKey;
         public string DescriptionKey => descriptionKey;
@@ -39,6 +46,9 @@ namespace SaksiTerakhir.Inventory
         public Sprite Icon => icon;
         public GameObject ModelPrefab => modelPrefab;
         public string DocumentText => documentText;
+        public string DocumentTranslationKey => documentTranslationKey;
+        public TMP_FontAsset DocumentFont => documentFont;
+        public bool HasDocumentTranslation => IsDocument && !string.IsNullOrWhiteSpace(documentTranslationKey);
 
         public InventoryEntry CreateEntry(string instanceId = null) => new InventoryEntry(this, instanceId);
     }

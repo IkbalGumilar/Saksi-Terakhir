@@ -52,6 +52,8 @@ namespace SaksiTerakhir.Vehicles
     [DisallowMultipleComponent, RequireComponent(typeof(AutomaticVehicleDriver), typeof(VehicleKeyUse))]
     public sealed class VehicleJourneyDirector : MonoBehaviour
     {
+        private const float FadeMovementBufferSeconds = .5f;
+
         [SerializeField] private ChapterOneDirector chapter;
         [SerializeField] private StoryDialogueController dialogue;
         [SerializeField] private FuelStationChapterDirector fuelStation;
@@ -142,9 +144,24 @@ namespace SaksiTerakhir.Vehicles
                 sequenceStarted = true;
                 fuelStation.FinishChapter();
             }
+            else if (Phase == VehicleJourneyPhase.LeavingStation)
+                TryBeginEndingWhileDriving();
             if ((Phase == VehicleJourneyPhase.OnRoad || Phase == VehicleJourneyPhase.ToParking || Phase == VehicleJourneyPhase.LeavingStation)
                 && !driver.IsMoving && driver.Distance >= CurrentRoute().Length)
                 OnArrived();
+        }
+
+        private void TryBeginEndingWhileDriving()
+        {
+            if (Phase != VehicleJourneyPhase.LeavingStation || fuelStation == null || driver == null
+                || !driver.IsMoving || driver.IsBlocked || driver.Speed <= 0f) return;
+            // Leave enough road for the fade and the endpoint's braking zone.
+            float fadeDistance = driver.Speed * (fuelStation.EndingFadeSeconds + FadeMovementBufferSeconds)
+                + driver.StoppingDistance;
+            if (driver.RemainingDistance > fadeDistance) return;
+            Phase = VehicleJourneyPhase.ChapterFinished;
+            sequenceStarted = true;
+            fuelStation.FinishChapter();
         }
 
         private void PlayDeparture()
@@ -288,12 +305,16 @@ namespace SaksiTerakhir.Vehicles
             {
                 VehicleRoutePath route = CurrentRoute();
                 float position = Phase == VehicleJourneyPhase.ParkedStation || Phase == VehicleJourneyPhase.FuelDialogue
-                    || Phase == VehicleJourneyPhase.StationDepartureDialogue || Phase == VehicleJourneyPhase.ChapterFinished
+                    || Phase == VehicleJourneyPhase.StationDepartureDialogue
+                    || Phase == VehicleJourneyPhase.ChapterFinished && (saved == null || saved.version != 1)
                     ? route.Length : saved != null && saved.version == 1 ? Mathf.Min(saved.routeDistance, route.Length) : 0;
                 if (Phase == VehicleJourneyPhase.LeavingStation || Phase == VehicleJourneyPhase.ChapterFinished)
                     driver.BeginStationDeparture(position);
                 else driver.Begin(parking, position);
-                if (Phase != VehicleJourneyPhase.OnRoad && Phase != VehicleJourneyPhase.ToParking && Phase != VehicleJourneyPhase.LeavingStation)
+                bool resumeEnding = Phase == VehicleJourneyPhase.ChapterFinished
+                    && chapter.Progress.Stage == ChapterOneStage.LeavingFuelStation && position < route.Length;
+                if (Phase != VehicleJourneyPhase.OnRoad && Phase != VehicleJourneyPhase.ToParking
+                    && Phase != VehicleJourneyPhase.LeavingStation && !resumeEnding)
                     driver.Stop();
             }
             seats.KeyLock?.RestoreSavedState(saved != null && saved.version == 1 && saved.keyUnlocked);

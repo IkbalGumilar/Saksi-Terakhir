@@ -17,6 +17,8 @@ namespace SaksiTerakhir.Interaction
 
         private static readonly int BaseColorPropertyId = Shader.PropertyToID("_BaseColor");
         private static readonly int LegacyColorPropertyId = Shader.PropertyToID("_Color");
+        private static MaterialPropertyBlock sharedPropertyBlock;
+        private static MaterialPropertyBlock SharedPropertyBlock => sharedPropertyBlock ??= new MaterialPropertyBlock();
 
         [SerializeField] private PlayerInputReader input;
         [SerializeField] private Transform viewpoint;
@@ -136,7 +138,9 @@ namespace SaksiTerakhir.Interaction
             Interactable candidate = Probe();
             SetCurrent(playerMovement != null && playerMovement.StoryCinematicMovementLocked
                 ? null : candidate);
-            SetProbeVisualColor(current != null);
+            var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+            bool showPrompt = settings == null || settings.interactionPrompt;
+            SetProbeVisualColor(current != null && showPrompt);
         }
 
         private Interactable Probe()
@@ -339,10 +343,9 @@ namespace SaksiTerakhir.Interaction
                     continue;
                 }
 
-                var block = new MaterialPropertyBlock();
-                renderer.GetPropertyBlock(block);
-                SetMaterialColor(block, probeInRangeColor);
-                renderer.SetPropertyBlock(block);
+                renderer.GetPropertyBlock(SharedPropertyBlock);
+                SetMaterialColor(SharedPropertyBlock, probeInRangeColor);
+                renderer.SetPropertyBlock(SharedPropertyBlock);
             }
 
             lastProbeInRange = withinInteractionRange;

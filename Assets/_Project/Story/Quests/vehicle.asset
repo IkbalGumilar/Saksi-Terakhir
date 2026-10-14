@@ -17,5 +17,11 @@ MonoBehaviour:
   titleKey: quest.main.vehicle
   objectiveKeys:
   - quest.main.vehicle.reach
+  descriptionKey: quest.main.vehicle.description
+  locationKey: quest.main.vehicle.location
+  requiredItemIds:
+  - car-key
+  - document.wanaseta_original
+  - document.field_assignment
   conditions: []
   progressSource: 0

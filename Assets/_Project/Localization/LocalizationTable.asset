@@ -234,13 +234,13 @@ MonoBehaviour:
     english: Buy the supplies you need
     indonesian: Beli perbekalan yang dibutuhkan
   - key: document.wanaseta_original.name
-    english: "Wanaseta Archive \u2014 Original Document"
-    indonesian: "Arsip Wanaseta \u2014 Dokumen Asli"
+    english: Cikapohon Inscription
+    indonesian: Prasasti Cikapohon
   - key: document.wanaseta_original.description
-    english: Original archive carried in a protective case with its official handover
-      record.
-    indonesian: Arsip asli dibawa menggunakan kotak pelindung dan dokumen serah-terima
-      resmi.
+    english: A copy of the inscription with the verification team's translation.
+      Its ending is broken.
+    indonesian: Salinan prasasti beserta terjemahan tim verifikasi. Bagian akhir
+      prasasti terbelah.
   - key: document.wanaseta_translation.name
     english: Wanaseta Archive Translation
     indonesian: Terjemahan Arsip Wanaseta
@@ -318,3 +318,238 @@ MonoBehaviour:
   - key: story.quest.spbu_departure
     english: Leave for Giriawas with Raka and Sinta
     indonesian: Menuju Giriawas bersama Raka dan Sinta
+  - key: quest.main.morning.description
+    english: Your workday starts at ANRI. Enter the building and go to your desk
+      before starting work.
+    indonesian: Hari kerja di ANRI dimulai. Masuk ke gedung lalu menuju meja kerja
+      untuk memulai rutinitas pagi.
+  - key: quest.main.morning.location
+    english: 'ANRI: entrance and reception on floor 1; MC and Sinta''s Workroom on
+      floor 2.'
+    indonesian: 'ANRI: pintu masuk dan resepsionis di lantai 1; Ruang Kerja MC dan
+      Sinta di lantai 2.'
+  - key: quest.main.rooftop.description
+    english: Two coworkers have brought lunch and invited you to eat on the rooftop.
+      Meet them and finish the lunch conversation.
+    indonesian: Dua rekan kerja membawa makan siang dan mengajakmu makan di rooftop.
+      Temui mereka lalu tuntaskan percakapan saat istirahat.
+  - key: quest.main.rooftop.location
+    english: ANRI rooftop, above floor 4, near the lunch table.
+    indonesian: Rooftop ANRI, di atas lantai 4, dekat meja makan saat istirahat.
+  - key: quest.main.call.description
+    english: Your phone rings as you leave the rooftop. Answer the boss's call to
+      hear his request.
+    indonesian: Ponsel berdering saat kamu meninggalkan rooftop. Jawab panggilan
+      bos untuk mendengar permintaannya.
+  - key: quest.main.call.location
+    english: ANRI rooftop, near the exit.
+    indonesian: Rooftop ANRI, dekat pintu keluar.
+  - key: quest.main.boss_first.description
+    english: The boss has asked you to discuss a field verification file. Go to his
+      office and speak with him.
+    indonesian: Bos memanggilmu untuk membahas berkas verifikasi lapangan. Datangi
+      ruangannya lalu bicara dengannya.
+  - key: quest.main.boss_first.location
+    english: 'ANRI, floor 3: Director''s Office. Wait at the double door until you
+      are invited in.'
+    indonesian: 'ANRI, lantai 3: Ruang Kepala (ruangan bos). Tunggu di pintu ganda
+      sampai dipersilakan masuk.'
+  - key: quest.main.find.description
+    english: The boss needs both field colleagues for the briefing. Find A (Raka)
+      and B (Sinta) in either order. Send the first one straight to the boss, then
+      find the other.
+    indonesian: Bos membutuhkan kedua rekan tim lapangan untuk briefing. Cari A (Raka)
+      dan B (Sinta) dalam urutan pilihanmu. Minta rekan pertama langsung menemui
+      bos, lalu cari rekan yang satunya.
+  - key: quest.main.find.location
+    english: 'ANRI, floor 2: Raka is in Raka''s Workroom; Sinta is in MC and Sinta''s
+      Workroom. The boss waits on floor 3.'
+    indonesian: 'ANRI, lantai 2: Raka berada di Ruang Kerja Raka; Sinta berada di
+      Ruang Kerja MC dan Sinta. Bos menunggu di lantai 3.'
+  - key: quest.main.escort.description
+    english: The first colleague has gone ahead. Accompany the last colleague to
+      the boss's office; the conversation follows who you found last.
+    indonesian: Rekan pertama sudah berangkat lebih dulu. Dampingi rekan terakhir
+      menuju ruangan bos; percakapan mengikuti siapa yang ditemukan terakhir.
+  - key: quest.main.escort.location
+    english: From the workrooms on ANRI floor 2 to the Director's Office on floor
+      3.
+    indonesian: Dari ruang kerja di lantai 2 ANRI menuju Ruang Kepala (ruangan bos)
+      di lantai 3.
+  - key: quest.main.boss_final.description
+    english: The team is together. Sit down and listen to the Wanaseta archive briefing.
+      Receive the original archive, its translation and the official field assignment.
+    indonesian: Tim sudah lengkap. Duduk lalu dengarkan briefing arsip Wanaseta.
+      Terima arsip asli, terjemahannya, dan surat tugas verifikasi lapangan.
+  - key: quest.main.boss_final.location
+    english: 'ANRI, floor 3: Director''s Office, at the briefing seats.'
+    indonesian: 'ANRI, lantai 3: Ruang Kepala (ruangan bos), di tempat duduk briefing.'
+  - key: quest.main.key.description
+    english: The field assignment is ready. Collect the office car key from reception.
+      You may finish desk preparations, buy supplies or eat with A and B before collecting
+      it.
+    indonesian: Tugas lapangan sudah diberikan. Ambil kunci mobil dinas di resepsionis.
+      Sebelum mengambilnya, kamu dapat merapikan meja, membeli perbekalan, atau makan
+      bersama A dan B.
+  - key: quest.main.key.location
+    english: 'ANRI, floor 1: reception counter near the main entrance.'
+    indonesian: 'ANRI, lantai 1: meja resepsionis dekat pintu masuk utama.'
+  - key: quest.main.vehicle.description
+    english: You have the car key. Bring the assignment documents to the office car
+      and meet A and B before leaving. The seating follows your earlier choice to
+      eat together.
+    indonesian: Kunci mobil sudah diterima. Bawa berkas tugas ke mobil dinas lalu
+      temui A dan B sebelum berangkat. Posisi duduk mengikuti pilihan makan bersama
+      sebelumnya.
+  - key: quest.main.vehicle.location
+    english: 'ANRI parking area: the office car outside the main building.'
+    indonesian: 'Area parkir ANRI: mobil dinas di luar gedung utama.'
+  - key: story.quest.travel_spbu.description
+    english: Leave ANRI with A and B and continue to the fuel station. The team will
+      refuel and prepare reserve fuel before continuing the field trip.
+    indonesian: Tinggalkan ANRI bersama A dan B lalu lanjutkan perjalanan menuju
+      SPBU. Tim akan mengisi bahan bakar dan menyiapkan cadangan sebelum meneruskan
+      tugas lapangan.
+  - key: story.quest.travel_spbu.location
+    english: Road from ANRI to the fuel station; stop at the fuel station entrance.
+    indonesian: Jalan dari ANRI menuju SPBU; berhenti di area masuk SPBU.
+  - key: story.quest.spbu_return.description
+    english: A and B have finished the vehicle preparations and called you back.
+      Finish any activity you chose, then return to the parked office car. Extra
+      shopping and the park conversation remain optional.
+    indonesian: A dan B sudah menuntaskan kebutuhan kendaraan dan memanggilmu kembali.
+      Selesaikan kegiatan pilihanmu lalu kembali ke mobil dinas yang terparkir. Belanja
+      tambahan dan percakapan di taman tetap opsional.
+  - key: story.quest.spbu_return.location
+    english: 'Fuel station parking area: the office car beside the shop and park
+      access.'
+    indonesian: 'Area parkir SPBU: mobil dinas di dekat toko dan akses taman.'
+  - key: story.quest.spbu_departure.description
+    english: Rejoin A and B at the office car. Use the interaction on its right side
+      to continue, finish the team conversation and agree on the next destination
+      using only the information you obtained.
+    indonesian: Bergabung kembali dengan A dan B di mobil dinas. Gunakan interaksi
+      di sisi kanan mobil untuk melanjutkan, tuntaskan percakapan tim, lalu sepakati
+      tujuan berikutnya berdasarkan informasi yang sudah kamu peroleh.
+  - key: story.quest.spbu_departure.location
+    english: 'Fuel station parking area: the right side of the office car, then inside
+      the car.'
+    indonesian: 'Area parkir SPBU: sisi kanan mobil dinas, kemudian di dalam mobil.'
+  - key: quest.optional.breakfast.description
+    english: You may stop for breakfast before starting work. Order nasi uduk at
+      the canteen and choose whether to pay now or owe the seller.
+    indonesian: Kamu dapat sarapan sebelum mulai bekerja. Pesan nasi uduk di kantin
+      lalu pilih membayar sekarang atau berutang kepada penjual.
+  - key: quest.optional.breakfast.location
+    english: 'ANRI, floor 1: canteen counter.'
+    indonesian: 'ANRI, lantai 1: meja penjual di kantin.'
+  - key: quest.side.wrong_route.description
+    english: A coworker has found a file in the wrong active shelf. Deliver it to
+      the digitization staff and explain where it was found so they can continue
+      scanning.
+    indonesian: Seorang pegawai menemukan berkas yang salah masuk rak aktif. Antar
+      berkas ke petugas digitalisasi dan jelaskan tempat ditemukannya agar pemindaian
+      dapat dilanjutkan.
+  - key: quest.side.wrong_route.location
+    english: 'ANRI, floor 2: collect the file near the workroom corridor, then deliver
+      it to the Document Processing room used by the digitization team scanning desk.'
+    indonesian: 'ANRI, lantai 2: terima berkas di dekat koridor ruang kerja, lalu
+      antar ke meja pemindaian di ruang Pengolahan Berkas (Tim Digitalisasi).'
+  - key: quest.optional.desk_preparation.description
+    english: Return to your desk before departure and tidy the documents and personal
+      belongings. If you choose to write today's agenda, the dated entry becomes
+      a document you can keep.
+    indonesian: Kembali ke meja kerja sebelum berangkat lalu rapikan dokumen dan
+      barang pribadi. Jika kamu memilih menulis agenda hari ini, catatan bertanggal
+      itu menjadi dokumen yang dapat disimpan.
+  - key: quest.optional.desk_preparation.location
+    english: 'ANRI, floor 2: your desk in MC and Sinta''s Workroom.'
+    indonesian: 'ANRI, lantai 2: meja MC di Ruang Kerja MC dan Sinta.'
+  - key: quest.optional.supplies.description
+    english: Prepare supplies after receiving the field assignment. Visit nearby
+      shops and choose what you need; no fixed shopping list is required. Purchases
+      produce receipts for your expenses.
+    indonesian: Siapkan perbekalan setelah menerima tugas lapangan. Kunjungi toko
+      sekitar lalu pilih barang yang dibutuhkan; tidak ada daftar belanja wajib.
+      Setiap pembelian menghasilkan struk pengeluaran.
+  - key: quest.optional.supplies.location
+    english: 'Shops around ANRI: convenience and general stores, electronics shop,
+      hardware shop, pharmacy, bookshop and canteen.'
+    indonesian: 'Toko di sekitar ANRI: minimarket dan toserba, toko elektronik, material,
+      apotek, toko buku, dan kantin.'
+  - key: quest.optional.shared_meal.description
+    english: Visit the canteen before collecting the office car key. Sit with A (Raka)
+      and B (Sinta), then finish the shared meal conversation to complete this optional
+      quest.
+    indonesian: Datangi kantin sebelum mengambil kunci mobil dinas. Duduk bersama
+      A (Raka) dan B (Sinta), lalu tuntaskan percakapan makan bersama untuk menyelesaikan
+      quest opsional ini.
+  - key: quest.optional.shared_meal.location
+    english: 'ANRI, floor 1: the table where Raka and Sinta are eating in the canteen.'
+    indonesian: 'ANRI, lantai 1: meja tempat Raka dan Sinta makan di kantin.'
+  - key: quest.journal.location_label
+    english: Location
+    indonesian: Lokasi
+  - key: quest.journal.objectives_label
+    english: Objectives
+    indonesian: Tujuan
+  - key: inventory.quest_item_locked
+    english: This item is still required by an active quest and cannot be discarded.
+    indonesian: Barang ini masih diperlukan untuk misi dan belum bisa dibuang.
+  - key: document.wanaseta_original.translation
+    english: "TRAVEL ACCOUNT \u2014 RADEN KIAN SANTANG\n\nI stopped in the village
+      of Cikapohon at the foot of Mount Cikuray while searching for my father, Prabu
+      Siliwangi, who had gone ahead to Sancang.\n\nThe village was beautiful and
+      peaceful. I decided to stay for three days before continuing my journey.\n\nThe
+      first day. I spent time among the villagers and helped with their work. Each
+      night, the village fell silent. That night I woke on a large rock, far from
+      where I had rested. I did not know how I had got there. I was overcome by sleepiness
+      and fell asleep again.\n\nMorning came. The village was beautiful and peaceful
+      again, as though the night had been only a dream. Yet the dream felt too real
+      to forget.\n\nThe second day. I had to leave soon. I still had to find my father.
+      But my supplies were dwindling too quickly, as though someone took my food
+      whenever I was not looking. To keep track, I recorded every meal and activity
+      on white cloth with bamboo charcoal.\n\nTonight I read those notes again. My
+      writing covered the cloth. It showed that I had been in this village for eight
+      days.\n\nThat was impossible. I had only begun writing that morning.\n\nWhatever
+      was happening, I had to leave tomorrow.\n\nThe next night I woke among the
+      bushes. I could not remember how I had got there. Something was wrong. I ran
+      without knowing the way, wanting only to get away from the village.\n\nAs I
+      remembered it, I had been here only three days. My notes showed the ninth day.
+      My supplies were almost gone. The village seemed to prevent me from leaving.\n\nI
+      finally escaped. I was exhausted and nearly out of supplies, but still alive.
+      I continued my journey to Sancang.\n\nDo not trust what you see. Do not trust
+      what you remember. The demons within this village are very powerful. What appears
+      real may not be real. Get out p\u2014\n\n[The inscription is broken. The rest
+      of the writing has not been found.]"
+    indonesian: "CATATAN PERJALANAN \u2014 RADEN KIAN SANTANG\n\nAku singgah di desa
+      Cikapohon di kaki Gunung Cikuray dalam perjalanan mencari ayahku, Prabu Siliwangi,
+      yang telah lebih dahulu menuju Sancang.\n\nDesa ini indah dan damai. Karena
+      itu, kuputuskan tinggal selama tiga hari sebelum melanjutkan perjalanan.\n\nHari
+      pertama. Aku berbaur dengan warga dan membantu pekerjaan mereka. Setiap malam,
+      desa menjadi sunyi. Malam itu aku terbangun di atas sebuah batu besar, jauh
+      dari tempatku beristirahat. Aku tidak tahu bagaimana sampai di sana. Rasa kantuk
+      begitu berat; aku kembali tidur.\n\nPagi datang. Desa kembali indah dan tenang,
+      seolah malam tadi hanya mimpi. Namun mimpi itu terasa terlalu nyata untuk kulupakan.\n\nHari
+      kedua. Aku harus segera berangkat. Ayahku masih harus kutemukan. Tetapi bekalku
+      berkurang terlalu cepat, seakan ada yang mengambil makanan saat aku tidak melihat.
+      Agar tidak salah mengingat, kutandai setiap kali makan dan setiap kegiatanku
+      dengan arang bambu pada kain putih.\n\nMalam ini kubaca kembali catatan itu.
+      Tulisan tanganku memenuhi kain. Catatan tersebut menunjukkan bahwa aku telah
+      berada di desa ini selama delapan hari.\n\nIni tidak mungkin. Aku baru mulai
+      mencatat pagi tadi.\n\nApa pun yang terjadi, besok aku harus pergi.\n\nMalam
+      berikutnya aku terbangun di antara semak-semak. Aku tidak ingat bagaimana sampai
+      ke sana. Ada sesuatu yang janggal. Aku berlari tanpa arah, hanya ingin menjauh
+      dari desa.\n\nMenurut ingatanku, aku baru berada di sini tiga hari. Catatanku
+      menunjukkan hari kesembilan. Bekalku hampir habis. Desa ini seolah mencegahku
+      keluar.\n\nAku akhirnya berhasil keluar. Tubuhku lelah, bekalku hampir habis,
+      tetapi aku masih hidup. Perjalanan ke Sancang kulanjutkan.\n\nJangan percaya
+      pada apa yang kaulihat. Jangan percaya pada apa yang kauingat. Iblis-iblis
+      di dalam desa ini sangat kuat. Yang tampak nyata belum tentu nyata. Keluarlah
+      p\u2014\n\n[Prasasti terbelah. Kelanjutan tulisan tidak ditemukan.]"
+  - key: inventory.document.translate
+    english: Translate
+    indonesian: Terjemahkan
+  - key: inventory.document.original
+    english: Original text
+    indonesian: Teks asli

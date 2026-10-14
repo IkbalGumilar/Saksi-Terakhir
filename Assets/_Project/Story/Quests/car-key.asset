@@ -19,3 +19,6 @@ MonoBehaviour:
   - quest.main.key.collect
   conditions: []
   progressSource: 0
+  descriptionKey: quest.main.key.description
+  locationKey: quest.main.key.location
+  requiredItemIds: []

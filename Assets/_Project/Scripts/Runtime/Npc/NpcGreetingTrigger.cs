@@ -9,10 +9,10 @@ namespace SaksiTerakhir.Npc
     {
         [SerializeField] private string greetingId;
         [SerializeField, Min(2f)] private float radius = 4f;
+        private static readonly RaycastHit[] SightHits = new RaycastHit[16];
         private Transform player;
         private NpcInteractable npc;
         private float nextCheck;
-        private readonly RaycastHit[] sightHits = new RaycastHit[16];
 
         public string GreetingId => greetingId;
 
@@ -48,12 +48,12 @@ namespace SaksiTerakhir.Npc
             Vector3 start = transform.position + Vector3.up * 1.35f;
             Vector3 delta = player.position + Vector3.up * 1.35f - start;
             if (delta.sqrMagnitude < 0.01f) return true;
-            int count = Physics.RaycastNonAlloc(start, delta.normalized, sightHits, delta.magnitude,
+            int count = Physics.RaycastNonAlloc(start, delta.normalized, SightHits, delta.magnitude,
                 Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
-            if (count == sightHits.Length) return false;
+            if (count == SightHits.Length) return false;
             for (int i = 0; i < count; i++)
             {
-                Transform hit = sightHits[i].transform;
+                Transform hit = SightHits[i].transform;
                 if (hit != null && !hit.IsChildOf(transform) && !hit.IsChildOf(player)) return false;
             }
             return true;

@@ -20,3 +20,6 @@ MonoBehaviour:
   - quest.main.find.sinta
   conditions: []
   progressSource: 0
+  descriptionKey: quest.main.find.description
+  locationKey: quest.main.find.location
+  requiredItemIds: []

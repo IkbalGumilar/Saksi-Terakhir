@@ -36,6 +36,7 @@ namespace SaksiTerakhir.Inventory
         private bool previousInteractionBlock;
         private GameObject previousSelection;
         private bool resizePending;
+        private float nextJournalBindAttempt;
 
         public InventoryState State => state;
         public bool IsOpen { get; private set; }
@@ -72,7 +73,7 @@ namespace SaksiTerakhir.Inventory
             }
             heldView = new InventoryHeldItemView(transform);
             view = new InventoryView(panelRoot, Close, entry => TryUse(entry), ToggleHeld,
-                entry => TryDrop(entry), (entry, slot) => state.TryMoveToSlot(entry, slot));
+                entry => TryDrop(entry), (entry, slot) => state.TryMoveToSlot(entry, slot), GetQuestCategory);
             TryBindQuestJournal();
             state.Changed += Refresh;
             LocalizationManager.LanguageChanged += Refresh;
@@ -101,13 +102,18 @@ namespace SaksiTerakhir.Inventory
         {
             if (state != null) state.Changed -= Refresh;
             LocalizationManager.LanguageChanged -= Refresh;
+            if (questJournal != null) questJournal.Changed -= Refresh;
             view?.Dispose();
             heldView?.Dispose();
         }
 
         private void Update()
         {
-            if (questJournal == null && view != null) TryBindQuestJournal();
+            if (questJournal == null && view != null && Time.time >= nextJournalBindAttempt)
+            {
+                nextJournalBindAttempt = Time.time + 0.5f;
+                TryBindQuestJournal();
+            }
             if (resizePending)
             {
                 resizePending = false;
@@ -176,6 +182,11 @@ namespace SaksiTerakhir.Inventory
         public bool TryDrop(InventoryEntry entry)
         {
             if (!OwnsItem(entry)) return false;
+            if (GetQuestCategory(entry).HasValue)
+            {
+                ShowNotice("inventory.quest_item_locked");
+                return false;
+            }
             ItemDefinition definition = entry.Definition != null ? entry.Definition : FindDefinition(entry.Id);
             if (!InventoryWorldItemFactory.TrySpawn(definition, entry, transform, out ItemPickupInteractable pickup))
             {
@@ -185,6 +196,27 @@ namespace SaksiTerakhir.Inventory
             if (state.Remove(entry)) return true;
             Destroy(pickup.gameObject);
             return false;
+        }
+
+        public QuestCategory? GetQuestCategory(InventoryEntry entry) =>
+            InventoryQuestProtection.CategoryFor(entry, state, questJournal != null ? questJournal.Entries : null);
+
+        public bool ReleaseQuestItem(string itemId) => state != null && state.ReleaseQuestItem(itemId);
+
+        public bool RetireStoryItem(string itemId)
+        {
+            if (state == null || !state.RetireStoryItem(itemId)) return false;
+            foreach (GameObject root in gameObject.scene.GetRootGameObjects())
+                foreach (ItemPickupInteractable pickup in root.GetComponentsInChildren<ItemPickupInteractable>(true))
+                {
+                    if (pickup.Definition == null || InventoryQuestProtection.CanonicalId(pickup.Definition.Id)
+                        != InventoryQuestProtection.CanonicalId(itemId)) continue;
+                    // Include previously discarded items. Native identity remains
+                    // collected history so the next save cannot respawn it.
+                    pickup.RestoreCollected(true);
+                    if (pickup.RuntimeSpawned) InventoryWorldItemFactory.DestroyRuntimeObject(pickup.gameObject);
+                }
+            return true;
         }
 
         public bool RequestUseForTarget(IInventoryItemUseTarget target)
@@ -346,8 +378,13 @@ namespace SaksiTerakhir.Inventory
             }
             // A migration backup can still contain a journal and director. Bind only
             // the active story so inactive legacy state cannot replace the live list.
-            if (chapter != null) questJournal = QuestJournalController.GetOrCreate(chapter);
-            if (questJournal != null) view?.BindJournal(questJournal);
+            if (chapter == null) return;
+            if (questJournal != null) questJournal.Changed -= Refresh;
+            questJournal = QuestJournalController.GetOrCreate(chapter);
+            if (questJournal == null) return;
+            questJournal.Changed += Refresh;
+            view?.BindJournal(questJournal);
+            Refresh();
         }
 
         private void Refresh()
