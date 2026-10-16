@@ -16,6 +16,7 @@ namespace SaksiTerakhir.UI
     [ExecuteAlways]
     [DisallowMultipleComponent]
     [RequireComponent(typeof(RectTransform))]
+    [RequireComponent(typeof(CanvasGroup))]
     public sealed class SettingsMenuPresentation : MonoBehaviour
     {
         [Header("Categories")]
@@ -46,9 +47,18 @@ namespace SaksiTerakhir.UI
         [SerializeField] private Color inactiveTextColor = new Color32(180, 175, 165, 255);
         [SerializeField] private Color disabledTextColor = new Color32(110, 105, 100, 255);
 
+        [Header("Outline Animation")]
+        [SerializeField] private float outlinePulseSpeed = 5f;
+        private const float MinOutlineAlpha = 10f / 255f;
+        private const float MaxOutlineAlpha = 200f / 255f;
+        private Image outlineImage;
+
         private int activeTabIndex = 0;
         private Action onClosedCallback;
         private bool isBound;
+        private bool locked;
+        private GameObject lastSelected;
+        private readonly List<Button> navigationList = new List<Button>(12);
 
         // References for dynamic dependencies
         private Button trackedQuestLeftBtn;
@@ -61,14 +71,30 @@ namespace SaksiTerakhir.UI
 
         private void Awake()
         {
+            CacheOutlineImage();
             FindSecondaryButtons();
+            // onClick listeners added in edit mode are not serialized, so wire them again at runtime.
+            WireCategoryButtons();
+            RebuildNavigation();
+        }
+
+        private RectTransform activeOptionOutline;
+        private Image activeOptionOutlineImage;
+        private Transform currentHoveredOptionRow;
+        private Coroutine vibrationTestRoutine;
+
+        private void CacheOutlineImage()
+        {
+            if (activeCategoryOutline != null)
+            {
+                outlineImage = activeCategoryOutline.GetComponent<Image>();
+            }
         }
 
         private void Start()
         {
-            if (Application.isPlaying)
+            if (Application.isPlaying && !isBound)
             {
-                BindAllRows();
                 RefreshAllControls();
             }
         }
@@ -78,8 +104,15 @@ namespace SaksiTerakhir.UI
             SelectTab(activeTabIndex, true);
             if (Application.isPlaying)
             {
-                if (!isBound) BindAllRows();
                 RefreshAllControls();
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (Application.isPlaying)
+            {
+                GameSettingsManager.StopGamepadVibration();
             }
         }
 
@@ -90,18 +123,91 @@ namespace SaksiTerakhir.UI
             SelectTab(0, true);
             if (Application.isPlaying)
             {
-                if (!isBound) BindAllRows();
                 RefreshAllControls();
+                RebuildNavigation();
+                lastSelected = null;
+                FocusActiveCategory();
             }
+        }
+
+        /// <summary>Blocks input while the panel slides in or out.</summary>
+        public void SetInteractable(bool value)
+        {
+            locked = !value;
+            CanvasGroup group = GetComponent<CanvasGroup>();
+            if (group == null) group = gameObject.AddComponent<CanvasGroup>();
+            group.interactable = value;
         }
 
         public void Close()
         {
+            if (locked) return;
             GameSettingsManager.Save();
-            gameObject.SetActive(false);
-            Action callback = onClosedCallback;
-            onClosedCallback = null;
-            callback?.Invoke();
+            // The owner keeps the panel active until its own closing animation ends.
+            if (onClosedCallback != null) onClosedCallback();
+            else gameObject.SetActive(false);
+        }
+
+        private void FocusActiveCategory()
+        {
+            EventSystem events = EventSystem.current;
+            if (events == null || categoryButtons == null || categoryButtons.Length == 0) return;
+            Button target = categoryButtons[Mathf.Clamp(activeTabIndex, 0, categoryButtons.Length - 1)];
+            if (target != null && target.isActiveAndEnabled) events.SetSelectedGameObject(target.gameObject);
+        }
+
+        /// <summary>Circular up/down order through categories, then Credits, Reset and Back.</summary>
+        private void RebuildNavigation()
+        {
+            navigationList.Clear();
+            if (categoryButtons != null)
+                foreach (Button b in categoryButtons) if (b != null) navigationList.Add(b);
+            if (creditsButton != null) navigationList.Add(creditsButton);
+            if (resetButton != null) navigationList.Add(resetButton);
+            if (backButton != null) navigationList.Add(backButton);
+            for (int i = 0; i < navigationList.Count; i++)
+            {
+                UnityEngine.UI.Navigation nav = navigationList[i].navigation;
+                nav.mode = UnityEngine.UI.Navigation.Mode.Explicit;
+                nav.selectOnUp = navigationList[(i + navigationList.Count - 1) % navigationList.Count];
+                nav.selectOnDown = navigationList[(i + 1) % navigationList.Count];
+                nav.selectOnLeft = null;
+                nav.selectOnRight = null;
+                navigationList[i].navigation = nav;
+            }
+        }
+
+        /// <summary>Follows the EventSystem selection like the main menu does.</summary>
+        private void TrackSelection()
+        {
+            EventSystem events = EventSystem.current;
+            if (events == null) return;
+            GameObject current = events.currentSelectedGameObject;
+            if (current == null)
+            {
+                FocusActiveCategory();
+                return;
+            }
+            if (current == lastSelected) return;
+            lastSelected = current;
+            for (int i = 0; i < categoryButtons.Length; i++)
+            {
+                if (categoryButtons[i] != null && categoryButtons[i].gameObject == current)
+                {
+                    SelectTab(i);
+                    break;
+                }
+            }
+            PaintSecondary(creditsButton, current);
+            PaintSecondary(resetButton, current);
+            PaintSecondary(backButton, current);
+        }
+
+        private void PaintSecondary(Button button, GameObject current)
+        {
+            if (button == null) return;
+            TMP_Text label = button.GetComponentInChildren<TMP_Text>(true);
+            if (label != null) label.color = button.gameObject == current ? activeTextColor : inactiveTextColor;
         }
 
         public void Configure(Button[] buttons, GameObject[] panels, RectTransform outline, TMP_Text desc, string[] descriptions)
@@ -109,6 +215,7 @@ namespace SaksiTerakhir.UI
             categoryButtons = buttons;
             contentPanels = panels;
             activeCategoryOutline = outline;
+            CacheOutlineImage();
             descriptionText = desc;
             if (descriptions != null && descriptions.Length > 0)
                 categoryDescriptions = descriptions;
@@ -155,12 +262,43 @@ namespace SaksiTerakhir.UI
             for (int i = 0; i < categoryButtons.Length; i++)
             {
                 int index = i;
-                if (categoryButtons[i] != null)
+                Button button = categoryButtons[i];
+                if (button == null) continue;
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() => SelectTab(index));
+
+                // Highlight (hover) selects the row; selecting a row shows its tab immediately.
+                EventTrigger trigger = button.GetComponent<EventTrigger>();
+                if (trigger == null) trigger = button.gameObject.AddComponent<EventTrigger>();
+                trigger.triggers.Clear();
+                var hover = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
+                hover.callback.AddListener(_ =>
                 {
-                    categoryButtons[i].onClick.RemoveAllListeners();
-                    categoryButtons[i].onClick.AddListener(() => SelectTab(index));
-                }
+                    if (!locked && EventSystem.current != null)
+                        EventSystem.current.SetSelectedGameObject(button.gameObject);
+                });
+                trigger.triggers.Add(hover);
+                var select = new EventTrigger.Entry { eventID = EventTriggerType.Select };
+                select.callback.AddListener(_ => SelectTab(index));
+                trigger.triggers.Add(select);
             }
+        }
+
+        /// <summary>Esc/B: leave the Control category first, then leave Settings.</summary>
+        private void HandleBack()
+        {
+            EventSystem events = EventSystem.current;
+            GameObject current = events != null ? events.currentSelectedGameObject : null;
+            bool onControlTab = activeTabIndex == 0 && categoryButtons != null && categoryButtons.Length > 0
+                && categoryButtons[0] != null && current == categoryButtons[0].gameObject;
+            if (onControlTab)
+            {
+                Close();
+                return;
+            }
+            SelectTab(0);
+            if (events != null && categoryButtons != null && categoryButtons.Length > 0 && categoryButtons[0] != null)
+                events.SetSelectedGameObject(categoryButtons[0].gameObject);
         }
 
         public void SelectTab(int index, bool force = false)
@@ -205,6 +343,8 @@ namespace SaksiTerakhir.UI
                 }
             }
 
+            SelectDefaultOptionRowInActiveTab();
+
             if (descriptionText != null && categoryDescriptions != null && activeTabIndex < categoryDescriptions.Length)
             {
                 descriptionText.text = categoryDescriptions[activeTabIndex];
@@ -214,19 +354,69 @@ namespace SaksiTerakhir.UI
         private void Update()
         {
             if (!Application.isPlaying || !IsOpen) return;
+            AnimateOutlinePulse();
+            if (locked) return;
+            TrackSelection();
+            HandleOptionHorizontalInput();
 
-            // Esc closes the settings menu
-            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            // Esc (or gamepad B): back to the Control tab first, then out of Settings
+            bool back = (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+                || (Gamepad.current != null && Gamepad.current.buttonEast.wasPressedThisFrame);
+            if (back) HandleBack();
+        }
+
+        private void HandleOptionHorizontalInput()
+        {
+            if (currentHoveredOptionRow == null || !currentHoveredOptionRow.gameObject.activeInHierarchy) return;
+
+            bool left = (Keyboard.current != null && (Keyboard.current.leftArrowKey.wasPressedThisFrame || Keyboard.current.aKey.wasPressedThisFrame))
+                || (Gamepad.current != null && Gamepad.current.dpad.left.wasPressedThisFrame);
+            bool right = (Keyboard.current != null && (Keyboard.current.rightArrowKey.wasPressedThisFrame || Keyboard.current.dKey.wasPressedThisFrame))
+                || (Gamepad.current != null && Gamepad.current.dpad.right.wasPressedThisFrame);
+
+            if (!left && !right) return;
+
+            Transform stepper = currentHoveredOptionRow.Find("Stepper");
+            if (stepper != null)
             {
-                Close();
+                Button btn = GetComponentAt<Button>(stepper, left ? "Left Arrow" : "Right Arrow");
+                if (btn != null && btn.interactable)
+                {
+                    btn.onClick.Invoke();
+                }
                 return;
             }
 
-            // Gamepad B button or cancel
-            if (Gamepad.current != null && Gamepad.current.buttonEast.wasPressedThisFrame)
+            Slider slider = GetComponentAt<Slider>(currentHoveredOptionRow, "Slider Control");
+            if (slider != null && slider.interactable)
             {
-                Close();
-                return;
+                float step = slider.wholeNumbers ? 5f : 0.1f;
+                float next = Mathf.Clamp(slider.value + (right ? step : -step), slider.minValue, slider.maxValue);
+                slider.value = slider.wholeNumbers ? Mathf.Round(next) : Mathf.Round(next * 10f) / 10f;
+            }
+        }
+
+        private void AnimateOutlinePulse()
+        {
+            float t = (Mathf.Sin(Time.unscaledTime * outlinePulseSpeed) + 1f) * 0.5f;
+            float alpha = Mathf.Lerp(MinOutlineAlpha, MaxOutlineAlpha, t);
+
+            if (outlineImage == null && activeCategoryOutline != null)
+            {
+                outlineImage = activeCategoryOutline.GetComponent<Image>();
+            }
+            if (outlineImage != null && activeCategoryOutline != null && activeCategoryOutline.gameObject.activeInHierarchy)
+            {
+                Color c = outlineImage.color;
+                c.a = alpha;
+                outlineImage.color = c;
+            }
+
+            if (activeOptionOutlineImage != null && activeOptionOutline != null && activeOptionOutline.gameObject.activeInHierarchy)
+            {
+                Color oc = activeOptionOutlineImage.color;
+                oc.a = alpha;
+                activeOptionOutlineImage.color = oc;
             }
         }
 
@@ -248,7 +438,26 @@ namespace SaksiTerakhir.UI
             }
         }
 
+        private System.Collections.IEnumerator TestGamepadVibrationRoutine()
+        {
+            GameSettingsManager.TriggerGamepadVibration(0.25f, 0.25f);
+            float end = Time.unscaledTime + 0.15f;
+            while (Time.unscaledTime < end)
+            {
+                yield return null;
+            }
+            GameSettingsManager.StopGamepadVibration();
+            vibrationTestRoutine = null;
+        }
+
         #region Row Binding & Settings Sync
+
+        private static T GetComponentAt<T>(Transform root, string path) where T : Component
+        {
+            if (root == null) return null;
+            Transform child = root.Find(path);
+            return child != null ? child.GetComponent<T>() : null;
+        }
 
         private void BindAllRows()
         {
@@ -268,6 +477,10 @@ namespace SaksiTerakhir.UI
                     {
                         GameSettingsManager.Current.inputDevice = idx == 1 ? "Gamepad" : "Keyboard & Mouse";
                         GameSettingsManager.Save();
+                        if (idx == 1 && Gamepad.current == null && descriptionText != null)
+                        {
+                            descriptionText.text = "Mode Gamepad dipilih (kontroler belum terdeteksi, Keyboard & Mouse tetap aktif).";
+                        }
                     });
 
                 // Mouse Sensitivity
@@ -289,14 +502,23 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
+                // Key Binding (Disabled for now per specification)
+                SetRowDisabled(controlList.Find("Key Binding Row"));
+
                 // Gamepad Vibration
                 BindStepper(controlList.Find("Gamepad Vibration Row"),
                     new[] { "Aktif", "Nonaktif" },
                     () => GameSettingsManager.Current.gamepadVibration ? 0 : 1,
                     idx =>
                     {
-                        GameSettingsManager.Current.gamepadVibration = (idx == 0);
+                        bool active = (idx == 0);
+                        GameSettingsManager.Current.gamepadVibration = active;
                         GameSettingsManager.Save();
+                        if (active && Gamepad.current != null && gameObject.activeInHierarchy)
+                        {
+                            if (vibrationTestRoutine != null) StopCoroutine(vibrationTestRoutine);
+                            vibrationTestRoutine = StartCoroutine(TestGamepadVibrationRoutine());
+                        }
                     });
             }
 
@@ -366,13 +588,13 @@ namespace SaksiTerakhir.UI
                 Transform trackedRow = gameplayList.Find("Tracked Quest Display Row");
                 if (trackedRow != null)
                 {
-                    trackedQuestLabel = trackedRow.Find("Label")?.GetComponent<TMP_Text>();
+                    trackedQuestLabel = GetComponentAt<TMP_Text>(trackedRow, "Label");
                     Transform stepper = trackedRow.Find("Stepper");
                     if (stepper != null)
                     {
-                        trackedQuestLeftBtn = stepper.Find("Left Arrow")?.GetComponent<Button>();
-                        trackedQuestRightBtn = stepper.Find("Right Arrow")?.GetComponent<Button>();
-                        trackedQuestValueText = stepper.Find("Value Text")?.GetComponent<TMP_Text>();
+                        trackedQuestLeftBtn = GetComponentAt<Button>(stepper, "Left Arrow");
+                        trackedQuestRightBtn = GetComponentAt<Button>(stepper, "Right Arrow");
+                        trackedQuestValueText = GetComponentAt<TMP_Text>(stepper, "Value Text");
                     }
                 }
 
@@ -395,6 +617,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Current.interactionPrompt = (idx == 0);
                         GameSettingsManager.Save();
                     });
+
+                // Exploration Hint & Tutorial Reminder (Disabled per specification)
+                SetRowDisabled(gameplayList.Find("Exploration Hint Row"));
+                SetRowDisabled(gameplayList.Find("Tutorial Reminder Row"));
             }
 
             // 4. TAMPILAN (DISPLAY)
@@ -446,8 +672,8 @@ namespace SaksiTerakhir.UI
                     () => (int)GameSettingsManager.Current.qualityPreset,
                     idx =>
                     {
-                        GameSettingsManager.Current.qualityPreset = (GraphicsPreset)idx;
-                        GameSettingsManager.Save();
+                        GameSettingsManager.ApplyPreset((GraphicsPreset)idx);
+                        RefreshAllControls();
                     });
 
                 BindStepper(graphicsList.Find("Shadow Quality Row"),
@@ -505,7 +731,17 @@ namespace SaksiTerakhir.UI
                     });
             }
 
-            // 6. BAHASA / SUBTITLE
+            // 6. AUDIO (Disabled until audio assets are added)
+            Transform audioList = contentPanel.Find("Audio Content/Audio Options List");
+            if (audioList != null)
+            {
+                for (int i = 0; i < audioList.childCount; i++)
+                {
+                    SetRowDisabled(audioList.GetChild(i));
+                }
+            }
+
+            // 7. BAHASA / SUBTITLE
             Transform languageList = contentPanel.Find("Language Content/Language Options List");
             if (languageList != null)
             {
@@ -552,17 +788,151 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
             }
+
+            // 8. AKSESIBILITAS (Disabled per specification)
+            Transform accessibilityList = contentPanel.Find("Accessibility Content/Accessibility Options List");
+            if (accessibilityList != null)
+            {
+                for (int i = 0; i < accessibilityList.childCount; i++)
+                {
+                    SetRowDisabled(accessibilityList.GetChild(i));
+                }
+            }
+        }
+
+        private void SetRowDisabled(Transform rowTransform)
+        {
+            if (rowTransform == null) return;
+
+            Transform optOutline = rowTransform.Find("Active Option Outline");
+            if (optOutline != null) optOutline.gameObject.SetActive(false);
+
+            Button[] buttons = rowTransform.GetComponentsInChildren<Button>(true);
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                if (buttons[i] != null) buttons[i].interactable = false;
+            }
+
+            Slider[] sliders = rowTransform.GetComponentsInChildren<Slider>(true);
+            for (int i = 0; i < sliders.Length; i++)
+            {
+                if (sliders[i] != null) sliders[i].interactable = false;
+            }
+
+            TMP_Text[] texts = rowTransform.GetComponentsInChildren<TMP_Text>(true);
+            for (int i = 0; i < texts.Length; i++)
+            {
+                if (texts[i] != null) texts[i].color = disabledTextColor;
+            }
+
+            Transform sliderCtrl = rowTransform.Find("Slider Control");
+            if (sliderCtrl != null)
+            {
+                Image fillImg = GetComponentAt<Image>(sliderCtrl, "Fill Area/Fill");
+                if (fillImg != null) fillImg.color = disabledTextColor;
+                Image handleImg = GetComponentAt<Image>(sliderCtrl, "Handle Slide Area/Handle");
+                if (handleImg != null) handleImg.color = disabledTextColor;
+            }
+        }
+
+        private void WireOptionRowHover(Transform rowTransform)
+        {
+            if (rowTransform == null) return;
+            Image hitGraphic = rowTransform.GetComponent<Image>();
+            if (hitGraphic == null)
+            {
+                hitGraphic = rowTransform.gameObject.AddComponent<Image>();
+                hitGraphic.color = new Color(0f, 0f, 0f, 0f);
+            }
+            hitGraphic.raycastTarget = true;
+
+            EventTrigger trigger = rowTransform.GetComponent<EventTrigger>();
+            if (trigger == null) trigger = rowTransform.gameObject.AddComponent<EventTrigger>();
+            trigger.triggers.Clear();
+            var hover = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
+            hover.callback.AddListener(_ =>
+            {
+                if (!locked) HighlightOptionRow(rowTransform);
+            });
+            trigger.triggers.Add(hover);
+        }
+
+        private void SelectDefaultOptionRowInActiveTab()
+        {
+            if (contentPanels == null || activeTabIndex < 0 || activeTabIndex >= contentPanels.Length) return;
+            GameObject activePanel = contentPanels[activeTabIndex];
+            if (activePanel == null) return;
+
+            Transform optionsList = null;
+            for (int i = 0; i < activePanel.transform.childCount; i++)
+            {
+                Transform child = activePanel.transform.GetChild(i);
+                if (child.name.EndsWith("Options List", StringComparison.Ordinal))
+                {
+                    optionsList = child;
+                    break;
+                }
+            }
+            if (optionsList == null || optionsList.childCount == 0) return;
+
+            // Find first enabled row
+            for (int i = 0; i < optionsList.childCount; i++)
+            {
+                Transform row = optionsList.GetChild(i);
+                Slider s = GetComponentAt<Slider>(row, "Slider Control");
+                Button b = GetComponentAt<Button>(row, "Stepper/Left Arrow");
+                if ((s != null && s.interactable) || (b != null && b.interactable))
+                {
+                    HighlightOptionRow(row);
+                    return;
+                }
+            }
+        }
+
+        private void HighlightOptionRow(Transform rowTransform)
+        {
+            if (rowTransform == null || rowTransform.parent == null) return;
+            currentHoveredOptionRow = rowTransform;
+
+            // Find the Active Option Outline inside this options list
+            Transform listParent = rowTransform.parent;
+            RectTransform foundOutline = null;
+            for (int i = 0; i < listParent.childCount; i++)
+            {
+                Transform r = listParent.GetChild(i);
+                Transform candidate = r.Find("Active Option Outline");
+                if (candidate != null)
+                {
+                    foundOutline = candidate as RectTransform;
+                    break;
+                }
+            }
+
+            if (foundOutline != null)
+            {
+                activeOptionOutline = foundOutline;
+                activeOptionOutlineImage = foundOutline.GetComponent<Image>();
+                foundOutline.SetParent(rowTransform, false);
+                foundOutline.anchorMin = Vector2.zero;
+                foundOutline.anchorMax = Vector2.one;
+                foundOutline.offsetMin = Vector2.zero;
+                foundOutline.offsetMax = Vector2.zero;
+                foundOutline.localScale = Vector3.one;
+                foundOutline.SetAsFirstSibling();
+                foundOutline.gameObject.SetActive(true);
+            }
         }
 
         private void BindStepper(Transform rowTransform, string[] options, Func<int> getter, Action<int> setter)
         {
             if (rowTransform == null || options == null || options.Length == 0) return;
+            WireOptionRowHover(rowTransform);
             Transform stepper = rowTransform.Find("Stepper");
             if (stepper == null) return;
 
-            TMP_Text valText = stepper.Find("Value Text")?.GetComponent<TMP_Text>();
-            Button leftBtn = stepper.Find("Left Arrow")?.GetComponent<Button>();
-            Button rightBtn = stepper.Find("Right Arrow")?.GetComponent<Button>();
+            TMP_Text valText = GetComponentAt<TMP_Text>(stepper, "Value Text");
+            Button leftBtn = GetComponentAt<Button>(stepper, "Left Arrow");
+            Button rightBtn = GetComponentAt<Button>(stepper, "Right Arrow");
 
             void RefreshText()
             {
@@ -578,6 +948,7 @@ namespace SaksiTerakhir.UI
                 leftBtn.onClick.RemoveAllListeners();
                 leftBtn.onClick.AddListener(() =>
                 {
+                    HighlightOptionRow(rowTransform);
                     int cur = getter != null ? getter() : 0;
                     cur = (cur - 1 + options.Length) % options.Length;
                     setter?.Invoke(cur);
@@ -590,6 +961,7 @@ namespace SaksiTerakhir.UI
                 rightBtn.onClick.RemoveAllListeners();
                 rightBtn.onClick.AddListener(() =>
                 {
+                    HighlightOptionRow(rowTransform);
                     int cur = getter != null ? getter() : 0;
                     cur = (cur + 1) % options.Length;
                     setter?.Invoke(cur);
@@ -600,40 +972,58 @@ namespace SaksiTerakhir.UI
             RefreshText();
         }
 
+        private static string FormatSliderValue(float v, bool wholeNumbers, string unit)
+        {
+            if (wholeNumbers)
+            {
+                return string.IsNullOrEmpty(unit)
+                    ? Mathf.RoundToInt(v).ToString()
+                    : $"{Mathf.RoundToInt(v)}{unit}";
+            }
+            return string.IsNullOrEmpty(unit)
+                ? $"{v:0.0}"
+                : $"{v:0.0}{unit}";
+        }
+
         private void BindSlider(Transform rowTransform, float min, float max, Func<float> getter, Action<float> setter, string unit = "")
         {
             if (rowTransform == null) return;
+            WireOptionRowHover(rowTransform);
             Transform sliderObj = rowTransform.Find("Slider Control");
             if (sliderObj == null) return;
 
             Slider slider = sliderObj.GetComponent<Slider>();
-            TMP_Text valText = sliderObj.Find("Value Text")?.GetComponent<TMP_Text>();
+            TMP_Text valText = GetComponentAt<TMP_Text>(sliderObj, "Value Text");
+
+            // Make track & fill clickable so clicking anywhere along the bar moves the slider
+            Image trackImg = GetComponentAt<Image>(sliderObj, "Track Background");
+            if (trackImg != null) trackImg.raycastTarget = true;
+            Image fillImg = GetComponentAt<Image>(sliderObj, "Fill Area/Fill");
+            if (fillImg != null) fillImg.raycastTarget = true;
 
             if (slider != null)
             {
+                slider.onValueChanged.RemoveAllListeners();
                 slider.minValue = min;
                 slider.maxValue = max;
-                if (getter != null) slider.value = getter();
+                float initialVal = getter != null ? getter() : min;
+                slider.SetValueWithoutNotify(initialVal);
 
-                slider.onValueChanged.RemoveAllListeners();
+                bool isWhole = slider.wholeNumbers;
+                if (valText != null)
+                {
+                    valText.text = FormatSliderValue(initialVal, isWhole, unit);
+                }
+
                 slider.onValueChanged.AddListener(v =>
                 {
+                    HighlightOptionRow(rowTransform);
                     if (valText != null)
                     {
-                        valText.text = string.IsNullOrEmpty(unit)
-                            ? Mathf.RoundToInt(v).ToString()
-                            : $"{v:0.0}{unit}";
+                        valText.text = FormatSliderValue(v, isWhole, unit);
                     }
                     setter?.Invoke(v);
                 });
-            }
-
-            if (valText != null && getter != null)
-            {
-                float v = getter();
-                valText.text = string.IsNullOrEmpty(unit)
-                    ? Mathf.RoundToInt(v).ToString()
-                    : $"{v:0.0}{unit}";
             }
         }
 
@@ -641,6 +1031,7 @@ namespace SaksiTerakhir.UI
         {
             BindAllRows();
             UpdateTrackedQuestInteractability();
+            SelectDefaultOptionRowInActiveTab();
         }
 
         private void UpdateTrackedQuestInteractability()

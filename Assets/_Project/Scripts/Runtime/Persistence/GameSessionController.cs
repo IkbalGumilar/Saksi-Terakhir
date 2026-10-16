@@ -50,6 +50,7 @@ namespace SaksiTerakhir.Persistence
         private bool retryCheckpoint;
         private float retryAt;
         private Coroutine continueTransition;
+        private Coroutine settingsSlide;
 
         public bool MenuOpen { get; private set; }
         public bool HasAutosave => loaded != null;
@@ -253,7 +254,7 @@ namespace SaksiTerakhir.Persistence
 
         public void OpenSettings()
         {
-            if (!MenuOpen || loading) return;
+            if (!MenuOpen || loading || settingsSlide != null) return;
             if (settingsMenu == null)
             {
                 settingsMenu = GameWorldSnapshot.Find<SettingsMenuPresentation>(gameObject.scene);
@@ -264,19 +265,68 @@ namespace SaksiTerakhir.Persistence
                 return;
             }
 
-            menu.MenuRoot.SetActive(false);
-            settingsMenu.Open(() =>
+            settingsSlide = StartCoroutine(SlideBetweenMenuAndSettings(true));
+        }
+
+        private void CloseSettingsAnimated()
+        {
+            if (settingsSlide != null) return;
+            settingsSlide = StartCoroutine(SlideBetweenMenuAndSettings(false));
+        }
+
+        /// <summary>Main menu exits left while settings enters from the right; closing reverses it.</summary>
+        private IEnumerator SlideBetweenMenuAndSettings(bool opening)
+        {
+            GameObject menuRoot = menu.MenuRoot;
+            var menuRect = menuRoot.GetComponent<RectTransform>();
+            var settingsRect = settingsMenu.GetComponent<RectTransform>();
+            float width = menuRect.parent is RectTransform parentRect ? parentRect.rect.width : 1920f;
+            if (opening)
             {
-                if (menu != null && menu.MenuRoot != null)
-                {
-                    menu.MenuRoot.SetActive(true);
-                    menu.RefreshRuntimeSelection();
-                    if (settingsButton != null && settingsButton.isActiveAndEnabled && settingsButton.interactable)
-                    {
-                        settingsButton.Select();
-                    }
-                }
-            });
+                settingsMenu.Open(CloseSettingsAnimated);
+                settingsMenu.SetInteractable(false);
+                settingsRect.anchoredPosition = Vector2.right * width;
+            }
+            else
+            {
+                menuRoot.SetActive(true);
+                menu.RefreshRuntimeSelection();
+                menuRect.anchoredPosition = Vector2.left * width;
+            }
+
+            CanvasGroup menuGroup = menuRoot.GetComponent<CanvasGroup>();
+            if (menuGroup == null) menuGroup = menuRoot.AddComponent<CanvasGroup>();
+            menuGroup.interactable = false;
+            float menuFrom = menuRect.anchoredPosition.x;
+            float menuTo = opening ? -width : 0f;
+            float settingsFrom = settingsRect.anchoredPosition.x;
+            float settingsTo = opening ? 0f : width;
+            const float seconds = 0.35f;
+            for (float t = 0f; t < seconds; t += Time.unscaledDeltaTime)
+            {
+                float k = Mathf.SmoothStep(0f, 1f, t / seconds);
+                menuRect.anchoredPosition = new Vector2(Mathf.Lerp(menuFrom, menuTo, k), 0f);
+                settingsRect.anchoredPosition = new Vector2(Mathf.Lerp(settingsFrom, settingsTo, k), 0f);
+                yield return null;
+            }
+            menuRect.anchoredPosition = new Vector2(menuTo, 0f);
+            settingsRect.anchoredPosition = new Vector2(settingsTo, 0f);
+
+            if (menuGroup != null) menuGroup.interactable = true;
+            if (opening)
+            {
+                menuRoot.SetActive(false);
+                menuRect.anchoredPosition = Vector2.zero;
+                settingsMenu.SetInteractable(true);
+            }
+            else
+            {
+                settingsMenu.gameObject.SetActive(false);
+                settingsRect.anchoredPosition = Vector2.zero;
+                if (settingsButton != null && settingsButton.isActiveAndEnabled && settingsButton.interactable)
+                    settingsButton.Select();
+            }
+            settingsSlide = null;
         }
 
         private IEnumerator ReloadScene(Startup startup)

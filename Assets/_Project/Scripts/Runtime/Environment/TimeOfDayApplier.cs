@@ -51,6 +51,13 @@ namespace SaksiTerakhir.Environment
             }
 
             ActivePreset = selected;
+            float brightnessFactor = 1f;
+            if (Application.isPlaying && SaksiTerakhir.Settings.GameSettingsManager.Current != null)
+            {
+                brightnessFactor = Mathf.Lerp(0.5f, 1.5f,
+                    Mathf.Clamp(SaksiTerakhir.Settings.GameSettingsManager.Current.brightness, 0f, 100f) / 100f);
+            }
+
             if (selected.skybox != null)
             {
                 Material material = GetSkyboxMaterial(selected.skybox);
@@ -62,7 +69,7 @@ namespace SaksiTerakhir.Environment
 
                 if (material.HasProperty(ExposureId))
                 {
-                    material.SetFloat(ExposureId, selected.skyExposure);
+                    material.SetFloat(ExposureId, selected.skyExposure * brightnessFactor);
                 }
                 if (material.HasProperty(TintId)) material.SetColor(TintId, selected.skyTint);
             }
@@ -73,16 +80,31 @@ namespace SaksiTerakhir.Environment
                 sun.color = selected.sunColor;
                 sun.useColorTemperature = selected.useColorTemperature;
                 sun.colorTemperature = selected.colorTemperature;
-                sun.intensity = selected.sunIntensity;
+                sun.intensity = selected.sunIntensity * brightnessFactor;
                 sun.shadowStrength = selected.shadowStrength;
+                if (Application.isPlaying && SaksiTerakhir.Settings.GameSettingsManager.Current != null)
+                {
+                    switch (SaksiTerakhir.Settings.GameSettingsManager.Current.shadowQuality)
+                    {
+                        case SaksiTerakhir.Settings.ShadowQualitySetting.Off:
+                            sun.shadows = LightShadows.None;
+                            break;
+                        case SaksiTerakhir.Settings.ShadowQualitySetting.Low:
+                            sun.shadows = LightShadows.Hard;
+                            break;
+                        case SaksiTerakhir.Settings.ShadowQualitySetting.High:
+                            sun.shadows = LightShadows.Soft;
+                            break;
+                    }
+                }
                 RenderSettings.sun = sun;
             }
 
             RenderSettings.ambientMode = selected.ambientMode;
-            RenderSettings.ambientIntensity = selected.ambientIntensity;
-            RenderSettings.ambientSkyColor = selected.ambientSky;
-            RenderSettings.ambientEquatorColor = selected.ambientEquator;
-            RenderSettings.ambientGroundColor = selected.ambientGround;
+            RenderSettings.ambientIntensity = selected.ambientIntensity * brightnessFactor;
+            RenderSettings.ambientSkyColor = selected.ambientSky * brightnessFactor;
+            RenderSettings.ambientEquatorColor = selected.ambientEquator * brightnessFactor;
+            RenderSettings.ambientGroundColor = selected.ambientGround * brightnessFactor;
 
             RenderSettings.fog = selected.fogEnabled;
             RenderSettings.fogMode = selected.fogMode;
@@ -114,11 +136,22 @@ namespace SaksiTerakhir.Environment
             sourceSkybox = null;
         }
 
-        private void OnDisable() => ReleaseRuntimeSkybox();
+        private void OnDisable()
+        {
+            SaksiTerakhir.Settings.GameSettingsManager.SettingsChanged -= OnSettingsChanged;
+            ReleaseRuntimeSkybox();
+        }
 
         private void OnEnable()
         {
+            SaksiTerakhir.Settings.GameSettingsManager.SettingsChanged += OnSettingsChanged;
             Apply();
+        }
+
+        private void OnSettingsChanged(SaksiTerakhir.Settings.GameSettingsData _)
+        {
+            if (ActivePreset != null) ApplyPreset(ActivePreset);
+            else Apply();
         }
 
         private void OnValidate()

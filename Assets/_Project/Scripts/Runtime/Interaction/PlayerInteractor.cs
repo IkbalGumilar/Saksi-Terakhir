@@ -48,6 +48,9 @@ namespace SaksiTerakhir.Interaction
         private readonly Collider[] overlapBuffer = new Collider[OverlapBufferSize];
 
         private Interactable current;
+        private Interactable highlightedTarget;
+        private Renderer[] highlightedRenderers = Array.Empty<Renderer>();
+        private MaterialPropertyBlock[] originalTargetBlocks = Array.Empty<MaterialPropertyBlock>();
         private Renderer[] probeRenderers = Array.Empty<Renderer>();
         private MaterialPropertyBlock[] originalProbeBlocks = Array.Empty<MaterialPropertyBlock>();
         private Transform probeRendererRoot;
@@ -60,6 +63,7 @@ namespace SaksiTerakhir.Interaction
         public Interactable Current => current;
         public bool IsInteract => current != null;
         public Vector3 ProbePosition { get; private set; }
+        public Vector3 ProbeRadiusVector => Vector3.one * ProbeRadius;
         public float ProbeRadius { get; private set; }
         public bool UiInteractionBlocked => uiInteractionBlocked;
 
@@ -68,6 +72,7 @@ namespace SaksiTerakhir.Interaction
             uiInteractionBlocked = blocked;
             if (!blocked) return;
             SetCurrent(null);
+            UpdateObjectHighlight(null);
             SetProbe(Vector3.zero, 0f);
             SetProbeVisualColor(false);
         }
@@ -128,6 +133,7 @@ namespace SaksiTerakhir.Interaction
             NpcConversationPreparation preparation = GetComponent<NpcConversationPreparation>();
             if (preparation != null) preparation.Cancel();
             SetCurrent(null);
+            UpdateObjectHighlight(null);
             SetProbe(Vector3.zero, 0f);
             SetProbeVisualColor(false);
         }
@@ -140,7 +146,11 @@ namespace SaksiTerakhir.Interaction
                 ? null : candidate);
             var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
             bool showPrompt = settings == null || settings.interactionPrompt;
-            SetProbeVisualColor(current != null && showPrompt);
+            Interactable highlightCandidate = (current != null && !(current is NpcInteractable) && showPrompt)
+                ? current
+                : null;
+            UpdateObjectHighlight(highlightCandidate);
+            SetProbeVisualColor(current != null && (current is NpcInteractable || showPrompt));
         }
 
         private Interactable Probe()
@@ -361,6 +371,60 @@ namespace SaksiTerakhir.Interaction
         private static float SafeDivide(float value, float divisor)
         {
             return Mathf.Abs(divisor) > Mathf.Epsilon ? value / divisor : value;
+        }
+
+        private void UpdateObjectHighlight(Interactable target)
+        {
+            if (target == highlightedTarget) return;
+
+            // Restore previous highlighted target renderers
+            if (highlightedRenderers != null)
+            {
+                for (int i = 0; i < highlightedRenderers.Length; i++)
+                {
+                    Renderer r = highlightedRenderers[i];
+                    if (r != null && originalTargetBlocks != null && i < originalTargetBlocks.Length)
+                    {
+                        r.SetPropertyBlock(originalTargetBlocks[i]);
+                    }
+                }
+            }
+
+            highlightedTarget = target;
+            if (target == null)
+            {
+                highlightedRenderers = Array.Empty<Renderer>();
+                originalTargetBlocks = Array.Empty<MaterialPropertyBlock>();
+                return;
+            }
+
+            highlightedRenderers = target.GetComponentsInChildren<Renderer>(false);
+            originalTargetBlocks = new MaterialPropertyBlock[highlightedRenderers.Length];
+            Color highlightTint = new Color(1f, 0.96f, 0.82f, 1f);
+            for (int i = 0; i < highlightedRenderers.Length; i++)
+            {
+                Renderer r = highlightedRenderers[i];
+                if (r == null) continue;
+                var origBlock = new MaterialPropertyBlock();
+                r.GetPropertyBlock(origBlock);
+                originalTargetBlocks[i] = origBlock;
+
+                Color baseCol = Color.white;
+                Material sharedMat = r.sharedMaterial;
+                if (sharedMat != null)
+                {
+                    if (sharedMat.HasProperty(BaseColorPropertyId))
+                        baseCol = sharedMat.GetColor(BaseColorPropertyId);
+                    else if (sharedMat.HasProperty(LegacyColorPropertyId))
+                        baseCol = sharedMat.GetColor(LegacyColorPropertyId);
+                }
+
+                Color boosted = Color.Lerp(baseCol, highlightTint, 0.25f);
+                boosted.a = baseCol.a;
+                r.GetPropertyBlock(SharedPropertyBlock);
+                SetMaterialColor(SharedPropertyBlock, boosted);
+                r.SetPropertyBlock(SharedPropertyBlock);
+            }
         }
 
         private void SetCurrent(Interactable candidate)

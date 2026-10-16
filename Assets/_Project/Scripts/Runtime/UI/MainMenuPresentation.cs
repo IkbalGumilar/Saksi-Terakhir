@@ -12,6 +12,7 @@ namespace SaksiTerakhir.UI
     [DefaultExecutionOrder(-10000)]
     [DisallowMultipleComponent]
     [RequireComponent(typeof(RectTransform))]
+    [RequireComponent(typeof(CanvasGroup))]
     public sealed class MainMenuPresentation : MonoBehaviour
     {
         [SerializeField] private Vector2 referenceResolution = new Vector2(1920, 1080);

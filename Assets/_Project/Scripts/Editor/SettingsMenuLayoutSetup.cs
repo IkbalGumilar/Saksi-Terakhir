@@ -44,7 +44,7 @@ namespace SaksiTerakhir.EditorTools
         [MenuItem("Saksi Terakhir/Settings/Build All Settings Tabs")]
         public static void BuildAllSettingsTabs()
         {
-            BuildSettingsMenu("Grafis");
+            BuildSettingsMenu("Kontrol");
         }
 
         [MenuItem("Saksi Terakhir/Settings/Build Graphics Menu")]
@@ -793,6 +793,7 @@ namespace SaksiTerakhir.EditorTools
 
             const float trackWidth = 260f;
             const float trackHeight = 3f;
+            const float handleSize = 14f;
 
             // Track Background
             RectTransform trackBg = CreateRect("Track Background", slider);
@@ -803,25 +804,39 @@ namespace SaksiTerakhir.EditorTools
             trackImg.color = new Color32(100, 95, 90, 180);
             trackImg.raycastTarget = false;
 
-            // Slide Area
-            RectTransform slideArea = CreateRect("Slide Area", slider);
+            // Fill Area
+            float normalized = Mathf.Clamp01(value / 100f);
+            RectTransform fillArea = CreateRect("Fill Area", slider);
+            fillArea.anchorMin = fillArea.anchorMax = fillArea.pivot = new Vector2(0f, 0.5f);
+            fillArea.anchoredPosition = new Vector2(10f, 0f);
+            fillArea.sizeDelta = new Vector2(trackWidth, trackHeight);
+
+            RectTransform fill = CreateRect("Fill", fillArea);
+            fill.anchorMin = new Vector2(0f, 0f);
+            fill.anchorMax = new Vector2(normalized, 1f);
+            fill.pivot = new Vector2(0f, 0.5f);
+            fill.sizeDelta = Vector2.zero;
+            Image fillImg = fill.gameObject.AddComponent<Image>();
+            fillImg.color = ColorActiveText;
+            fillImg.raycastTarget = false;
+
+            // Handle Slide Area (height = handleSize prevents vertical stretching by Unity Slider)
+            RectTransform slideArea = CreateRect("Handle Slide Area", slider);
             slideArea.anchorMin = slideArea.anchorMax = slideArea.pivot = new Vector2(0f, 0.5f);
             slideArea.anchoredPosition = new Vector2(10f, 0f);
-            slideArea.sizeDelta = new Vector2(trackWidth, height);
-            Image clickArea = slideArea.gameObject.AddComponent<Image>();
-            clickArea.color = Color.clear;
-            clickArea.raycastTarget = true;
+            slideArea.sizeDelta = new Vector2(trackWidth, handleSize);
 
             // Handle
-            float normalized = Mathf.Clamp01(value / 100f);
             RectTransform handle = CreateRect("Handle", slideArea);
-            handle.anchorMin = handle.anchorMax = new Vector2(normalized, 0.5f);
+            handle.anchorMin = new Vector2(normalized, 0f);
+            handle.anchorMax = new Vector2(normalized, 1f);
             handle.pivot = new Vector2(0.5f, 0.5f);
             handle.anchoredPosition = Vector2.zero;
-            handle.sizeDelta = new Vector2(14f, 14f);
+            handle.sizeDelta = new Vector2(handleSize, 0f);
             Image handleImg = handle.gameObject.AddComponent<Image>();
             handleImg.sprite = circleSprite;
             handleImg.color = ColorActiveText;
+            handleImg.preserveAspect = true;
             handleImg.raycastTarget = true;
 
             // Slider Component on Slider Control
@@ -830,6 +845,7 @@ namespace SaksiTerakhir.EditorTools
             sliderComp.minValue = 0f;
             sliderComp.maxValue = 100f;
             sliderComp.wholeNumbers = true;
+            sliderComp.fillRect = fill;
             sliderComp.handleRect = handle;
             sliderComp.targetGraphic = handleImg;
             sliderComp.value = value;
@@ -885,6 +901,7 @@ namespace SaksiTerakhir.EditorTools
 
             const float trackWidth = 260f;
             const float trackHeight = 3f;
+            const float handleSize = 14f;
 
             // Track Background
             RectTransform trackBg = CreateRect("Track Background", slider);
@@ -895,26 +912,40 @@ namespace SaksiTerakhir.EditorTools
             trackImg.color = new Color32(100, 95, 90, 180);
             trackImg.raycastTarget = false;
 
-            // Slide Area
-            RectTransform slideArea = CreateRect("Slide Area", slider);
-            slideArea.anchorMin = slideArea.anchorMax = slideArea.pivot = new Vector2(0f, 0.5f);
-            slideArea.anchoredPosition = new Vector2(10f, 0f);
-            slideArea.sizeDelta = new Vector2(trackWidth, height);
-            Image clickArea = slideArea.gameObject.AddComponent<Image>();
-            clickArea.color = Color.clear;
-            clickArea.raycastTarget = true;
-
-            // Handle
+            // Fill Area
             float range = Mathf.Max(0.001f, maxValue - minValue);
             float normalized = Mathf.Clamp01((value - minValue) / range);
+            RectTransform fillArea = CreateRect("Fill Area", slider);
+            fillArea.anchorMin = fillArea.anchorMax = fillArea.pivot = new Vector2(0f, 0.5f);
+            fillArea.anchoredPosition = new Vector2(10f, 0f);
+            fillArea.sizeDelta = new Vector2(trackWidth, trackHeight);
+
+            RectTransform fill = CreateRect("Fill", fillArea);
+            fill.anchorMin = new Vector2(0f, 0f);
+            fill.anchorMax = new Vector2(normalized, 1f);
+            fill.pivot = new Vector2(0f, 0.5f);
+            fill.sizeDelta = Vector2.zero;
+            Image fillImg = fill.gameObject.AddComponent<Image>();
+            fillImg.color = ColorActiveText;
+            fillImg.raycastTarget = false;
+
+            // Handle Slide Area (height = handleSize prevents vertical stretching by Unity Slider)
+            RectTransform slideArea = CreateRect("Handle Slide Area", slider);
+            slideArea.anchorMin = slideArea.anchorMax = slideArea.pivot = new Vector2(0f, 0.5f);
+            slideArea.anchoredPosition = new Vector2(10f, 0f);
+            slideArea.sizeDelta = new Vector2(trackWidth, handleSize);
+
+            // Handle
             RectTransform handle = CreateRect("Handle", slideArea);
-            handle.anchorMin = handle.anchorMax = new Vector2(normalized, 0.5f);
+            handle.anchorMin = new Vector2(normalized, 0f);
+            handle.anchorMax = new Vector2(normalized, 1f);
             handle.pivot = new Vector2(0.5f, 0.5f);
             handle.anchoredPosition = Vector2.zero;
-            handle.sizeDelta = new Vector2(14f, 14f);
+            handle.sizeDelta = new Vector2(handleSize, 0f);
             Image handleImg = handle.gameObject.AddComponent<Image>();
             handleImg.sprite = circleSprite;
             handleImg.color = ColorActiveText;
+            handleImg.preserveAspect = true;
             handleImg.raycastTarget = true;
 
             // Slider Component on Slider Control
@@ -923,6 +954,7 @@ namespace SaksiTerakhir.EditorTools
             sliderComp.minValue = minValue;
             sliderComp.maxValue = maxValue;
             sliderComp.wholeNumbers = false;
+            sliderComp.fillRect = fill;
             sliderComp.handleRect = handle;
             sliderComp.targetGraphic = handleImg;
             sliderComp.value = value;

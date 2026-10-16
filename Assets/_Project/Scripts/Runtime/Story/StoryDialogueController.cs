@@ -94,7 +94,19 @@ namespace SaksiTerakhir.Story
             ApplyPlaybackLocks();
         }
 
-        public bool TryConsumeInteract() => IsPlaying;
+        public bool TryConsumeInteract()
+        {
+            if (!IsPlaying) return false;
+            if (!automaticPaused)
+            {
+                var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+                if (settings != null && !settings.autoAdvance)
+                {
+                    Advance();
+                }
+            }
+            return true;
+        }
 
         public void SetAutoAdvancePaused(bool paused)
         {
@@ -149,8 +161,22 @@ namespace SaksiTerakhir.Story
             {
                 var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
                 bool shouldAuto = settings == null || settings.autoAdvance;
-                if (shouldAuto && Time.time >= nextLineAt)
-                    Advance();
+                if (shouldAuto)
+                {
+                    if (Time.time >= nextLineAt)
+                        Advance();
+                }
+                else
+                {
+                    var kb = UnityEngine.InputSystem.Keyboard.current;
+                    var mouse = UnityEngine.InputSystem.Mouse.current;
+                    var pad = UnityEngine.InputSystem.Gamepad.current;
+                    bool manualAdvance = (kb != null && (kb.spaceKey.wasPressedThisFrame || kb.enterKey.wasPressedThisFrame))
+                        || (mouse != null && mouse.leftButton.wasPressedThisFrame)
+                        || (pad != null && pad.buttonSouth.wasPressedThisFrame);
+                    if (manualAdvance)
+                        Advance();
+                }
             }
         }
 

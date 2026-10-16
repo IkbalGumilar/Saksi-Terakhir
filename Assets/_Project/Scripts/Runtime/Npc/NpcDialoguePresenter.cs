@@ -186,12 +186,29 @@ namespace SaksiTerakhir.Npc
                 }
                 return;
             }
-            if (lineLabel != null)
+            var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+            bool animate = settings == null || settings.textAnimation;
+            float rate = settings != null ? Mathf.Max(10f, settings.textSpeed) : Mathf.Max(10f, charactersPerSecond);
+            if (lineLabel != null && animate)
             {
-                revealedCharacters += Time.deltaTime * Mathf.Max(1f, charactersPerSecond);
+                revealedCharacters += Time.deltaTime * rate;
                 lineLabel.maxVisibleCharacters = Mathf.FloorToInt(revealedCharacters);
             }
-            if (Time.time < lineEndsAt) return;
+            bool shouldAuto = settings == null || settings.autoAdvance;
+            if (shouldAuto)
+            {
+                if (Time.time < lineEndsAt) return;
+            }
+            else
+            {
+                var kb = UnityEngine.InputSystem.Keyboard.current;
+                var mouse = UnityEngine.InputSystem.Mouse.current;
+                var pad = UnityEngine.InputSystem.Gamepad.current;
+                bool manualAdvance = (kb != null && (kb.spaceKey.wasPressedThisFrame || kb.enterKey.wasPressedThisFrame || kb.eKey.wasPressedThisFrame))
+                    || (mouse != null && mouse.leftButton.wasPressedThisFrame)
+                    || (pad != null && pad.buttonSouth.wasPressedThisFrame);
+                if (!manualAdvance) return;
+            }
             index++;
             if (lines == null || index >= lines.Length) { Stop(); return; }
             RenderLine();
@@ -203,11 +220,19 @@ namespace SaksiTerakhir.Npc
             string name = line.SpeakerId == "PLAYER"
                 ? (LocalizationManager.CurrentLanguage == GameLanguage.Indonesian ? "Kamu" : "You")
                 : speaker.DisplayName;
-            if (speakerLabel != null) speakerLabel.text = name;
+            var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
+            if (speakerLabel != null)
+            {
+                speakerLabel.gameObject.SetActive(settings == null || settings.showSpeakerName);
+                speakerLabel.text = name;
+            }
             lineLabel.text = line.Text;
-            lineLabel.maxVisibleCharacters = 0;
+            bool animate = settings == null || settings.textAnimation;
+            lineLabel.maxVisibleCharacters = animate ? 0 : line.Text.Length;
             revealedCharacters = 0f;
-            lineEndsAt = Time.time + Mathf.Max(1f, line.Text.Length / Mathf.Max(1f, charactersPerSecond) + afterLineSeconds);
+            float rate = settings != null ? Mathf.Max(10f, settings.textSpeed) : Mathf.Max(10f, charactersPerSecond);
+            float delay = settings != null ? settings.autoAdvanceDelay : afterLineSeconds;
+            lineEndsAt = Time.time + Mathf.Max(1f, line.Text.Length / rate + delay);
         }
 
         private bool IsForeignDialoguePlaying()

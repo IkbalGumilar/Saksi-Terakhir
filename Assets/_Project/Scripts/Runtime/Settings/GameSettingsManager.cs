@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 namespace SaksiTerakhir.Settings
@@ -24,10 +25,14 @@ namespace SaksiTerakhir.Settings
         private static GameSettingsData current;
         private static bool isInitialized;
 
-        // Cached reflection for URP properties to avoid assembly coupling
+        // Cached reflection for URP properties/fields to avoid assembly coupling
         private static PropertyInfo urpRenderScaleProp;
         private static PropertyInfo urpShadowDistanceProp;
-        private static PropertyInfo urpMainLightShadowsProp;
+        private static FieldInfo urpMainLightShadowsField;
+        private static FieldInfo urpSoftShadowsField;
+        private static FieldInfo urpShadowResolutionField;
+        private static Type urpCameraDataType;
+        private static PropertyInfo urpCameraAntialiasingProp;
         private static bool reflectionLookedUp;
 
         public static event Action<GameSettingsData> SettingsChanged;
@@ -73,6 +78,12 @@ namespace SaksiTerakhir.Settings
                 current = new GameSettingsData();
             }
 
+            // Auto-detect input device on startup if gamepad is not connected
+            if (Gamepad.current == null && current.inputDevice == "Gamepad")
+            {
+                current.inputDevice = "Keyboard & Mouse";
+            }
+
             isInitialized = true;
         }
 
@@ -83,12 +94,46 @@ namespace SaksiTerakhir.Settings
             PlayerPrefs.SetString(PrefsKey, json);
             PlayerPrefs.Save();
             ApplyAll();
-            SettingsChanged?.Invoke(current);
         }
 
         public static void ResetToDefaults()
         {
             Current.ResetToDefaults();
+            if (Gamepad.current == null)
+            {
+                Current.inputDevice = "Keyboard & Mouse";
+            }
+            Save();
+        }
+
+        public static void ApplyPreset(GraphicsPreset preset)
+        {
+            GameSettingsData data = Current;
+            data.qualityPreset = preset;
+            switch (preset)
+            {
+                case GraphicsPreset.Low:
+                    data.shadowQuality = ShadowQualitySetting.Off;
+                    data.shadowDistance = ShadowDistanceSetting.Near15m;
+                    data.textureQuality = TextureQualitySetting.Low;
+                    data.antiAliasing = AntiAliasingSetting.Off;
+                    data.renderScalePercent = 70;
+                    break;
+                case GraphicsPreset.Medium:
+                    data.shadowQuality = ShadowQualitySetting.Low;
+                    data.shadowDistance = ShadowDistanceSetting.Medium25m;
+                    data.textureQuality = TextureQualitySetting.Medium;
+                    data.antiAliasing = AntiAliasingSetting.FXAA;
+                    data.renderScalePercent = 85;
+                    break;
+                case GraphicsPreset.High:
+                    data.shadowQuality = ShadowQualitySetting.High;
+                    data.shadowDistance = ShadowDistanceSetting.Far40m;
+                    data.textureQuality = TextureQualitySetting.High;
+                    data.antiAliasing = AntiAliasingSetting.SMAA;
+                    data.renderScalePercent = 100;
+                    break;
+            }
             Save();
         }
 
@@ -96,10 +141,34 @@ namespace SaksiTerakhir.Settings
         {
             if (current == null) return;
 
+            ApplyControlSettings();
             ApplyDisplaySettings();
             ApplyGraphicsSettings();
             ApplyTargetFrameRate();
             SettingsChanged?.Invoke(current);
+        }
+
+        private static void ApplyControlSettings()
+        {
+            if (!current.gamepadVibration && Gamepad.current != null)
+            {
+                Gamepad.current.ResetHaptics();
+            }
+        }
+
+        public static void TriggerGamepadVibration(float lowFrequency = 0.25f, float highFrequency = 0.25f)
+        {
+            if (Current == null || !Current.gamepadVibration) return;
+            if (Gamepad.current == null) return;
+            Gamepad.current.SetMotorSpeeds(lowFrequency, highFrequency);
+        }
+
+        public static void StopGamepadVibration()
+        {
+            if (Gamepad.current != null)
+            {
+                Gamepad.current.ResetHaptics();
+            }
         }
 
         private static void ApplyDisplaySettings()
@@ -138,6 +207,24 @@ namespace SaksiTerakhir.Settings
             }
             QualitySettings.globalTextureMipmapLimit = mipmapLimit;
 
+            // Apply shadow mode on main directional light
+            Light sun = RenderSettings.sun;
+            if (sun != null)
+            {
+                switch (current.shadowQuality)
+                {
+                    case ShadowQualitySetting.Off:
+                        sun.shadows = LightShadows.None;
+                        break;
+                    case ShadowQualitySetting.Low:
+                        sun.shadows = LightShadows.Hard;
+                        break;
+                    case ShadowQualitySetting.High:
+                        sun.shadows = LightShadows.Soft;
+                        break;
+                }
+            }
+
             // URP specific properties via cached reflection
             EnsureUrpReflection();
             RenderPipelineAsset currentPipeline = GraphicsSettings.currentRenderPipeline;
@@ -146,7 +233,7 @@ namespace SaksiTerakhir.Settings
                 // Render scale
                 if (urpRenderScaleProp != null)
                 {
-                    float scale = current.renderScalePercent / 100f;
+                    float scale = Mathf.Clamp(current.renderScalePercent, 50, 100) / 100f;
                     urpRenderScaleProp.SetValue(currentPipeline, scale);
                 }
 
@@ -170,11 +257,38 @@ namespace SaksiTerakhir.Settings
                     urpShadowDistanceProp.SetValue(currentPipeline, shadowDist);
                 }
 
-                // Main light shadows
-                if (urpMainLightShadowsProp != null)
+                // Main light shadows & soft shadows on URP asset
+                bool enableShadows = current.shadowQuality != ShadowQualitySetting.Off;
+                if (urpMainLightShadowsField != null)
                 {
-                    bool enableShadows = current.shadowQuality != ShadowQualitySetting.Off;
-                    urpMainLightShadowsProp.SetValue(currentPipeline, enableShadows);
+                    urpMainLightShadowsField.SetValue(currentPipeline, enableShadows);
+                }
+                if (urpSoftShadowsField != null)
+                {
+                    urpSoftShadowsField.SetValue(currentPipeline, current.shadowQuality == ShadowQualitySetting.High);
+                }
+                if (urpShadowResolutionField != null && enableShadows)
+                {
+                    int res = current.shadowQuality == ShadowQualitySetting.High ? 2048 : 1024;
+                    urpShadowResolutionField.SetValue(currentPipeline, res);
+                }
+            }
+
+            // Apply Post-Process Anti-Aliasing (Off = 0, FXAA = 1, SMAA = 2) to all active cameras
+            if (urpCameraDataType != null && urpCameraAntialiasingProp != null)
+            {
+                int aaMode = Mathf.Clamp((int)current.antiAliasing, 0, 2);
+                Camera[] cameras = Camera.allCameras;
+                for (int i = 0; i < cameras.Length; i++)
+                {
+                    Camera cam = cameras[i];
+                    if (cam == null) continue;
+                    Component camData = cam.GetComponent(urpCameraDataType);
+                    if (camData != null)
+                    {
+                        object enumVal = Enum.ToObject(urpCameraAntialiasingProp.PropertyType, aaMode);
+                        urpCameraAntialiasingProp.SetValue(camData, enumVal);
+                    }
                 }
             }
         }
@@ -185,12 +299,21 @@ namespace SaksiTerakhir.Settings
             reflectionLookedUp = true;
 
             RenderPipelineAsset pipeline = GraphicsSettings.currentRenderPipeline;
-            if (pipeline == null) return;
+            if (pipeline != null)
+            {
+                Type pipelineType = pipeline.GetType();
+                urpRenderScaleProp = pipelineType.GetProperty("renderScale", BindingFlags.Instance | BindingFlags.Public);
+                urpShadowDistanceProp = pipelineType.GetProperty("shadowDistance", BindingFlags.Instance | BindingFlags.Public);
+                urpMainLightShadowsField = pipelineType.GetField("m_MainLightShadowsSupported", BindingFlags.Instance | BindingFlags.NonPublic);
+                urpSoftShadowsField = pipelineType.GetField("m_SoftShadowsSupported", BindingFlags.Instance | BindingFlags.NonPublic);
+                urpShadowResolutionField = pipelineType.GetField("m_MainLightShadowmapResolution", BindingFlags.Instance | BindingFlags.NonPublic);
+            }
 
-            Type pipelineType = pipeline.GetType();
-            urpRenderScaleProp = pipelineType.GetProperty("renderScale", BindingFlags.Instance | BindingFlags.Public);
-            urpShadowDistanceProp = pipelineType.GetProperty("shadowDistance", BindingFlags.Instance | BindingFlags.Public);
-            urpMainLightShadowsProp = pipelineType.GetProperty("mainLightShadowsSupported", BindingFlags.Instance | BindingFlags.Public);
+            urpCameraDataType = Type.GetType("UnityEngine.Rendering.Universal.UniversalAdditionalCameraData, Unity.RenderPipelines.Universal.Runtime");
+            if (urpCameraDataType != null)
+            {
+                urpCameraAntialiasingProp = urpCameraDataType.GetProperty("antialiasing", BindingFlags.Instance | BindingFlags.Public);
+            }
         }
     }
 }

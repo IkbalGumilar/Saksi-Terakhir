@@ -98,7 +98,8 @@ namespace SaksiTerakhir.Interaction
             // The interactor and NPC own dialogue cancellation; this view only renders it.
             var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
             bool showPrompt = settings == null || settings.interactionPrompt;
-            promptRoot.SetActive(target != null && !storyDialogueActive && showPrompt);
+            bool isNpc = target is NpcInteractable;
+            promptRoot.SetActive(target != null && !storyDialogueActive && (isNpc || showPrompt));
             Refresh();
         }
 

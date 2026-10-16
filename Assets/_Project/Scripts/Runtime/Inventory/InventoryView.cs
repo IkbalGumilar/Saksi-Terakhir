@@ -123,8 +123,10 @@ namespace SaksiTerakhir.Inventory
             status = info.Find("Item Status").GetComponent<TMP_Text>();
             description = info.Find("Informations Text").GetComponent<TMP_Text>();
             documentReader = new InventoryDocumentView((RectTransform)info, title);
+            var bgImage = root.GetComponent<UnityEngine.UI.Image>();
+            if (bgImage == null) bgImage = gridTemplate.GetComponent<UnityEngine.UI.Image>();
             contextMenu = InventoryContextMenu.Create(overlayRoot, panel, title,
-                root.GetComponent<UnityEngine.UI.Image>() ?? gridTemplate.GetComponent<UnityEngine.UI.Image>(), use, hold, drop);
+                bgImage, use, hold, drop);
             gridTemplate.gameObject.SetActive(false);
             documentTemplate.gameObject.SetActive(false);
 
