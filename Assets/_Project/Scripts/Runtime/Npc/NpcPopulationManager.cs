@@ -274,6 +274,16 @@ namespace SaksiTerakhir.Npc
 
         private bool HasSpawnClearance(Vector3 position, NavMeshAgent template)
         {
+            if (OfficeNpcAgent.IsOnZebraCrossOrRoadway(position)) return false;
+            foreach (SaksiTerakhir.Vehicles.AutomaticVehicleDriver driver in SaksiTerakhir.Vehicles.AutomaticVehicleDriver.ActiveDrivers)
+            {
+                if (driver == null || !driver.isActiveAndEnabled) continue;
+                Vector3 toSpawn = position - driver.transform.position;
+                if (Mathf.Abs(toSpawn.y) > 2.5f) continue;
+                toSpawn.y = 0f;
+                float minRange = driver.IsMoving ? 16f : 7f;
+                if (toSpawn.sqrMagnitude < minRange * minRange) return false;
+            }
             float radius = template != null ? template.radius : 0.3f;
             float height = template != null ? template.height : 1.8f;
             int count = Physics.OverlapCapsuleNonAlloc(position + Vector3.up * (radius + 0.08f),

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.agenda_written
   lines:
-  - speakerId: Catatan
-    text: MC membuka halaman baru.
+  - speakerId: "Catatan"
+    text: "Ucup membuka halaman baru."
   conditions: []

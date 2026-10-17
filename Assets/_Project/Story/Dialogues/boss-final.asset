@@ -14,91 +14,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.boss_final
   lines:
-  - speakerId: NPC-006
-    text: Baik, sudah lengkap. Tadi pagi Tim Digitalisasi membawa satu temuan dari
-      penyimpanan lama. Berkas lain di kelompoknya bisa kita cocokkan seperti biasa.
-      Yang ini perlu diperiksa lebih jauh.
-  - speakerId: Petugas Digitalisasi
-    text: Transliterasi dan terjemahan sementaranya sudah disiapkan tim verifikasi
-      dengan bantuan ahli bahasa daerah. Halamannya saya urutkan di map ini. Bagian
-      yang tidak terbaca juga diberi tanda.
-  - speakerId: NPC-004
-    text: Dari gambar sekecil tadi saya kira retaknya garis tulisan. Setelah diperbesar
-      baru kelihatan bagian yang hilang.
-  - speakerId: PLAYER
-    text: Nanti baca dari terjemahannya dulu. Hasil pindai tetap kita bawa untuk
-      dicocokkan, termasuk bagian yang putus ini.
-  - speakerId: NPC-003
-    text: Wanaseta. Nama lama begini kadang masih dipakai orang setempat, walaupun
-      di dokumen sudah beda.
-  - speakerId: Petugas Digitalisasi
-    text: Itu juga yang kami coba telusuri. Di data administratif modern, nama ini
-      tidak muncul. Catatan perubahan nama, penggabungan, dan penghapusan wilayah
-      yang cocok juga belum ketemu.
-  - speakerId: PLAYER
-    text: Jadi kemungkinan ganti nama belum bisa kita tutup. Hanya belum ada dokumen
-      yang menghubungkannya.
-  - speakerId: NPC-006
-    text: Betul. Jangan tulis desanya tidak ada hanya karena namanya tidak muncul
-      di pencarian. Kita perlu tahu nama itu merujuk ke tempat mana.
-  - speakerId: Petugas Digitalisasi
-    text: Petunjuk di terjemahan menyebut kaki Cikuray dan perjalanan menuju Sancang.
-      Itu bisa jadi awal penelusuran, tetapi belum cukup untuk menentukan letak desanya.
-      Batas wilayah lama juga tidak bisa langsung disamakan dengan yang sekarang.
-  - speakerId: NPC-003
-    text: Kita mulai dari petunjuk tempatnya. Di lapangan, kalau warga masih kenal
-      nama lama itu, kita cocokkan dengan keterangan di berkas. Kalau ternyata merujuk
-      ke permukiman yang sudah berganti nama, perubahan itu yang kita dokumentasikan.
-  - speakerId: NPC-004
-    text: Saya siapkan kamera dan catatan. Untuk nama tempat, nanti saya minta orangnya
-      sebut ulang sebelum ditulis. Saya takut pulang-pulang ejaannya ada tiga versi.
-  - speakerId: NPC-003
-    text: Kalau memang mereka menyebutnya berbeda, tulis semuanya. Yang penting jelas
-      siapa bilang apa. Jangan dirapikan dulu supaya kelihatan cocok.
-  - speakerId: PLAYER
-    text: Saya pegang salinan dan terjemahannya. Nanti keterangan yang sudah kita
-      dapat dibandingkan dengan isi prasasti, bukan cuma namanya.
-  - speakerId: NPC-006
-    text: Itu yang saya perlukan. Cari wilayahnya, periksa apakah Wanaseta pernah
-      digunakan sebagai nama di sana, dan cari nama administratif sekarang. Foto,
-      catatan, atau keterangan yang menghubungkan tempat itu dengan arsip, semuanya
-      dibawa pulang.
-  - speakerId: NPC-006
-    text: A, kamu sudah biasa verifikasi lapangan. Bantu arahkan penelusurannya.
-      MC urus pembandingan arsip, B bantu dokumentasi. Bagi pekerjaannya supaya kalian
-      tidak mencatat hal yang sama dan malah melewatkan yang lain.
-  - speakerId: NPC-003
-    text: Baik, Pak. Untuk waktunya, saya perlu tahu kira-kira berapa hari. Biar
-      persiapan kami cukup.
-  - speakerId: NPC-006
-    text: Perkiraan dua atau tiga hari, kalau tidak ada masalah. Nanti hasil di lapangan
-      tetap dilaporkan.
-  - speakerId: NPC-003
-    text: Kamu sedang menghitung hari sampai Jumat, ya.
-  - speakerId: NPC-004
-    text: Sekalian menghitung kebutuhan baju. Kalau tugasnya dua atau tiga hari,
-      masih bisa kembali sebelum Bali.
-  - speakerId: PLAYER
-    text: Catatanmu baru satu baris. Di bawahnya jangan langsung tulis daftar pantai.
-  - speakerId: NPC-006
-    text: Saya juga mau kalian sudah kembali sebelum akhir pekan. Siapkan dengan
-      benar dari sini, supaya di sana tidak habis waktu mencari barang yang tertinggal.
-  - speakerId: NPC-003
-    text: Nah, berarti kami masih punya alasan kuat untuk kerja cepat. Asal berkasnya
-      tetap lengkap waktu pulang.
-  - speakerId: NPC-006
-    text: Mobil dinas sudah disiapkan. Kuncinya ambil di resepsionis. Kalian siapkan
-      kebutuhan yang masih kurang, lalu berangkat hari ini.
-  - speakerId: NPC-003
-    text: Baik. Saya cek perlengkapan lapangan dulu. Kalau mau langsung jalan, lebih
-      baik sekarang kelihatan yang kurang daripada setelah keluar kota.
-  - speakerId: NPC-004
-    text: Kamera saya ambil dulu. Chargernya juga. Saya bisa berangkat pakai baju
-      kerja, tapi jangan sampai kameranya cuma hidup sampai parkiran.
-  - speakerId: PLAYER
-    text: Mapnya saya pegang. Nanti sebelum keluar kita periksa barangnya sekali
-      lagi di mobil.
-  - speakerId: NPC-006
-    text: Ya. Urus yang perlu, baru berangkat. Kunci dan berkas jangan tertinggal
-      di meja.
+  - speakerId: "NPC-006"
+    text: "Baik, sudah lengkap. Tadi pagi Tim Digitalisasi membawa satu temuan dari penyimpanan lama. Berkas lain di kelompoknya bisa kita cocokkan seperti biasa. Yang ini perlu diperiksa lebih jauh."
+  - speakerId: "Petugas Digitalisasi"
+    text: "Transliterasi dan terjemahan sementaranya sudah disiapkan tim verifikasi dengan bantuan ahli bahasa daerah. Halamannya saya urutkan di map ini. Bagian yang tidak terbaca juga diberi tanda."
+  - speakerId: "NPC-004"
+    text: "Dari gambar sekecil tadi saya kira retaknya garis tulisan. Setelah diperbesar baru kelihatan bagian yang hilang."
+  - speakerId: "PLAYER"
+    text: "Nanti baca dari terjemahannya dulu. Hasil pindai tetap kita bawa untuk dicocokkan, termasuk bagian yang putus ini."
+  - speakerId: "NPC-003"
+    text: "Cikapohon. Air pohon, menurut catatan penerjemahnya. Nama lama begini kadang masih dipakai orang setempat, walaupun di dokumen sudah beda."
+  - speakerId: "Petugas Digitalisasi"
+    text: "Itu juga yang kami coba telusuri. Di data administratif modern, nama ini tidak muncul. Catatan perubahan nama, penggabungan, dan penghapusan wilayah yang cocok juga belum ketemu."
+  - speakerId: "PLAYER"
+    text: "Jadi kemungkinan ganti nama belum bisa kita tutup. Hanya belum ada dokumen yang menghubungkannya."
+  - speakerId: "NPC-006"
+    text: "Betul. Jangan tulis desanya tidak ada hanya karena namanya tidak muncul di pencarian. Kita perlu tahu nama itu merujuk ke tempat mana."
+  - speakerId: "Petugas Digitalisasi"
+    text: "Petunjuk di terjemahan menyebut kaki Cikuray dan perjalanan menuju Sancang. Itu bisa jadi awal penelusuran, tetapi belum cukup untuk menentukan letak desanya. Batas wilayah lama juga tidak bisa langsung disamakan dengan yang sekarang."
+  - speakerId: "NPC-003"
+    text: "Kita mulai dari petunjuk tempatnya. Di lapangan, kalau warga masih kenal nama lama itu, kita cocokkan dengan keterangan di berkas. Kalau ternyata merujuk ke permukiman yang sudah berganti nama, perubahan itu yang kita dokumentasikan."
+  - speakerId: "NPC-004"
+    text: "Saya siapkan kamera dan catatan. Untuk nama tempat, nanti saya minta orangnya sebut ulang sebelum ditulis. Saya takut pulang-pulang ejaannya ada tiga versi."
+  - speakerId: "NPC-003"
+    text: "Kalau memang mereka menyebutnya berbeda, tulis semuanya. Yang penting jelas siapa bilang apa. Jangan dirapikan dulu supaya kelihatan cocok."
+  - speakerId: "PLAYER"
+    text: "Saya pegang salinan dan terjemahannya. Nanti keterangan yang sudah kita dapat dibandingkan dengan isi prasasti, bukan cuma namanya."
+  - speakerId: "NPC-006"
+    text: "Itu yang saya perlukan. Cari wilayahnya, periksa apakah Cikapohon pernah digunakan sebagai nama di sana, dan cari nama administratif sekarang. Foto, catatan, atau keterangan yang menghubungkan tempat itu dengan arsip, semuanya dibawa pulang."
+  - speakerId: "NPC-006"
+    text: "Pak Dadan, Bapak sudah biasa verifikasi lapangan. Tolong arahkan penelusurannya. Ucup urus pembandingan arsip, Rafi bantu dokumentasi. Bagi pekerjaannya supaya kalian tidak mencatat hal yang sama dan malah melewatkan yang lain."
+  - speakerId: "NPC-003"
+    text: "Baik, Pak. Untuk waktunya, saya perlu tahu kira-kira berapa hari. Biar persiapan kami cukup."
+  - speakerId: "NPC-006"
+    text: "Perkiraan dua atau tiga hari, kalau tidak ada masalah. Nanti hasil di lapangan tetap dilaporkan."
+  - speakerId: "NPC-003"
+    text: "Kamu sedang menghitung hari sampai Jumat, ya."
+  - speakerId: "NPC-004"
+    text: "Sekalian menghitung kebutuhan baju. Kalau tugasnya dua atau tiga hari, masih bisa kembali sebelum Bali."
+  - speakerId: "PLAYER"
+    text: "Catatanmu baru satu baris. Di bawahnya jangan langsung tulis daftar pantai."
+  - speakerId: "NPC-006"
+    text: "Saya juga mau kalian sudah kembali sebelum akhir pekan. Siapkan dengan benar dari sini, supaya di sana tidak habis waktu mencari barang yang tertinggal."
+  - speakerId: "NPC-003"
+    text: "Nah, berarti kami masih punya alasan kuat untuk kerja cepat. Asal berkasnya tetap lengkap waktu pulang."
+  - speakerId: "NPC-006"
+    text: "Mobil dinas sudah disiapkan. Kuncinya ambil di resepsionis. Kalian siapkan kebutuhan yang masih kurang, lalu berangkat hari ini."
+  - speakerId: "NPC-003"
+    text: "Baik. Saya cek perlengkapan lapangan dulu. Kalau mau langsung jalan, lebih baik sekarang kelihatan yang kurang daripada setelah keluar kota."
+  - speakerId: "NPC-004"
+    text: "Kamera saya ambil dulu. Chargernya juga. Saya bisa berangkat pakai baju kerja, tapi jangan sampai kameranya cuma hidup sampai parkiran."
+  - speakerId: "PLAYER"
+    text: "Mapnya saya pegang. Nanti sebelum keluar kita periksa barangnya sekali lagi di mobil."
+  - speakerId: "NPC-006"
+    text: "Ya. Urus yang perlu, baru berangkat. Kunci dan berkas jangan tertinggal di meja."
   conditions: []

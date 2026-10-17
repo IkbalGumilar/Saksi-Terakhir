@@ -18,28 +18,4 @@ MonoBehaviour:
   type: 1
   icon: {fileID: 0}
   modelPrefab: {fileID: 0}
-  documentText: '24 Agustus 2026
-
-
-    Hari ini aku, A, dan B mendapat tugas verifikasi
-    lapangan mengenai arsip sebuah desa bernama Wanaseta.
-
-
-    Data modern tidak
-    menunjukkan keberadaan desa tersebut, jadi kami diminta mencari lokasi dan memastikan
-    riwayat administrasinya secara langsung.
-
-
-    Kami membawa arsip asli beserta
-    terjemahannya.
-
-
-    Rencananya kami berangkat hari ini menggunakan mobil dinas
-    dan kembali sebelum akhir pekan.
-
-
-    Semoga cepat selesai.
-
-
-    Kami masih
-    punya Bali.'
+  documentText: "24 Agustus 2026\n\nHari ini aku, Dadan, dan Rafi mendapat tugas verifikasi lapangan mengenai arsip sebuah desa bernama Cikapohon.\n\nData modern tidak menunjukkan keberadaan desa tersebut, jadi kami diminta mencari lokasi dan memastikan riwayat administrasinya secara langsung.\n\nKami membawa arsip asli beserta terjemahannya.\n\nRencananya kami berangkat hari ini menggunakan mobil dinas dan kembali sebelum akhir pekan.\n\nSemoga cepat selesai.\n\nKami masih punya Bali."

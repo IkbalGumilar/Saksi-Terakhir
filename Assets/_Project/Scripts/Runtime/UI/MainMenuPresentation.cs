@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using SaksiTerakhir.Localization;
 using SaksiTerakhir.Persistence;
 
 namespace SaksiTerakhir.UI
@@ -23,6 +24,29 @@ namespace SaksiTerakhir.UI
         [SerializeField] private Color normalColor = new Color32(189, 185, 177, 255);
         [SerializeField] private Color selectedColor = new Color32(241, 238, 229, 255);
 
+        private static readonly string[] OptionLabelsId = {
+            "Lanjutkan", "Permainan Baru", "Muat Permainan", "Pengaturan", "Ekstra", "Keluar"
+        };
+        private static readonly string[] OptionLabelsEn = {
+            "Continue", "New Game", "Load Game", "Settings", "Extras", "Quit"
+        };
+        private static readonly string[] HelpTextsId = {
+            "Melanjutkan dari simpanan terakhir.",
+            "Memulai perjalanan baru.",
+            "Memilih simpanan untuk dilanjutkan.",
+            "Mengatur tampilan, suara, dan kontrol.",
+            "Melihat konten tambahan.",
+            "Keluar dari permainan."
+        };
+        private static readonly string[] HelpTextsEn = {
+            "Continue from the latest save.",
+            "Start a new journey.",
+            "Select a save to continue.",
+            "Configure display, audio, and controls.",
+            "View bonus content.",
+            "Exit the game."
+        };
+
         private RectTransform frame;
         private int selectedIndex = -1;
         private bool initializeSelection;
@@ -34,6 +58,7 @@ namespace SaksiTerakhir.UI
         private float previousAlpha;
         private bool previousInteractable;
         private bool previousBlocksRaycasts;
+        private string customContinueDescription;
 
         public UnityEngine.UI.Button[] Options => options;
         public GameObject MenuRoot
@@ -70,7 +95,45 @@ namespace SaksiTerakhir.UI
 
         public void SetContinueDescription(string text)
         {
+            customContinueDescription = text;
             if (descriptions != null && descriptions.Length > 0) descriptions[0] = text;
+            if (selectedIndex == 0 && description != null) description.text = text;
+        }
+
+        public void ApplyLocalization()
+        {
+            bool id = LocalizationManager.CurrentLanguage == GameLanguage.Indonesian;
+            string[] labels = id ? OptionLabelsId : OptionLabelsEn;
+            string[] helps = id ? HelpTextsId : HelpTextsEn;
+
+            if (options != null)
+            {
+                for (int i = 0; i < options.Length && i < labels.Length; i++)
+                {
+                    if (options[i] == null) continue;
+                    TMP_Text lbl = options[i].GetComponentInChildren<TMP_Text>(true);
+                    if (lbl != null) lbl.text = labels[i];
+                }
+            }
+
+            if (descriptions == null || descriptions.Length < helps.Length)
+                descriptions = new string[helps.Length];
+            for (int i = 0; i < helps.Length; i++)
+                descriptions[i] = helps[i];
+            if (!string.IsNullOrEmpty(customContinueDescription))
+                descriptions[0] = customContinueDescription;
+
+            Transform footer = transform.Find("Information");
+            if (footer != null)
+            {
+                TMP_Text choose = footer.Find("Inturction")?.GetComponent<TMP_Text>();
+                if (choose != null) choose.text = id ? "↑ ↓ Pilih" : "↑ ↓ Select";
+                TMP_Text confirm = footer.Find("Inturction (1)")?.GetComponent<TMP_Text>();
+                if (confirm != null) confirm.text = id ? "Konfirmasi" : "Confirm";
+            }
+
+            if (description != null && selectedIndex >= 0 && selectedIndex < descriptions.Length)
+                description.text = descriptions[selectedIndex];
         }
 
         public IEnumerator FadeOut(float seconds)
@@ -130,6 +193,9 @@ namespace SaksiTerakhir.UI
             frame = GetComponent<RectTransform>();
             initializeSelection = true;
             selectedIndex = -1;
+            LocalizationManager.LanguageChanged -= ApplyLocalization;
+            LocalizationManager.LanguageChanged += ApplyLocalization;
+            ApplyLocalization();
             if (Application.IsPlaying(gameObject)) RebuildNavigation();
             Canvas.willRenderCanvases += RefreshLayout;
             RefreshLayout();
@@ -138,6 +204,7 @@ namespace SaksiTerakhir.UI
 
         private void OnDisable()
         {
+            LocalizationManager.LanguageChanged -= ApplyLocalization;
             CancelFade();
             Canvas.willRenderCanvases -= RefreshLayout;
             if (!cursorCaptured) return;

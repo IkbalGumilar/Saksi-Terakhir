@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.wrong_route_declined
   lines:
-  - speakerId: Catatan
-    text: Pemain dapat menerima atau menolak.
+  - speakerId: "Catatan"
+    text: "Pemain dapat menerima atau menolak."
   conditions: []

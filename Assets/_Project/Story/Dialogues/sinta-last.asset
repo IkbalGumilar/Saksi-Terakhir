@@ -14,55 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.sinta_last
   lines:
-  - speakerId: NPC-004
-    text: Kalau sampai tiga kali, semoga bukan revisi. Satu panggilan soal revisi
-      saja biasanya cukup buat menghabiskan sore.
-  - speakerId: PLAYER
-    text: Belum dijelaskan. Aku baru masuk, langsung disuruh cari kalian.
-  - speakerId: NPC-004
-    text: Berarti kita sama-sama belum punya alasan yang bagus kalau ditanya.
-  - speakerId: NPC-004
-    text: Aku tadi bikin daftar buat Bali. Baru charger, power bank, sandal sama
-      kamera. Tiap buka grup, ada tambahan lagi. Sekarang sunscreen dan dry bag.
-  - speakerId: PLAYER
-    text: Dry bag masuk daftar wajib sejak kapan? Jangan-jangan barang bawaanmu lebih
-      banyak daripada baju.
-  - speakerId: NPC-004
-    text: Biar aman kalau jadi main air. Kamera sendiri, soalnya. Kamera kantor boleh
-      istirahat juga akhir pekan ini.
-  - speakerId: PLAYER
-    text: Itu kameranya. Orang yang bawa masih sibuk kerja?
-  - speakerId: NPC-004
-    text: Justru aku mau ada di fotonya. Biasanya habis acara aku kirim foto ke grup,
-      lalu sadar aku sendiri cuma ada di pantulan kaca.
-  - speakerId: PLAYER
-    text: Tadi anak-anak rooftop juga ngomong soal foto bareng. Semua harus masuk,
-      katanya.
-  - speakerId: NPC-004
-    text: Nah, kamu pegang kamera sebentar kalau begitu. Setelah itu kita pakai timer.
-      Jangan selalu menghilang pas orang mulai berkumpul.
-  - speakerId: PLAYER
-    text: Aku yang pegang kamera malah diminta ikut foto juga.
-  - speakerId: NPC-004
-    text: Iya. Foto yang lengkap susah sekali. Ada yang pulang duluan, ada yang masih
-      terima telepon. Nanti kalau sudah pindah kerja, ngajak kumpul lagi bisa lebih
-      susah. Mumpung hampir semua ikut, aku ingin kita punya foto yang kelihatan
-      benar-benar sedang liburan.
-  - speakerId: PLAYER
-    text: Asal jangan semuanya pose formal. Kalau masih berbaris seperti foto kantor,
-      percuma jauh-jauh.
-  - speakerId: NPC-004
-    text: Setuju. Kamu boleh kelihatan sedang makan. Tapi sebelum sendoknya masuk
-      mulut, ya. Nanti kamu sendiri yang minta dihapus.
-  - speakerId: NPC-004
-    text: Aku belum belanja semuanya. Semoga urusan ini cepat selesai, jadi masih
-      sempat siap-siap sebelum Jumat.
-  - speakerId: PLAYER
-    text: Kita dengar dulu tugasnya. Daftar belanjamu jangan ikut dibacakan di dalam.
-  - speakerId: NPC-004
-    text: Sudah kusimpan. Kalau aku kelihatan serius nanti, jangan dibongkar.
-  - speakerId: PLAYER
-    text: Sekarang kalau ditelepon pasti kedengaran.
-  - speakerId: NPC-004
-    text: Sekarang orangnya sudah di depan pintu.
+  - speakerId: "NPC-004"
+    text: "Kalau sampai tiga kali, semoga bukan revisi. Satu panggilan soal revisi saja biasanya cukup buat menghabiskan sore."
+  - speakerId: "PLAYER"
+    text: "Belum dijelaskan. Aku baru masuk, langsung disuruh cari kalian."
+  - speakerId: "NPC-004"
+    text: "Berarti kita sama-sama belum punya alasan yang bagus kalau ditanya."
+  - speakerId: "NPC-004"
+    text: "Aku tadi bikin daftar buat Bali. Baru charger, power bank, sandal sama kamera. Tiap buka grup, ada tambahan lagi. Sekarang sunscreen dan dry bag."
+  - speakerId: "PLAYER"
+    text: "Dry bag masuk daftar wajib sejak kapan? Jangan-jangan barang bawaanmu lebih banyak daripada baju."
+  - speakerId: "NPC-004"
+    text: "Biar aman kalau jadi main air. Kamera sendiri, soalnya. Kamera kantor boleh istirahat juga akhir pekan ini."
+  - speakerId: "PLAYER"
+    text: "Itu kameranya. Orang yang bawa masih sibuk kerja?"
+  - speakerId: "NPC-004"
+    text: "Justru aku mau ada di fotonya. Biasanya habis acara aku kirim foto ke grup, lalu sadar aku sendiri cuma ada di pantulan kaca."
+  - speakerId: "PLAYER"
+    text: "Tadi anak-anak rooftop juga ngomong soal foto bareng. Semua harus masuk, katanya."
+  - speakerId: "NPC-004"
+    text: "Nah, kamu pegang kamera sebentar kalau begitu. Setelah itu kita pakai timer. Jangan selalu menghilang pas orang mulai berkumpul."
+  - speakerId: "PLAYER"
+    text: "Aku yang pegang kamera malah diminta ikut foto juga."
+  - speakerId: "NPC-004"
+    text: "Iya. Foto yang lengkap susah sekali. Ada yang pulang duluan, ada yang masih terima telepon. Nanti kalau sudah pindah kerja, ngajak kumpul lagi bisa lebih susah. Mumpung hampir semua ikut, aku ingin kita punya foto yang kelihatan benar-benar sedang liburan."
+  - speakerId: "PLAYER"
+    text: "Asal jangan semuanya pose formal. Kalau masih berbaris seperti foto kantor, percuma jauh-jauh."
+  - speakerId: "NPC-004"
+    text: "Setuju. Kamu boleh kelihatan sedang makan. Tapi sebelum sendoknya masuk mulut, ya. Nanti kamu sendiri yang minta dihapus."
+  - speakerId: "NPC-004"
+    text: "Aku belum belanja semuanya. Semoga urusan ini cepat selesai, jadi masih sempat siap-siap sebelum Jumat."
+  - speakerId: "PLAYER"
+    text: "Kita dengar dulu tugasnya. Daftar belanjamu jangan ikut dibacakan di dalam."
+  - speakerId: "NPC-004"
+    text: "Sudah kusimpan. Kalau aku kelihatan serius nanti, jangan dibongkar."
+  - speakerId: "PLAYER"
+    text: "Sekarang kalau ditelepon pasti kedengaran."
+  - speakerId: "NPC-004"
+    text: "Sekarang orangnya sudah di depan pintu."
   conditions: []

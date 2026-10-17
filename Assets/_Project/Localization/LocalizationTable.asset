@@ -14,542 +14,1731 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Localization.LocalizationTable
   defaultLanguage: 1
   entries:
-  - key: interact.generic
-    english: Interact
-    indonesian: Berinteraksi
-  - key: interact.door.open
-    english: Open Door
-    indonesian: Buka Pintu
-  - key: interact.door.close
-    english: Close Door
-    indonesian: Tutup Pintu
-  - key: interact.door.locked
-    english: Locked
-    indonesian: Terkunci
-  - key: interact.npc.talk
-    english: Talk to {0}
-    indonesian: Bicara dengan {0}
-  - key: interact.npc.make_space
-    english: Make a little room so we can talk.
-    indonesian: Beri sedikit ruang agar bisa berbicara.
-  - key: interact.story.find_both
-    english: Find Raka and Sinta
-    indonesian: Temukan Raka dan Sinta
-  - key: interact.story.find_raka
-    english: Find Raka
-    indonesian: Temukan Raka
-  - key: interact.story.find_sinta
-    english: Find Sinta
-    indonesian: Temukan Sinta
-  - key: interact.story.wait_colleagues
-    english: Wait for your colleagues
-    indonesian: Tunggu rekan-rekan
-  - key: interact.story.wait_boss
-    english: Wait for Arya's call
-    indonesian: Tunggu panggilan Arya
-  - key: story.quest.started
-    english: New main quest
-    indonesian: Misi utama dimulai
-  - key: story.quest.updated
-    english: Main quest updated
-    indonesian: Misi utama diperbarui
-  - key: story.call.incoming
-    english: 'Incoming call: Arya. Press E to answer.'
-    indonesian: 'Panggilan masuk: Arya. Tekan E untuk menjawab.'
-  - key: quest.main.rooftop
-    english: Lunch Break
-    indonesian: Jam Istirahat
-  - key: quest.main.rooftop.talk
-    english: Meet your colleagues on the rooftop
-    indonesian: Temui rekan kerja di rooftop
-  - key: quest.main.call
-    english: An Unexpected Call
-    indonesian: Panggilan Mendadak
-  - key: quest.main.call.answer
-    english: Press E to answer
-    indonesian: Tekan E untuk menjawab
-  - key: quest.main.boss_first
-    english: An Unexpected Call
-    indonesian: Panggilan Mendadak
-  - key: quest.main.boss_first.talk
-    english: Visit the boss on floor 3
-    indonesian: Pergi ke ruangan bos di lantai 3
-  - key: quest.main.find
-    english: Find A and B
-    indonesian: Cari A dan B
-  - key: quest.main.find.raka
-    english: Find colleague A (Raka)
-    indonesian: Cari Rekan A (Raka)
-  - key: quest.main.find.sinta
-    english: Find colleague B (Sinta)
-    indonesian: Cari Rekan B (Sinta)
-  - key: quest.main.escort
-    english: Follow your colleague to Arya
-    indonesian: Ikuti rekanmu ke ruang bos
-  - key: quest.main.boss_final
-    english: Listen to Arya's briefing
-    indonesian: Dengarkan pengarahan Bos Arya
-  - key: quest.main.boss_final.listen
-    english: Listen to the archive briefing
-    indonesian: Dengarkan briefing arsip Wanaseta
-  - key: quest.main.key
-    english: Field Preparations
-    indonesian: Persiapan Lapangan
-  - key: quest.main.key.collect
-    english: Collect the office car key at reception
-    indonesian: Ambil kunci mobil dinas di resepsionis
-  - key: quest.main.vehicle
-    english: Departure
-    indonesian: Keberangkatan
-  - key: quest.main.vehicle.reach
-    english: Go to the office car
-    indonesian: Pergi ke mobil dinas
-  - key: item.battery_18650.name
-    english: 18650 Lithium-ion Battery
-    indonesian: Baterai Litium-ion 18650
-  - key: item.battery_18650.description
-    english: A blue-wrapped 18650 battery cell labelled 3.7 V and 2200 mAh.
-    indonesian: Sel baterai 18650 berlapis biru dengan label 3,7 V dan 2200 mAh.
-  - key: item.agenda_book.name
-    english: A5 Planner
-    indonesian: Buku Agenda A5
-  - key: item.agenda_book.description
-    english: An A5 planner with a blue leather cover and 80 sheets of lined cream
-      paper.
-    indonesian: Buku agenda A5 bersampul kulit biru dengan 80 lembar kertas krem
-      bergaris.
-  - key: item.flashlight.name
-    english: Flashlight
-    indonesian: Senter
-  - key: item.flashlight.description
-    english: A cylindrical handheld flashlight with a wrist strap.
-    indonesian: Senter genggam berbadan silinder dengan tali gantung.
-  - key: item.first_aid_kit.name
-    english: First Aid Case
-    indonesian: Kotak P3K
-  - key: item.first_aid_kit.description
-    english: A white vinyl first aid case with a red cross and two metal fasteners.
-    indonesian: Kotak P3K vinil putih dengan lambang palang merah dan dua kancing
-      logam.
-  - key: item.nasi_uduk.name
-    english: Wrapped Nasi Uduk
-    indonesian: Nasi Uduk Bungkus
-  - key: item.nasi_uduk.description
-    english: A portion of nasi uduk wrapped in kraft paper with a green leaf band.
-    indonesian: Sebungkus nasi uduk dalam kertas kraft dengan pita daun hijau.
-  - key: item.power_bank.name
-    english: Power Bank
-    indonesian: Powerbank
-  - key: item.power_bank.description
-    english: A slim power bank with two USB-A ports, one USB-C port, and a USB-A
-      to USB-C cable.
-    indonesian: Powerbank tipis dengan dua port USB-A, satu port USB-C, dan kabel
-      USB-A ke USB-C.
-  - key: item.car_key.name
-    english: Car Key
-    indonesian: Kunci Mobil
-  - key: item.car_key.description
-    english: A car key remote with an emergency key and a small leather pouch.
-    indonesian: Remote kunci mobil dengan kunci darurat dan dompet kulit kecil.
-  - key: item.nylon_rope_10m.name
-    english: 10 m Nylon Rope
-    indonesian: Tali Nilon 10 m
-  - key: item.nylon_rope_10m.description
-    english: A coil of green nylon rope with red flecks, measuring 10 metres long
-      and 8 mm in diameter.
-    indonesian: Gulungan tali nilon hijau berbintik merah sepanjang 10 meter dengan
-      diameter 8 mm.
-  - key: item.fiber_rope_10m.name
-    english: 10 m Fibre Rope
-    indonesian: Tali Tambang 10 m
-  - key: item.fiber_rope_10m.description
-    english: A coil of cream natural-fibre rope, measuring 10 metres long and 12
-      mm in diameter.
-    indonesian: Gulungan tali tambang serat alami berwarna krem sepanjang 10 meter
-      dengan diameter 12 mm.
-  - key: inventory.action.use
-    english: Use
-    indonesian: Gunakan
-  - key: inventory.action.hold
-    english: Hold
-    indonesian: Pegang
-  - key: inventory.action.release
-    english: Release
-    indonesian: Lepas
-  - key: inventory.action.drop
-    english: Drop
-    indonesian: Buang
-  - key: inventory.type.item
-    english: Item
-    indonesian: Barang
-  - key: inventory.type.document
-    english: Document
-    indonesian: Dokumen
-  - key: inventory.full
-    english: Inventory is full. Free a slot first.
-    indonesian: Inventory penuh. Kosongkan satu slot terlebih dahulu.
-  - key: inventory.cannot_use_yet
-    english: This item cannot be used here yet.
-    indonesian: Barang ini belum bisa digunakan di sini.
-  - key: inventory.drop_failed
-    english: This item could not be dropped.
-    indonesian: Barang ini belum bisa dibuang.
-  - key: inventory.required_item_missing
-    english: You do not have the required item.
-    indonesian: Kamu belum memiliki barang yang dibutuhkan.
-  - key: inventory.wrong_item
-    english: This item does not work here.
-    indonesian: Barang ini tidak cocok untuk digunakan di sini.
-  - key: inventory.unavailable
-    english: Inventory is unavailable.
-    indonesian: Inventory belum tersedia.
-  - key: interact.item.pickup
-    english: Pick up {0}
-    indonesian: Ambil {0}
-  - key: interact.item.use
-    english: Use {0}
-    indonesian: Gunakan {0}
-  - key: quest.side.wrong_route
-    english: Wrong Route
-    indonesian: Salah Jalur
-  - key: quest.side.wrong_route.talk
-    english: Deliver the file to digitization
-    indonesian: Antar berkas ke ruang digitalisasi
-  - key: quest.optional.shared_meal
-    english: Have a Meal with A and B
-    indonesian: Makan Bersama A dan B
-  - key: quest.optional.shared_meal.talk
-    english: Sit with A and B before collecting the key
-    indonesian: Duduk bersama A dan B sebelum mengambil kunci
-  - key: quest.optional.desk_preparation
-    english: Before You Leave
-    indonesian: Sebelum Pergi
-  - key: quest.optional.desk_preparation.finish
-    english: Tidy the desk before leaving
-    indonesian: Rapikan meja sebelum pergi
-  - key: quest.optional.supplies
-    english: Field Supplies
-    indonesian: Perbekalan Lapangan
-  - key: quest.optional.supplies.buy
-    english: Buy the supplies you need
-    indonesian: Beli perbekalan yang dibutuhkan
-  - key: document.wanaseta_original.name
-    english: Cikapohon Inscription
-    indonesian: Prasasti Cikapohon
-  - key: document.wanaseta_original.description
-    english: A copy of the inscription with the verification team's translation.
-      Its ending is broken.
-    indonesian: Salinan prasasti beserta terjemahan tim verifikasi. Bagian akhir
-      prasasti terbelah.
-  - key: document.wanaseta_translation.name
-    english: Wanaseta Archive Translation
-    indonesian: Terjemahan Arsip Wanaseta
-  - key: document.wanaseta_translation.description
-    english: A travel account and warning by someone who claims to have stayed in
-      the village.
-    indonesian: Catatan perjalanan dan peringatan dari seseorang yang mengaku singgah
-      di desa tersebut.
-  - key: document.field_assignment.name
-    english: Field Verification Assignment
-    indonesian: Surat Tugas Verifikasi Lapangan
-  - key: document.field_assignment.description
-    english: Field verification assignment for MC, A, and B.
-    indonesian: Tugas verifikasi lapangan untuk MC, A, dan B.
-  - key: document.agenda_2026_08_24.name
+  - key: "interact.generic"
+    english: "Interact"
+    indonesian: "Berinteraksi"
+  - key: "interact.door.open"
+    english: "Open Door"
+    indonesian: "Buka Pintu"
+  - key: "interact.door.close"
+    english: "Close Door"
+    indonesian: "Tutup Pintu"
+  - key: "interact.door.locked"
+    english: "Locked"
+    indonesian: "Terkunci"
+  - key: "interact.npc.talk"
+    english: "Talk to {0}"
+    indonesian: "Bicara dengan {0}"
+  - key: "interact.npc.make_space"
+    english: "Make a little room so we can talk."
+    indonesian: "Beri sedikit ruang agar bisa berbicara."
+  - key: "interact.story.find_both"
+    english: "Find Dadan and Rafi"
+    indonesian: "Temukan Dadan dan Rafi"
+  - key: "interact.story.find_raka"
+    english: "Find Dadan"
+    indonesian: "Temukan Dadan"
+  - key: "interact.story.find_sinta"
+    english: "Find Rafi"
+    indonesian: "Temukan Rafi"
+  - key: "interact.story.wait_colleagues"
+    english: "Wait for your colleagues"
+    indonesian: "Tunggu rekan-rekan"
+  - key: "interact.story.wait_boss"
+    english: "Wait for Arya's call"
+    indonesian: "Tunggu panggilan Arya"
+  - key: "story.quest.started"
+    english: "New main quest"
+    indonesian: "Misi utama dimulai"
+  - key: "story.quest.updated"
+    english: "Main quest updated"
+    indonesian: "Misi utama diperbarui"
+  - key: "story.call.incoming"
+    english: "Incoming call: Arya. Press E to answer."
+    indonesian: "Panggilan masuk: Arya. Tekan E untuk menjawab."
+  - key: "quest.main.rooftop"
+    english: "Lunch Break"
+    indonesian: "Jam Istirahat"
+  - key: "quest.main.rooftop.talk"
+    english: "Meet your colleagues on the rooftop"
+    indonesian: "Temui rekan kerja di rooftop"
+  - key: "quest.main.call"
+    english: "An Unexpected Call"
+    indonesian: "Panggilan Mendadak"
+  - key: "quest.main.call.answer"
+    english: "Press E to answer"
+    indonesian: "Tekan E untuk menjawab"
+  - key: "quest.main.boss_first"
+    english: "An Unexpected Call"
+    indonesian: "Panggilan Mendadak"
+  - key: "quest.main.boss_first.talk"
+    english: "Visit the boss on floor 3"
+    indonesian: "Pergi ke ruangan bos di lantai 3"
+  - key: "quest.main.find"
+    english: "Find Dadan and Rafi"
+    indonesian: "Cari Dadan dan Rafi"
+  - key: "quest.main.find.raka"
+    english: "Find Dadan"
+    indonesian: "Cari Dadan"
+  - key: "quest.main.find.sinta"
+    english: "Find Rafi"
+    indonesian: "Cari Rafi"
+  - key: "quest.main.escort"
+    english: "Follow your colleague to Arya"
+    indonesian: "Ikuti rekanmu ke ruang bos"
+  - key: "quest.main.boss_final"
+    english: "Listen to Arya's briefing"
+    indonesian: "Dengarkan pengarahan Bos Arya"
+  - key: "quest.main.boss_final.listen"
+    english: "Listen to the archive briefing"
+    indonesian: "Dengarkan briefing arsip Cikapohon"
+  - key: "quest.main.key"
+    english: "Field Preparations"
+    indonesian: "Persiapan Lapangan"
+  - key: "quest.main.key.collect"
+    english: "Collect the office car key at reception"
+    indonesian: "Ambil kunci mobil dinas di resepsionis"
+  - key: "quest.main.vehicle"
+    english: "Departure"
+    indonesian: "Keberangkatan"
+  - key: "quest.main.vehicle.reach"
+    english: "Go to the office car"
+    indonesian: "Pergi ke mobil dinas"
+  - key: "item.battery_18650.name"
+    english: "18650 Lithium-ion Battery"
+    indonesian: "Baterai Litium-ion 18650"
+  - key: "item.battery_18650.description"
+    english: "A blue-wrapped 18650 battery cell labelled 3.7 V and 2200 mAh."
+    indonesian: "Sel baterai 18650 berlapis biru dengan label 3,7 V dan 2200 mAh."
+  - key: "item.agenda_book.name"
+    english: "A5 Planner"
+    indonesian: "Buku Agenda A5"
+  - key: "item.agenda_book.description"
+    english: "An A5 planner with a blue leather cover and 80 sheets of lined cream paper."
+    indonesian: "Buku agenda A5 bersampul kulit biru dengan 80 lembar kertas krem bergaris."
+  - key: "item.flashlight.name"
+    english: "Flashlight"
+    indonesian: "Senter"
+  - key: "item.flashlight.description"
+    english: "A cylindrical handheld flashlight with a wrist strap."
+    indonesian: "Senter genggam berbadan silinder dengan tali gantung."
+  - key: "item.first_aid_kit.name"
+    english: "First Aid Case"
+    indonesian: "Kotak P3K"
+  - key: "item.first_aid_kit.description"
+    english: "A white vinyl first aid case with a red cross and two metal fasteners."
+    indonesian: "Kotak P3K vinil putih dengan lambang palang merah dan dua kancing logam."
+  - key: "item.nasi_uduk.name"
+    english: "Wrapped Nasi Uduk"
+    indonesian: "Nasi Uduk Bungkus"
+  - key: "item.nasi_uduk.description"
+    english: "A portion of nasi uduk wrapped in kraft paper with a green leaf band."
+    indonesian: "Sebungkus nasi uduk dalam kertas kraft dengan pita daun hijau."
+  - key: "item.power_bank.name"
+    english: "Power Bank"
+    indonesian: "Powerbank"
+  - key: "item.power_bank.description"
+    english: "A slim power bank with two USB-A ports, one USB-C port, and a USB-A to USB-C cable."
+    indonesian: "Powerbank tipis dengan dua port USB-A, satu port USB-C, dan kabel USB-A ke USB-C."
+  - key: "item.car_key.name"
+    english: "Car Key"
+    indonesian: "Kunci Mobil"
+  - key: "item.car_key.description"
+    english: "A car key remote with an emergency key and a small leather pouch."
+    indonesian: "Remote kunci mobil dengan kunci darurat dan dompet kulit kecil."
+  - key: "item.nylon_rope_10m.name"
+    english: "10 m Nylon Rope"
+    indonesian: "Tali Nilon 10 m"
+  - key: "item.nylon_rope_10m.description"
+    english: "A coil of green nylon rope with red flecks, measuring 10 metres long and 8 mm in diameter."
+    indonesian: "Gulungan tali nilon hijau berbintik merah sepanjang 10 meter dengan diameter 8 mm."
+  - key: "item.fiber_rope_10m.name"
+    english: "10 m Fibre Rope"
+    indonesian: "Tali Tambang 10 m"
+  - key: "item.fiber_rope_10m.description"
+    english: "A coil of cream natural-fibre rope, measuring 10 metres long and 12 mm in diameter."
+    indonesian: "Gulungan tali tambang serat alami berwarna krem sepanjang 10 meter dengan diameter 12 mm."
+  - key: "inventory.action.use"
+    english: "Use"
+    indonesian: "Gunakan"
+  - key: "inventory.action.hold"
+    english: "Hold"
+    indonesian: "Pegang"
+  - key: "inventory.action.release"
+    english: "Release"
+    indonesian: "Lepas"
+  - key: "inventory.action.drop"
+    english: "Drop"
+    indonesian: "Buang"
+  - key: "inventory.type.item"
+    english: "Item"
+    indonesian: "Barang"
+  - key: "inventory.type.document"
+    english: "Document"
+    indonesian: "Dokumen"
+  - key: "inventory.full"
+    english: "Inventory is full. Free a slot first."
+    indonesian: "Inventory penuh. Kosongkan satu slot terlebih dahulu."
+  - key: "inventory.cannot_use_yet"
+    english: "This item cannot be used here yet."
+    indonesian: "Barang ini belum bisa digunakan di sini."
+  - key: "inventory.drop_failed"
+    english: "This item could not be dropped."
+    indonesian: "Barang ini belum bisa dibuang."
+  - key: "inventory.required_item_missing"
+    english: "You do not have the required item."
+    indonesian: "Kamu belum memiliki barang yang dibutuhkan."
+  - key: "inventory.wrong_item"
+    english: "This item does not work here."
+    indonesian: "Barang ini tidak cocok untuk digunakan di sini."
+  - key: "inventory.unavailable"
+    english: "Inventory is unavailable."
+    indonesian: "Inventory belum tersedia."
+  - key: "interact.item.pickup"
+    english: "Pick up {0}"
+    indonesian: "Ambil {0}"
+  - key: "interact.item.use"
+    english: "Use {0}"
+    indonesian: "Gunakan {0}"
+  - key: "quest.side.wrong_route"
+    english: "Wrong Route"
+    indonesian: "Salah Jalur"
+  - key: "quest.side.wrong_route.talk"
+    english: "Deliver the file to digitization"
+    indonesian: "Antar berkas ke ruang digitalisasi"
+  - key: "quest.optional.shared_meal"
+    english: "Have a Meal with Dadan and Rafi"
+    indonesian: "Makan Bersama Dadan dan Rafi"
+  - key: "quest.optional.shared_meal.talk"
+    english: "Sit with Dadan and Rafi before collecting the key"
+    indonesian: "Duduk bersama Dadan dan Rafi sebelum mengambil kunci"
+  - key: "quest.optional.desk_preparation"
+    english: "Before You Leave"
+    indonesian: "Sebelum Pergi"
+  - key: "quest.optional.desk_preparation.finish"
+    english: "Tidy the desk before leaving"
+    indonesian: "Rapikan meja sebelum pergi"
+  - key: "quest.optional.supplies"
+    english: "Field Supplies"
+    indonesian: "Perbekalan Lapangan"
+  - key: "quest.optional.supplies.buy"
+    english: "Buy the supplies you need"
+    indonesian: "Beli perbekalan yang dibutuhkan"
+  - key: "document.wanaseta_original.name"
+    english: "Cikapohon Inscription"
+    indonesian: "Prasasti Cikapohon"
+  - key: "document.wanaseta_original.description"
+    english: "A copy of the inscription with the verification team's translation. Its ending is broken."
+    indonesian: "Salinan prasasti beserta terjemahan tim verifikasi. Bagian akhir prasasti terbelah."
+  - key: "document.wanaseta_translation.name"
+    english: "Cikapohon Archive Translation"
+    indonesian: "Terjemahan Arsip Cikapohon"
+  - key: "document.wanaseta_translation.description"
+    english: "A travel account and warning by someone who claims to have stayed in the village."
+    indonesian: "Catatan perjalanan dan peringatan dari seseorang yang mengaku singgah di desa tersebut."
+  - key: "document.field_assignment.name"
+    english: "Field Verification Assignment"
+    indonesian: "Surat Tugas Verifikasi Lapangan"
+  - key: "document.field_assignment.description"
+    english: "Field verification assignment for Ucup, Dadan, and Rafi."
+    indonesian: "Tugas verifikasi lapangan untuk Ucup, Dadan, dan Rafi."
+  - key: "document.agenda_2026_08_24.name"
     english: "Agenda \u2014 24 August 2026"
     indonesian: "Agenda \u2014 24 Agustus 2026"
-  - key: document.agenda_2026_08_24.description
-    english: A diary entry about the Wanaseta archive assignment.
-    indonesian: Catatan agenda mengenai tugas verifikasi arsip Wanaseta.
-  - key: document.travel_receipt.name
-    english: Payment Receipt
-    indonesian: Struk Pembayaran
-  - key: document.travel_receipt.description
-    english: Proof of supply expenses after the assignment.
-    indonesian: Bukti pengeluaran perbekalan setelah penugasan.
-  - key: interact.chapter.activity
-    english: Interact
-    indonesian: Berinteraksi
-  - key: interact.chapter.shop
-    english: Shop
-    indonesian: Belanja
-  - key: inventory.purchase_complete
-    english: The item and receipt were added to inventory.
-    indonesian: Barang dan struk masuk inventory.
-  - key: quest.main.morning
-    english: Morning Routine
-    indonesian: Rutinitas Pagi
-  - key: quest.main.morning.enter
-    english: Enter the archive office
-    indonesian: Masuk ke gedung ANRI
-  - key: quest.main.morning.desk
-    english: Go to your workstation
-    indonesian: Menuju ruang kerja
-  - key: quest.optional.breakfast
-    english: Morning Breakfast
-    indonesian: Sarapan Pagi
-  - key: quest.optional.breakfast.eat
-    english: Have breakfast before work
-    indonesian: Sarapan sebelum bekerja
-  - key: interact.chapter.bulletin
-    english: Read the notice board
-    indonesian: Baca papan pengumuman
-  - key: story.quest.travel_spbu
-    english: Travel to the fuel station with Raka and Sinta
-    indonesian: Menuju SPBU bersama Raka dan Sinta
-  - key: document.spbu_receipt.name
+  - key: "document.agenda_2026_08_24.description"
+    english: "A diary entry about the Cikapohon archive assignment."
+    indonesian: "Catatan agenda mengenai tugas verifikasi arsip Cikapohon."
+  - key: "document.travel_receipt.name"
+    english: "Payment Receipt"
+    indonesian: "Struk Pembayaran"
+  - key: "document.travel_receipt.description"
+    english: "Proof of supply expenses after the assignment."
+    indonesian: "Bukti pengeluaran perbekalan setelah penugasan."
+  - key: "interact.chapter.activity"
+    english: "Interact"
+    indonesian: "Berinteraksi"
+  - key: "interact.chapter.shop"
+    english: "Shop"
+    indonesian: "Belanja"
+  - key: "inventory.purchase_complete"
+    english: "The item and receipt were added to inventory."
+    indonesian: "Barang dan struk masuk inventory."
+  - key: "quest.main.morning"
+    english: "Morning Routine"
+    indonesian: "Rutinitas Pagi"
+  - key: "quest.main.morning.enter"
+    english: "Enter the archive office"
+    indonesian: "Masuk ke gedung ANRI"
+  - key: "quest.main.morning.desk"
+    english: "Go to your workstation"
+    indonesian: "Menuju ruang kerja"
+  - key: "quest.optional.breakfast"
+    english: "Morning Breakfast"
+    indonesian: "Sarapan Pagi"
+  - key: "quest.optional.breakfast.eat"
+    english: "Have breakfast before work"
+    indonesian: "Sarapan sebelum bekerja"
+  - key: "interact.chapter.bulletin"
+    english: "Read the notice board"
+    indonesian: "Baca papan pengumuman"
+  - key: "story.quest.travel_spbu"
+    english: "Travel to the fuel station with Dadan and Rafi"
+    indonesian: "Menuju SPBU bersama Dadan dan Rafi"
+  - key: "document.spbu_receipt.name"
     english: "Fuel Station Receipt \u2014 Vehicle Fuel and Supplies"
     indonesian: "Struk SPBU \u2014 Pengisian dan Perbekalan Kendaraan"
-  - key: document.spbu_receipt.description
-    english: Receipt for filling the vehicle and buying and filling two reserve fuel
-      containers.
-    indonesian: Bukti pengisian tangki dan pembelian serta pengisian dua jerigen
-      cadangan.
-  - key: document.spbu_trip_photo.name
+  - key: "document.spbu_receipt.description"
+    english: "Receipt for filling the vehicle and buying and filling two reserve fuel containers."
+    indonesian: "Bukti pengisian tangki dan pembelian serta pengisian dua jerigen cadangan."
+  - key: "document.spbu_trip_photo.name"
     english: "Travel Photo \u2014 Fuel Station Stop"
     indonesian: "Foto Perjalanan \u2014 Persinggahan SPBU"
-  - key: document.spbu_trip_photo.description
-    english: A photo of MC, A and B in the parking area with the fuel station sign
-      behind them.
-    indonesian: Foto MC, A dan B di area parkir, dengan papan SPBU di belakang mereka.
-  - key: story.quest.spbu_return
-    english: Return to the car with Raka and Sinta
-    indonesian: Kembali ke mobil bersama Raka dan Sinta
-  - key: story.quest.spbu_departure
-    english: Leave for Giriawas with Raka and Sinta
-    indonesian: Menuju Giriawas bersama Raka dan Sinta
-  - key: quest.main.morning.description
-    english: Your workday starts at ANRI. Enter the building and go to your desk
-      before starting work.
-    indonesian: Hari kerja di ANRI dimulai. Masuk ke gedung lalu menuju meja kerja
-      untuk memulai rutinitas pagi.
-  - key: quest.main.morning.location
-    english: 'ANRI: entrance and reception on floor 1; MC and Sinta''s Workroom on
-      floor 2.'
-    indonesian: 'ANRI: pintu masuk dan resepsionis di lantai 1; Ruang Kerja MC dan
-      Sinta di lantai 2.'
-  - key: quest.main.rooftop.description
-    english: Two coworkers have brought lunch and invited you to eat on the rooftop.
-      Meet them and finish the lunch conversation.
-    indonesian: Dua rekan kerja membawa makan siang dan mengajakmu makan di rooftop.
-      Temui mereka lalu tuntaskan percakapan saat istirahat.
-  - key: quest.main.rooftop.location
-    english: ANRI rooftop, above floor 4, near the lunch table.
-    indonesian: Rooftop ANRI, di atas lantai 4, dekat meja makan saat istirahat.
-  - key: quest.main.call.description
-    english: Your phone rings as you leave the rooftop. Answer the boss's call to
-      hear his request.
-    indonesian: Ponsel berdering saat kamu meninggalkan rooftop. Jawab panggilan
-      bos untuk mendengar permintaannya.
-  - key: quest.main.call.location
-    english: ANRI rooftop, near the exit.
-    indonesian: Rooftop ANRI, dekat pintu keluar.
-  - key: quest.main.boss_first.description
-    english: The boss has asked you to discuss a field verification file. Go to his
-      office and speak with him.
-    indonesian: Bos memanggilmu untuk membahas berkas verifikasi lapangan. Datangi
-      ruangannya lalu bicara dengannya.
-  - key: quest.main.boss_first.location
-    english: 'ANRI, floor 3: Director''s Office. Wait at the double door until you
-      are invited in.'
-    indonesian: 'ANRI, lantai 3: Ruang Kepala (ruangan bos). Tunggu di pintu ganda
-      sampai dipersilakan masuk.'
-  - key: quest.main.find.description
-    english: The boss needs both field colleagues for the briefing. Find A (Raka)
-      and B (Sinta) in either order. Send the first one straight to the boss, then
-      find the other.
-    indonesian: Bos membutuhkan kedua rekan tim lapangan untuk briefing. Cari A (Raka)
-      dan B (Sinta) dalam urutan pilihanmu. Minta rekan pertama langsung menemui
-      bos, lalu cari rekan yang satunya.
-  - key: quest.main.find.location
-    english: 'ANRI, floor 2: Raka is in Raka''s Workroom; Sinta is in MC and Sinta''s
-      Workroom. The boss waits on floor 3.'
-    indonesian: 'ANRI, lantai 2: Raka berada di Ruang Kerja Raka; Sinta berada di
-      Ruang Kerja MC dan Sinta. Bos menunggu di lantai 3.'
-  - key: quest.main.escort.description
-    english: The first colleague has gone ahead. Accompany the last colleague to
-      the boss's office; the conversation follows who you found last.
-    indonesian: Rekan pertama sudah berangkat lebih dulu. Dampingi rekan terakhir
-      menuju ruangan bos; percakapan mengikuti siapa yang ditemukan terakhir.
-  - key: quest.main.escort.location
-    english: From the workrooms on ANRI floor 2 to the Director's Office on floor
-      3.
-    indonesian: Dari ruang kerja di lantai 2 ANRI menuju Ruang Kepala (ruangan bos)
-      di lantai 3.
-  - key: quest.main.boss_final.description
-    english: The team is together. Sit down and listen to the Wanaseta archive briefing.
-      Receive the original archive, its translation and the official field assignment.
-    indonesian: Tim sudah lengkap. Duduk lalu dengarkan briefing arsip Wanaseta.
-      Terima arsip asli, terjemahannya, dan surat tugas verifikasi lapangan.
-  - key: quest.main.boss_final.location
-    english: 'ANRI, floor 3: Director''s Office, at the briefing seats.'
-    indonesian: 'ANRI, lantai 3: Ruang Kepala (ruangan bos), di tempat duduk briefing.'
-  - key: quest.main.key.description
-    english: The field assignment is ready. Collect the office car key from reception.
-      You may finish desk preparations, buy supplies or eat with A and B before collecting
-      it.
-    indonesian: Tugas lapangan sudah diberikan. Ambil kunci mobil dinas di resepsionis.
-      Sebelum mengambilnya, kamu dapat merapikan meja, membeli perbekalan, atau makan
-      bersama A dan B.
-  - key: quest.main.key.location
-    english: 'ANRI, floor 1: reception counter near the main entrance.'
-    indonesian: 'ANRI, lantai 1: meja resepsionis dekat pintu masuk utama.'
-  - key: quest.main.vehicle.description
-    english: You have the car key. Bring the assignment documents to the office car
-      and meet A and B before leaving. The seating follows your earlier choice to
-      eat together.
-    indonesian: Kunci mobil sudah diterima. Bawa berkas tugas ke mobil dinas lalu
-      temui A dan B sebelum berangkat. Posisi duduk mengikuti pilihan makan bersama
-      sebelumnya.
-  - key: quest.main.vehicle.location
-    english: 'ANRI parking area: the office car outside the main building.'
-    indonesian: 'Area parkir ANRI: mobil dinas di luar gedung utama.'
-  - key: story.quest.travel_spbu.description
-    english: Leave ANRI with A and B and continue to the fuel station. The team will
-      refuel and prepare reserve fuel before continuing the field trip.
-    indonesian: Tinggalkan ANRI bersama A dan B lalu lanjutkan perjalanan menuju
-      SPBU. Tim akan mengisi bahan bakar dan menyiapkan cadangan sebelum meneruskan
-      tugas lapangan.
-  - key: story.quest.travel_spbu.location
-    english: Road from ANRI to the fuel station; stop at the fuel station entrance.
-    indonesian: Jalan dari ANRI menuju SPBU; berhenti di area masuk SPBU.
-  - key: story.quest.spbu_return.description
-    english: A and B have finished the vehicle preparations and called you back.
-      Finish any activity you chose, then return to the parked office car. Extra
-      shopping and the park conversation remain optional.
-    indonesian: A dan B sudah menuntaskan kebutuhan kendaraan dan memanggilmu kembali.
-      Selesaikan kegiatan pilihanmu lalu kembali ke mobil dinas yang terparkir. Belanja
-      tambahan dan percakapan di taman tetap opsional.
-  - key: story.quest.spbu_return.location
-    english: 'Fuel station parking area: the office car beside the shop and park
-      access.'
-    indonesian: 'Area parkir SPBU: mobil dinas di dekat toko dan akses taman.'
-  - key: story.quest.spbu_departure.description
-    english: Rejoin A and B at the office car. Use the interaction on its right side
-      to continue, finish the team conversation and agree on the next destination
-      using only the information you obtained.
-    indonesian: Bergabung kembali dengan A dan B di mobil dinas. Gunakan interaksi
-      di sisi kanan mobil untuk melanjutkan, tuntaskan percakapan tim, lalu sepakati
-      tujuan berikutnya berdasarkan informasi yang sudah kamu peroleh.
-  - key: story.quest.spbu_departure.location
-    english: 'Fuel station parking area: the right side of the office car, then inside
-      the car.'
-    indonesian: 'Area parkir SPBU: sisi kanan mobil dinas, kemudian di dalam mobil.'
-  - key: quest.optional.breakfast.description
-    english: You may stop for breakfast before starting work. Order nasi uduk at
-      the canteen and choose whether to pay now or owe the seller.
-    indonesian: Kamu dapat sarapan sebelum mulai bekerja. Pesan nasi uduk di kantin
-      lalu pilih membayar sekarang atau berutang kepada penjual.
-  - key: quest.optional.breakfast.location
-    english: 'ANRI, floor 1: canteen counter.'
-    indonesian: 'ANRI, lantai 1: meja penjual di kantin.'
-  - key: quest.side.wrong_route.description
-    english: A coworker has found a file in the wrong active shelf. Deliver it to
-      the digitization staff and explain where it was found so they can continue
-      scanning.
-    indonesian: Seorang pegawai menemukan berkas yang salah masuk rak aktif. Antar
-      berkas ke petugas digitalisasi dan jelaskan tempat ditemukannya agar pemindaian
-      dapat dilanjutkan.
-  - key: quest.side.wrong_route.location
-    english: 'ANRI, floor 2: collect the file near the workroom corridor, then deliver
-      it to the Document Processing room used by the digitization team scanning desk.'
-    indonesian: 'ANRI, lantai 2: terima berkas di dekat koridor ruang kerja, lalu
-      antar ke meja pemindaian di ruang Pengolahan Berkas (Tim Digitalisasi).'
-  - key: quest.optional.desk_preparation.description
-    english: Return to your desk before departure and tidy the documents and personal
-      belongings. If you choose to write today's agenda, the dated entry becomes
-      a document you can keep.
-    indonesian: Kembali ke meja kerja sebelum berangkat lalu rapikan dokumen dan
-      barang pribadi. Jika kamu memilih menulis agenda hari ini, catatan bertanggal
-      itu menjadi dokumen yang dapat disimpan.
-  - key: quest.optional.desk_preparation.location
-    english: 'ANRI, floor 2: your desk in MC and Sinta''s Workroom.'
-    indonesian: 'ANRI, lantai 2: meja MC di Ruang Kerja MC dan Sinta.'
-  - key: quest.optional.supplies.description
-    english: Prepare supplies after receiving the field assignment. Visit nearby
-      shops and choose what you need; no fixed shopping list is required. Purchases
-      produce receipts for your expenses.
-    indonesian: Siapkan perbekalan setelah menerima tugas lapangan. Kunjungi toko
-      sekitar lalu pilih barang yang dibutuhkan; tidak ada daftar belanja wajib.
-      Setiap pembelian menghasilkan struk pengeluaran.
-  - key: quest.optional.supplies.location
-    english: 'Shops around ANRI: convenience and general stores, electronics shop,
-      hardware shop, pharmacy, bookshop and canteen.'
-    indonesian: 'Toko di sekitar ANRI: minimarket dan toserba, toko elektronik, material,
-      apotek, toko buku, dan kantin.'
-  - key: quest.optional.shared_meal.description
-    english: Visit the canteen before collecting the office car key. Sit with A (Raka)
-      and B (Sinta), then finish the shared meal conversation to complete this optional
-      quest.
-    indonesian: Datangi kantin sebelum mengambil kunci mobil dinas. Duduk bersama
-      A (Raka) dan B (Sinta), lalu tuntaskan percakapan makan bersama untuk menyelesaikan
-      quest opsional ini.
-  - key: quest.optional.shared_meal.location
-    english: 'ANRI, floor 1: the table where Raka and Sinta are eating in the canteen.'
-    indonesian: 'ANRI, lantai 1: meja tempat Raka dan Sinta makan di kantin.'
-  - key: quest.journal.location_label
-    english: Location
-    indonesian: Lokasi
-  - key: quest.journal.objectives_label
-    english: Objectives
-    indonesian: Tujuan
-  - key: inventory.quest_item_locked
-    english: This item is still required by an active quest and cannot be discarded.
-    indonesian: Barang ini masih diperlukan untuk misi dan belum bisa dibuang.
-  - key: document.wanaseta_original.translation
-    english: "TRAVEL ACCOUNT \u2014 RADEN KIAN SANTANG\n\nI stopped in the village
-      of Cikapohon at the foot of Mount Cikuray while searching for my father, Prabu
-      Siliwangi, who had gone ahead to Sancang.\n\nThe village was beautiful and
-      peaceful. I decided to stay for three days before continuing my journey.\n\nThe
-      first day. I spent time among the villagers and helped with their work. Each
-      night, the village fell silent. That night I woke on a large rock, far from
-      where I had rested. I did not know how I had got there. I was overcome by sleepiness
-      and fell asleep again.\n\nMorning came. The village was beautiful and peaceful
-      again, as though the night had been only a dream. Yet the dream felt too real
-      to forget.\n\nThe second day. I had to leave soon. I still had to find my father.
-      But my supplies were dwindling too quickly, as though someone took my food
-      whenever I was not looking. To keep track, I recorded every meal and activity
-      on white cloth with bamboo charcoal.\n\nTonight I read those notes again. My
-      writing covered the cloth. It showed that I had been in this village for eight
-      days.\n\nThat was impossible. I had only begun writing that morning.\n\nWhatever
-      was happening, I had to leave tomorrow.\n\nThe next night I woke among the
-      bushes. I could not remember how I had got there. Something was wrong. I ran
-      without knowing the way, wanting only to get away from the village.\n\nAs I
-      remembered it, I had been here only three days. My notes showed the ninth day.
-      My supplies were almost gone. The village seemed to prevent me from leaving.\n\nI
-      finally escaped. I was exhausted and nearly out of supplies, but still alive.
-      I continued my journey to Sancang.\n\nDo not trust what you see. Do not trust
-      what you remember. The demons within this village are very powerful. What appears
-      real may not be real. Get out p\u2014\n\n[The inscription is broken. The rest
-      of the writing has not been found.]"
-    indonesian: "CATATAN PERJALANAN \u2014 RADEN KIAN SANTANG\n\nAku singgah di desa
-      Cikapohon di kaki Gunung Cikuray dalam perjalanan mencari ayahku, Prabu Siliwangi,
-      yang telah lebih dahulu menuju Sancang.\n\nDesa ini indah dan damai. Karena
-      itu, kuputuskan tinggal selama tiga hari sebelum melanjutkan perjalanan.\n\nHari
-      pertama. Aku berbaur dengan warga dan membantu pekerjaan mereka. Setiap malam,
-      desa menjadi sunyi. Malam itu aku terbangun di atas sebuah batu besar, jauh
-      dari tempatku beristirahat. Aku tidak tahu bagaimana sampai di sana. Rasa kantuk
-      begitu berat; aku kembali tidur.\n\nPagi datang. Desa kembali indah dan tenang,
-      seolah malam tadi hanya mimpi. Namun mimpi itu terasa terlalu nyata untuk kulupakan.\n\nHari
-      kedua. Aku harus segera berangkat. Ayahku masih harus kutemukan. Tetapi bekalku
-      berkurang terlalu cepat, seakan ada yang mengambil makanan saat aku tidak melihat.
-      Agar tidak salah mengingat, kutandai setiap kali makan dan setiap kegiatanku
-      dengan arang bambu pada kain putih.\n\nMalam ini kubaca kembali catatan itu.
-      Tulisan tanganku memenuhi kain. Catatan tersebut menunjukkan bahwa aku telah
-      berada di desa ini selama delapan hari.\n\nIni tidak mungkin. Aku baru mulai
-      mencatat pagi tadi.\n\nApa pun yang terjadi, besok aku harus pergi.\n\nMalam
-      berikutnya aku terbangun di antara semak-semak. Aku tidak ingat bagaimana sampai
-      ke sana. Ada sesuatu yang janggal. Aku berlari tanpa arah, hanya ingin menjauh
-      dari desa.\n\nMenurut ingatanku, aku baru berada di sini tiga hari. Catatanku
-      menunjukkan hari kesembilan. Bekalku hampir habis. Desa ini seolah mencegahku
-      keluar.\n\nAku akhirnya berhasil keluar. Tubuhku lelah, bekalku hampir habis,
-      tetapi aku masih hidup. Perjalanan ke Sancang kulanjutkan.\n\nJangan percaya
-      pada apa yang kaulihat. Jangan percaya pada apa yang kauingat. Iblis-iblis
-      di dalam desa ini sangat kuat. Yang tampak nyata belum tentu nyata. Keluarlah
-      p\u2014\n\n[Prasasti terbelah. Kelanjutan tulisan tidak ditemukan.]"
-  - key: inventory.document.translate
-    english: Translate
-    indonesian: Terjemahkan
-  - key: inventory.document.original
-    english: Original text
-    indonesian: Teks asli
+  - key: "document.spbu_trip_photo.description"
+    english: "A photo of Ucup, Dadan, and Rafi in the parking area with the fuel station sign behind them."
+    indonesian: "Foto Ucup, Dadan, dan Rafi di area parkir, dengan papan SPBU di belakang mereka."
+  - key: "story.quest.spbu_return"
+    english: "Return to the car with Dadan and Rafi"
+    indonesian: "Kembali ke mobil bersama Dadan dan Rafi"
+  - key: "story.quest.spbu_departure"
+    english: "Leave for Giriawas with Dadan and Rafi"
+    indonesian: "Menuju Giriawas bersama Dadan dan Rafi"
+  - key: "quest.main.morning.description"
+    english: "Your workday starts at ANRI. Enter the building and go to your desk before starting work."
+    indonesian: "Hari kerja di ANRI dimulai. Masuk ke gedung lalu menuju meja kerja untuk memulai rutinitas pagi."
+  - key: "quest.main.morning.location"
+    english: "ANRI: entrance and reception on floor 1; Ucup and Rafi's Workroom on floor 2."
+    indonesian: "ANRI: pintu masuk dan resepsionis di lantai 1; Ruang Kerja Ucup dan Rafi di lantai 2."
+  - key: "quest.main.rooftop.description"
+    english: "Two coworkers have brought lunch and invited you to eat on the rooftop. Meet them and finish the lunch conversation."
+    indonesian: "Dua rekan kerja membawa makan siang dan mengajakmu makan di rooftop. Temui mereka lalu tuntaskan percakapan saat istirahat."
+  - key: "quest.main.rooftop.location"
+    english: "ANRI rooftop, above floor 4, near the lunch table."
+    indonesian: "Rooftop ANRI, di atas lantai 4, dekat meja makan saat istirahat."
+  - key: "quest.main.call.description"
+    english: "Your phone rings as you leave the rooftop. Answer the boss's call to hear his request."
+    indonesian: "Ponsel berdering saat kamu meninggalkan rooftop. Jawab panggilan bos untuk mendengar permintaannya."
+  - key: "quest.main.call.location"
+    english: "ANRI rooftop, near the exit."
+    indonesian: "Rooftop ANRI, dekat pintu keluar."
+  - key: "quest.main.boss_first.description"
+    english: "The boss has asked you to discuss a field verification file. Go to his office and speak with him."
+    indonesian: "Bos memanggilmu untuk membahas berkas verifikasi lapangan. Datangi ruangannya lalu bicara dengannya."
+  - key: "quest.main.boss_first.location"
+    english: "ANRI, floor 3: Director's Office. Wait at the double door until you are invited in."
+    indonesian: "ANRI, lantai 3: Ruang Kepala (ruangan bos). Tunggu di pintu ganda sampai dipersilakan masuk."
+  - key: "quest.main.find.description"
+    english: "The boss needs both field colleagues for the briefing. Find Dadan and Rafi in either order. Send the first one straight to the boss, then find the other."
+    indonesian: "Bos membutuhkan kedua rekan tim lapangan untuk briefing. Cari Dadan dan Rafi dalam urutan pilihanmu. Minta rekan pertama langsung menemui bos, lalu cari rekan yang satunya."
+  - key: "quest.main.find.location"
+    english: "ANRI, floor 2: Dadan is in Dadan's Workroom; Rafi is in Ucup and Rafi's Workroom. The boss waits on floor 3."
+    indonesian: "ANRI, lantai 2: Dadan berada di Ruang Kerja Dadan; Rafi berada di Ruang Kerja Ucup dan Rafi. Bos menunggu di lantai 3."
+  - key: "quest.main.escort.description"
+    english: "The first colleague has gone ahead. Accompany the last colleague to the boss's office; the conversation follows who you found last."
+    indonesian: "Rekan pertama sudah berangkat lebih dulu. Dampingi rekan terakhir menuju ruangan bos; percakapan mengikuti siapa yang ditemukan terakhir."
+  - key: "quest.main.escort.location"
+    english: "From the workrooms on ANRI floor 2 to the Director's Office on floor 3."
+    indonesian: "Dari ruang kerja di lantai 2 ANRI menuju Ruang Kepala (ruangan bos) di lantai 3."
+  - key: "quest.main.boss_final.description"
+    english: "The team is together. Sit down and listen to the Cikapohon archive briefing. Receive the original archive, its translation and the official field assignment."
+    indonesian: "Tim sudah lengkap. Duduk lalu dengarkan briefing arsip Cikapohon. Terima arsip asli, terjemahannya, dan surat tugas verifikasi lapangan."
+  - key: "quest.main.boss_final.location"
+    english: "ANRI, floor 3: Director's Office, at the briefing seats."
+    indonesian: "ANRI, lantai 3: Ruang Kepala (ruangan bos), di tempat duduk briefing."
+  - key: "quest.main.key.description"
+    english: "The field assignment is ready. Collect the office car key from reception. You may finish desk preparations, buy supplies or eat with Dadan and Rafi before collecting it."
+    indonesian: "Tugas lapangan sudah diberikan. Ambil kunci mobil dinas di resepsionis. Sebelum mengambilnya, kamu dapat merapikan meja, membeli perbekalan, atau makan bersama Dadan dan Rafi."
+  - key: "quest.main.key.location"
+    english: "ANRI, floor 1: reception counter near the main entrance."
+    indonesian: "ANRI, lantai 1: meja resepsionis dekat pintu masuk utama."
+  - key: "quest.main.vehicle.description"
+    english: "You have the car key. Bring the assignment documents to the office car and meet Dadan and Rafi before leaving. The seating follows your earlier choice to eat together."
+    indonesian: "Kunci mobil sudah diterima. Bawa berkas tugas ke mobil dinas lalu temui Dadan dan Rafi sebelum berangkat. Posisi duduk mengikuti pilihan makan bersama sebelumnya."
+  - key: "quest.main.vehicle.location"
+    english: "ANRI parking area: the office car outside the main building."
+    indonesian: "Area parkir ANRI: mobil dinas di luar gedung utama."
+  - key: "story.quest.travel_spbu.description"
+    english: "Leave ANRI with Dadan and Rafi and continue to the fuel station. The team will refuel and prepare reserve fuel before continuing the field trip."
+    indonesian: "Tinggalkan ANRI bersama Dadan dan Rafi lalu lanjutkan perjalanan menuju SPBU. Tim akan mengisi bahan bakar dan menyiapkan cadangan sebelum meneruskan tugas lapangan."
+  - key: "story.quest.travel_spbu.location"
+    english: "Road from ANRI to the fuel station; stop at the fuel station entrance."
+    indonesian: "Jalan dari ANRI menuju SPBU; berhenti di area masuk SPBU."
+  - key: "story.quest.spbu_return.description"
+    english: "Dadan and Rafi have finished the vehicle preparations and called you back. Finish any activity you chose, then return to the parked office car. Extra shopping and the park conversation remain optional."
+    indonesian: "Dadan dan Rafi sudah menuntaskan kebutuhan kendaraan dan memanggilmu kembali. Selesaikan kegiatan pilihanmu lalu kembali ke mobil dinas yang terparkir. Belanja tambahan dan percakapan di taman tetap opsional."
+  - key: "story.quest.spbu_return.location"
+    english: "Fuel station parking area: the office car beside the shop and park access."
+    indonesian: "Area parkir SPBU: mobil dinas di dekat toko dan akses taman."
+  - key: "story.quest.spbu_departure.description"
+    english: "Rejoin Dadan and Rafi at the office car. Use the interaction on its right side to continue, finish the team conversation and agree on the next destination using only the information you obtained."
+    indonesian: "Bergabung kembali dengan Dadan dan Rafi di mobil dinas. Gunakan interaksi di sisi kanan mobil untuk melanjutkan, tuntaskan percakapan tim, lalu sepakati tujuan berikutnya berdasarkan informasi yang sudah kamu peroleh."
+  - key: "story.quest.spbu_departure.location"
+    english: "Fuel station parking area: the right side of the office car, then inside the car."
+    indonesian: "Area parkir SPBU: sisi kanan mobil dinas, kemudian di dalam mobil."
+  - key: "quest.optional.breakfast.description"
+    english: "You may stop for breakfast before starting work. Order nasi uduk at the canteen and choose whether to pay now or owe the seller."
+    indonesian: "Kamu dapat sarapan sebelum mulai bekerja. Pesan nasi uduk di kantin lalu pilih membayar sekarang atau berutang kepada penjual."
+  - key: "quest.optional.breakfast.location"
+    english: "ANRI, floor 1: canteen counter."
+    indonesian: "ANRI, lantai 1: meja penjual di kantin."
+  - key: "quest.side.wrong_route.description"
+    english: "A coworker has found a file in the wrong active shelf. Deliver it to the digitization staff and explain where it was found so they can continue scanning."
+    indonesian: "Seorang pegawai menemukan berkas yang salah masuk rak aktif. Antar berkas ke petugas digitalisasi dan jelaskan tempat ditemukannya agar pemindaian dapat dilanjutkan."
+  - key: "quest.side.wrong_route.location"
+    english: "ANRI, floor 2: collect the file near the workroom corridor, then deliver it to the Document Processing room used by the digitization team scanning desk."
+    indonesian: "ANRI, lantai 2: terima berkas di dekat koridor ruang kerja, lalu antar ke meja pemindaian di ruang Pengolahan Berkas (Tim Digitalisasi)."
+  - key: "quest.optional.desk_preparation.description"
+    english: "Return to your desk before departure and tidy the documents and personal belongings. If you choose to write today's agenda, the dated entry becomes a document you can keep."
+    indonesian: "Kembali ke meja kerja sebelum berangkat lalu rapikan dokumen dan barang pribadi. Jika kamu memilih menulis agenda hari ini, catatan bertanggal itu menjadi dokumen yang dapat disimpan."
+  - key: "quest.optional.desk_preparation.location"
+    english: "ANRI, floor 2: your desk in Ucup and Rafi's Workroom."
+    indonesian: "ANRI, lantai 2: meja Ucup di Ruang Kerja Ucup dan Rafi."
+  - key: "quest.optional.supplies.description"
+    english: "Prepare supplies after receiving the field assignment. Visit nearby shops and choose what you need; no fixed shopping list is required. Purchases produce receipts for your expenses."
+    indonesian: "Siapkan perbekalan setelah menerima tugas lapangan. Kunjungi toko sekitar lalu pilih barang yang dibutuhkan; tidak ada daftar belanja wajib. Setiap pembelian menghasilkan struk pengeluaran."
+  - key: "quest.optional.supplies.location"
+    english: "Shops around ANRI: convenience and general stores, electronics shop, hardware shop, pharmacy, bookshop and canteen."
+    indonesian: "Toko di sekitar ANRI: minimarket dan toserba, toko elektronik, material, apotek, toko buku, dan kantin."
+  - key: "quest.optional.shared_meal.description"
+    english: "Visit the canteen before collecting the office car key. Sit with Dadan and Rafi, then finish the shared meal conversation to complete this optional quest."
+    indonesian: "Datangi kantin sebelum mengambil kunci mobil dinas. Duduk bersama Dadan dan Rafi, lalu tuntaskan percakapan makan bersama untuk menyelesaikan quest opsional ini."
+  - key: "quest.optional.shared_meal.location"
+    english: "ANRI, floor 1: the table where Dadan and Rafi are eating in the canteen."
+    indonesian: "ANRI, lantai 1: meja tempat Dadan dan Rafi makan di kantin."
+  - key: "quest.journal.location_label"
+    english: "Location"
+    indonesian: "Lokasi"
+  - key: "quest.journal.objectives_label"
+    english: "Objectives"
+    indonesian: "Tujuan"
+  - key: "inventory.quest_item_locked"
+    english: "This item is still required by an active quest and cannot be discarded."
+    indonesian: "Barang ini masih diperlukan untuk misi dan belum bisa dibuang."
+  - key: "document.wanaseta_original.translation"
+    english: "TRAVEL ACCOUNT \u2014 RADEN KIAN SANTANG\n\nI stopped in the village of Cikapohon at the foot of Mount Cikuray while searching for my father, Prabu Siliwangi, who had gone ahead to Sancang.\n\nThe village was beautiful and peaceful. I decided to stay for three days before continuing my journey.\n\nThe first day. I spent time among the villagers and helped with their work. Each night, the village fell silent. That night I woke on a large rock, far from where I had rested. I did not know how I had got there. I was overcome by sleepiness and fell asleep again.\n\nMorning came. The village was beautiful and peaceful again, as though the night had been only a dream. Yet the dream felt too real to forget.\n\nThe second day. I had to leave soon. I still had to find my father. But my supplies were dwindling too quickly, as though someone took my food whenever I was not looking. To keep track, I recorded every meal and activity on white cloth with bamboo charcoal.\n\nTonight I read those notes again. My writing covered the cloth. It showed that I had been in this village for eight days.\n\nThat was impossible. I had only begun writing that morning.\n\nWhatever was happening, I had to leave tomorrow.\n\nThe next night I woke among the bushes. I could not remember how I had got there. Something was wrong. I ran without knowing the way, wanting only to get away from the village.\n\nAs I remembered it, I had been here only three days. My notes showed the ninth day. My supplies were almost gone. The village seemed to prevent me from leaving.\n\nI finally escaped. I was exhausted and nearly out of supplies, but still alive. I continued my journey to Sancang.\n\nDo not trust what you see. Do not trust what you remember. The demons within this village are very powerful. What appears real may not be real. Get out p\u2014\n\n[The inscription is broken. The rest of the writing has not been found.]"
+    indonesian: "CATATAN PERJALANAN \u2014 RADEN KIAN SANTANG\n\nAku singgah di desa Cikapohon di kaki Gunung Cikuray dalam perjalanan mencari ayahku, Prabu Siliwangi, yang telah lebih dahulu menuju Sancang.\n\nDesa ini indah dan damai. Karena itu, kuputuskan tinggal selama tiga hari sebelum melanjutkan perjalanan.\n\nHari pertama. Aku berbaur dengan warga dan membantu pekerjaan mereka. Setiap malam, desa menjadi sunyi. Malam itu aku terbangun di atas sebuah batu besar, jauh dari tempatku beristirahat. Aku tidak tahu bagaimana sampai di sana. Rasa kantuk begitu berat; aku kembali tidur.\n\nPagi datang. Desa kembali indah dan tenang, seolah malam tadi hanya mimpi. Namun mimpi itu terasa terlalu nyata untuk kulupakan.\n\nHari kedua. Aku harus segera berangkat. Ayahku masih harus kutemukan. Tetapi bekalku berkurang terlalu cepat, seakan ada yang mengambil makanan saat aku tidak melihat. Agar tidak salah mengingat, kutandai setiap kali makan dan setiap kegiatanku dengan arang bambu pada kain putih.\n\nMalam ini kubaca kembali catatan itu. Tulisan tanganku memenuhi kain. Catatan tersebut menunjukkan bahwa aku telah berada di desa ini selama delapan hari.\n\nIni tidak mungkin. Aku baru mulai mencatat pagi tadi.\n\nApa pun yang terjadi, besok aku harus pergi.\n\nMalam berikutnya aku terbangun di antara semak-semak. Aku tidak ingat bagaimana sampai ke sana. Ada sesuatu yang janggal. Aku berlari tanpa arah, hanya ingin menjauh dari desa.\n\nMenurut ingatanku, aku baru berada di sini tiga hari. Catatanku menunjukkan hari kesembilan. Bekalku hampir habis. Desa ini seolah mencegahku keluar.\n\nAku akhirnya berhasil keluar. Tubuhku lelah, bekalku hampir habis, tetapi aku masih hidup. Perjalanan ke Sancang kulanjutkan.\n\nJangan percaya pada apa yang kaulihat. Jangan percaya pada apa yang kauingat. Iblis-iblis di dalam desa ini sangat kuat. Yang tampak nyata belum tentu nyata. Keluarlah p\u2014\n\n[Prasasti terbelah. Kelanjutan tulisan tidak ditemukan.]"
+  - key: "inventory.document.translate"
+    english: "Translate"
+    indonesian: "Terjemahkan"
+  - key: "inventory.document.original"
+    english: "Original text"
+    indonesian: "Teks asli"
+  - key: "doc.body.field_assignment"
+    english: "Field Verification Assignment\n24 August 2026\n\nThat is what I need. Locate the area, check whether Cikapohon was ever used as a name there, and find its current administrative name. Bring back any photos, notes, or testimonies that connect the place to the archive."
+    indonesian: "Surat Tugas Verifikasi Lapangan\n24 Agustus 2026\n\nItu yang saya perlukan. Cari wilayahnya, periksa apakah Cikapohon pernah digunakan sebagai nama di sana, dan cari nama administratif sekarang. Foto, catatan, atau keterangan yang menghubungkan tempat itu dengan arsip, semuanya dibawa pulang."
+  - key: "doc.body.agenda"
+    english: "24 August 2026\n\nToday Dadan, Rafi, and I received a field verification assignment concerning the archive of a village named Cikapohon.\n\nModern records do not show the existence of the village, so we have been asked to locate it and verify its administrative history firsthand.\n\nWe are bringing the original archive along with its translation.\n\nOur plan is to depart today in the office car and return before the weekend.\n\nHopefully it wraps up quickly.\n\nWe still have Bali."
+    indonesian: "24 Agustus 2026\n\nHari ini aku, Dadan, dan Rafi mendapat tugas verifikasi lapangan mengenai arsip sebuah desa bernama Cikapohon.\n\nData modern tidak menunjukkan keberadaan desa tersebut, jadi kami diminta mencari lokasi dan memastikan riwayat administrasinya secara langsung.\n\nKami membawa arsip asli beserta terjemahannya.\n\nRencananya kami berangkat hari ini menggunakan mobil dinas dan kembali sebelum akhir pekan.\n\nSemoga cepat selesai.\n\nKami masih punya Bali."
+  - key: "doc.body.spbu_receipt"
+    english: "Fuel Station Receipt \u2014 Vehicle Fuel and Supplies\n24 August 2026\n\nOffice vehicle tank: filled to capacity\nDedicated fuel jerrycans: 2 units, filled\nPayment handled by Dadan from official funds."
+    indonesian: "Struk SPBU \u2014 Pengisian dan Perbekalan Kendaraan\n24 Agustus 2026\n\nTangki mobil dinas: terisi penuh\nJerigen khusus BBM: 2 buah, terisi\nPembayaran ditangani Dadan dari dana dinas."
+  - key: "doc.body.spbu_photo"
+    english: "Travel Photo \u2014 Fuel Station Stop\n\nUcup, Dadan, and Rafi stand together in the parking area. All three are looking at the camera, with the fuel station sign visible behind them."
+    indonesian: "Foto Perjalanan \u2014 Persinggahan SPBU\n\nUcup, Dadan, dan Rafi berdiri bersama di area parkir. Ketiganya sedang melihat kamera; papan SPBU terlihat di belakang mereka."
+  - key: "doc.body.travel_receipt"
+    english: "Shop name\nDate\nTime\nItems\nPayment amount"
+    indonesian: "Nama toko\nTanggal\nWaktu\nBarang\nJumlah pembayaran"
+  - key: "dialogue.line.000"
+    english: "Ucup opens a new page."
+    indonesian: "Ucup membuka halaman baru."
+  - key: "dialogue.line.001"
+    english: "Hello, sir. I just finished eating, I'm still on the rooftop."
+    indonesian: "Halo, Pak. Saya baru selesai makan, masih di rooftop."
+  - key: "dialogue.line.002"
+    english: "Then come straight to my office on the third floor, Ucup. There is a field verification file we need to discuss."
+    indonesian: "Kalau begitu langsung ke ruangan saya di lantai tiga, Ucup. Ada berkas untuk verifikasi lapangan yang perlu kita bahas."
+  - key: "dialogue.line.003"
+    english: "Understood, sir. I'm heading down now."
+    indonesian: "Baik, Pak. Saya turun sekarang."
+  - key: "dialogue.line.004"
+    english: "I'll be waiting. Bring a notebook if needed."
+    indonesian: "Saya tunggu. Bawa catatan kalau perlu."
+  - key: "dialogue.line.005"
+    english: "Good, everyone is here. Earlier this morning, the Digitization Team brought a finding from old storage. The other files in its batch could be matched as usual, but this one needs further investigation."
+    indonesian: "Baik, sudah lengkap. Tadi pagi Tim Digitalisasi membawa satu temuan dari penyimpanan lama. Berkas lain di kelompoknya bisa kita cocokkan seperti biasa. Yang ini perlu diperiksa lebih jauh."
+  - key: "dialogue.line.006"
+    english: "A provisional transliteration and translation have been prepared by the verification team with the help of a regional language specialist. I've ordered the pages in this folder, and the illegible sections are marked."
+    indonesian: "Transliterasi dan terjemahan sementaranya sudah disiapkan tim verifikasi dengan bantuan ahli bahasa daerah. Halamannya saya urutkan di map ini. Bagian yang tidak terbaca juga diberi tanda."
+  - key: "dialogue.line.007"
+    english: "From the small image earlier, I thought the crack was part of the script. Only after zooming in could I see the missing section."
+    indonesian: "Dari gambar sekecil tadi saya kira retaknya garis tulisan. Setelah diperbesar baru kelihatan bagian yang hilang."
+  - key: "dialogue.line.008"
+    english: "We'll read the translation first. We'll still bring the scan to cross-check it, including this broken section."
+    indonesian: "Nanti baca dari terjemahannya dulu. Hasil pindai tetap kita bawa untuk dicocokkan, termasuk bagian yang putus ini."
+  - key: "dialogue.line.009"
+    english: "Cikapohon. 'Tree water,' according to the translator's note. Old names like this are sometimes still used by locals even when official documents use something else."
+    indonesian: "Cikapohon. Air pohon, menurut catatan penerjemahnya. Nama lama begini kadang masih dipakai orang setempat, walaupun di dokumen sudah beda."
+  - key: "dialogue.line.010"
+    english: "That's what we tried to trace as well. The name doesn't appear in modern administrative records, and we haven't found any matching records of name changes, mergers, or dissolved settlements."
+    indonesian: "Itu juga yang kami coba telusuri. Di data administratif modern, nama ini tidak muncul. Catatan perubahan nama, penggabungan, dan penghapusan wilayah yang cocok juga belum ketemu."
+  - key: "dialogue.line.011"
+    english: "So we can't rule out a name change yet. We just don't have a document connecting them."
+    indonesian: "Jadi kemungkinan ganti nama belum bisa kita tutup. Hanya belum ada dokumen yang menghubungkannya."
+  - key: "dialogue.line.012"
+    english: "Exactly. Don't write that the village doesn't exist just because the name doesn't show up in a search. We need to know which place that name refers to."
+    indonesian: "Betul. Jangan tulis desanya tidak ada hanya karena namanya tidak muncul di pencarian. Kita perlu tahu nama itu merujuk ke tempat mana."
+  - key: "dialogue.line.013"
+    english: "The clues in the translation mention the foot of Mount Cikuray and a journey toward Sancang. That gives us a starting point, but it isn't enough to pinpoint the village. Old territorial boundaries can't be equated directly with modern ones either."
+    indonesian: "Petunjuk di terjemahan menyebut kaki Cikuray dan perjalanan menuju Sancang. Itu bisa jadi awal penelusuran, tetapi belum cukup untuk menentukan letak desanya. Batas wilayah lama juga tidak bisa langsung disamakan dengan yang sekarang."
+  - key: "dialogue.line.014"
+    english: "We'll start from the geographic clues. In the field, if locals still recognize the old name, we'll match it with the file. If it refers to a settlement that changed its name, we'll document that change."
+    indonesian: "Kita mulai dari petunjuk tempatnya. Di lapangan, kalau warga masih kenal nama lama itu, kita cocokkan dengan keterangan di berkas. Kalau ternyata merujuk ke permukiman yang sudah berganti nama, perubahan itu yang kita dokumentasikan."
+  - key: "dialogue.line.015"
+    english: "I'll prepare the camera and notes. For place names, I'll ask people to repeat them before writing them down. I'm afraid of coming back with three different spellings."
+    indonesian: "Saya siapkan kamera dan catatan. Untuk nama tempat, nanti saya minta orangnya sebut ulang sebelum ditulis. Saya takut pulang-pulang ejaannya ada tiga versi."
+  - key: "dialogue.line.016"
+    english: "If they really do pronounce or spell it differently, write down every version. What matters is being clear on who said what. Don't tidy it up prematurely just to make it look consistent."
+    indonesian: "Kalau memang mereka menyebutnya berbeda, tulis semuanya. Yang penting jelas siapa bilang apa. Jangan dirapikan dulu supaya kelihatan cocok."
+  - key: "dialogue.line.017"
+    english: "I'll hold onto the copy and translation. Later we'll compare the accounts we gather against the contents of the inscription, not just the name."
+    indonesian: "Saya pegang salinan dan terjemahannya. Nanti keterangan yang sudah kita dapat dibandingkan dengan isi prasasti, bukan cuma namanya."
+  - key: "dialogue.line.018"
+    english: "That is what I need. Locate the area, check whether Cikapohon was ever used as a name there, and find its current administrative name. Bring back any photos, notes, or testimonies that connect the place to the archive."
+    indonesian: "Itu yang saya perlukan. Cari wilayahnya, periksa apakah Cikapohon pernah digunakan sebagai nama di sana, dan cari nama administratif sekarang. Foto, catatan, atau keterangan yang menghubungkan tempat itu dengan arsip, semuanya dibawa pulang."
+  - key: "dialogue.line.019"
+    english: "Mr. Dadan, you're experienced with field verification. Please lead the search. Ucup will handle comparing the archive, and Rafi will assist with documentation. Divide the work so you don't all record the same thing and miss something else."
+    indonesian: "Pak Dadan, Bapak sudah biasa verifikasi lapangan. Tolong arahkan penelusurannya. Ucup urus pembandingan arsip, Rafi bantu dokumentasi. Bagi pekerjaannya supaya kalian tidak mencatat hal yang sama dan malah melewatkan yang lain."
+  - key: "dialogue.line.020"
+    english: "Understood, sir. As for the schedule, I need to know roughly how many days we have so we can prepare properly."
+    indonesian: "Baik, Pak. Untuk waktunya, saya perlu tahu kira-kira berapa hari. Biar persiapan kami cukup."
+  - key: "dialogue.line.021"
+    english: "Roughly two or three days, assuming there are no issues. Keep reporting your findings from the field."
+    indonesian: "Perkiraan dua atau tiga hari, kalau tidak ada masalah. Nanti hasil di lapangan tetap dilaporkan."
+  - key: "dialogue.line.022"
+    english: "You're counting the days until Friday, aren't you?"
+    indonesian: "Kamu sedang menghitung hari sampai Jumat, ya."
+  - key: "dialogue.line.023"
+    english: "Counting how many clothes to pack, too. If the assignment takes two or three days, we can still make it back before Bali."
+    indonesian: "Sekalian menghitung kebutuhan baju. Kalau tugasnya dua atau tiga hari, masih bisa kembali sebelum Bali."
+  - key: "dialogue.line.024"
+    english: "Your notes are only one line long so far. Don't start writing a list of beaches underneath it."
+    indonesian: "Catatanmu baru satu baris. Di bawahnya jangan langsung tulis daftar pantai."
+  - key: "dialogue.line.025"
+    english: "I also want you all back before the weekend. Prepare properly before leaving here so you don't waste time there looking for things you forgot."
+    indonesian: "Saya juga mau kalian sudah kembali sebelum akhir pekan. Siapkan dengan benar dari sini, supaya di sana tidak habis waktu mencari barang yang tertinggal."
+  - key: "dialogue.line.026"
+    english: "Well, that gives us a strong reason to work quickly\u2014as long as our files are complete when we return."
+    indonesian: "Nah, berarti kami masih punya alasan kuat untuk kerja cepat. Asal berkasnya tetap lengkap waktu pulang."
+  - key: "dialogue.line.027"
+    english: "The office car has been prepared. Pick up the key at reception. Gather any supplies you still need, and depart today."
+    indonesian: "Mobil dinas sudah disiapkan. Kuncinya ambil di resepsionis. Kalian siapkan kebutuhan yang masih kurang, lalu berangkat hari ini."
+  - key: "dialogue.line.028"
+    english: "Understood. I'll check the field equipment first. If we're leaving right away, it's better to spot what's missing now than after we've left town."
+    indonesian: "Baik. Saya cek perlengkapan lapangan dulu. Kalau mau langsung jalan, lebih baik sekarang kelihatan yang kurang daripada setelah keluar kota."
+  - key: "dialogue.line.029"
+    english: "I'll grab my camera first. And its charger. I can leave in my work clothes, but I can't have the camera dying in the parking lot."
+    indonesian: "Kamera saya ambil dulu. Chargernya juga. Saya bisa berangkat pakai baju kerja, tapi jangan sampai kameranya cuma hidup sampai parkiran."
+  - key: "dialogue.line.030"
+    english: "I'll hold onto the folder. Before we head out, we'll check our gear one more time at the car."
+    indonesian: "Mapnya saya pegang. Nanti sebelum keluar kita periksa barangnya sekali lagi di mobil."
+  - key: "dialogue.line.031"
+    english: "Yes. Take care of what you need, then head out. Don't leave the key or the files on your desk."
+    indonesian: "Ya. Urus yang perlu, baru berangkat. Kunci dan berkas jangan tertinggal di meja."
+  - key: "dialogue.line.032"
+    english: "You're the first to arrive. I also called Dadan and Rafi, but neither of them answered."
+    indonesian: "Kamu duluan yang datang. Saya juga sudah menghubungi Dadan dan Rafi, belum ada yang angkat."
+  - key: "dialogue.line.033"
+    english: "I was eating with coworkers on the rooftop earlier, sir. I haven't seen Mr. Dadan or Rafi yet. If this is for the field team, I'll go find them first."
+    indonesian: "Tadi saya makan sama rekan-rekan di rooftop, Pak. Pak Dadan dan Rafi belum ketemu. Kalau untuk tim lapangan, saya cari mereka dulu saja."
+  - key: "dialogue.line.034"
+    english: "Yes, find both of them. We'll discuss the file once everyone is here, so you all leave with the same information."
+    indonesian: "Iya, cari dua-duanya. Berkasnya kita bahas setelah lengkap, supaya nanti kalian berangkat dengan informasi yang sama."
+  - key: "dialogue.line.035"
+    english: "Tell whichever one you find first to come straight here, then go find the other. I'll prepare the file while I wait."
+    indonesian: "Yang ketemu duluan suruh langsung ke sini. Kamu lanjut cari satunya. Saya siapkan berkasnya sambil menunggu."
+  - key: "dialogue.line.036"
+    english: "Understood, sir. I'll bring the second one here with me."
+    indonesian: "Baik, Pak. Nanti saya bawa yang terakhir ke sini."
+  - key: "dialogue.line.037"
+    english: "Everyone is here. Please take a seat."
+    indonesian: "Semua sudah hadir, silakan duduk."
+  - key: "dialogue.line.038"
+    english: "Morning, Ucup. Grab a plate first. Staring at the food won't make it move onto your plate by itself."
+    indonesian: "Pagi, Ucup. Ambil piring dulu. Dari tadi dilihatin, makanannya nggak bakal pindah sendiri."
+  - key: "dialogue.line.039"
+    english: "I'm choosing, Ma'am. If I grab something right away, someone else's plate will look better."
+    indonesian: "Saya lagi milih, Bu. Kalau langsung ambil, nanti lihat punya orang malah lebih enak."
+  - key: "dialogue.line.040"
+    english: "That batch over there just finished cooking. Still warm. Eat a proper meal before you head upstairs."
+    indonesian: "Itu yang sebelah sana baru matang. Masih hangat. Kamu makan dulu yang benar sebelum naik."
+  - key: "dialogue.line.041"
+    english: "I haven't even opened my work yet, and my stomach is already asking for a break."
+    indonesian: "Pekerjaan belum saya buka, perut sudah minta istirahat duluan."
+  - key: "dialogue.line.042"
+    english: "Then feed it. Don't wait until break time for everything. Help yourself to the chili sambal\u2014I know if I scoop it for you, you'll say it's not enough."
+    indonesian: "Ya dikasih makan. Jangan semuanya nunggu jam istirahat. Sambalnya ambil sendiri, ya. Saya sudah tahu kalau saya yang kasih, nanti dibilang sedikit."
+  - key: "dialogue.line.043"
+    english: "Hey, I haven't said a word yet."
+    indonesian: "Saya belum bilang apa-apa, lho."
+  - key: "dialogue.line.044"
+    english: "All done? Leave the plate there, I'll clear it later. Pay at the cashier before you head upstairs."
+    indonesian: "Sudah? Piringnya biar di situ, nanti saya ambil. Bayarnya di kasir dulu sebelum kamu naik."
+  - key: "dialogue.line.045"
+    english: "Put it on my tab first, Ma'am. I'll pay when I come back down later."
+    indonesian: "Ngutang dulu ya, Bu. Nanti pas turun lagi saya bayar sekalian."
+  - key: "dialogue.line.046"
+    english: "Sure. Just don't make me come upstairs carrying this ledger."
+    indonesian: "Boleh. Tapi jangan sampai saya harus ikut naik bawa buku ini."
+  - key: "dialogue.line.047"
+    english: "If you came upstairs, the whole floor would know I haven't paid for breakfast."
+    indonesian: "Kalau Ibu sampai naik, satu lantai bisa tahu saya belum bayar sarapan."
+  - key: "dialogue.line.048"
+    english: "Then come down and pay it yourself. I still have plenty to prepare down here."
+    indonesian: "Makanya turun sendiri. Saya masih banyak yang harus disiapkan di sini."
+  - key: "dialogue.line.049"
+    english: "I've written it down. Go on, before your coworkers start looking for you."
+    indonesian: "Sudah saya tulis. Sana, nanti teman-temanmu nyari."
+  - key: "dialogue.line.050"
+    english: "Thank you, Ma'am. I'll stop by again later."
+    indonesian: "Terima kasih, Bu. Nanti saya mampir lagi."
+  - key: "dialogue.line.051"
+    english: "I'll pay right now, Ma'am. Once I sit down in front of the computer, it's hard to come back downstairs."
+    indonesian: "Sekalian saya bayar sekarang, Bu. Nanti sudah duduk di depan komputer, susah turun lagi."
+  - key: "dialogue.line.052"
+    english: "That's the way. Hold on, let me get your change. Don't walk off and only remember your change halfway there."
+    indonesian: "Nah, begitu. Tunggu, saya ambil kembaliannya. Jangan sudah jalan baru ingat uangnya belum diambil."
+  - key: "dialogue.line.053"
+    english: "Yes, Ma'am. I'm still right here."
+    indonesian: "Iya, Bu. Saya masih di sini."
+  - key: "dialogue.line.054"
+    english: "I know. Usually the moment you folks hear the elevator chime, you rush right off."
+    indonesian: "Saya tahu. Biasanya kalian kalau sudah dengar lift bunyi langsung buru-buru."
+  - key: "dialogue.line.055"
+    english: "COMPANY TRIP \u2014 BALI\n\nThis weekend.\n\nFull departure details have been shared in the internal group.\nDon't be late again.\nWho is bringing the speaker?\nSUNSCREEN!\nDo not bring work."
+    indonesian: "LIBURAN BERSAMA \u2014 BALI\n\nAkhir pekan ini.\n\nInformasi keberangkatan lengkap telah dibagikan melalui grup internal.\nJangan telat lagi.\nSiapa yang bawa speaker?\nSUNSCREEN!\nJangan bawa kerjaan."
+  - key: "dialogue.line.056"
+    english: "While tidying the desk, you find an agenda book."
+    indonesian: "Saat membersihkan meja, pemain menemukan buku agenda."
+  - key: "dialogue.line.057"
+    english: "This one's yours. We bought it on the way so you wouldn't say you still had work and end up eating at two o'clock again."
+    indonesian: "Ini punya kamu. Tadi sekalian beli, sebelum kamu bilang masih ada kerjaan dan akhirnya makan jam dua lagi."
+  - key: "dialogue.line.058"
+    english: "I was just about to head down. You two are fast."
+    indonesian: "Saya baru mau turun. Kalian cepat sekali."
+  - key: "dialogue.line.059"
+    english: "If you were really about to head down, your chair would be pushed back. Your chair is still pulled in and your hand is still on the mouse."
+    indonesian: "Kalau benar baru mau turun, biasanya kursinya sudah mundur. Ini kursi masih rapat, tangan masih di mouse."
+  - key: "dialogue.line.060"
+    english: "You've got all the evidence, huh."
+    indonesian: "Bukti-buktinya lengkap, ya."
+  - key: "dialogue.line.061"
+    english: "Come on, save your work first. The chicken is still warm. We're going to eat on the rooftop\u2014just come up with us."
+    indonesian: "Sudah, simpan dulu. Ayamnya masih hangat. Kami mau makan di rooftop, kamu tinggal ikut naik."
+  - key: "dialogue.line.062"
+    english: "It's hot up there. And the chili sambal is hot too. The full package."
+    indonesian: "Di atas panas. Sambalnya juga panas. Lengkap."
+  - key: "dialogue.line.063"
+    english: "That's why there's iced tea. While you eat, look at something far away for a change. You've been staring at tables since morning."
+    indonesian: "Makanya ada es teh. Sekali makan, lihat yang jauh sedikit. Dari pagi yang kamu lihat tabel terus."
+  - key: "dialogue.line.064"
+    english: "All right. But if the wind blows my chicken away, one of you has to replace it."
+    indonesian: "Baik. Tapi kalau angin bawa terbang ayam saya, salah satu dari kalian harus ganti."
+  - key: "dialogue.line.065"
+    english: "Hold onto your chicken. Just make sure you don't blow away yourself."
+    indonesian: "Ayamnya dipegang. Kamu saja yang jangan terbang."
+  - key: "dialogue.line.066"
+    english: "For the field verification team, right? The key was left with me here. Wait a moment, let me check the drawer."
+    indonesian: "Untuk tim verifikasi lapangan, ya. Kuncinya sudah dititipkan di sini. Tunggu sebentar, saya lihat lacinya."
+  - key: "dialogue.line.067"
+    english: "Yes. The three of us are leaving today. Mr. Dadan and Rafi are getting ready, and I came to pick up the key."
+    indonesian: "Iya. Kami bertiga berangkat hari ini. Pak Dadan dan Rafi sudah bersiap, saya sekalian mengambil kunci."
+  - key: "dialogue.line.068"
+    english: "The car is in the official vehicles area. Here is the key. Check your equipment together before leaving\u2014if anything is missing, you won't have gone far."
+    indonesian: "Mobilnya di area kendaraan dinas. Ini kuncinya. Periksa barang bersama dulu sebelum jalan, kalau masih ada yang kurang kalian belum jauh."
+  - key: "dialogue.line.069"
+    english: "Understood. We'll check everything one more time at the car. We already have the folder and archive box."
+    indonesian: "Baik. Nanti kami cek sekali lagi di mobil. Map dan kotak arsipnya sudah ada."
+  - key: "dialogue.line.070"
+    english: "Mr. Dadan, the boss is looking for you. He said he tried calling you too."
+    indonesian: "Pak Dadan, Pak Bos mencari Bapak. Katanya sudah menelepon juga."
+  - key: "dialogue.line.071"
+    english: "Oh, I left my phone in the canteen. No wonder it's been so quiet."
+    indonesian: "Oh, HP saya ketinggalan di kantin. Pantas dari tadi tenang sekali."
+  - key: "dialogue.line.072"
+    english: "That peace and quiet moved over to me, sir. Now I'm the one sent to look for you and Rafi."
+    indonesian: "Tenangnya pindah ke saya, Pak. Sekarang saya yang disuruh cari Bapak sama Rafi."
+  - key: "dialogue.line.073"
+    english: "All right, the search for me is over. I'll head straight to his office."
+    indonesian: "Baik, pencarian saya selesai. Saya langsung ke ruangannya."
+  - key: "dialogue.line.074"
+    english: "I'll go look for Rafi, sir. Once I find him, we'll follow."
+    indonesian: "Saya lanjut cari Rafi, Pak. Kalau sudah ketemu, kami menyusul."
+  - key: "dialogue.line.075"
+    english: "Have you ever thought about working somewhere outside of here one day?"
+    indonesian: "Kamu pernah kepikiran suatu hari kerja di luar sini?"
+  - key: "dialogue.line.076"
+    english: "We just got called in by the boss and you're already talking about quitting, sir? We don't even know what the issue is yet."
+    indonesian: "Barusan dipanggil bos, saya sudah diajak berhenti, Pak. Kita belum tahu masalahnya apa."
+  - key: "dialogue.line.077"
+    english: "I'm talking about the future. It's been on my mind for a long time, I just haven't told anyone."
+    indonesian: "Saya ngomong soal nanti. Sudah lama kepikiran, cuma belum pernah saya ceritakan."
+  - key: "dialogue.line.078"
+    english: "I know the rhythm here by heart. Commute, work, go home, payday. It's comfortable. Until sometimes I think: ten years from now, I'll still be in the exact same place, putting off the exact same plan."
+    indonesian: "Di sini saya sudah hafal ritmenya. Berangkat, kerja, pulang, gajian. Nyaman. Sampai kadang saya mikir, sepuluh tahun lagi saya masih di tempat yang sama, menunda rencana yang sama."
+  - key: "dialogue.line.079"
+    english: "Which means you already have a plan. Meanwhile, my ambition only goes as far as wanting the digitization desk clear of piles for a single day."
+    indonesian: "Berarti sudah ada rencananya. Saya masih sebatas ingin meja digitalisasi sehari saja bebas tumpukan."
+  - key: "dialogue.line.080"
+    english: "A small print shop, maybe. Photocopying, binding, photo printing. I could also offer document scanning and digitization services for schools or small businesses."
+    indonesian: "Percetakan kecil, mungkin. Fotokopi, jilid, cetak foto. Bisa sekalian scan dokumen dan jasa digitalisasi buat sekolah atau usaha kecil."
+  - key: "dialogue.line.081"
+    english: "Still dealing with documents. The difference is, when the machine jams, you won't be able to call another department."
+    indonesian: "Tetap ketemu dokumen. Bedanya, nanti kalau mesin macet Bapak nggak bisa telepon bagian lain."
+  - key: "dialogue.line.082"
+    english: "I could call you, Cup."
+    indonesian: "Bisa telepon kamu, Cup."
+  - key: "dialogue.line.083"
+    english: "I knew there was a catch."
+    indonesian: "Saya tahu ini ada maksudnya."
+  - key: "dialogue.line.084"
+    english: "I've started calculating rent, machines, paper, computers. The numbers always get bigger every time I recalculate. If I have enough capital, maybe next year."
+    indonesian: "Saya sudah mulai hitung sewa, mesin, kertas, komputer. Angkanya selalu lebih besar setelah dihitung ulang. Kalau modalnya cukup, mungkin tahun depan."
+  - key: "dialogue.line.085"
+    english: "Next year is close. Sounds like you're pretty serious about it, sir."
+    indonesian: "Tahun depan itu dekat. Kedengarannya Bapak sudah cukup serius."
+  - key: "dialogue.line.086"
+    english: "Serious, yes. But not a hundred percent yet. I still go back and forth over the numbers, looking for excuses to wait a little longer."
+    indonesian: "Serius. Tapi belum seratus persen. Saya masih bolak-balik menghitung, lalu cari alasan buat menunggu sedikit lagi."
+  - key: "dialogue.line.087"
+    english: "Have you told anyone else? Maybe someone could help look over the numbers."
+    indonesian: "Bapak sudah cerita ke yang lain juga? Barangkali ada yang bisa bantu lihat hitungannya."
+  - key: "dialogue.line.088"
+    english: "Not yet. Once everyone knows, every time we meet they'll ask when I'm opening. I'm not ready to answer that."
+    indonesian: "Belum. Kalau semua sudah tahu, setiap ketemu nanti ditanya kapan buka. Saya belum siap menjawab itu."
+  - key: "dialogue.line.089"
+    english: "It's just that when I keep it all to myself, the plan never feels quite real. That's why I brought it up."
+    indonesian: "Cuma kalau dipikir sendiri terus, rasanya rencana itu nggak pernah benar-benar ada. Makanya tadi saya cerita."
+  - key: "dialogue.line.090"
+    english: "Now there's a witness."
+    indonesian: "Sekarang sudah ada saksi."
+  - key: "dialogue.line.091"
+    english: "Yes. Now there's a witness."
+    indonesian: "Iya. Sekarang ada saksi."
+  - key: "dialogue.line.092"
+    english: "Then Bali can be practice for closing the shop for a holiday."
+    indonesian: "Bali jadi sekalian latihan tutup toko buat liburan, dong."
+  - key: "dialogue.line.093"
+    english: "The shop doesn't even exist yet and you're already telling me to close it."
+    indonesian: "Tokonya belum ada, kamu sudah ajak tutup."
+  - key: "dialogue.line.094"
+    english: "The rooftop crew already asked for a full group photo. The future business owner has to be in it too."
+    indonesian: "Anak-anak rooftop sudah minta foto lengkap. Calon pengusaha juga harus ikut."
+  - key: "dialogue.line.095"
+    english: "I'll join. Just don't turn it into a farewell speech. I'm only sharing a plan, I haven't handed in any resignation letter yet."
+    indonesian: "Ikut. Asal jangan pakai acara pidato perpisahan. Saya cuma cerita rencana, belum menyerahkan surat apa-apa."
+  - key: "dialogue.line.096"
+    english: "About that business idea\u2014keep it between us for now, alright? It's not time for office talk yet."
+    indonesian: "Soal usaha tadi, simpan dulu, ya. Belum waktunya dibawa ke obrolan kantor."
+  - key: "dialogue.line.097"
+    english: "Safe with me. I don't want people asking me when the shop opens either."
+    indonesian: "Aman. Saya juga belum mau dapat pertanyaan kapan tokonya buka."
+  - key: "dialogue.line.098"
+    english: "Now let's see what made the boss call all of us in."
+    indonesian: "Sekarang kita lihat urusan yang bikin bos mencari kita ini."
+  - key: "dialogue.line.099"
+    english: "Mr. Dadan, the boss called for us. Rafi has already gone to his office."
+    indonesian: "Pak Dadan, kita dipanggil Pak Bos. Rafi sudah ke ruangannya."
+  - key: "dialogue.line.100"
+    english: "I think I left my phone on the canteen table. All right, let's head up first. We wouldn't want Rafi to be sent out looking for us."
+    indonesian: "HP saya sepertinya tertinggal di meja kantin. Baik, kita jalan dulu. Jangan sampai Rafi disuruh mencari kita lagi."
+  - key: "dialogue.line.101"
+    english: "Here are the receipts for our supply expenses as well. May I leave them with you for the treasurer, so they don't get mixed up with the translation sheets in my folder?"
+    indonesian: "Ini juga ada pengeluaran untuk perbekalan. Boleh saya titip buat bendahara? Biar nggak tercampur dengan lembar terjemahan di map saya."
+  - key: "dialogue.line.102"
+    english: "Of course. Only the expenses related to the assignment, right? I'll attach them to your team's expense file and pass them on."
+    indonesian: "Boleh. Yang berkaitan dengan tugas saja, ya. Saya gabungkan dengan berkas pengeluaran tim kalian, nanti saya serahkan."
+  - key: "dialogue.line.103"
+    english: "These are from our preparations after the briefing earlier. Thank you\u2014that's one less thing I have to carry on the trip."
+    indonesian: "Yang di sini untuk persiapan setelah briefing tadi. Terima kasih, sekalian berkurang yang harus saya pegang di perjalanan."
+  - key: "dialogue.line.104"
+    english: "Yes, just keep the archive files neat. I'll forward these receipts."
+    indonesian: "Ya, bawa berkas arsipnya saja yang rapi. Urusan struk ini saya teruskan."
+  - key: "dialogue.line.105"
+    english: "Let's stop at the fuel station first. Fill the tank, and buy two jerrycans for reserve fuel. We don't know how far back and forth we'll have to drive later."
+    indonesian: "Mampir SPBU dulu. Isi penuh, sekalian beli dua jerigen buat cadangan. Belum tahu nanti kita bolak-balik sejauh apa."
+  - key: "dialogue.line.106"
+    english: "At lunch we were still talking about Bali, and now we're already on the road. Good thing I hadn't unpacked my suitcase yet."
+    indonesian: "Baru makan siang masih bahas Bali, sekarang sudah berangkat. Untung kopernya belum saya keluarkan."
+  - key: "dialogue.line.107"
+    english: "If we waited until tomorrow, we'd lose a whole day. Leaving now gives us buffer time if the search takes longer. I want to be home before Friday too."
+    indonesian: "Kalau menunggu besok, satu hari habis. Berangkat sekarang, masih ada waktu kalau penelusurannya molor. Saya juga mau pulang sebelum Jumat."
+  - key: "dialogue.line.108"
+    english: "Once we reach the area, we'll ask for local information first. Let's not burn through our fuel circling the mountain just because the file says the foot of Cikuray."
+    indonesian: "Sampai wilayahnya nanti, cari keterangan setempat dulu. Jangan habis bensin mengelilingi gunung cuma karena berkasnya menulis kaki Cikuray."
+  - key: "dialogue.line.109"
+    english: "I read the Sancang legend earlier. Prabu Siliwangi went there with his followers, and they turned into tigers. Another version says his kingdom vanished into forest. I just realized the father Kian Santang was searching for is that very same figure."
+    indonesian: "Aku sempat baca cerita Sancang. Prabu Siliwangi pergi bersama pengikutnya, lalu mereka berubah jadi maung. Ada juga cerita kerajaannya lenyap jadi hutan. Aku baru sadar, ayah yang dicari Kian Santang itu tokoh yang sama."
+  - key: "dialogue.line.110"
+    english: "In the tales of Prabu Siliwangi's journey, there's also a stop at the foot of Cikuray. Cikuray is connected to old manuscript traditions\u2014the name Mount Larang Srimanganti appears in those studies."
+    indonesian: "Dalam kisah perjalanan Prabu Siliwangi juga ada persinggahan di kaki Cikuray. Cikuray punya kaitan dengan penulisan naskah lama. Nama Gunung Larang Srimanganti disebut dalam kajiannya."
+  - key: "dialogue.line.111"
+    english: "Srimanganti. If the village really went by another name, we could pass right by it without realizing."
+    indonesian: "Srimanganti. Kalau kampungnya memang pakai nama lain, kita bisa saja lewat tanpa sadar."
+  - key: "dialogue.line.112"
+    english: "There is an account of a Srimanganti settlement that was abandoned by its residents. But let's not equate it with Cikapohon right away. It's just an example of why names in old texts need to be traced carefully."
+    indonesian: "Ada riwayat kampung Srimanganti yang ditinggalkan penduduknya. Tapi jangan langsung disamakan dengan Cikapohon. Itu baru contoh bahwa nama dalam tulisan lama perlu ditelusuri."
+  - key: "dialogue.line.113"
+    english: "A settlement can also move, routes can shift, or an old name might only be remembered by a few families. We ask the locals and match the places. If the accounts differ, we don't force them to fit."
+    indonesian: "Bisa juga permukiman pindah, jalurnya berubah, atau nama lama cuma dipakai beberapa keluarga. Kita tanya orangnya, cocokkan tempatnya. Kalau beda keterangan, jangan dipaksa cocok."
+  - key: "dialogue.line.114"
+    english: "I originally imagined we'd just find a village sign, take a photo, and be done. Turns out even the mountain's name has its own history."
+    indonesian: "Aku tadinya membayangkan tinggal ketemu papan desa, foto, selesai. Ternyata nama gunung saja bisa punya riwayat sendiri."
+  - key: "dialogue.line.115"
+    english: "That's why we work from verifiable clues. Folklore helps us know what to ask, but it doesn't prove what the inscription's author experienced."
+    indonesian: "Makanya cari dari petunjuk yang bisa diperiksa. Cerita rakyat membantu kita bertanya, tapi belum membuktikan pengalaman penulis prasasti."
+  - key: "dialogue.line.116"
+    english: "Fair enough. One thing we can definitely verify right now: we need drinking water."
+    indonesian: "Baik. Yang pasti bisa diperiksa sekarang: kita butuh air minum."
+  - key: "dialogue.line.117"
+    english: "There's the shop up ahead. Fuel first, then you can take care of the water."
+    indonesian: "Itu tokonya kelihatan. Bensinnya dulu, lalu kamu boleh urus air minum."
+  - key: "dialogue.line.118"
+    english: "Four more days. This week is going to feel so long. There's an empty bag sitting at home, and every time I walk past it I remember I haven't packed a thing."
+    indonesian: "Empat hari lagi. Rasanya minggu ini bakal panjang sekali. Di rumah sudah ada tas kosong, tiap lewat saya ingat belum masukin apa-apa."
+  - key: "dialogue.line.119"
+    english: "Mine is still in the wardrobe. If I take it out now, it'll just be in the way. Thursday is soon enough."
+    indonesian: "Punya saya masih di lemari. Kalau dikeluarin sekarang, malah ganggu jalan. Nanti Kamis saja."
+  - key: "dialogue.line.120"
+    english: "Then on Thursday you'll ask the group chat how many kilos of luggage we're allowed, even though the message is pinned at the top."
+    indonesian: "Nanti Kamis kamu tanya di grup, boleh bawa barang berapa kilo. Padahal pesannya sudah dipasang paling atas."
+  - key: "dialogue.line.121"
+    english: "Survive the spice first. Save your defense for later."
+    indonesian: "Kepedasan dulu. Pembelaannya nanti."
+  - key: "dialogue.line.122"
+    english: "What spice level did you two buy me? How are you both eating so calmly?"
+    indonesian: "Ini kalian belikan level berapa? Kok dari tadi kalian santai sekali."
+  - key: "dialogue.line.123"
+    english: "I asked for mine on the side. You're the one who always says a little chili isn't worth it."
+    indonesian: "Saya minta dipisah. Kamu biasanya bilang tanggung kalau sedikit."
+  - key: "dialogue.line.124"
+    english: "Never trust what a hungry person says."
+    indonesian: "Orang lagi lapar itu jangan terlalu dipercaya omongannya."
+  - key: "dialogue.line.125"
+    english: "Here, take this. You still have half a chicken left, take it slow. That's all I want to do in Bali too\u2014eat, sit by the sea, sleep when I'm sleepy. That's it."
+    indonesian: "Pakai ini. Masih ada setengah ayam, pelan-pelan saja. Di Bali nanti saya juga mau begitu. Makan, duduk lihat laut, tidur kalau ngantuk. Sudah."
+  - key: "dialogue.line.126"
+    english: "Try sending that sentence to the group chat. Day one's schedule is already packed. Some want the beach, some want shopping, and some only want to go out in the afternoon because they're afraid of the heat."
+    indonesian: "Coba kamu kirim kalimat itu ke grup. Jadwal hari pertama saja sudah penuh. Ada yang minta pantai, ada yang minta belanja, ada yang baru mau jalan sore karena takut panas."
+  - key: "dialogue.line.127"
+    english: "Is this revision number six? Last time I read it, day one still said 'relaxed.'"
+    indonesian: "Yang ini revisi keenam? Waktu saya baca terakhir, hari pertama masih ditulis santai."
+  - key: "dialogue.line.128"
+    english: "It still does. The title says 'relaxed.' The schedule underneath runs from morning till night."
+    indonesian: "Masih. Judulnya santai. Isinya dari pagi sampai malam."
+  - key: "dialogue.line.129"
+    english: "I already told them to leave some free time. How can a holiday have us waking up earlier than a workday?"
+    indonesian: "Saya sudah bilang, kasih waktu kosong. Masa liburan bangunnya lebih pagi dari berangkat kerja."
+  - key: "dialogue.line.130"
+    english: "If they give you free time, you'll just sleep. All the way to Bali just to nap."
+    indonesian: "Kalau dikasih waktu kosong, kamu tidur. Jauh-jauh ke Bali."
+  - key: "dialogue.line.131"
+    english: "Sleeping in Bali! When you wake up, you see the ocean. At home, I wake up and see laundry drying."
+    indonesian: "Tidur di Bali. Begitu bangun bisa lihat laut. Kalau di rumah, bangun lihat jemuran."
+  - key: "dialogue.line.132"
+    english: "And that's just the itinerary\u2014we haven't even started seating arrangements. Made the first group in January, made a second in February because the first was flooded with stickers. Now we're finally about to leave and people are still sending new ideas."
+    indonesian: "Ini baru jadwal. Belum mulai pembagian tempat duduk. Dari Januari bikin grup, Februari bikin lagi karena grup pertama kebanyakan stiker. Sekarang benar-benar tinggal berangkat, masih saja ada yang kirim ide baru."
+  - key: "dialogue.line.133"
+    english: "At least it's actually happening this time. Usually the most common word in the group chat is 'later.'"
+    indonesian: "Setidaknya kali ini jadi. Biasanya kata paling sering di grup itu nanti."
+  - key: "dialogue.line.134"
+    english: "That's why I'm glad almost everyone is coming. Matching schedules across the whole office is hard enough, and even when we do, someone always has something come up last minute."
+    indonesian: "Makanya saya senang hampir semua ikut. Nyocokin waktu orang satu kantor susah. Sudah cocok, ada saja yang mendadak nggak bisa."
+  - key: "dialogue.line.135"
+    english: "At the group dinner later, don't wander off right away. Let's take a photo first. One with everyone in it."
+    indonesian: "Pas makan malam bareng nanti, jangan langsung bubar. Kita foto dulu. Satu yang lengkap."
+  - key: "dialogue.line.136"
+    english: "I'll put it in the schedule. Before dinner or after? If we wait until after, half the group will already be heading back to their rooms."
+    indonesian: "Saya masukin ke jadwal. Sebelum makan atau sesudah? Kalau sesudah, separuh orang sudah cari kamar."
+  - key: "dialogue.line.137"
+    english: "If it's before dinner, don't make it take too long\u2014otherwise everyone in the group photo will look grumpy."
+    indonesian: "Sebelum makan jangan lama-lama. Nanti foto lengkapnya semua kelihatan kesal."
+  - key: "dialogue.line.138"
+    english: "Just a quick one. We have plenty of formal event photos, but try finding a casual one with everyone in it. Usually whoever takes the picture gets left out."
+    indonesian: "Sebentar saja. Kita punya banyak foto acara resmi, tapi coba cari yang semuanya santai. Biasanya yang motret malah nggak masuk."
+  - key: "dialogue.line.139"
+    english: "True. We'll ask someone else to take it. If Rafi holds the camera, he'll keep taking pictures until dinner is over and still won't appear in a single one."
+    indonesian: "Betul. Nanti minta tolong orang lain. Kalau Rafi yang pegang kamera, dia bisa motret sampai selesai makan dan tetap nggak ada di fotonya sendiri."
+  - key: "dialogue.line.140"
+    english: "People join, transfer, resign, get married. Before you know it, the lineup has changed by the next time we try to gather like this. While we can all make it, I want one photo we can send to everyone."
+    indonesian: "Orang datang, pindah kerja, berhenti, menikah. Tahu-tahu mau kumpul begini lagi susunannya sudah berubah. Mumpung sekarang bisa ikut, saya mau ada satu foto yang bisa dikirim ke semua orang."
+  - key: "dialogue.line.141"
+    english: "I'm in, I'm in. As long as I'm not told to stand alone right in front."
+    indonesian: "Ikut, ikut. Asal saya nggak disuruh berdiri sendirian paling depan."
+  - key: "dialogue.line.142"
+    english: "You're going right in the middle. If we put you on the edge, right as the camera clicks you'll pretend someone called your name."
+    indonesian: "Kamu di tengah saja. Kalau di pinggir, nanti pas kameranya mau ambil, kamu pura-pura dipanggil orang."
+  - key: "dialogue.line.143"
+    english: "So you've figured out my technique."
+    indonesian: "Ada tekniknya ternyata."
+  - key: "dialogue.line.144"
+    english: "We're experienced at getting you into photos by now."
+    indonesian: "Kami sudah pengalaman ngajak kamu foto."
+  - key: "dialogue.line.145"
+    english: "Here's what we still haven't settled: who brings the camera, and who brings the speaker. As for laptops, I don't think anyone needs to bring one."
+    indonesian: "Ini yang belum disepakati: siapa yang bawa kamera, siapa yang bawa speaker. Kalau laptop, saya rasa nggak perlu ada yang bawa."
+  - key: "dialogue.line.146"
+    english: "Someone has probably packed their laptop before their clothes."
+    indonesian: "Laptopnya mungkin sudah masuk tas orang sebelum bajunya."
+  - key: "dialogue.line.147"
+    english: "Please take it back out. This weekend, the only question I want to hear is where we're eating. File revisions can wait until we're back at work."
+    indonesian: "Tolong keluarkan. Akhir pekan ini saya maunya ditanya mau makan di mana. Urusan revisi berkas tunggu kita masuk lagi."
+  - key: "dialogue.line.148"
+    english: "I'm happy to help check the holiday schedule. If you ask me to check an office spreadsheet, that can wait."
+    indonesian: "Saya boleh bantu cek jadwal liburan. Kalau minta cek tabel kantor, nanti saja."
+  - key: "dialogue.line.149"
+    english: "Deal. By Friday afternoon, we're all tourists."
+    indonesian: "Baik. Jumat sore kita semua jadi turis."
+  - key: "dialogue.line.150"
+    english: "Over here, there's still room. I thought you'd already grabbed the key and gone straight to the parking lot."
+    indonesian: "Sini, masih ada tempat. Kukira kamu sudah ambil kunci terus langsung ke parkiran."
+  - key: "dialogue.line.151"
+    english: "Not yet. I saw you two were still here."
+    indonesian: "Belum. Saya lihat kalian masih di sini."
+  - key: "dialogue.line.152"
+    english: "Eat first. Heading out is much smoother on a full stomach."
+    indonesian: "Makan dulu. Urusan berangkat lebih enak kalau perutnya sudah beres."
+  - key: "dialogue.line.153"
+    english: "I wanted to ask during the briefing earlier, but the boss had already moved on. If people there mostly speak Sundanese, I'm worried I'll just stand there smiling waiting for you two."
+    indonesian: "Tadi aku mau tanya waktu briefing, tapi bos sudah lanjut. Kalau sampai sana orang-orangnya lebih sering pakai bahasa Sunda, aku takut cuma bisa senyum sambil nunggu kalian."
+  - key: "dialogue.line.154"
+    english: "Smiling first works too. We can still introduce ourselves in Indonesian."
+    indonesian: "Senyum dulu juga boleh. Kita masih bisa kenalan pakai Bahasa Indonesia."
+  - key: "dialogue.line.155"
+    english: "For official matters, we start with Indonesian. If they're more comfortable speaking the local language, we adapt. Don't nod too quickly if you haven't understood\u2014just ask them to explain."
+    indonesian: "Untuk urusan resmi, mulai dari situ. Kalau mereka lebih nyaman pakai bahasa daerah, kita menyesuaikan. Jangan buru-buru mengangguk kalau belum paham; minta dijelaskan saja."
+  - key: "dialogue.line.156"
+    english: "That's my problem. I tend to nod out of politeness so it isn't awkward, and then people think I understood everything."
+    indonesian: "Nah, itu. Aku suka telanjur mengangguk supaya nggak canggung. Nanti malah dikira sudah paham semuanya."
+  - key: "dialogue.line.157"
+    english: "Barely arrived and already agreeing to who knows what. I'd be completely lost reading your field notes later."
+    indonesian: "Baru tiba sudah setuju entah dengan apa. Catatan lapangannya nanti saya bingung baca."
+  - key: "dialogue.line.158"
+    english: "That's why you only write down what you actually hear. We'll start with the district administration first, cross-check the documents, and then look for people who know the old village name."
+    indonesian: "Makanya tulis yang benar-benar kamu dengar. Kita juga mulai dari wilayahnya dulu, tanya administrasi terdekat. Dokumennya dicocokkan, baru cari orang yang tahu nama lama desa itu."
+  - key: "dialogue.line.159"
+    english: "When you explain it, Mr. Dadan, it sounds so orderly. In my head earlier, we just stepped out of the car and had no idea which door to knock on."
+    indonesian: "Kalau dengar Pak Dadan jelaskan, rasanya urut. Di kepala saya tadi cuma ada kita turun dari mobil, lalu bingung mau mengetuk pintu yang mana."
+  - key: "dialogue.line.160"
+    english: "I've been there too. The difference is, now I bring notes and don't expect the first person we meet to have all the answers."
+    indonesian: "Pernah juga begitu. Bedanya, sekarang saya bawa catatan dan nggak berharap semua orang langsung punya jawabannya."
+  - key: "dialogue.line.161"
+    english: "Field experience really shows, sir."
+    indonesian: "Pengalaman lapangan memang kelihatan, Pak."
+  - key: "dialogue.line.162"
+    english: "So does the backache. When we stop later, give me a moment to stretch my legs."
+    indonesian: "Pegalnya juga. Nanti kalau berhenti, kasih waktu saya meluruskan kaki dulu."
+  - key: "dialogue.line.163"
+    english: "The Bali group chat is still buzzing. I haven't read it yet. Hopefully by the time we get back on Friday, the packing list hasn't grown even longer."
+    indonesian: "Grup Bali masih ramai. Aku belum baca. Semoga pas kita balik Jumat nanti daftarnya nggak tambah panjang lagi."
+  - key: "dialogue.line.164"
+    english: "Have you had time to pack? Up on the rooftop earlier, everyone was already talking about luggage."
+    indonesian: "Kamu sudah sempat siap-siap? Tadi di rooftop semua sudah ngomongin barang bawaan."
+  - key: "dialogue.line.165"
+    english: "Only partway. Charger, power bank, sandals, clothes. No sunscreen yet. I want everything packed before we leave so all that's left in Bali is finding beaches and places to eat."
+    indonesian: "Baru sebagian. Charger, power bank, sandal, baju. Sunscreen belum. Aku ingin beres sebelum berangkat, biar nanti tinggal cari pantai sama tempat makan."
+  - key: "dialogue.line.166"
+    english: "For now, focus on field gear first. Water, charger, notebooks. Check what you're actually carrying\u2014don't assume something is in your bag just because you held it earlier."
+    indonesian: "Untuk sekarang, barang lapangan dulu. Air minum, charger, catatan. Yang dibawa dicek, jangan merasa sudah masuk tas karena tadi sempat dipegang."
+  - key: "dialogue.line.167"
+    english: "Yes, sir. A charger works for both trips. Beachwear, not so much."
+    indonesian: "Iya, Pak. Charger itu bisa ikut dua perjalanan. Baju pantai belum tentu."
+  - key: "dialogue.line.168"
+    english: "If your bag is already full of Bali gear, where are you going to put the documents?"
+    indonesian: "Kalau tasmu penuh duluan sama barang Bali, dokumennya mau ditaruh di mana?"
+  - key: "dialogue.line.169"
+    english: "I haven't packed them in this bag, relax. I'm just happy a trip we've planned for months is finally close."
+    indonesian: "Belum kupak, tenang. Aku cuma senang akhirnya rencana berbulan-bulan itu dekat juga."
+  - key: "dialogue.line.170"
+    english: "I want us back before the weekend too. As for assignment expenses, the transport and meal allowance for the three of us has been transferred to me."
+    indonesian: "Saya juga ingin kita pulang sebelum akhir pekan. Soal biaya tugas, uang transport dan makan untuk bertiga sudah ditransfer ke saya."
+  - key: "dialogue.line.171"
+    english: "Good. If it went into my account, I'd have to untangle my personal coffees from official meals one by one."
+    indonesian: "Bagus. Kalau masuk ke rekeningku, nanti kopi pribadi sama makan dinas harus kupisahkan satu-satu."
+  - key: "dialogue.line.172"
+    english: "You confessed before I could even defend you."
+    indonesian: "Kamu sudah mengaku duluan. Saya tadi mau membela."
+  - key: "dialogue.line.173"
+    english: "The funds are safe. After this I'll withdraw some cash at the ATM. If reception is poor out there, we'll still be able to pay for meals and travel needs."
+    indonesian: "Uangnya aman. Setelah ini saya tarik sebagian tunai di ATM. Kalau daerahnya susah sinyal, kita tetap bisa bayar makan dan kebutuhan perjalanan."
+  - key: "dialogue.line.174"
+    english: "Rafi, you wait at the car. Ucup still has to pick up the key and wrap things up at reception."
+    indonesian: "Rafi, kamu tunggu di mobil. Ucup masih ambil kunci dan selesaikan urusan di resepsionis."
+  - key: "dialogue.line.175"
+    english: "Got it. I'll check my bag while I'm at it. If my charger is still sitting on my desk, now is a good time to embarrass myself."
+    indonesian: "Siap. Aku cek tas sekalian. Kalau chargernya ternyata masih di meja, sekarang waktu yang bagus buat malu."
+  - key: "dialogue.line.176"
+    english: "Let me know before I head down\u2014I'll grab it for you if you left it behind."
+    indonesian: "Kabari sebelum saya turun, nanti saya ambilkan kalau memang tertinggal."
+  - key: "dialogue.line.177"
+    english: "Hopefully no need. Let's wrap this up quickly so by Friday night we're choosing where to eat in Bali."
+    indonesian: "Semoga nggak perlu. Ayo cepat beres, biar Jumat malam kita sudah bisa memilih mau makan di mana di Bali."
+  - key: "dialogue.line.178"
+    english: "You are free to choose which supplies to buy."
+    indonesian: "Pemain bebas menentukan barang yang ingin dibeli."
+  - key: "dialogue.line.179"
+    english: "Rafi, the boss is looking for you. He told you to go straight to his office."
+    indonesian: "Rafi, Pak Bos cari kamu. Disuruh langsung ke ruangannya."
+  - key: "dialogue.line.180"
+    english: "Three missed calls. I didn't hear my phone at all. Okay, I'm heading there now."
+    indonesian: "Tiga panggilan tidak terjawab. Aku tadi nggak dengar sama sekali. Oke, aku ke sana sekarang."
+  - key: "dialogue.line.181"
+    english: "I still need to find Mr. Dadan. We'll follow shortly."
+    indonesian: "Aku masih harus cari Pak Dadan. Kami menyusul."
+  - key: "dialogue.line.182"
+    english: "Got it. Hopefully he isn't counting a fourth call yet."
+    indonesian: "Sip. Semoga beliau belum menghitung panggilan keempat."
+  - key: "dialogue.line.183"
+    english: "If he called three times, I hope it's not a revision. Even a single call about revisions is usually enough to eat up the whole afternoon."
+    indonesian: "Kalau sampai tiga kali, semoga bukan revisi. Satu panggilan soal revisi saja biasanya cukup buat menghabiskan sore."
+  - key: "dialogue.line.184"
+    english: "He hasn't explained yet. As soon as I walked in, he sent me to find you two."
+    indonesian: "Belum dijelaskan. Aku baru masuk, langsung disuruh cari kalian."
+  - key: "dialogue.line.185"
+    english: "Which means neither of us has a good excuse ready if he asks."
+    indonesian: "Berarti kita sama-sama belum punya alasan yang bagus kalau ditanya."
+  - key: "dialogue.line.186"
+    english: "I was making my packing list for Bali earlier. So far just charger, power bank, sandals, and camera. Every time I open the group chat, someone adds more. Now it's sunscreen and a dry bag."
+    indonesian: "Aku tadi bikin daftar buat Bali. Baru charger, power bank, sandal sama kamera. Tiap buka grup, ada tambahan lagi. Sekarang sunscreen dan dry bag."
+  - key: "dialogue.line.187"
+    english: "Since when is a dry bag mandatory? At this rate you'll be packing more gear than clothes."
+    indonesian: "Dry bag masuk daftar wajib sejak kapan? Jangan-jangan barang bawaanmu lebih banyak daripada baju."
+  - key: "dialogue.line.188"
+    english: "Just to be safe if we end up in the water. It's my personal camera, after all. The office camera deserves the weekend off too."
+    indonesian: "Biar aman kalau jadi main air. Kamera sendiri, soalnya. Kamera kantor boleh istirahat juga akhir pekan ini."
+  - key: "dialogue.line.189"
+    english: "That secures the camera. What about the person carrying it\u2014still stuck working?"
+    indonesian: "Itu kameranya. Orang yang bawa masih sibuk kerja?"
+  - key: "dialogue.line.190"
+    english: "This time I actually want to be in the photos. Usually after an event I send all the pictures to the group chat, then realize I only appear as a reflection in a window."
+    indonesian: "Justru aku mau ada di fotonya. Biasanya habis acara aku kirim foto ke grup, lalu sadar aku sendiri cuma ada di pantulan kaca."
+  - key: "dialogue.line.191"
+    english: "The folks on the rooftop were talking about a group photo earlier too. They said everyone has to be in it."
+    indonesian: "Tadi anak-anak rooftop juga ngomong soal foto bareng. Semua harus masuk, katanya."
+  - key: "dialogue.line.192"
+    english: "Then you can hold the camera for a bit. After that we'll use the timer. Stop disappearing every time people gather for a photo."
+    indonesian: "Nah, kamu pegang kamera sebentar kalau begitu. Setelah itu kita pakai timer. Jangan selalu menghilang pas orang mulai berkumpul."
+  - key: "dialogue.line.193"
+    english: "Even if I hold the camera, they'll still tell me to get in the frame."
+    indonesian: "Aku yang pegang kamera malah diminta ikut foto juga."
+  - key: "dialogue.line.194"
+    english: "Exactly. Getting a complete group photo is so hard\u2014someone leaves early, someone else is taking a phone call. Once people move to different jobs, getting everyone together will be even harder. While almost everyone is coming, I want a photo where we actually look like we're on holiday."
+    indonesian: "Iya. Foto yang lengkap susah sekali. Ada yang pulang duluan, ada yang masih terima telepon. Nanti kalau sudah pindah kerja, ngajak kumpul lagi bisa lebih susah. Mumpung hampir semua ikut, aku ingin kita punya foto yang kelihatan benar-benar sedang liburan."
+  - key: "dialogue.line.195"
+    english: "As long as we don't all stand in stiff formal poses. If we line up like an office portrait, there's no point going all that way."
+    indonesian: "Asal jangan semuanya pose formal. Kalau masih berbaris seperti foto kantor, percuma jauh-jauh."
+  - key: "dialogue.line.196"
+    english: "Agreed. You can pose mid-meal\u2014just before the spoon goes in your mouth, though, or you'll be the one asking me to delete it."
+    indonesian: "Setuju. Kamu boleh kelihatan sedang makan. Tapi sebelum sendoknya masuk mulut, ya. Nanti kamu sendiri yang minta dihapus."
+  - key: "dialogue.line.197"
+    english: "I haven't finished shopping for the trip yet. Hopefully whatever this is wraps up quickly so we still have time to get ready before Friday."
+    indonesian: "Aku belum belanja semuanya. Semoga urusan ini cepat selesai, jadi masih sempat siap-siap sebelum Jumat."
+  - key: "dialogue.line.198"
+    english: "Let's hear the assignment first. Just don't read your shopping list out loud in his office."
+    indonesian: "Kita dengar dulu tugasnya. Daftar belanjamu jangan ikut dibacakan di dalam."
+  - key: "dialogue.line.199"
+    english: "Already put away. If I look serious in there, don't blow my cover."
+    indonesian: "Sudah kusimpan. Kalau aku kelihatan serius nanti, jangan dibongkar."
+  - key: "dialogue.line.200"
+    english: "If he calls now, he'll definitely hear it."
+    indonesian: "Sekarang kalau ditelepon pasti kedengaran."
+  - key: "dialogue.line.201"
+    english: "Because we're standing right outside his door."
+    indonesian: "Sekarang orangnya sudah di depan pintu."
+  - key: "dialogue.line.202"
+    english: "Leave the cables for later. The boss is looking for us. Check your phone."
+    indonesian: "Kabelnya nanti. Pak Bos cari kita. Coba lihat HP-mu."
+  - key: "dialogue.line.203"
+    english: "Three missed calls. I only stepped away for a moment... alright, the cables can stay tangled for now. Did you find Mr. Dadan?"
+    indonesian: "Tiga panggilan. Tadi aku cuma tinggal sebentar... ya sudah, nanti kabelnya kusut saja. Pak Dadan sudah ketemu?"
+  - key: "dialogue.line.204"
+    english: "He already went ahead. It's just us left."
+    indonesian: "Sudah ke sana duluan. Tinggal kita."
+  - key: "dialogue.line.205"
+    english: "Fill it up, please, sir. We also need two jerrycans for reserve fuel\u2014the ones made specifically for fuel."
+    indonesian: "Tolong isi penuh, Pak. Kami juga perlu dua jerigen untuk cadangan. Yang khusus buat bahan bakar."
+  - key: "dialogue.line.206"
+    english: "Sure thing. The containers are in the shop. Grab them first, and I'll help fill them up."
+    indonesian: "Bisa. Wadahnya ada di toko. Ambil dulu, nanti saya bantu urus pengisiannya."
+  - key: "dialogue.line.207"
+    english: "I'll get them, sir. And drinking water too. Wouldn't want to remember the two jerrycans and forget our own drinks."
+    indonesian: "Saya ambil, Pak. Sekalian air minum. Jangan sampai dua jerigen kebawa, minuman buat kita malah lupa."
+  - key: "dialogue.line.208"
+    english: "In that case, I'll stretch my legs for a bit. Let me know when everything's ready."
+    indonesian: "Kalau begitu saya meluruskan kaki sebentar. Nanti kalau sudah siap kabari, ya."
+  - key: "dialogue.line.209"
+    english: "Sure. There's a park nearby. Rafi and I will finish up here and call you when we're ready."
+    indonesian: "Boleh. Dekat sini ada taman. Saya sama Rafi selesaikan yang di sini, nanti kami panggil kalau sudah siap."
+  - key: "dialogue.line.210"
+    english: "Before we set off\u2014I spoke with an elderly man in the park earlier. He used to live in Garut and still keeps in touch with several residents of Giriawas. He shared something that might relate to our search."
+    indonesian: "Sebelum jalan, tadi saya ngobrol dengan seorang kakek di taman. Dia pernah tinggal di Garut, masih saling kabar dengan beberapa warga Giriawas. Ada cerita yang mungkin berhubungan dengan pencarian kita."
+  - key: "dialogue.line.211"
+    english: "He said men have been seen felling trees and hunting with dogs at the foot of Cikuray\u2014carrying axes, moving in and out through the tree line. The Giriawas residents who told him didn't recognize them as locals. The old man didn't see them himself."
+    indonesian: "Katanya ada laki-laki menebang pohon dan berburu dengan anjing di kaki Cikuray. Membawa kapak, keluar-masuk jalur pepohonan. Warga Giriawas yang bercerita kepadanya tidak mengenali mereka sebagai warga desa. Kakeknya tidak melihat sendiri."
+  - key: "dialogue.line.212"
+    english: "So it's word from villagers, passed on to you. I'm not convinced yet. People going in and out of the forest could have any number of reasons."
+    indonesian: "Jadi kabar dari warga, lalu sampai ke kamu. Saya belum yakin. Orang keluar-masuk hutan bisa punya banyak urusan."
+  - key: "dialogue.line.213"
+    english: "I can't connect them to the inscription yet either. But if residents saw them, we can ask where. Better than me zooming the map in until the village names disappear off the screen."
+    indonesian: "Aku juga belum bisa menghubungkan mereka dengan prasasti. Tapi kalau warga pernah melihat, kita bisa tanya di mana. Daripada aku terus membesarkan peta sampai nama desanya hilang dari layar."
+  - key: "dialogue.line.214"
+    english: "He suggested going at night, looking for the hunters with dogs, and following them quietly from a safe distance without being noticed. If we find a village, stop outside and wait until morning. After daybreak, enter as guests: introduce ourselves, explain our business, and ask permission. That was his advice\u2014he couldn't confirm the trail or the village itself."
+    indonesian: "Dia menyarankan datang malam, mencari pemburu dengan anjing lalu mengikuti mereka diam-diam dari jarak cukup, tanpa ketahuan. Kalau menemukan desa, berhenti di luar dan tunggu pagi. Setelah terang, masuk sebagai tamu: perkenalkan diri, jelaskan urusan, minta izin. Itu sarannya; jalur maupun desanya belum dia pastikan."
+  - key: "dialogue.line.215"
+    english: "I'm not going to follow those directions before knowing who those people are. In Giriawas, we'll confirm it first with the people who saw them firsthand."
+    indonesian: "Saya belum mau memakai arahan itu sebelum tahu siapa yang dimaksud. Di Giriawas kita konfirmasi dulu kepada orang yang melihat sendiri."
+  - key: "dialogue.line.216"
+    english: "I'll keep the hearsay separate from our own conclusions. In Giriawas, we'll ask who saw them, when, and along which trail. Then we compare that with the area in the archive."
+    indonesian: "Saya pisahkan kabar yang didengar dari dugaan kita. Di Giriawas, kita tanyakan siapa yang pernah melihat, kapan, dan jalur mana. Baru cocokkan dengan wilayah dalam arsip."
+  - key: "dialogue.line.217"
+    english: "So this is our first stop, sir? I've saved the route. I don't have much field experience yet, so for now I can at least make sure we don't take a wrong turn before the search even starts."
+    indonesian: "Tujuan awalnya ini, ya, Pak? Saya simpan rutenya. Pengalaman lapangan saya belum banyak; untuk sekarang saya bisa memastikan kita tidak salah belok sebelum mulai mencari."
+  - key: "dialogue.line.218"
+    english: "That already helps. We'll check each piece of information one by one. Let's not rush to call an unseen settlement the village we're looking for."
+    indonesian: "Itu sudah membantu. Kita periksa keterangannya satu-satu. Jangan buru-buru menyebut permukiman yang belum dilihat sebagai desa yang kita cari."
+  - key: "dialogue.line.219"
+    english: "Understood, sir. If I jump to conclusions too quickly, just cut me off\u2014as long as I'm not in the middle of calling out a turn."
+    indonesian: "Siap, Pak. Kalau saya terlalu cepat menyimpulkan, potong saja. Asal jangan pas saya lagi menunjukkan belokan."
+  - key: "dialogue.line.220"
+    english: "Call out the turn first. Giriawas will be our first stop for confirmation."
+    indonesian: "Belokannya kamu selesaikan dulu. Giriawas jadi tempat pertama untuk konfirmasi."
+  - key: "dialogue.line.221"
+    english: "Alright, which way now? I zoomed the map in so far that only road lines were visible and the mountain went right off the screen."
+    indonesian: "Nah, sekarang arah mana? Aku tadi membesarkan peta sampai cuma kelihatan garis jalan. Gunungnya malah keluar layar."
+  - key: "dialogue.line.222"
+    english: "Giriawas. It's near the foot of Cikuray, within the area we need to survey. We can start asking for local accounts there."
+    indonesian: "Giriawas. Letaknya dekat kaki Cikuray, masih dalam wilayah yang perlu kita telusuri. Kita bisa mulai meminta keterangan setempat di sana."
+  - key: "dialogue.line.223"
+    english: "Sounds good. We need a clear starting point. If we just drive around the foot of the mountain, by late afternoon we might not have a single name to match."
+    indonesian: "Boleh. Kita perlu titik awal yang jelas. Kalau hanya menyusuri kaki gunung, sore nanti belum tentu ada satu nama pun yang bisa dicocokkan."
+  - key: "dialogue.line.224"
+    english: "I had pictured us looking directly for the old village site\u2014all our gear ready, while we still don't know where to begin. I'll ask about place names first. If we open with the whole story of the inscription, people might get confused about why we're there."
+    indonesian: "Aku tadinya sudah membayangkan langsung mencari bekas desanya. Barangnya lengkap, orangnya masih bingung mau mulai dari mana. Nanti aku tanya soal nama dulu. Kalau langsung membuka semua cerita prasasti, takutnya orang malah bingung dengan maksud kedatangan kita."
+  - key: "dialogue.line.225"
+    english: "Yes, let's start with the name. We'll ask if anyone recognizes Cikapohon, or any older settlement names once used there. If no one knows, we record that too."
+    indonesian: "Ya, kita mulai dari nama saja. Kita tanyakan apakah ada yang mengenal Cikapohon, atau nama permukiman lain yang pernah dipakai. Kalau belum ada yang tahu, kita catat juga."
+  - key: "dialogue.line.226"
+    english: "Right. Ask who else we should speak to. Keep differing accounts separate rather than blending them together just to match the file."
+    indonesian: "Betul. Minta petunjuk siapa yang bisa ditemui. Keterangan yang berbeda kita simpan masing-masing, jangan langsung digabung supaya cocok dengan berkas."
+  - key: "dialogue.line.227"
+    english: "Giriawas first, then. Saved. Now my job is keeping the map visible instead of hunting for a scenic angle of the mountain."
+    indonesian: "Giriawas dulu. Sudah kusimpan. Sekarang tugasku memastikan petanya tetap kelihatan, bukan sibuk mencari sudut gunung yang bagus."
+  - key: "dialogue.line.228"
+    english: "Once we've parked, you can look for photo angles. For now, help watch the route."
+    indonesian: "Kalau sudah berhenti nanti, baru cari sudut foto. Sekarang bantu lihat rute dulu."
+  - key: "dialogue.line.229"
+    english: "Got it. Photos can wait this time."
+    indonesian: "Siap. Kali ini foto boleh menunggu."
+  - key: "dialogue.line.230"
+    english: "He suggested following the hunters with dogs at night, quietly from a safe distance without being spotted, and if we find a village, stopping outside until morning. I didn't hear the rest of his advice."
+    indonesian: "Dia menyarankan mengikuti pemburu dengan anjing pada malam hari, diam-diam dari jarak cukup tanpa ketahuan. Kalau menemukan desa, berhenti di luar dan tunggu pagi. Saya belum mendengar lanjutan sarannya."
+  - key: "dialogue.line.231"
+    english: "Understood. We'll start with the source of the rumor in Giriawas. As for the part you didn't hear, leave it be for now\u2014let's not fill in the blanks ourselves."
+    indonesian: "Baik. Kita mulai dari sumber kabarnya di Giriawas. Bagian yang belum kamu dengar, biarkan dulu. Jangan kita isi sendiri."
+  - key: "dialogue.line.232"
+    english: "He mentioned coming at night, looking for the hunters with dogs, and following them quietly from a safe distance without being seen. I didn't finish the conversation, so I don't have any directions beyond that."
+    indonesian: "Dia sempat menyarankan datang malam, mencari pemburu dengan anjing lalu mengikuti diam-diam dari jarak cukup, tanpa ketahuan. Obrolannya belum saya tuntaskan; saya belum punya arahan setelah itu."
+  - key: "dialogue.line.233"
+    english: "I only heard that initial account. We hadn't gotten to how to find the place yet, so my notes stop there."
+    indonesian: "Saya baru mendengar kabar itu. Belum sampai membahas cara mencari tempatnya, jadi catatan saya berhenti di sini."
+  - key: "dialogue.line.234"
+    english: "Thank you. I only left it for a moment to tidy my bag, and the wind already carried it off."
+    indonesian: "Terima kasih. Ditinggal sebentar buat membereskan tas, sudah keburu dibawa angin."
+  - key: "dialogue.line.235"
+    english: "It hadn't gone far, Granddad. Mind if I sit here for a bit?"
+    indonesian: "Masih dekat, Kek. Boleh duduk di sini sebentar?"
+  - key: "dialogue.line.236"
+    english: "Please do. It's hot over there. Much nicer to stretch your legs here in the shade."
+    indonesian: "Silakan. Bagian sana panas. Di sini lebih enak meluruskan kaki."
+  - key: "dialogue.line.237"
+    english: "We stopped for fuel. I thought I'd walk around after getting out of the car, but my legs immediately asked to sit back down."
+    indonesian: "Kami berhenti isi bensin. Saya kira turun dari mobil bisa langsung jalan-jalan, ternyata kaki minta duduk lagi."
+  - key: "dialogue.line.238"
+    english: "Whoever accompanies me always says it's only been a short trip too. My knees keep their own count."
+    indonesian: "Yang menemani saya juga suka bilang baru sebentar. Lutut saya punya hitungan sendiri."
+  - key: "dialogue.line.239"
+    english: "Are you all out for a trip, or on work business?"
+    indonesian: "Kalian mau jalan-jalan atau ada pekerjaan?"
+  - key: "dialogue.line.240"
+    english: "We're from the archive office, assigned to verify an old village at the foot of Mount Cikuray. Its name doesn't match current administrative records, so we need to find its location and someone who knows its history."
+    indonesian: "Kami dari kantor arsip, ditugaskan memverifikasi desa lama di kaki Gunung Cikuray. Namanya belum cocok dengan data administrasi sekarang. Kami perlu mencari lokasinya dan orang yang tahu riwayatnya."
+  - key: "dialogue.line.241"
+    english: "Oh, Cikuray. I used to live in Garut and often passed that way for work. I know several folks in Giriawas\u2014we still keep in touch."
+    indonesian: "Oh, Cikuray. Dulu saya tinggal di Garut, sering lewat sana untuk kerja. Kenal beberapa warga Giriawas. Sekarang masih saling kabar."
+  - key: "dialogue.line.242"
+    english: "They told me about men felling trees and hunting with dogs at the foot of Cikuray\u2014carrying axes, coming and going through a trail among the trees. They said those men aren't from Giriawas; nobody recognized them. I heard this from the villagers, not with my own eyes."
+    indonesian: "Mereka cerita ada laki-laki menebang pohon dan berburu dengan anjing di kaki Cikuray. Membawa kapak, keluar-masuk jalur di antara pepohonan. Katanya bukan warga Giriawas; mereka tidak mengenali orang-orang itu. Saya mendengar dari mereka, bukan melihat sendiri."
+  - key: "dialogue.line.243"
+    english: "If they go in and out that way, the trail might lead to where they live."
+    indonesian: "Kalau keluar-masuk lewat situ, mungkin jalurnya menuju tempat tinggal mereka."
+  - key: "dialogue.line.244"
+    english: "That's what made the locals wonder. Some carried sacks of supplies toward the hills. The hunters and their dogs were seen returning along the wooded trail at dusk, sometimes after dark. There might be a settlement at the end of it, though I don't know the exact path."
+    indonesian: "Itu yang membuat warga bertanya-tanya. Ada yang membawa karung perbekalan ke arah perbukitan. Para pemburu bersama anjingnya terlihat kembali lewat jalur pepohonan ketika senja, kadang setelah gelap. Mungkin ada permukiman di ujungnya, tetapi saya tidak tahu persis jalannya."
+  - key: "dialogue.line.245"
+    english: "If that word is true and you want to find that village, try coming at night. Follow the hunters with the dogs quietly, from a fair distance. Don't let yourselves be spotted. People can take offense or grow suspicious if they feel followed, especially by strangers."
+    indonesian: "Kalau kabar itu benar dan kalian ingin menemukan desa itu, coba datang malam. Ikuti pemburu dengan anjing tadi, diam-diam, dari jarak yang cukup. Jangan sampai ketahuan. Orang bisa tersinggung atau curiga kalau merasa dibuntuti, apalagi oleh orang yang belum dikenalnya."
+  - key: "dialogue.line.246"
+    english: "If a village comes into view, stop outside. Wait for morning. Once it's light, go in, introduce yourselves, explain your business, and ask the residents' permission."
+    indonesian: "Kalau terlihat desa, berhenti di luar. Tunggu pagi. Setelah terang, baru datang, perkenalkan diri, jelaskan urusan kalian, dan minta izin warga."
+  - key: "dialogue.line.247"
+    english: "Wouldn't it be better to just slip in quietly?"
+    indonesian: "Bukankah lebih baik masuk saja diam-diam?"
+  - key: "dialogue.line.248"
+    english: "It's a matter of manners. Better to visit as guests than enter like intruders. Even when my bag blocked the path slightly just now, I had to move it aside\u2014much more so when approaching people's homes while they're asleep."
+    indonesian: "Itu etika. Lebih baik kalian berkunjung sebagai tamu daripada masuk sebagai penyusup. Tas saya menghalangi jalan sedikit saja tadi harus saya geser. Apalagi kalau kita datang ke tempat tinggal orang ketika mereka sedang tidur."
+  - key: "dialogue.line.249"
+    english: "Following a trail to find where a village lies is very different from stepping into people's yards and homes. At night, they don't know who you are. In the morning, when people are awake, you can introduce yourselves properly. Bring your assignment letter and ask who can receive you. Give them the chance to welcome you\u2014or to explain if you've come to the wrong place."
+    indonesian: "Mengikuti jalan untuk mencari letak desa berbeda dengan masuk ke halaman dan rumah orang. Malam-malam mereka belum tahu kalian siapa. Besok pagi, orang sudah bangun, kalian bisa memperkenalkan diri dengan baik. Bawa surat tugasnya, tanyakan siapa yang bisa menerima kalian. Beri mereka kesempatan menyambut atau menjelaskan kalau kalian salah tempat."
+  - key: "dialogue.line.250"
+    english: "You're right, Granddad. I was only thinking about finding it quickly. We'll check on this word in Giriawas first."
+    indonesian: "Iya, Kek. Saya tadi cuma memikirkan cepat ketemu. Kabar dari Giriawas ini kami periksa dulu."
+  - key: "dialogue.line.251"
+    english: "Thank you. I'll head back to my coworkers now. The wrapper is safely in the bin\u2014don't let the wind take your bag too, Granddad."
+    indonesian: "Terima kasih. Saya kembali ke teman-teman dulu. Bungkusnya sudah aman di tempat sampah. Tasnya jangan ikut dibawa angin, Kek."
+  - key: "dialogue.line.252"
+    english: "If this bag flies away, it means I didn't buy enough. And after sitting a long while, don't go running straight to the car\u2014your knees might not agree."
+    indonesian: "Kalau ini terbang, berarti belanjanya terlalu sedikit. Kalian kalau sudah duduk lama, jangan langsung berlari ke mobil. Lututnya belum tentu setuju."
+  - key: "dialogue.line.253"
+    english: "Excuse me, Granddad, my coworkers are waiting. Thank you for the chat."
+    indonesian: "Maaf, Kek, teman saya sudah menunggu. Terima kasih sudah mengajak ngobrol."
+  - key: "dialogue.line.254"
+    english: "Go right ahead. I hope your work goes smoothly."
+    indonesian: "Silakan. Semoga urusannya lancar."
+  - key: "dialogue.line.255"
+    english: "Mr. Dadan, Cup, let's take a photo of the three of us to send to the office group\u2014so they can see we're actually on the road and not still circling the parking lot."
+    indonesian: "Pak Dadan, Cup, sekalian foto bertiga, yuk. Buat kirim ke grup kantor. Biar kelihatan kita benar-benar sudah jalan, bukan masih muter cari parkiran."
+  - key: "dialogue.line.256"
+    english: "Just one. I'm not unpacking gear I just tidied up only to serve as a backdrop for your photo."
+    indonesian: "Satu dulu. Saya belum mau membongkar barang yang baru dirapikan cuma buat latar fotomu."
+  - key: "dialogue.line.257"
+    english: "Right here is fine. Make sure you're in the frame too, not just your arm."
+    indonesian: "Di sini saja. Kamu masuk fotonya juga, jangan cuma kelihatan tangannya."
+  - key: "dialogue.line.258"
+    english: "Got it. No need for a retake\u2014all three of us are actually looking at the camera."
+    indonesian: "Sudah. Yang ini nggak perlu diulang; tiga-tiganya lagi lihat kamera."
+  - key: "dialogue.line.259"
+    english: "Good. Now the person holding the camera can help hold a jerrycan."
+    indonesian: "Bagus. Sekarang orang yang pegang kamera bantu pegang jerigen dulu."
+  - key: "dialogue.line.260"
+    english: "Cup, we're all set! The tank is full and the reserve cans are loaded. Whenever you're done stretching your legs, let's roll."
+    indonesian: "Cup, sudah siap! Bensinnya penuh, cadangan juga sudah masuk. Kalau sudah selesai jalan-jalannya, ayo lanjut."
+  - key: "dialogue.line.261"
+    english: "Don't leave behind anything you bought. I've already checked the cargo."
+    indonesian: "Barang yang dibeli jangan tertinggal. Saya sudah periksa muatannya."
+  - key: "dialogue.line.262"
+    english: "Got it, I'm coming."
+    indonesian: "Iya, saya ke sana."
+  - key: "dialogue.line.263"
+    english: "Cup, everything's done here. We're waiting at the car. Are you still in the park?"
+    indonesian: "Cup, sudah selesai semua. Kami tunggu di mobil. Kamu masih di taman?"
+  - key: "dialogue.line.264"
+    english: "Still nearby. Give me a moment, I'm heading back."
+    indonesian: "Masih sekitar sini. Sebentar, saya balik."
+  - key: "dialogue.line.265"
+    english: "Tell him if he's still shopping, bring it along now. Everything is ready."
+    indonesian: "Bilang kalau masih belanja, sekalian dibawa sekarang. Semua sudah siap."
+  - key: "dialogue.line.266"
+    english: "You heard him, right? We're just waiting on you."
+    indonesian: "Dengar sendiri, kan? Kami tinggal tunggu kamu."
+  - key: "dialogue.line.267"
+    english: "Thank you."
+    indonesian: "Terima kasih."
+  - key: "dialogue.line.268"
+    english: "That part about counting the days still puzzles me. He remembered three days, yet his notes reached nine."
+    indonesian: "Bagian hitungan harinya itu masih bikin aku bingung. Ingat tiga hari, catatannya sampai sembilan."
+  - key: "dialogue.line.269"
+    english: "Eight, then nine. He started keeping track because his supplies were dwindling. And he woke up in different places\u2014once on a boulder, then in the bushes."
+    indonesian: "Delapan, lalu sembilan. Dia mencatat karena bekalnya berkurang. Dia juga terbangun di tempat lain; sekali di batu, lalu di semak-semak."
+  - key: "dialogue.line.270"
+    english: "Even though he only stopped by on his way to search for his father in Sancang. Good thing he still made it out."
+    indonesian: "Padahal cuma singgah sebelum mencari ayahnya ke Sancang. Untung masih bisa keluar."
+  - key: "dialogue.line.271"
+    english: "According to his writing, yes\u2014he continued his journey. The broken part is right in the middle of the final warning."
+    indonesian: "Begitu menurut tulisannya. Perjalanannya dilanjutkan. Yang patah justru bagian peringatan terakhir."
+  - key: "dialogue.line.272"
+    english: "I've withdrawn the travel allowance. Two million two hundred and fifty thousand each."
+    indonesian: "Uang perjalanan sudah saya tarik. Masing-masing dua juta dua ratus lima puluh ribu."
+  - key: "dialogue.line.273"
+    english: "I'm still thinking about what it says. A peaceful village, then dwindling supplies and waking up elsewhere. Read like this, it sounds like a made-up tale."
+    indonesian: "Saya masih kepikiran isinya. Desa damai, lalu bekal berkurang dan orangnya bangun di tempat lain. Kalau dibaca begini, kedengarannya seperti cerita karangan."
+  - key: "dialogue.line.274"
+    english: "It could be. The translation tells us what was written, not whether it actually happened. We examine the inscription, verify its source, and look for the place it refers to."
+    indonesian: "Bisa saja. Terjemahan ini memberi tahu apa yang ditulis, belum membuktikan apa yang terjadi. Kita periksa prasastinya, cocokkan sumbernya, lalu cari tempat yang dimaksud."
+  - key: "dialogue.line.275"
+    english: "Right. We shouldn't get so caught up imagining the story that the verification work itself falls behind."
+    indonesian: "Ya. Jangan sampai kita sibuk membayangkan ceritanya, urusan verifikasinya malah tertinggal."
+  - key: "dialogue.line.276"
+    english: "Either way, we need to move quickly."
+    indonesian: "Bagaimanapun, kita harus cepat."
+  - key: "dialogue.line.277"
+    english: "There you are. Everything sorted at reception?"
+    indonesian: "Nah, sudah datang. Urusan di resepsionis beres semua?"
+  - key: "dialogue.line.278"
+    english: "All sorted. Got the key right here too. Are you both ready?"
+    indonesian: "Sudah. Kunci juga sudah di tangan. Kalian siap?"
+  - key: "dialogue.line.279"
+    english: "Ready. Here's a wrapped nasi uduk for you\u2014keep it for the road."
+    indonesian: "Siap. Ini satu bungkus nasi uduk buat kamu. Simpan buat di jalan."
+  - key: "dialogue.line.280"
+    english: "Thank you, sir. Barely picked up the key and I already got road rations."
+    indonesian: "Terima kasih, Pak. Baru pegang kunci sudah dapat bekal."
+  - key: "dialogue.line.281"
+    english: "Put it in your bag. Don't leave it on the seat, or the first time we brake the rice will arrive before we do."
+    indonesian: "Masukkan tas saja. Jangan di jok, nanti sekali ngerem nasinya sampai duluan."
+  - key: "dialogue.line.282"
+    english: "I read it again. Kian Santang was looking for his father, Prabu Siliwangi, who had gone ahead to Sancang. Then he stopped in Cikapohon, at the foot of Cikuray, because the village looked peaceful. Up to that point, it makes sense."
+    indonesian: "Aku baca lagi. Kian Santang mau mencari ayahnya, Prabu Siliwangi, yang lebih dulu ke Sancang. Terus singgah di Cikapohon, di kaki Cikuray, karena desanya kelihatan damai. Sampai situ masih masuk akal."
+  - key: "dialogue.line.283"
+    english: "He planned to stay for three days. Then his supplies shrank, so he marked every meal and activity with charcoal on white cloth."
+    indonesian: "Rencananya tinggal tiga hari. Lalu bekalnya berkurang, jadi dia menandai setiap makan dan kegiatan pakai arang di kain putih."
+  - key: "dialogue.line.284"
+    english: "And when he read it back, eight days had passed\u2014then nine, while he felt it had only been three. I find that part hard to believe. It reads like fiction."
+    indonesian: "Dan ketika dibaca, sudah delapan hari. Setelah itu sembilan, sementara dia merasa baru tiga. Saya susah percaya bagian itu. Rasanya seperti cerita karangan."
+  - key: "dialogue.line.285"
+    english: "I feel the same way, sir. He started taking notes so he wouldn't misremember, yet the result differed by six whole days. Forgetting a single meal I could understand, but that's a huge gap."
+    indonesian: "Saya juga merasa begitu, Pak. Dia mulai mencatat supaya nggak salah ingat, tapi hasilnya malah berbeda enam hari. Kalau hanya lupa sekali makan, saya masih bisa bayangkan. Ini jauh sekali."
+  - key: "dialogue.line.286"
+    english: "That's why we need to examine the record itself. Right now all we have are the script and its translation."
+    indonesian: "Itu sebabnya catatannya perlu kita periksa. Sekarang kita baru punya tulisan dan terjemahannya."
+  - key: "dialogue.line.287"
+    english: "Same goes for waking up on a rock and then in the bushes. And at the end he says the village was keeping him from leaving\u2014all based solely on his own account."
+    indonesian: "Bagian bangun di batu, lalu di semak-semak juga begitu. Terakhir dia bilang desanya mencegah dia keluar. Semua berdasarkan pengalamannya sendiri."
+  - key: "dialogue.line.288"
+    english: "Yes, sir. Plus the warning about demons at the very end. I can't treat that as an explanation yet. It makes more sense to find out who wrote it and how the record was made."
+    indonesian: "Iya, Pak. Ditambah peringatan tentang iblis di ujungnya. Saya belum bisa menjadikan itu penjelasan. Lebih masuk akal kita cari tahu dulu siapa yang menulis dan bagaimana catatan ini dibuat."
+  - key: "dialogue.line.289"
+    english: "He wrote that he finally escaped alive and continued to Sancang. But we can't verify what happened in that village yet. Let's check the sources first\u2014we shouldn't let the story change every time we retell it."
+    indonesian: "Dia menulis akhirnya berhasil keluar hidup-hidup dan lanjut ke Sancang. Tapi kita belum bisa memastikan apa yang terjadi di desa itu. Sumbernya dicocokkan dulu; jangan cerita ini ikut berubah setiap kali kita menceritakannya."
+  - key: "dialogue.line.290"
+    english: "Sure, hand it over. I'm heading past there anyway. You take care of the rest before another folder goes astray."
+    indonesian: "Boleh, sini. Saya sekalian lewat sana. Kamu urus yang sisanya dulu sebelum ada yang ikut nyasar."
+  - key: "dialogue.line.291"
+    english: "Thanks. Please tell them it was found on the active shelf so they don't go searching the storage room again."
+    indonesian: "Terima kasih. Tolong bilang ketemunya di rak aktif, ya. Biar mereka nggak cari ke penyimpanan lagi."
+  - key: "dialogue.line.292"
+    english: "You may accept or decline the request."
+    indonesian: "Pemain dapat menerima atau menolak."
+  - key: "dialogue.line.293"
+    english: "Ah, here it is. We had already opened the storage register, and all the while the folder was still wandering around our own building."
+    indonesian: "Nah, ini dia. Kami tadi sudah buka daftar penyimpanan, padahal berkasnya masih keliling di gedung sendiri."
+  - key: "dialogue.line.294"
+    english: "It was found on the active shelf. Someone asked me to drop it off on my way up."
+    indonesian: "Ketemunya di rak aktif. Saya tadi dititipi pas mau naik."
+  - key: "dialogue.line.295"
+    english: "Look, the last digits are similar. Misread it slightly and it ends up on another shelf. We were just waiting on this folder to continue scanning."
+    indonesian: "Lihat, angka terakhirnya mirip. Salah baca sedikit, masuk rak lain. Kami tinggal tunggu map ini untuk melanjutkan pemindaian."
+  - key: "dialogue.line.296"
+    english: "Good thing it was still in the same building. If I had to fetch it from somewhere else, I'd have asked for lunch on the way."
+    indonesian: "Untung masih satu gedung. Kalau harus diambil ke tempat lain, saya sekalian titip makan siang."
+  - key: "dialogue.line.297"
+    english: "For a single folder like this? The lunch would cost more than the courier trip. Here, set it down. Thank you."
+    indonesian: "Untuk satu map begini? Nanti biaya makannya lebih besar dari ongkos ambil berkas. Sudah, taruh di sini. Terima kasih, ya."
+  - key: "dialogue.line.298"
+    english: "Hey, hold on. If you're passing the digitization room, could you drop this off? I carried a whole stack over here and only just noticed one stray folder."
+    indonesian: "Eh, sebentar. Kalau kamu lewat ruang digitalisasi, boleh titip yang ini? Saya tadi sudah bawa setumpuk ke sini, baru ketahuan satu map nyasar."
+  - key: "dialogue.line.299"
+    english: "This one still needs to go to the scanning desk. No wonder you've been pacing back and forth checking shelf numbers."
+    indonesian: "Yang ini masih harus ke meja pemindaian. Pantas kamu dari tadi bolak-balik lihat nomor rak."
+  - key: "dialogue.line.300"
+    english: "Yeah. I thought I misread it, so I checked twice. Turns out it really had been placed on the active shelf. The others are in the right place\u2014it's just this one left."
+    indonesian: "Iya. Saya kira salah baca, sampai saya ulang dua kali. Ternyata memang ditaruh di rak aktif. Yang lain sudah benar, tinggal satu ini saja."
+  - key: "npc.profile.line.000"
+    english: "Welcome to the archive office. How can I help you?"
+    indonesian: "Selamat datang di kantor arsip. Ada yang bisa saya bantu?"
+  - key: "npc.profile.line.001"
+    english: "I patrol from the courtyard to the front entrance."
+    indonesian: "Saya berpatroli dari halaman sampai pintu depan."
+  - key: "npc.profile.line.002"
+    english: "If you're looking for a staff member, ask Nadia at reception."
+    indonesian: "Kalau mencari pegawai, tanyakan ke Nadia di resepsionis."
+  - key: "npc.profile.line.003"
+    english: "I've checked the main entrance."
+    indonesian: "Pintu masuk sudah saya periksa."
+  - key: "npc.profile.line.004"
+    english: "The front courtyard is secure."
+    indonesian: "Halaman depan masih aman."
+  - key: "npc.profile.line.005"
+    english: "Welcome. Who would you like to see?"
+    indonesian: "Selamat datang. Siapa yang ingin Anda temui?"
+  - key: "npc.profile.line.006"
+    english: "The visitor log is at the front desk."
+    indonesian: "Daftar kunjungan ada di meja depan."
+  - key: "npc.profile.line.007"
+    english: "The workrooms and archives are on the upper floors."
+    indonesian: "Ruang kerja dan arsip berada di lantai atas."
+  - key: "npc.profile.line.008"
+    english: "I record all incoming visitors."
+    indonesian: "Saya mencatat tamu yang masuk."
+  - key: "npc.profile.line.009"
+    english: "Today's visiting schedule is quite full."
+    indonesian: "Jadwal kunjungan hari ini cukup padat."
+  - key: "npc.profile.line.010"
+    english: "I'm looking for a file that hasn't been returned yet."
+    indonesian: "Saya sedang mencari berkas yang belum dikembalikan."
+  - key: "npc.profile.line.011"
+    english: "I usually inspect archives across several floors."
+    indonesian: "Saya biasa memeriksa arsip di beberapa lantai."
+  - key: "npc.profile.line.012"
+    english: "Let me know if you find a folder with an old label."
+    indonesian: "Beri tahu saya kalau Anda menemukan map berlabel lama."
+  - key: "npc.profile.line.013"
+    english: "That file earlier seems to be on the third floor."
+    indonesian: "Berkas tadi sepertinya ada di lantai tiga."
+  - key: "npc.profile.line.014"
+    english: "I'll check the next shelf."
+    indonesian: "Saya akan cek rak berikutnya."
+  - key: "npc.profile.line.015"
+    english: "Hello, I'm organizing the archive list."
+    indonesian: "Halo, saya sedang menyusun daftar arsip."
+  - key: "npc.profile.line.016"
+    english: "There are several documents I need to cross-check."
+    indonesian: "Ada beberapa dokumen yang harus saya cocokkan."
+  - key: "npc.profile.line.017"
+    english: "If you need help, meet me in the second-floor workroom."
+    indonesian: "Kalau perlu bantuan, temui saya di ruang kerja lantai dua."
+  - key: "npc.profile.line.018"
+    english: "This file number needs to be matched."
+    indonesian: "Nomor berkas ini perlu dicocokkan."
+  - key: "npc.profile.line.019"
+    english: "I'm heading downstairs to pick up some documents."
+    indonesian: "Saya akan turun mengambil dokumen."
+  - key: "npc.profile.line.020"
+    english: "Make sure every archive file is returned to its place."
+    indonesian: "Pastikan setiap arsip kembali ke tempatnya."
+  - key: "npc.profile.line.021"
+    english: "I'm reviewing reports from several floors."
+    indonesian: "Saya sedang meninjau laporan dari beberapa lantai."
+  - key: "npc.profile.line.022"
+    english: "If there is any issue with a file, report it to me."
+    indonesian: "Bila ada berkas bermasalah, laporkan kepada saya."
+  - key: "npc.profile.line.023"
+    english: "Daily reports must be completed on time."
+    indonesian: "Laporan harian harus selesai tepat waktu."
+  - key: "npc.profile.line.024"
+    english: "I'll inspect the archive room again."
+    indonesian: "Saya akan periksa ruang arsip lagi."
+  - key: "npc.profile.line.025"
+    english: "Welcome to our office."
+    indonesian: "Selamat datang di kantor kami."
+  - key: "npc.profile.line.026"
+    english: "I'm waiting for today's work summary."
+    indonesian: "Saya menunggu ringkasan pekerjaan hari ini."
+  - key: "npc.profile.line.027"
+    english: "Please report any important findings to Ratih."
+    indonesian: "Silakan sampaikan temuan penting kepada Ratih."
+  - key: "npc.profile.line.028"
+    english: "I'd like to see the latest summary."
+    indonesian: "Saya ingin melihat ringkasan terbaru."
+  - key: "npc.profile.line.029"
+    english: "Make sure all departments are working neatly."
+    indonesian: "Pastikan semua bagian bekerja rapi."
+  - key: "npc.profile.line.030"
+    english: "I guard the first-floor archive entrance."
+    indonesian: "Saya menjaga pintu arsip lantai satu."
+  - key: "npc.profile.line.031"
+    english: "The borrowing logbook is near this desk."
+    indonesian: "Buku peminjaman ada di dekat meja ini."
+  - key: "npc.profile.line.032"
+    english: "Every outgoing file must be recorded first."
+    indonesian: "Setiap berkas keluar harus dicatat dahulu."
+  - key: "npc.profile.line.033"
+    english: "The archive door must remain monitored."
+    indonesian: "Pintu arsip harus tetap terpantau."
+  - key: "npc.profile.line.034"
+    english: "I'll check the borrowing list again."
+    indonesian: "Saya cek daftar peminjaman lagi."
+  - key: "npc.profile.line.035"
+    english: "I'm checking the document arrangement on the first floor."
+    indonesian: "Saya memeriksa susunan dokumen di lantai satu."
+  - key: "npc.profile.line.036"
+    english: "Several new folders arrived this morning."
+    indonesian: "Beberapa map baru datang pagi ini."
+  - key: "npc.profile.line.037"
+    english: "The shelf number can be seen on the front label."
+    indonesian: "Nomor rak bisa dilihat pada label di depan."
+  - key: "npc.profile.line.038"
+    english: "I've sorted these folders."
+    indonesian: "Map ini sudah saya urutkan."
+  - key: "npc.profile.line.039"
+    english: "There is still one shelf left to check."
+    indonesian: "Masih ada satu rak yang perlu dicek."
+  - key: "npc.profile.line.040"
+    english: "Old archives are stored toward the back."
+    indonesian: "Arsip lama disimpan di sisi belakang."
+  - key: "npc.profile.line.041"
+    english: "I'm counting the folders on the shelf."
+    indonesian: "Saya sedang menghitung jumlah map di rak."
+  - key: "npc.profile.line.042"
+    english: "Please return the files to their original order."
+    indonesian: "Tolong kembalikan berkas ke urutan semula."
+  - key: "npc.profile.line.043"
+    english: "The number of folders on this shelf matches."
+    indonesian: "Jumlah map di rak ini cocok."
+  - key: "npc.profile.line.044"
+    english: "I'll continue to the back section."
+    indonesian: "Saya lanjut ke sisi belakang."
+  - key: "npc.profile.line.045"
+    english: "I'm on duty at the second-floor archive post."
+    indonesian: "Saya bertugas di pos arsip lantai dua."
+  - key: "npc.profile.line.046"
+    english: "I have the archive room visitor log."
+    indonesian: "Daftar kunjungan ruang arsip ada pada saya."
+  - key: "npc.profile.line.047"
+    english: "Do not remove documents without staff permission."
+    indonesian: "Jangan membawa dokumen tanpa izin petugas."
+  - key: "npc.profile.line.048"
+    english: "I log everyone who enters."
+    indonesian: "Saya catat siapa yang masuk."
+  - key: "npc.profile.line.049"
+    english: "I'm keeping watch over the second-floor post."
+    indonesian: "Pos lantai dua tetap saya jaga."
+  - key: "npc.profile.line.050"
+    english: "I arrange the files by year of issue."
+    indonesian: "Saya menata berkas sesuai tahun penerbitan."
+  - key: "npc.profile.line.051"
+    english: "I'm inspecting this shelf right now."
+    indonesian: "Rak sebelah sini sedang saya periksa."
+  - key: "npc.profile.line.052"
+    english: "Let me know if any labels are mixed up."
+    indonesian: "Beri tahu saya jika ada label yang tertukar."
+  - key: "npc.profile.line.053"
+    english: "The chronological order is correct."
+    indonesian: "Urutan tahunnya sudah benar."
+  - key: "npc.profile.line.054"
+    english: "The next shelf needs to be checked."
+    indonesian: "Rak berikutnya perlu diperiksa."
+  - key: "npc.profile.line.055"
+    english: "Several documents were recently moved."
+    indonesian: "Ada beberapa dokumen yang baru dipindahkan."
+  - key: "npc.profile.line.056"
+    english: "I'm making rounds in the second-floor archive room."
+    indonesian: "Saya berkeliling di ruang arsip lantai dua."
+  - key: "npc.profile.line.057"
+    english: "All file transfers must be logged."
+    indonesian: "Semua perpindahan berkas harus masuk catatan."
+  - key: "npc.profile.line.058"
+    english: "I've checked the transferred documents."
+    indonesian: "Dokumen pindahan sudah saya cek."
+  - key: "npc.profile.line.059"
+    english: "I'm heading back to the front rack."
+    indonesian: "Saya kembali ke rak depan."
+  - key: "npc.profile.line.060"
+    english: "Welcome to the third-floor archives."
+    indonesian: "Selamat datang di arsip lantai tiga."
+  - key: "npc.profile.line.061"
+    english: "I maintain the borrowing register for this floor."
+    indonesian: "Saya menjaga daftar peminjaman lantai ini."
+  - key: "npc.profile.line.062"
+    english: "Ask for the folder location before opening the shelves."
+    indonesian: "Tanyakan lokasi map sebelum membuka rak."
+  - key: "npc.profile.line.063"
+    english: "The third-floor archive register has been updated."
+    indonesian: "Daftar arsip lantai tiga sudah diperbarui."
+  - key: "npc.profile.line.064"
+    english: "I'll remain at the front post."
+    indonesian: "Saya tetap di pos depan."
+  - key: "npc.profile.line.065"
+    english: "I'm inspecting the middle shelves."
+    indonesian: "Saya memeriksa rak bagian tengah."
+  - key: "npc.profile.line.066"
+    english: "Several folders need new labels."
+    indonesian: "Beberapa map perlu diberi label baru."
+  - key: "npc.profile.line.067"
+    english: "Please don't change the file order while I'm logging them."
+    indonesian: "Tolong jangan ubah susunan berkas saat saya mencatatnya."
+  - key: "npc.profile.line.068"
+    english: "The middle shelf labels are starting to fade."
+    indonesian: "Label rak tengah mulai pudar."
+  - key: "npc.profile.line.069"
+    english: "I'll go get the inventory list."
+    indonesian: "Saya akan ambil daftar inventaris."
+  - key: "npc.profile.line.070"
+    english: "The back shelves hold rarely used files."
+    indonesian: "Rak belakang memuat berkas yang jarang dipakai."
+  - key: "npc.profile.line.071"
+    english: "I'm cross-checking the inventory numbers."
+    indonesian: "Saya sedang mencocokkan nomor inventaris."
+  - key: "npc.profile.line.072"
+    english: "If you find an unlabeled folder, hand it to a staff member."
+    indonesian: "Jika menemukan map tanpa label, serahkan kepada petugas."
+  - key: "npc.profile.line.073"
+    english: "This inventory number doesn't match yet."
+    indonesian: "Nomor inventaris ini belum cocok."
+  - key: "npc.profile.line.074"
+    english: "I'll check the next folder."
+    indonesian: "Saya periksa map berikutnya."
+  - key: "npc.profile.line.075"
+    english: "I guard access to the fourth-floor archives."
+    indonesian: "Saya menjaga akses arsip lantai empat."
+  - key: "npc.profile.line.076"
+    english: "The executive office is not far from here."
+    indonesian: "Ruang pimpinan berada tidak jauh dari sini."
+  - key: "npc.profile.line.077"
+    english: "Log it first if you need to take a file out."
+    indonesian: "Catat dahulu bila Anda perlu membawa berkas keluar."
+  - key: "npc.profile.line.078"
+    english: "Fourth-floor access must be recorded."
+    indonesian: "Akses lantai empat harus tercatat."
+  - key: "npc.profile.line.079"
+    english: "I'll stay on guard up front."
+    indonesian: "Saya tetap berjaga di depan."
+  - key: "npc.profile.line.080"
+    english: "I'm checking the shelves near the executive office."
+    indonesian: "Saya memeriksa rak dekat ruang pimpinan."
+  - key: "npc.profile.line.081"
+    english: "Important files need to be arranged more carefully."
+    indonesian: "Berkas penting perlu ditata lebih teliti."
+  - key: "npc.profile.line.082"
+    english: "I'll return this folder to its place."
+    indonesian: "Saya akan mengembalikan map ini ke tempatnya."
+  - key: "npc.profile.line.083"
+    english: "I've checked the shelves near the executive office."
+    indonesian: "Rak dekat pimpinan sudah saya periksa."
+  - key: "npc.profile.line.084"
+    english: "This folder must go back to its original order."
+    indonesian: "Map ini harus kembali ke urutan awal."
+  - key: "npc.profile.line.085"
+    english: "I'm patrolling the fourth-floor archives."
+    indonesian: "Saya berkeliling di arsip lantai empat."
+  - key: "npc.profile.line.086"
+    english: "There are several documents that need to be matched."
+    indonesian: "Ada beberapa dokumen yang perlu dicocokkan."
+  - key: "npc.profile.line.087"
+    english: "Report if any door or shelf is left open."
+    indonesian: "Laporkan jika ada pintu atau rak yang terbuka."
+  - key: "npc.profile.line.088"
+    english: "I'll check the next corridor."
+    indonesian: "Saya akan cek koridor berikutnya."
+  - key: "npc.profile.line.089"
+    english: "The fourth-floor documents are all accounted for."
+    indonesian: "Dokumen lantai empat masih lengkap."
+  - key: "npc.profile.line.090"
+    english: "I'm delivering documents from the courtyard."
+    indonesian: "Saya sedang mengantar dokumen dari halaman."
+  - key: "npc.profile.line.091"
+    english: "Sometimes I help the receptionist in the lobby."
+    indonesian: "Kadang saya membantu resepsionis di lobi."
+  - key: "npc.profile.line.092"
+    english: "Give me a moment to finish the outdoor check."
+    indonesian: "Beri saya waktu untuk menyelesaikan pemeriksaan luar."
+  - key: "npc.profile.line.093"
+    english: "The documents from outside have arrived."
+    indonesian: "Dokumen dari luar sudah datang."
+  - key: "npc.profile.line.094"
+    english: "I'm stepping into the lobby for a moment."
+    indonesian: "Saya masuk sebentar ke lobi."
+  - key: "npc.profile.line.095"
+    english: "I'm assigned to check the courtyard area."
+    indonesian: "Saya bertugas memeriksa area halaman."
+  - key: "npc.profile.line.096"
+    english: "After this I'll head to the front door."
+    indonesian: "Setelah ini saya akan ke pintu depan."
+  - key: "npc.profile.line.097"
+    english: "If there is a package, place it on the receiving desk."
+    indonesian: "Kalau ada paket, letakkan di meja penerimaan."
+  - key: "npc.profile.line.098"
+    english: "I've checked the east courtyard."
+    indonesian: "Halaman timur sudah saya cek."
+  - key: "npc.profile.line.099"
+    english: "I'll continue to the front post."
+    indonesian: "Saya lanjut ke pos depan."
+  - key: "npc.profile.line.100"
+    english: "I'm checking the rooftop area."
+    indonesian: "Saya sedang memeriksa bagian rooftop."
+  - key: "npc.profile.line.101"
+    english: "From up here, the courtyard is clearly visible."
+    indonesian: "Dari atas, halaman terlihat cukup jelas."
+  - key: "npc.profile.line.102"
+    english: "I also head downstairs occasionally to pick up reports."
+    indonesian: "Saya juga turun sesekali untuk mengambil laporan."
+  - key: "npc.profile.line.103"
+    english: "The west side of the rooftop is clear."
+    indonesian: "Rooftop bagian barat aman."
+  - key: "npc.profile.line.104"
+    english: "I'll check the other side."
+    indonesian: "Saya akan lihat sisi lainnya."
+  - key: "npc.profile.line.105"
+    english: "I'm patrolling the rooftop today."
+    indonesian: "Saya berpatroli di rooftop hari ini."
+  - key: "npc.profile.line.106"
+    english: "I'm checking the walkways and corners of the roof."
+    indonesian: "Saya memeriksa jalur dan sudut atap."
+  - key: "npc.profile.line.107"
+    english: "If anything needs reporting, I'll head downstairs."
+    indonesian: "Kalau ada yang perlu dilaporkan, saya akan turun."
+  - key: "npc.profile.line.108"
+    english: "The east side of the rooftop is clean."
+    indonesian: "Sisi timur rooftop sudah bersih."
+  - key: "npc.profile.line.109"
+    english: "I'll check the next corner."
+    indonesian: "Saya cek sudut berikutnya."
+  - key: "npc.profile.line.110"
+    english: "I handle documents on the first floor."
+    indonesian: "Saya mengurus dokumen di lantai satu."
+  - key: "npc.profile.line.111"
+    english: "I need to bring several files up to the second floor."
+    indonesian: "Beberapa berkas harus saya bawa ke lantai dua."
+  - key: "npc.profile.line.112"
+    english: "I'll be back after this list is finished."
+    indonesian: "Saya akan kembali setelah daftar ini selesai."
+  - key: "npc.profile.line.113"
+    english: "The first-floor list is almost done."
+    indonesian: "Daftar lantai satu hampir selesai."
+  - key: "npc.profile.line.114"
+    english: "I'm taking these files upstairs."
+    indonesian: "Saya bawa berkas ini ke atas."
+  - key: "npc.profile.line.115"
+    english: "I work on the second floor."
+    indonesian: "Saya bekerja di lantai dua."
+  - key: "npc.profile.line.116"
+    english: "I'm matching documents against the archive register."
+    indonesian: "Saya sedang mencocokkan dokumen dengan daftar arsip."
+  - key: "npc.profile.line.117"
+    english: "After this I'll check the third floor."
+    indonesian: "Sesudah ini saya akan memeriksa lantai tiga."
+  - key: "npc.profile.line.118"
+    english: "The second-floor documents need sorting."
+    indonesian: "Dokumen lantai dua perlu disusun."
+  - key: "npc.profile.line.119"
+    english: "I'm heading up to check the archives."
+    indonesian: "Saya naik untuk memeriksa arsip."
+  - key: "npc.profile.line.120"
+    english: "I'm finishing up work on the third floor."
+    indonesian: "Saya menyelesaikan pekerjaan di lantai tiga."
+  - key: "npc.profile.line.121"
+    english: "I often go downstairs to check other files."
+    indonesian: "Saya sering turun untuk memeriksa berkas lain."
+  - key: "npc.profile.line.122"
+    english: "Please let me know if you find an unnumbered document."
+    indonesian: "Tolong beri tahu jika menemukan dokumen tanpa nomor."
+  - key: "npc.profile.line.123"
+    english: "Work on the third floor is still underway."
+    indonesian: "Pekerjaan lantai tiga masih berjalan."
+  - key: "npc.profile.line.124"
+    english: "I'm heading down to get the archive register."
+    indonesian: "Saya turun mengambil daftar arsip."
+  - key: "npc.world.open.0"
+    english: "Welcome. Can I help you?"
+    indonesian: "Selamat datang. Ada yang bisa saya bantu?"
+  - key: "npc.world.open.1"
+    english: "Morning. Careful, this part is still a little wet."
+    indonesian: "Pagi. Hati-hati, bagian ini masih agak basah."
+  - key: "npc.world.open.2"
+    english: "Come in. Taking a break, or looking for someone?"
+    indonesian: "Silakan. Mau istirahat sebentar atau sedang mencari seseorang?"
+  - key: "npc.world.open.3"
+    english: "Feel free to look around. Let me know if you need help finding something."
+    indonesian: "Silakan lihat-lihat. Kalau perlu bantuan mencari barang, bilang saja."
+  - key: "npc.world.open.4"
+    english: "Hello. Are you looking for equipment, or would you like to ask something first?"
+    indonesian: "Halo. Sedang mencari perlengkapan atau mau bertanya dulu?"
+  - key: "npc.world.open.5"
+    english: "Come in. If you need supplies, tell us what they're for first."
+    indonesian: "Silakan. Kalau butuh bahan, sebutkan kegunaannya dulu, ya."
+  - key: "npc.world.open.6"
+    english: "Morning. I'm checking the archives in this section."
+    indonesian: "Pagi. Saya sedang mencocokkan arsip di bagian ini."
+  - key: "npc.world.open.7"
+    english: "Hello. Can I help you?"
+    indonesian: "Halo. Ada yang bisa saya bantu?"
+  - key: "npc.world.open.8"
+    english: "Morning. Do you need something from our department?"
+    indonesian: "Pagi. Ada keperluan dengan bagian kami?"

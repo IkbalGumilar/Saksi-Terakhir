@@ -385,6 +385,7 @@ namespace SaksiTerakhir.Story
 
         private void SendColleaguesToLunch()
         {
+            bossGate?.GetComponent<Interaction.DoorInteractable>()?.ForceOpen(Get(RakaId)?.transform);
             Send(Get(RakaId), rakaMealApproach);
             Send(Get(SintaId), sintaMealApproach);
             void Send(OfficeNpcAgent colleague, Transform destination)
@@ -690,6 +691,10 @@ namespace SaksiTerakhir.Story
                             Release("NPC-022");
                             if (!includeMorningRoutine) NoticeRequested?.Invoke("story.call.incoming");
                         }, Get("NPC-021"), Get("NPC-022"));
+                case ChapterOneStage.AnswerBossCall when id == "NPC-006":
+                    Apply(ChapterOneEvent.BossCallFinished);
+                    return PlayNpcSequence(profile, "chapter.boss_first", false,
+                        () => Apply(ChapterOneEvent.FirstBriefingFinished), Get("NPC-006"));
                 case ChapterOneStage.MeetBoss when id == "NPC-006":
                     return PlayNpcSequence(profile, "chapter.boss_first", false,
                         () => Apply(ChapterOneEvent.FirstBriefingFinished), Get("NPC-006"));

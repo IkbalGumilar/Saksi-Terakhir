@@ -14,19 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.spbu_arrival
   lines:
-  - speakerId: NPC-003
-    text: Tolong isi penuh, Pak. Kami juga perlu dua jerigen untuk cadangan. Yang
-      khusus buat bahan bakar.
-  - speakerId: Petugas SPBU
-    text: Bisa. Wadahnya ada di toko. Ambil dulu, nanti saya bantu urus pengisiannya.
-  - speakerId: NPC-004
-    text: Aku ambil. Sekalian air minum. Jangan sampai dua jerigen kebawa, minuman
-      buat kita malah lupa.
-  - speakerId: PLAYER
-    text: Kalau begitu saya meluruskan kaki sebentar. Nanti kalau sudah siap kabari,
-      ya.
-  - speakerId: NPC-003
-    text: Boleh. Dekat sini ada taman. Saya sama B selesaikan yang di sini, nanti
-      kami panggil kalau sudah siap.
+  - speakerId: "NPC-003"
+    text: "Tolong isi penuh, Pak. Kami juga perlu dua jerigen untuk cadangan. Yang khusus buat bahan bakar."
+  - speakerId: "Petugas SPBU"
+    text: "Bisa. Wadahnya ada di toko. Ambil dulu, nanti saya bantu urus pengisiannya."
+  - speakerId: "NPC-004"
+    text: "Saya ambil, Pak. Sekalian air minum. Jangan sampai dua jerigen kebawa, minuman buat kita malah lupa."
+  - speakerId: "PLAYER"
+    text: "Kalau begitu saya meluruskan kaki sebentar. Nanti kalau sudah siap kabari, ya."
+  - speakerId: "NPC-003"
+    text: "Boleh. Dekat sini ada taman. Saya sama Rafi selesaikan yang di sini, nanti kami panggil kalau sudah siap."
   conditions: []
   phoneConversation: 0

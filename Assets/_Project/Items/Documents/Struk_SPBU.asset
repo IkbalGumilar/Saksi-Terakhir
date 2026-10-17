@@ -18,6 +18,4 @@ MonoBehaviour:
   type: 1
   icon: {fileID: 0}
   modelPrefab: {fileID: 0}
-  documentText: "Struk SPBU \u2014 Pengisian dan Perbekalan Kendaraan\n24 Agustus
-    2026\n\nTangki mobil dinas: terisi penuh\nJerigen khusus BBM: 2 buah, terisi\nPembayaran
-    ditangani A dari dana dinas."
+  documentText: "Struk SPBU \u2014 Pengisian dan Perbekalan Kendaraan\n24 Agustus 2026\n\nTangki mobil dinas: terisi penuh\nJerigen khusus BBM: 2 buah, terisi\nPembayaran ditangani Dadan dari dana dinas."

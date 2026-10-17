@@ -218,7 +218,7 @@ namespace SaksiTerakhir.Npc
         {
             DialogueLine line = lines[index];
             string name = line.SpeakerId == "PLAYER"
-                ? (LocalizationManager.CurrentLanguage == GameLanguage.Indonesian ? "Kamu" : "You")
+                ? "Ucup"
                 : speaker.DisplayName;
             var settings = SaksiTerakhir.Settings.GameSettingsManager.Current;
             if (speakerLabel != null)
@@ -226,13 +226,14 @@ namespace SaksiTerakhir.Npc
                 speakerLabel.gameObject.SetActive(settings == null || settings.showSpeakerName);
                 speakerLabel.text = name;
             }
-            lineLabel.text = line.Text;
+            string localizedText = line.LocalizedText;
+            lineLabel.text = localizedText;
             bool animate = settings == null || settings.textAnimation;
-            lineLabel.maxVisibleCharacters = animate ? 0 : line.Text.Length;
+            lineLabel.maxVisibleCharacters = animate ? 0 : localizedText.Length;
             revealedCharacters = 0f;
             float rate = settings != null ? Mathf.Max(10f, settings.textSpeed) : Mathf.Max(10f, charactersPerSecond);
             float delay = settings != null ? settings.autoAdvanceDelay : afterLineSeconds;
-            lineEndsAt = Time.time + Mathf.Max(1f, line.Text.Length / rate + delay);
+            lineEndsAt = Time.time + Mathf.Max(1f, localizedText.Length / rate + delay);
         }
 
         private bool IsForeignDialoguePlaying()

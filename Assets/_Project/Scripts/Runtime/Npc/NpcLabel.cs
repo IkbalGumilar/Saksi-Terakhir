@@ -26,7 +26,7 @@ namespace SaksiTerakhir.Npc
 
         public void Say(string value, float seconds)
         {
-            if (speechText != null) speechText.text = value;
+            if (speechText != null) speechText.text = SaksiTerakhir.Localization.LocalizationManager.Translate(value);
             speechUntil = Time.time + seconds;
         }
 

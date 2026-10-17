@@ -11,7 +11,8 @@ namespace SaksiTerakhir.Npc
     [DisallowMultipleComponent]
     public sealed class NpcConversationPreparation : MonoBehaviour
     {
-        private static readonly NavMeshPath RetreatPath = new NavMeshPath();
+        private static NavMeshPath retreatPath;
+        private static NavMeshPath RetreatPath => retreatPath ??= new NavMeshPath();
         private static readonly Vector3[] PathCorners = new Vector3[64];
         private static readonly RaycastHit[] SharedHits = new RaycastHit[32];
         private static readonly Collider[] SharedColliders = new Collider[32];
@@ -35,6 +36,7 @@ namespace SaksiTerakhir.Npc
             if (movement == null || body == null) { onReady(); return true; }
             StoryPlayerSeating seating = GetComponent<StoryPlayerSeating>();
             if (seating != null && seating.IsSeated) { onReady(); return true; }
+            if (npcAgent.StorySeated || npcAgent.IsAmbientSeated) { onReady(); return true; }
             if (movement.StoryMovementLocked || movement.UiMovementLocked) return false;
             if (AtSpeakingDistance(npc.transform))
             { onReady(); return true; }

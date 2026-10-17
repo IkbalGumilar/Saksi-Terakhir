@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.spbu_colleagues
   lines:
-  - speakerId: NPC-003
-    text: Boleh. Dekat sini ada taman. Saya sama B selesaikan yang di sini, nanti
-      kami panggil kalau sudah siap.
+  - speakerId: "NPC-003"
+    text: "Boleh. Dekat sini ada taman. Saya sama Rafi selesaikan yang di sini, nanti kami panggil kalau sudah siap."
   conditions: []
   phoneConversation: 0

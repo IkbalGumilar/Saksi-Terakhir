@@ -18,12 +18,4 @@ MonoBehaviour:
   type: 1
   icon: {fileID: 0}
   modelPrefab: {fileID: 0}
-  documentText: 'Nama toko
-
-    Tanggal
-
-    Waktu
-
-    Barang
-
-    Jumlah pembayaran'
+  documentText: "Nama toko\nTanggal\nWaktu\nBarang\nJumlah pembayaran"

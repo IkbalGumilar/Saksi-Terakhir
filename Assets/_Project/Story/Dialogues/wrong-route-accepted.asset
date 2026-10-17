@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.wrong_route_accepted
   lines:
-  - speakerId: PLAYER
-    text: Boleh, sini. Saya sekalian lewat sana. Kamu urus yang sisanya dulu sebelum
-      ada yang ikut nyasar.
-  - speakerId: Pegawai
-    text: Terima kasih. Tolong bilang ketemunya di rak aktif, ya. Biar mereka nggak
-      cari ke penyimpanan lagi.
+  - speakerId: "PLAYER"
+    text: "Boleh, sini. Saya sekalian lewat sana. Kamu urus yang sisanya dulu sebelum ada yang ikut nyasar."
+  - speakerId: "Pegawai"
+    text: "Terima kasih. Tolong bilang ketemunya di rak aktif, ya. Biar mereka nggak cari ke penyimpanan lagi."
   conditions: []

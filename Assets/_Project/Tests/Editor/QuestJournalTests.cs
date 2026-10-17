@@ -234,8 +234,8 @@ namespace SaksiTerakhir.Tests
                 "Assets/_Project/Story/Quests/find-colleagues.asset");
             string location = table.GetText(find.LocationKey, GameLanguage.Indonesian);
             Assert.That(location, Does.Contain("lantai 2"));
-            Assert.That(location, Does.Contain("Ruang Kerja Raka"));
-            Assert.That(location, Does.Contain("Ruang Kerja MC dan Sinta"));
+            Assert.That(location, Does.Contain("Ruang Kerja Dadan"));
+            Assert.That(location, Does.Contain("Ruang Kerja Ucup dan Rafi"));
         }
 
         [Test]

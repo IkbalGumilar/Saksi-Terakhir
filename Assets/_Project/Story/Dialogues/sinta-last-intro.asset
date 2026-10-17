@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.sinta_last_intro
   lines:
-  - speakerId: PLAYER
-    text: Kabelnya nanti. Pak Bos cari kita. Coba lihat HP-mu.
-  - speakerId: NPC-004
-    text: Tiga panggilan. Tadi aku cuma tinggal sebentar... ya sudah, nanti kabelnya
-      kusut saja. A sudah ketemu?
-  - speakerId: PLAYER
-    text: Sudah ke sana duluan. Tinggal kita.
+  - speakerId: "PLAYER"
+    text: "Kabelnya nanti. Pak Bos cari kita. Coba lihat HP-mu."
+  - speakerId: "NPC-004"
+    text: "Tiga panggilan. Tadi aku cuma tinggal sebentar... ya sudah, nanti kabelnya kusut saja. Pak Dadan sudah ketemu?"
+  - speakerId: "PLAYER"
+    text: "Sudah ke sana duluan. Tinggal kita."
   conditions: []

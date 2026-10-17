@@ -138,9 +138,17 @@ namespace SaksiTerakhir.Npc
                 return;
             }
             Vector3 theirDirection = Vector3.ProjectOnPlane(nearest.owner.MovementIntent, Vector3.up);
-            bool theirsMoving = theirDirection.sqrMagnitude > 0.01f;
+            bool theirsMoving = theirDirection.sqrMagnitude > 0.01f && !nearest.owner.IsCurrentlyStalled;
             bool coDirectional = theirsMoving && Vector3.Dot(direction, theirDirection.normalized) > 0.5f;
-            if (coDirectional) return; // Same-direction traffic follows normally.
+            if (coDirectional)
+            {
+                if (actor.TrafficPriority > nearest.owner.TrafficPriority && !nearest.owner.HasStoryOrder)
+                {
+                    nearest.BeginOrRefresh(requester, direction, radius);
+                    return;
+                }
+                return; // Same-direction traffic follows normally.
+            }
             if (!theirsMoving)
             {
                 // An idle, non-dialogue worker clears a walking actor's route.
@@ -234,6 +242,15 @@ namespace SaksiTerakhir.Npc
                 float along = i < 2 ? 0f : i < 4 ? 0.6f : -0.6f;
                 Vector3 requested = origin + direction * along + side * (i % 2 == 0 ? lateral : -lateral);
                 if (SafePath(origin, requested, out pocket)) return true;
+            }
+            foreach (float extraLateral in new[] { Mathf.Max(0.75f, clearance), lateral + 0.45f })
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    float along = i < 2 ? 0f : i < 4 ? -0.75f : 0.75f;
+                    Vector3 requested = origin + direction * along + side * (i % 2 == 0 ? extraLateral : -extraLateral);
+                    if (SafePath(origin, requested, out pocket)) return true;
+                }
             }
             for (int i = trail.Count - 1; i >= 0; i--)
             {

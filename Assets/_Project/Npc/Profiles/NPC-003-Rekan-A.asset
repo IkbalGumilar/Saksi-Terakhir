@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: NPC-003-Rekan-A
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
   id: NPC-003
-  displayName: Raka
-  age: 29
+  displayName: Dadan
+  age: 48
   movementSpeed: 2.6
-  trafficPriority: 1
+  trafficPriority: 8
   role: 2
   interactable: 1
   buildingContext: 0

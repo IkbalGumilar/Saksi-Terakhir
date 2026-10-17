@@ -18,12 +18,4 @@ MonoBehaviour:
   type: 1
   icon: {fileID: 0}
   modelPrefab: {fileID: 0}
-  documentText: 'Surat Tugas Verifikasi Lapangan
-
-    24 Agustus 2026
-
-
-    Itu yang
-    saya perlukan. Cari wilayahnya, periksa apakah Wanaseta pernah digunakan sebagai
-    nama di sana, dan cari nama administratif sekarang. Foto, catatan, atau keterangan
-    yang menghubungkan tempat itu dengan arsip, semuanya dibawa pulang.'
+  documentText: "Surat Tugas Verifikasi Lapangan\n24 Agustus 2026\n\nItu yang saya perlukan. Cari wilayahnya, periksa apakah Cikapohon pernah digunakan sebagai nama di sana, dan cari nama administratif sekarang. Foto, catatan, atau keterangan yang menghubungkan tempat itu dengan arsip, semuanya dibawa pulang."

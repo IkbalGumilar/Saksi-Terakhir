@@ -13,9 +13,10 @@ namespace SaksiTerakhir.Navigation
         private const float GroundInterval = 0.18f;
         private static readonly RaycastHit[] Hits = new RaycastHit[64];
         private static readonly Collider[] Overlaps = new Collider[64];
-        private static readonly NavMeshPath LocalPath = new NavMeshPath();
+        private static NavMeshPath localPath;
+        private static NavMeshPath LocalPath => localPath ??= new NavMeshPath();
         private static readonly Dictionary<int, int> DetourSides = new Dictionary<int, int>();
-        private static readonly float[] DetourAngles = { 25f, 45f, 65f, 82f, 90f, 110f };
+        private static readonly float[] DetourAngles = { 15f, 25f, 45f, 65f, 82f, 95f, 115f, 135f };
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset() => DetourSides.Clear();
@@ -38,11 +39,12 @@ namespace SaksiTerakhir.Navigation
             height = Mathf.Max(radius * 2f, height);
             stepHeight = Mathf.Max(0.02f, stepHeight);
             maxSlope = Mathf.Clamp(maxSlope, 0f, 75f);
-            probeDistance = Mathf.Max(0.25f, probeDistance);
+            float directDistance = Mathf.Max(0.06f, probeDistance);
+            float detourDistance = Mathf.Max(0.25f, probeDistance);
             Vector3 direction = desiredDirection.normalized;
             if (!TrySupportedGround(actor, actor.position, stepHeight + Skin, stepHeight + Skin,
                 maxSlope, radius, allowNarrowFootGap, out Vector3 feet, ignoreCollider)) return false;
-            if (IsRouteSafe(actor, feet, direction, probeDistance, radius, height, stepHeight, maxSlope, filter,
+            if (IsRouteSafe(actor, feet, direction, directDistance, radius, height, stepHeight, maxSlope, filter,
                     ignoreCollider, requireNavigation, acceptGround, allowNarrowFootGap, out _))
             {
                 safeDirection = direction;
@@ -57,7 +59,7 @@ namespace SaksiTerakhir.Navigation
                 foreach (float angle in DetourAngles)
                 {
                     Vector3 candidate = Quaternion.AngleAxis(angle * candidateSide, Vector3.up) * direction;
-                    if (!IsRouteSafe(actor, feet, candidate, probeDistance, radius, height,
+                    if (!IsRouteSafe(actor, feet, candidate, detourDistance, radius, height,
                         stepHeight, maxSlope, filter, ignoreCollider, requireNavigation, acceptGround, allowNarrowFootGap, out _)) continue;
                     if (DetourSides.Count > 256) DetourSides.Clear();
                     DetourSides[id] = candidateSide;
@@ -242,7 +244,9 @@ namespace SaksiTerakhir.Navigation
                 int hits = Physics.CapsuleCastNonAlloc(bottom, top, radius + Skin, displacement / distance,
                     Hits, distance, ~0, QueryTriggerInteraction.Ignore);
                 if (hits == Hits.Length) return false;
-                for (int i = 0; i < hits; i++) if (!IsIgnored(actor, Hits[i].collider, ignoreCollider)) return false;
+                for (int i = 0; i < hits; i++)
+                    if (Hits[i].distance > 0.0001f && !IsIgnored(actor, Hits[i].collider, ignoreCollider))
+                        return false;
             }
             int overlaps = Physics.OverlapCapsuleNonAlloc(to + Vector3.up * lower,
                 to + Vector3.up * upper, radius + Skin, Overlaps,

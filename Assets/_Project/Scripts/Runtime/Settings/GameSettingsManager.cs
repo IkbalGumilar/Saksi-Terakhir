@@ -84,7 +84,14 @@ namespace SaksiTerakhir.Settings
                 current.inputDevice = "Keyboard & Mouse";
             }
 
+            if (PlayerPrefs.HasKey("Localization.Language") &&
+                Enum.TryParse(PlayerPrefs.GetString("Localization.Language"), out SaksiTerakhir.Localization.GameLanguage savedLang))
+            {
+                current.language = savedLang;
+            }
+
             isInitialized = true;
+            SaksiTerakhir.Localization.LocalizationManager.SetLanguage(current.language);
         }
 
         public static void Save()
@@ -141,11 +148,21 @@ namespace SaksiTerakhir.Settings
         {
             if (current == null) return;
 
+            SaksiTerakhir.Localization.LocalizationManager.SetLanguage(current.language);
             ApplyControlSettings();
             ApplyDisplaySettings();
             ApplyGraphicsSettings();
             ApplyTargetFrameRate();
+            ApplyAudioSettings();
             SettingsChanged?.Invoke(current);
+        }
+
+        private static void ApplyAudioSettings()
+        {
+            if (current != null)
+            {
+                AudioListener.volume = Mathf.Clamp01(current.masterVolume / 100f);
+            }
         }
 
         private static void ApplyControlSettings()

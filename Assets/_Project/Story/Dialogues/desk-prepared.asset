@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.desk_prepared
   lines:
-  - speakerId: Catatan
-    text: Saat membersihkan meja, pemain menemukan buku agenda.
+  - speakerId: "Catatan"
+    text: "Saat membersihkan meja, pemain menemukan buku agenda."
   conditions: []

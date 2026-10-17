@@ -14,13 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.wrong_route_offer
   lines:
-  - speakerId: Pegawai
-    text: Eh, sebentar. Kalau kamu lewat ruang digitalisasi, boleh titip yang ini?
-      Saya tadi sudah bawa setumpuk ke sini, baru ketahuan satu map nyasar.
-  - speakerId: PLAYER
-    text: Yang ini masih harus ke meja pemindaian. Pantas kamu dari tadi bolak-balik
-      lihat nomor rak.
-  - speakerId: Pegawai
-    text: Iya. Saya kira salah baca, sampai saya ulang dua kali. Ternyata memang
-      ditaruh di rak aktif. Yang lain sudah benar, tinggal satu ini saja.
+  - speakerId: "Pegawai"
+    text: "Eh, sebentar. Kalau kamu lewat ruang digitalisasi, boleh titip yang ini? Saya tadi sudah bawa setumpuk ke sini, baru ketahuan satu map nyasar."
+  - speakerId: "PLAYER"
+    text: "Yang ini masih harus ke meja pemindaian. Pantas kamu dari tadi bolak-balik lihat nomor rak."
+  - speakerId: "Pegawai"
+    text: "Iya. Saya kira salah baca, sampai saya ulang dua kali. Ternyata memang ditaruh di rak aktif. Yang lain sudah benar, tinggal satu ini saja."
   conditions: []

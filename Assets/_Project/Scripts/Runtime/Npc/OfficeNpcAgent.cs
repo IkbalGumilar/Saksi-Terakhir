@@ -72,9 +72,21 @@ namespace SaksiTerakhir.Npc
         private readonly List<Vector3> linkRoute = new List<Vector3>();
         private int linkRouteIndex;
         private float nextLinkRouteAttempt;
+        private Vector3 linkProgressPosition;
+        private float linkStuckSince;
         private bool replaceStoryPathAfterLink;
         private bool resumeActivityAfterLink;
         private bool conversationOwnsPosition, conversationUpdatePosition;
+        private NavMeshPath bypassTailPath;
+        private bool bypassWaypointActive;
+        private Vector3 bypassWaypoint;
+        private float bypassStartedAt, nextBypassAttempt, detourActiveSince;
+        private float vehicleEvadeUntil, nextVehicleEvadeRepath;
+        private Vector3 vehicleEvadeTarget;
+        private bool vehicleEvadeMoving;
+        private static readonly Collider[] OverlapScratch = new Collider[32];
+        private static readonly float[] BypassAngles = { 35f, -35f, 60f, -60f, 85f, -85f, 115f, -115f };
+        private static readonly float[] BypassDistances = { 1.15f, 1.85f, 2.6f };
         private const float StallRetrySeconds = 2.5f;
 
         public NpcProfile Profile => profile;
@@ -101,6 +113,7 @@ namespace SaksiTerakhir.Npc
         public bool IsDialogueBusy => CurrentState == NpcState.Conversation
             || CurrentState == NpcState.PlayerConversation;
         public bool IsAmbientSeated => ambientSeated;
+        internal bool IsCurrentlyStalled => Time.time - stuckSince > 0.65f;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetPopulationRegistry() => activeActors.Clear();
@@ -146,6 +159,10 @@ namespace SaksiTerakhir.Npc
             resumeActivityAfterLink = false;
             storyAtDestination = false;
             storyPathValidated = false;
+            bypassWaypointActive = false;
+            detourActiveSince = 0f;
+            vehicleEvadeMoving = false;
+            vehicleEvadeUntil = 0f;
             TerrainNavigationProbe.ClearDetour(transform);
             storyFaceTarget = faceTarget;
             storyFollowTarget = null;
@@ -177,6 +194,8 @@ namespace SaksiTerakhir.Npc
             storyMoveRequested = false;
             storyAtDestination = false;
             storyPathValidated = false;
+            bypassWaypointActive = false;
+            detourActiveSince = 0f;
             TerrainNavigationProbe.ClearDetour(transform);
             storyFaceTarget = null;
             storyFollowTarget = null;
@@ -207,6 +226,10 @@ namespace SaksiTerakhir.Npc
             storyMoveRequested = true;
             storyAtDestination = false;
             storyPathValidated = false;
+            bypassWaypointActive = false;
+            detourActiveSince = 0f;
+            vehicleEvadeMoving = false;
+            vehicleEvadeUntil = 0f;
             TerrainNavigationProbe.ClearDetour(transform);
             if (talking) { PauseForConversation(); return true; }
             return TryStartStoryPath();
@@ -273,12 +296,58 @@ namespace SaksiTerakhir.Npc
                 {
                     navigation.updatePosition = standingNavigationUpdatePosition;
                     if (navigation.enabled && navigation.isOnNavMesh)
-                        transform.position = navigation.nextPosition;
+                    {
+                        Vector3 standingPos = ResolveClearStandingPosition(navigation.nextPosition);
+                        if ((standingPos - navigation.nextPosition).sqrMagnitude > 0.0001f)
+                            navigation.Warp(standingPos);
+                        transform.position = standingPos;
+                    }
                 }
                 if (seatedBody != null && seatedBody.isKinematic)
                     seatedBody.interpolation = standingBodyInterpolation;
             }
             storySeated = seated;
+        }
+
+        private Vector3 ResolveClearStandingPosition(Vector3 candidate)
+        {
+            if (HasStandingClearance(candidate)) return candidate;
+            var filter = new NavMeshQueryFilter { agentTypeID = navigation.agentTypeID, areaMask = navigation.areaMask };
+            Vector3 forward = transform.forward;
+            forward.y = 0f;
+            if (forward.sqrMagnitude < 0.001f) forward = Vector3.forward;
+            else forward.Normalize();
+            foreach (float radius in new[] { 0.25f, 0.45f, 0.65f })
+            {
+                foreach (float angle in new[] { 0f, 45f, -45f, 90f, -90f, 135f, -135f, 180f })
+                {
+                    Vector3 offset = Quaternion.AngleAxis(angle, Vector3.up) * forward * radius;
+                    if (NavMesh.SamplePosition(candidate + offset, out NavMeshHit hit, 0.4f, filter)
+                        && Mathf.Abs(hit.position.y - candidate.y) <= 0.35f
+                        && HasStandingClearance(hit.position))
+                        return hit.position;
+                }
+            }
+            return candidate;
+        }
+
+        private bool HasStandingClearance(Vector3 feet)
+        {
+            float step = navigation != null ? Mathf.Max(0.05f, NavMesh.GetSettingsByID(navigation.agentTypeID).agentClimb) : 0.2f;
+            float r = PhysicalRadius;
+            float h = PhysicalHeight;
+            float lower = Mathf.Min(h - r, r + step) + 0.035f;
+            float upper = Mathf.Max(lower, h - r);
+            int count = Physics.OverlapCapsuleNonAlloc(feet + Vector3.up * lower,
+                feet + Vector3.up * upper, r + 0.02f, OverlapScratch, ~0, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < count; i++)
+            {
+                Collider c = OverlapScratch[i];
+                if (c == null || c.transform == transform || c.transform.IsChildOf(transform)
+                    || IsNavigatedActorOrAuthorizedBarrier(c)) continue;
+                return false;
+            }
+            return true;
         }
 
         public void SetStoryFollowDistance(Transform player, float maximumDistance)
@@ -329,6 +398,8 @@ namespace SaksiTerakhir.Npc
             storyHeld = storyMoveRequested = storyAtDestination = storyPathValidated = false;
             storyFaceTarget = storyFollowTarget = null;
             resumeActivityAfterLink = replaceStoryPathAfterLink = false;
+            bypassWaypointActive = vehicleEvadeMoving = false;
+            detourActiveSince = vehicleEvadeUntil = nextBypassAttempt = 0f;
             conversationPartner = null; playerConversationPartner = null;
             doorWaitUntil = nextStoryRetry = nextStoryWarning = 0f;
             CompletedActivities = Conversations = VisitedFloorMask = FailedPathAttempts = 0;
@@ -391,6 +462,7 @@ namespace SaksiTerakhir.Npc
             if (profile != null) navigation.speed = profile.MovementSpeed;
             label = GetComponentInChildren<NpcLabel>(true);
             candidatePath = new NavMeshPath();
+            bypassTailPath = new NavMeshPath();
             passageYield = GetComponent<NpcPassageYield>();
             if (passageYield == null) passageYield = gameObject.AddComponent<NpcPassageYield>();
         }
@@ -489,6 +561,15 @@ namespace SaksiTerakhir.Npc
                 UpdateStoryOrder();
                 return;
             }
+            if (Time.time < vehicleEvadeUntil)
+            {
+                UpdateVehicleEvade();
+                return;
+            }
+            if (vehicleEvadeMoving)
+            {
+                EndVehicleEvade();
+            }
 
             if (resumeActivityAfterLink && navigation != null && navigation.enabled && navigation.isOnNavMesh)
             {
@@ -548,6 +629,8 @@ namespace SaksiTerakhir.Npc
             }
             RestoreLinkPosition();
             replaceStoryPathAfterLink = false;
+            bypassWaypointActive = false;
+            detourActiveSince = 0f;
             NavMeshQueryFilter filter = new NavMeshQueryFilter
             {
                 agentTypeID = navigation.agentTypeID,
@@ -606,6 +689,7 @@ namespace SaksiTerakhir.Npc
                 FinishStoryArrival();
                 return;
             }
+            RefreshBypassWaypoint(resolvedStoryDestination);
             if (CurrentState != NpcState.StoryMoving || !navigation.hasPath)
             {
                 if (Time.time >= nextStoryRetry)
@@ -628,7 +712,7 @@ namespace SaksiTerakhir.Npc
                 return;
             }
             if (navigation.pathPending) return;
-            if (director != null && director.TryOpenDoorAhead(this, navigation.steeringTarget, out float waitUntil))
+            if (director != null && director.TryOpenDoorAhead(this, GetDoorProbeTarget(), out float waitUntil))
             {
                 doorWaitUntil = waitUntil;
                 navigation.isStopped = true;
@@ -701,6 +785,7 @@ namespace SaksiTerakhir.Npc
             }
             NpcPopulationMember population = GetComponent<NpcPopulationMember>();
             if (population != null && population.IsManaged && !population.LifetimeProtected
+                && Time.time >= vehicleEvadeUntil + 4f
                 && population.SpawnPoint != null && !population.SpawnPoint.AllowsPath(candidatePath.corners))
             {
                 point.Release(this); FailedPathAttempts++; return false;
@@ -711,6 +796,8 @@ namespace SaksiTerakhir.Npc
             // ReleaseDestination may have released this same point after a retry.
             point.TryReserve(this);
             resolvedActivityDestination = targetHit.position;
+            bypassWaypointActive = false;
+            detourActiveSince = 0f;
             if (changedDestination) TerrainNavigationProbe.ClearDetour(transform);
             navigation.isStopped = true;
             if (!navigation.SetPath(candidatePath))
@@ -733,11 +820,12 @@ namespace SaksiTerakhir.Npc
             if (director != null && director.IsStoryRestricted(destination)) { AbandonJourney(); return; }
             if (Time.time < doorWaitUntil) { stuckSince = Time.time; return; }
             if (navigation.pathPending) return;
+            RefreshBypassWaypoint(resolvedActivityDestination);
 
             if (Time.time >= nextPathCheck)
             {
                 nextPathCheck = Time.time + 0.2f;
-                if (director != null && director.TryOpenDoorAhead(this, navigation.steeringTarget, out float waitUntil))
+                if (director != null && director.TryOpenDoorAhead(this, GetDoorProbeTarget(), out float waitUntil))
                 {
                     doorWaitUntil = waitUntil;
                     navigation.isStopped = true;
@@ -753,7 +841,9 @@ namespace SaksiTerakhir.Npc
                 navigation.velocity = Vector3.zero;
                 navigation.ResetPath();
                 CurrentState = NpcState.Activity;
-                activityRemaining = destination.ChooseDwellTime();
+                // Do not loiter inside a zebra cross or vehicle intersection lane.
+                activityRemaining = IsOnZebraCrossOrRoadway(transform.position)
+                    ? 0.05f : destination.ChooseDwellTime();
                 VisitedFloorMask |= 1 << Mathf.Clamp(destination.Floor, 0, 30);
                 return;
             }
@@ -764,6 +854,20 @@ namespace SaksiTerakhir.Npc
                 NpcActivityPoint previousDestination = destination;
                 if (!TryBeginJourney(previousDestination)) AbandonJourney();
             }
+        }
+
+        private Vector3 GetDoorProbeTarget()
+        {
+            Vector3 corner = navigation.steeringTarget;
+            Vector3 toCorner = corner - transform.position;
+            toCorner.y = 0f;
+            if (toCorner.sqrMagnitude >= 1.35f * 1.35f || toCorner.sqrMagnitude < 0.0004f || !navigation.hasPath)
+                return corner;
+            Vector3 toDest = navigation.destination - corner;
+            toDest.y = 0f;
+            if (toDest.sqrMagnitude > 0.04f && Vector3.Dot(toCorner.normalized, toDest.normalized) > 0.25f)
+                return transform.position + toCorner.normalized * 1.5f;
+            return corner;
         }
 
         private bool HasTravelStalled()
@@ -823,6 +927,8 @@ namespace SaksiTerakhir.Npc
             navigation.ResetPath();
             storyMoveRequested = false;
             storyAtDestination = true;
+            bypassWaypointActive = false;
+            detourActiveSince = 0f;
             CurrentState = NpcState.StoryHeld;
             TerrainNavigationProbe.ClearDetour(transform);
         }
@@ -838,12 +944,16 @@ namespace SaksiTerakhir.Npc
             if (passageYield != null && passageYield.WaitForLinkTurn()) return false;
             if (navigation.isOnOffMeshLink) return TraverseSupportedLink();
             RestoreLinkPosition();
-            Vector3 desired = navigation.steeringTarget - transform.position;
+            Vector3 cornerDelta = navigation.steeringTarget - transform.position;
+            Vector3 desired = cornerDelta;
+            float planarCornerDistance = Vector3.ProjectOnPlane(cornerDelta, Vector3.up).magnitude;
             NavMeshBuildSettings settings = NavMesh.GetSettingsByID(navigation.agentTypeID);
             float step = Mathf.Max(0.05f, settings.agentClimb);
             float slope = settings.agentSlope;
             var filter = new NavMeshQueryFilter { agentTypeID = navigation.agentTypeID, areaMask = navigation.areaMask };
             float distance = Mathf.Max(0.65f, navigation.speed * Mathf.Max(Time.deltaTime, 0.02f) + PhysicalRadius * 1.2f);
+            float cornerProbeDistance = planarCornerDistance > 0.05f && planarCornerDistance < distance
+                ? Mathf.Max(0.18f, planarCornerDistance) : distance;
             bool alreadyYielding = passageYield != null && passageYield.IsActive;
             NpcPassageYield.Request(transform, desired, PhysicalRadius, 1.8f);
             if (WaitForNewTrafficDecision(alreadyYielding)) return false;
@@ -852,43 +962,271 @@ namespace SaksiTerakhir.Npc
             if (!manualSteering && !navigation.isOnOffMeshLink
                 && navigation.desiredVelocity.sqrMagnitude > 0.01f)
                 desired = navigation.desiredVelocity;
+
+            // Detect both static terrain/furniture and physical NPC bodies ahead first.
             bool safe = TerrainNavigationProbe.TryResolveDirection(transform, desired, distance,
-                PhysicalRadius, PhysicalHeight, step, slope, filter, out Vector3 direction, ignoreNavigatedActors,
+                PhysicalRadius, PhysicalHeight, step, slope, filter, out Vector3 direction, ignoreAuthorizedBarrier,
                 acceptGround: acceptPopulationGround);
-            if (!safe)
+            if (!safe && cornerProbeDistance < distance)
             {
-                navigation.isStopped = true;
-                navigation.velocity = Vector3.zero;
-                manualSteering = false;
-                return false;
+                safe = TerrainNavigationProbe.TryResolveDirection(transform, desired, cornerProbeDistance,
+                    PhysicalRadius, PhysicalHeight, step, slope, filter, out direction, ignoreAuthorizedBarrier,
+                    acceptGround: acceptPopulationGround);
             }
-            // A railing or jamb can redirect us towards another worker. Clear
-            // the actual checked route too, including chained sidesteps.
-            NpcPassageYield.Request(transform, direction, PhysicalRadius, 1.8f);
-            if (WaitForNewTrafficDecision(alreadyYielding)) return false;
-            navigation.isStopped = false;
-            if (Vector3.Angle(Vector3.ProjectOnPlane(desired, Vector3.up), direction) < 1f)
+            if (safe)
             {
-                // Let native navigation handle acceleration and reciprocal crowd avoidance.
-                // Writing velocity every frame overrides both, even on a clear route.
-                if (manualSteering) navigation.velocity = Vector3.zero;
-                manualSteering = false;
+                NpcPassageYield.Request(transform, direction, PhysicalRadius, 1.8f);
+                if (WaitForNewTrafficDecision(alreadyYielding)) return false;
+                navigation.isStopped = false;
+                if (Vector3.Angle(Vector3.ProjectOnPlane(desired, Vector3.up), direction) < 1f)
+                {
+                    // Let native navigation handle acceleration and reciprocal crowd avoidance.
+                    // Writing velocity every frame overrides both, even on a clear route.
+                    detourActiveSince = 0f;
+                    if (manualSteering) navigation.velocity = Vector3.zero;
+                    manualSteering = false;
+                    return true;
+                }
+                if (detourActiveSince <= 0f) detourActiveSince = Time.time;
+                else if (Time.time - detourActiveSince > 0.4f)
+                    TryStartBypassPath(direction, filter, step, slope);
+                navigation.velocity = direction * navigation.speed;
+                Face(direction);
+                manualSteering = true;
                 return true;
             }
-            // A collider absent from the bake still needs the checked local detour.
-            // Recheck against physical NPC bodies before taking manual ownership.
-            safe = TerrainNavigationProbe.TryResolveDirection(transform, direction, distance,
-                PhysicalRadius, PhysicalHeight, step, slope, filter, out direction, ignoreAuthorizedBarrier,
+
+            // If blocked by an initial actor overlap (e.g. piled movers) or a tight obstacle,
+            // verify whether the terrain itself is safe when ignoring movable actors.
+            bool terrainSafe = TerrainNavigationProbe.TryResolveDirection(transform, desired, cornerProbeDistance,
+                PhysicalRadius, PhysicalHeight, step, slope, filter, out Vector3 terrainDirection, ignoreNavigatedActors,
                 acceptGround: acceptPopulationGround);
-            navigation.isStopped = !safe;
-            navigation.velocity = safe ? direction * navigation.speed : Vector3.zero;
-            manualSteering = safe;
-            return safe;
+            if (terrainSafe)
+            {
+                NpcPassageYield.Request(transform, terrainDirection, PhysicalRadius, 1.8f);
+                if (WaitForNewTrafficDecision(alreadyYielding)) return false;
+                if (HasMovableActorOverlap(transform.position))
+                {
+                    navigation.isStopped = false;
+                    if (Vector3.Angle(Vector3.ProjectOnPlane(desired, Vector3.up), terrainDirection) < 1f)
+                    {
+                        if (manualSteering) navigation.velocity = Vector3.zero;
+                        manualSteering = false;
+                    }
+                    else
+                    {
+                        navigation.velocity = terrainDirection * navigation.speed;
+                        Face(terrainDirection);
+                        manualSteering = true;
+                    }
+                    return true;
+                }
+                if (TryStartBypassPath(terrainDirection, filter, step, slope))
+                    return true;
+            }
+            else
+            {
+                TryStartBypassPath(desired, filter, step, slope);
+            }
+
+            navigation.isStopped = true;
+            navigation.velocity = Vector3.zero;
+            manualSteering = false;
+            return false;
+        }
+
+        private bool HasMovableActorOverlap(Vector3 feet)
+        {
+            float step = navigation != null ? Mathf.Max(0.05f, NavMesh.GetSettingsByID(navigation.agentTypeID).agentClimb) : 0.2f;
+            float r = PhysicalRadius;
+            float h = PhysicalHeight;
+            float lower = Mathf.Min(h - r, r + step) + 0.035f;
+            float upper = Mathf.Max(lower, h - r);
+            int count = Physics.OverlapCapsuleNonAlloc(feet + Vector3.up * lower,
+                feet + Vector3.up * upper, r + 0.035f, OverlapScratch, ~0, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < count; i++)
+            {
+                Collider c = OverlapScratch[i];
+                if (c == null || c.transform == transform || c.transform.IsChildOf(transform)) continue;
+                if (IsNavigatedActorOrAuthorizedBarrier(c) && !IsAuthorizedBarrier(c)) return true;
+            }
+            return false;
+        }
+
+        private void RefreshBypassWaypoint(Vector3 finalTarget)
+        {
+            if (!bypassWaypointActive || navigation == null || !navigation.enabled || !navigation.isOnNavMesh
+                || navigation.isOnOffMeshLink) return;
+            Vector3 delta = bypassWaypoint - transform.position;
+            delta.y = 0f;
+            if (delta.sqrMagnitude > 0.45f * 0.45f && Time.time - bypassStartedAt < 2.2f && navigation.hasPath)
+                return;
+            bypassWaypointActive = false;
+            if (navigation.CalculatePath(finalTarget, candidatePath)
+                && candidatePath.status == NavMeshPathStatus.PathComplete)
+            {
+                navigation.SetPath(candidatePath);
+                navigation.isStopped = false;
+            }
+        }
+
+        private bool TryStartBypassPath(Vector3 preferredDirection, NavMeshQueryFilter filter, float step, float slope)
+        {
+            if (Time.time < nextBypassAttempt || navigation == null || !navigation.enabled
+                || !navigation.isOnNavMesh || navigation.isOnOffMeshLink
+                || passageYield != null && passageYield.IsActive) return false;
+            nextBypassAttempt = Time.time + 0.55f;
+            Vector3 finalTarget = storyMoveRequested ? resolvedStoryDestination
+                : CurrentState == NpcState.Moving ? resolvedActivityDestination
+                : navigation.destination;
+            Vector3 baseHeading = preferredDirection;
+            baseHeading.y = 0f;
+            if (baseHeading.sqrMagnitude < 0.001f)
+                baseHeading = Vector3.ProjectOnPlane(finalTarget - transform.position, Vector3.up);
+            if (baseHeading.sqrMagnitude < 0.001f) return false;
+            baseHeading.Normalize();
+
+            NpcPopulationMember population = GetComponent<NpcPopulationMember>();
+            bool checkPopulationPath = !HasStoryOrder && Time.time >= vehicleEvadeUntil + 4f
+                && population != null && population.IsManaged && !population.LifetimeProtected
+                && population.SpawnPoint != null;
+
+            foreach (float dist in BypassDistances)
+            {
+                for (int i = -1; i < BypassAngles.Length; i++)
+                {
+                    Vector3 dir = i < 0 ? baseHeading
+                        : Quaternion.AngleAxis(BypassAngles[i], Vector3.up) * baseHeading;
+                    Vector3 candidatePos = transform.position + dir * dist;
+                    if (!TerrainNavigationProbe.TryGetSupportedSegment(transform, transform.position, candidatePos,
+                            PhysicalRadius, PhysicalHeight, step, slope, out Vector3 grounded,
+                            ignoreAuthorizedBarrier, acceptPopulationGround)
+                        || !NavMesh.SamplePosition(grounded, out NavMeshHit midHit, 0.4f, filter)
+                        || Mathf.Abs(midHit.position.y - grounded.y) > 0.35f) continue;
+                    if (!navigation.CalculatePath(midHit.position, candidatePath)
+                        || candidatePath.status != NavMeshPathStatus.PathComplete) continue;
+                    if (checkPopulationPath && !population.SpawnPoint.AllowsPath(candidatePath.corners)) continue;
+                    if (!NavMesh.CalculatePath(midHit.position, finalTarget, filter, bypassTailPath)
+                        || bypassTailPath.status != NavMeshPathStatus.PathComplete) continue;
+                    if (checkPopulationPath && !population.SpawnPoint.AllowsPath(bypassTailPath.corners)) continue;
+
+                    bypassWaypoint = midHit.position;
+                    bypassWaypointActive = true;
+                    bypassStartedAt = Time.time;
+                    detourActiveSince = 0f;
+                    navigation.SetPath(candidatePath);
+                    navigation.isStopped = false;
+                    navigation.velocity = dir * navigation.speed;
+                    Face(dir);
+                    manualSteering = true;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool IsOnZebraCrossOrRoadway(Vector3 position)
+        {
+            if (Mathf.Abs(position.y) > 1.6f) return false;
+            // Point 5 North Arm Zebra Cross & intersection throat at (30, 0, -55.6) and main street lane.
+            if (position.x >= 24.5f && position.x <= 38.5f && position.z >= -61f && position.z <= -51f)
+                return true;
+            return position.z >= -63.2f && position.z <= -57.2f && position.x >= 28f && position.x <= 46f;
+        }
+
+        public void NotifyApproachingVehicle(Vector3 vehiclePosition, Vector3 vehicleForward, float safeHalfWidth)
+        {
+            if (!isActiveAndEnabled || storySeated || CurrentState == NpcState.PlayerConversation || HasStoryOrder)
+                return;
+            EnsureComponents();
+            if (CurrentState == NpcState.Conversation) StopConversation();
+            if (ambientSeated) SetAmbientSeated(false);
+            if (passageYield != null && passageYield.IsActive) passageYield.Cancel();
+            vehicleEvadeUntil = Mathf.Max(vehicleEvadeUntil, Time.time + 2.4f);
+            if (navigation == null || !navigation.enabled || !navigation.isOnNavMesh || navigation.isOnOffMeshLink)
+                return;
+            float hurrySpeed = Mathf.Max(profile != null ? profile.MovementSpeed : 2f, 3.8f);
+            navigation.speed = hurrySpeed;
+            if (vehicleEvadeMoving && Time.time < nextVehicleEvadeRepath && navigation.hasPath)
+                return;
+            nextVehicleEvadeRepath = Time.time + 0.45f;
+            Vector3 escapePoint = ResolveVehicleEscapePoint(vehiclePosition, vehicleForward, safeHalfWidth);
+            var filter = new NavMeshQueryFilter { agentTypeID = navigation.agentTypeID, areaMask = navigation.areaMask };
+            if (NavMesh.SamplePosition(escapePoint, out NavMeshHit hit, 3f, filter)
+                && Mathf.Abs(hit.position.y - transform.position.y) <= 0.6f
+                && navigation.CalculatePath(hit.position, candidatePath)
+                && candidatePath.status == NavMeshPathStatus.PathComplete)
+            {
+                vehicleEvadeTarget = hit.position;
+                vehicleEvadeMoving = true;
+                TerrainNavigationProbe.ClearDetour(transform);
+                navigation.SetPath(candidatePath);
+                navigation.isStopped = false;
+                stuckSince = Time.time;
+                progressPosition = transform.position;
+            }
+        }
+
+        private Vector3 ResolveVehicleEscapePoint(Vector3 vehiclePosition, Vector3 vehicleForward, float safeHalfWidth)
+        {
+            Vector3 pos = transform.position;
+            // If on the Point 5 North Arm zebra cross, hurry straight to the nearest sidewalk curb.
+            if (pos.x >= 23.5f && pos.x <= 39.5f && pos.z >= -61.5f && pos.z <= -50.5f)
+            {
+                float targetX = pos.x <= 32f ? 21.5f : 41.5f;
+                return new Vector3(targetX, pos.y, Mathf.Clamp(pos.z, -57.5f, -55.5f));
+            }
+            vehicleForward.y = 0f;
+            if (vehicleForward.sqrMagnitude < 0.001f) vehicleForward = Vector3.forward;
+            else vehicleForward.Normalize();
+            Vector3 right = Vector3.Cross(Vector3.up, vehicleForward).normalized;
+            Vector3 rel = pos - vehiclePosition;
+            rel.y = 0f;
+            float lateral = Vector3.Dot(rel, right);
+            float side = lateral >= 0f ? 1f : -1f;
+            float push = Mathf.Max(safeHalfWidth + 2f, Mathf.Abs(lateral) + 2f);
+            return vehiclePosition + vehicleForward * Mathf.Max(0f, Vector3.Dot(rel, vehicleForward))
+                + right * (side * push);
+        }
+
+        private void UpdateVehicleEvade()
+        {
+            if (navigation == null || !navigation.enabled || !navigation.isOnNavMesh) return;
+            float hurrySpeed = Mathf.Max(profile != null ? profile.MovementSpeed : 2f, 3.8f);
+            navigation.speed = hurrySpeed;
+            if (vehicleEvadeMoving && navigation.hasPath)
+            {
+                if (IsAtDestination(vehicleEvadeTarget))
+                {
+                    navigation.isStopped = true;
+                    navigation.velocity = Vector3.zero;
+                    navigation.ResetPath();
+                    vehicleEvadeMoving = false;
+                }
+                else
+                {
+                    ApplyPhysicalSteering();
+                }
+            }
+        }
+
+        private void EndVehicleEvade()
+        {
+            vehicleEvadeMoving = false;
+            if (navigation != null && navigation.enabled)
+            {
+                navigation.speed = profile != null ? profile.MovementSpeed : 2f;
+                if (navigation.isOnNavMesh && !navigation.isOnOffMeshLink)
+                {
+                    if (destination == null || !TryBeginJourney(destination))
+                        ScheduleNext(0.1f, 0.4f);
+                }
+            }
         }
 
         private bool IsAllowedPopulationGround(Vector3 ground)
         {
-            if (HasStoryOrder) return true;
+            if (HasStoryOrder || Time.time < vehicleEvadeUntil + 4f || vehicleEvadeMoving) return true;
             if (populationMember == null) populationMember = GetComponent<NpcPopulationMember>();
             return populationMember == null || !populationMember.IsManaged || populationMember.IsMissionPinned
                 || populationMember.SpawnPoint == null || populationMember.SpawnPoint.AllowsPosition(ground);
@@ -916,6 +1254,7 @@ namespace SaksiTerakhir.Npc
         {
             OffMeshLinkData link = navigation.currentOffMeshLinkData;
             if (!link.valid) return false;
+            Vector3 from = transform.position;
             if (!traversingLink)
             {
                 traversingLink = true;
@@ -924,10 +1263,21 @@ namespace SaksiTerakhir.Npc
                 linkRoute.Clear();
                 linkRouteIndex = 0;
                 nextLinkRouteAttempt = 0f;
+                linkProgressPosition = from;
+                linkStuckSince = Time.time;
+            }
+            else if ((from - linkProgressPosition).sqrMagnitude > 0.05f * 0.05f)
+            {
+                linkProgressPosition = from;
+                linkStuckSince = Time.time;
+            }
+            else if (Time.time - linkStuckSince > 1.2f)
+            {
+                linkRoute.Clear();
+                linkStuckSince = Time.time;
             }
             navigation.isStopped = true;
             navigation.velocity = Vector3.zero;
-            Vector3 from = transform.position;
             Vector3 delta = link.endPos - from;
             NavMeshBuildSettings settings = NavMesh.GetSettingsByID(navigation.agentTypeID);
             float gap = Vector3.ProjectOnPlane(delta, Vector3.up).magnitude;
@@ -946,10 +1296,14 @@ namespace SaksiTerakhir.Npc
             if (linkRoute.Count == 0)
             {
                 if (Time.time < nextLinkRouteAttempt) return false;
-                nextLinkRouteAttempt = Time.time + 1f;
-                if (!SupportedLinkDetour.TryBuild(transform, link.startPos, link.endPos,
-                    PhysicalRadius, PhysicalHeight, settings.agentClimb, settings.agentSlope,
-                    ignoreNavigatedActors, allowedGround, linkRoute)) return false;
+                nextLinkRouteAttempt = Time.time + 0.6f;
+                Vector3 routeStart = Vector3.Distance(from, link.startPos) > 0.2f ? from : link.startPos;
+                if (!SupportedLinkDetour.TryBuild(transform, routeStart, link.endPos,
+                        PhysicalRadius, PhysicalHeight, settings.agentClimb, settings.agentSlope,
+                        ignoreNavigatedActors, allowedGround, linkRoute)
+                    && (routeStart == link.startPos || !SupportedLinkDetour.TryBuild(transform, link.startPos, link.endPos,
+                        PhysicalRadius, PhysicalHeight, settings.agentClimb, settings.agentSlope,
+                        ignoreNavigatedActors, allowedGround, linkRoute))) return false;
                 linkRouteIndex = 0;
             }
             while (linkRouteIndex < linkRoute.Count - 1
@@ -975,7 +1329,7 @@ namespace SaksiTerakhir.Npc
                 RestoreLinkPosition();
                 return true;
             }
-            float probe = Mathf.Min(0.65f, Mathf.Max(0.25f, gap));
+            float probe = Mathf.Clamp(gap, 0.08f, 0.65f);
             if (!TerrainNavigationProbe.TryResolveDirection(transform, delta, probe,
                     PhysicalRadius, PhysicalHeight, settings.agentClimb, settings.agentSlope,
                     filter, out Vector3 terrainDirection, ignoreNavigatedActors, false, allowedGround, true)) return false;

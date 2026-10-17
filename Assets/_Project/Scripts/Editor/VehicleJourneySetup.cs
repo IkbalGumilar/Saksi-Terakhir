@@ -355,7 +355,7 @@ namespace SaksiTerakhir.EditorTools
             Undo.RecordObject(table, "Add vehicle journey text");
             var entries = new List<LocalizedTextEntry>(table.entries);
             if (!entries.Any(e => e.key == "story.quest.travel_spbu")) entries.Add(new LocalizedTextEntry
-            { key = "story.quest.travel_spbu", indonesian = "Menuju SPBU bersama Raka dan Sinta", english = "Travel to the fuel station with Raka and Sinta" });
+            { key = "story.quest.travel_spbu", indonesian = "Menuju SPBU bersama Dadan dan Rafi", english = "Travel to the fuel station with Dadan and Rafi" });
             table.entries = entries.ToArray(); table.ClearLookupCache(); EditorUtility.SetDirty(table);
         }
 
@@ -364,10 +364,10 @@ namespace SaksiTerakhir.EditorTools
             new DialogueLine("NPC-004", "Baru makan siang masih bahas Bali, sekarang sudah berangkat. Untung kopernya belum saya keluarkan."),
             new DialogueLine("PLAYER", "Kalau menunggu besok, satu hari habis. Berangkat sekarang, masih ada waktu kalau penelusurannya molor. Saya juga mau pulang sebelum Jumat."),
             new DialogueLine("NPC-003", "Sampai wilayahnya nanti, cari keterangan setempat dulu. Jangan habis bensin mengelilingi gunung cuma karena berkasnya menulis kaki Cikuray."),
-            new DialogueLine("NPC-004", "Aku sempat baca cerita Sancang. Siliwangi pergi bersama pengikutnya, lalu mereka berubah jadi maung. Ada juga cerita kerajaannya lenyap jadi hutan. Mirip bagian orang mencari ayahnya itu."),
-            new DialogueLine("PLAYER", "Dalam kisah perjalanan Siliwangi juga ada persinggahan di kaki Cikuray. Cikuray punya kaitan dengan penulisan naskah lama. Nama Gunung Larang Srimanganti disebut dalam kajiannya."),
+            new DialogueLine("NPC-004", "Aku sempat baca cerita Sancang. Prabu Siliwangi pergi bersama pengikutnya, lalu mereka berubah jadi maung. Ada juga cerita kerajaannya lenyap jadi hutan. Aku baru sadar, ayah yang dicari Kian Santang itu tokoh yang sama."),
+            new DialogueLine("PLAYER", "Dalam kisah perjalanan Prabu Siliwangi juga ada persinggahan di kaki Cikuray. Cikuray punya kaitan dengan penulisan naskah lama. Nama Gunung Larang Srimanganti disebut dalam kajiannya."),
             new DialogueLine("NPC-004", "Srimanganti. Kalau kampungnya memang pakai nama lain, kita bisa saja lewat tanpa sadar."),
-            new DialogueLine("PLAYER", "Ada riwayat kampung Srimanganti yang ditinggalkan penduduknya. Tapi jangan langsung disamakan dengan Wanaseta. Itu baru contoh bahwa nama dalam tulisan lama perlu ditelusuri."),
+            new DialogueLine("PLAYER", "Ada riwayat kampung Srimanganti yang ditinggalkan penduduknya. Tapi jangan langsung disamakan dengan Cikapohon. Itu baru contoh bahwa nama dalam tulisan lama perlu ditelusuri."),
             new DialogueLine("NPC-003", "Bisa juga permukiman pindah, jalurnya berubah, atau nama lama cuma dipakai beberapa keluarga. Kita tanya orangnya, cocokkan tempatnya. Kalau beda keterangan, jangan dipaksa cocok."),
             new DialogueLine("NPC-004", "Aku tadinya membayangkan tinggal ketemu papan desa, foto, selesai. Ternyata nama gunung saja bisa punya riwayat sendiri."),
             new DialogueLine("PLAYER", "Makanya cari dari petunjuk yang bisa diperiksa. Cerita rakyat membantu kita bertanya, tapi belum membuktikan pengalaman penulis prasasti."),
@@ -377,9 +377,9 @@ namespace SaksiTerakhir.EditorTools
         private static DialogueLine[] FuelLines() => new[] {
             new DialogueLine("NPC-003", "Tolong isi penuh, Pak. Kami juga perlu dua jerigen untuk cadangan. Yang khusus buat bahan bakar."),
             new DialogueLine("Petugas SPBU", "Bisa. Wadahnya ada di toko. Ambil dulu, nanti saya bantu urus pengisiannya."),
-            new DialogueLine("NPC-004", "Aku ambil. Sekalian air minum. Jangan sampai dua jerigen kebawa, minuman buat kita malah lupa."),
+            new DialogueLine("NPC-004", "Saya ambil, Pak. Sekalian air minum. Jangan sampai dua jerigen kebawa, minuman buat kita malah lupa."),
             new DialogueLine("PLAYER", "Kalau begitu saya meluruskan kaki sebentar. Nanti kalau sudah siap kabari, ya."),
-            new DialogueLine("NPC-003", "Boleh. Dekat sini ada taman. Saya sama B selesaikan yang di sini, nanti kami panggil kalau sudah siap.") };
+            new DialogueLine("NPC-003", "Boleh. Dekat sini ada taman. Saya sama Rafi selesaikan yang di sini, nanti kami panggil kalau sudah siap.") };
 
         private static T Ensure<T>(GameObject owner) where T : Component
             => owner.GetComponent<T>() ?? Undo.AddComponent<T>(owner);

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: NPC-004-Rekan-B
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
   id: NPC-004
-  displayName: Sinta
-  age: 32
+  displayName: Rafi
+  age: 26
   movementSpeed: 2.7
-  trafficPriority: 1
+  trafficPriority: 8
   role: 3
   interactable: 1
   buildingContext: 0

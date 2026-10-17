@@ -47,6 +47,8 @@ namespace SaksiTerakhir.Interaction
         private Bounds closedDoorwayBounds;
         private Vector3 closedDoorPosition;
         private readonly Collider[] passageActors = new Collider[64];
+        private DoorInteractable pairedLeaf;
+        private bool pairedLeafResolved;
 
         public bool IsOpen => Mathf.Abs(targetAngle) > AngleTolerance;
         private ItemKeyLock KeyLock => GetComponent<ItemKeyLock>();
@@ -148,7 +150,9 @@ namespace SaksiTerakhir.Interaction
             return IsOpen;
         }
 
-        public void ForceOpen(Transform actor)
+        public void ForceOpen(Transform actor) => ForceOpenInternal(actor, true);
+
+        private void ForceOpenInternal(Transform actor, bool syncPairedLeaf)
         {
             if (!openingAvailable) return;
             ItemKeyLock keyLock = KeyLock;
@@ -160,29 +164,38 @@ namespace SaksiTerakhir.Interaction
                 || (mover != null && mover.IsActive));
             autoCloseRemaining = autoCloseDelay = automatic ? 1f : Random.Range(4f, 7f);
             SetDoorColliderEnabled(false);
+            if (syncPairedLeaf) GetPairedLeaf()?.ForceOpenInternal(actor, false);
         }
 
-        public void ForceClose()
+        public void ForceClose() => ForceCloseInternal(true);
+
+        private void ForceCloseInternal(bool syncPairedLeaf)
         {
             if (PassageOccupied())
             {
-                RequestAutoClose(1f);
+                RequestAutoCloseInternal(1f, syncPairedLeaf);
                 return;
             }
             targetAngle = 0f;
             autoCloseRemaining = -1f;
             if (Mathf.Abs(currentAngle) < AngleTolerance) SetDoorColliderEnabled(true);
+            if (syncPairedLeaf) GetPairedLeaf()?.ForceCloseInternal(false);
         }
 
         // Story gates schedule closure through the same traffic checks as every other door.
-        public void RequestAutoClose(float delay = 1f)
+        public void RequestAutoClose(float delay = 1f) => RequestAutoCloseInternal(delay, true);
+
+        private void RequestAutoCloseInternal(float delay, bool syncPairedLeaf)
         {
-            if (!IsOpen) return;
-            if (autoCloseRemaining < 0f)
+            if (IsOpen && autoCloseRemaining < 0f)
                 autoCloseRemaining = autoCloseDelay = Mathf.Max(0.1f, delay);
+            if (syncPairedLeaf) GetPairedLeaf()?.RequestAutoCloseInternal(delay, false);
         }
 
         public bool PassageOccupied()
+            => PassageOccupiedSelf() || (GetPairedLeaf() is DoorInteractable pair && pair.PassageOccupiedSelf());
+
+        private bool PassageOccupiedSelf()
         {
             Bounds bounds = closedDoorwayBounds;
             bounds.center += transform.position - closedDoorPosition;
@@ -202,6 +215,24 @@ namespace SaksiTerakhir.Interaction
                 if (other is CharacterController || other.GetComponentInParent<OfficeNpcAgent>() != null) return true;
             }
             return false;
+        }
+
+        private DoorInteractable GetPairedLeaf()
+        {
+            if (pairedLeafResolved) return pairedLeaf;
+            pairedLeafResolved = true;
+            if (transform.parent == null
+                || transform.parent.name.IndexOf("Ganda", System.StringComparison.OrdinalIgnoreCase) < 0)
+                return null;
+            foreach (DoorInteractable candidate in transform.parent.GetComponentsInChildren<DoorInteractable>(true))
+            {
+                if (candidate != null && candidate != this && candidate.transform.parent == transform.parent)
+                {
+                    pairedLeaf = candidate;
+                    break;
+                }
+            }
+            return pairedLeaf;
         }
 
         public void RestoreSavedState(bool open)

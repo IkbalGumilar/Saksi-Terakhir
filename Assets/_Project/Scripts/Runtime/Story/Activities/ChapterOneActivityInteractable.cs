@@ -261,6 +261,14 @@ namespace SaksiTerakhir.Story
             if (wasEnabled) controller.enabled = true;
         }
 
+        private string LocalizedShopName()
+        {
+            if (LocalizationManager.CurrentLanguage == GameLanguage.Indonesian) return shopName;
+            if (shopName == "Toserba") return "Convenience Store";
+            if (shopName == "Minimarket SPBU") return "Fuel Station Minimarket";
+            return LocalizationManager.Translate(shopName);
+        }
+
         private void ShowShop(Transform actor, InventoryPanelController inventory)
         {
             if (this == null || !isActiveAndEnabled || chapter == null || offers.Length == 0) return;
@@ -270,7 +278,7 @@ namespace SaksiTerakhir.Story
             { chapter.RequestNotice("inventory.unavailable"); return; }
             string name = LocalizationManager.Get(offer.Item.NameKey);
             string price = "Rp" + offer.PriceRupiah.ToString("N0", CultureInfo.GetCultureInfo("id-ID"));
-            ChapterOneChoiceView.Show(this, actor, shopName + "\n" + name + " — " + price,
+            ChapterOneChoiceView.Show(this, actor, LocalizedShopName() + "\n" + name + " — " + price,
                 new ChapterOneChoiceView.Option(Text("Beli", "Buy"), () =>
                 {
                     Buy(inventory, offer);
@@ -294,12 +302,14 @@ namespace SaksiTerakhir.Story
             InventoryEntry purchasedItem = offer.Item.CreateEntry();
             if (!inventory.TryAdd(purchasedItem)) return;
             // Prices belong to the receipt. No currency balance exists in Bab 1 yet.
+            string store = LocalizedShopName();
+            string dateLabel = Text("24 Agustus 2026", "24 August 2026");
             string name = LocalizationManager.Get(offer.Item.NameKey);
-            string description = shopName + "\n24 Agustus 2026 · " + ReceiptTime()
+            string description = store + "\n" + dateLabel + " · " + ReceiptTime()
                 + "\n" + name + " × 1\nTotal: Rp"
                 + offer.PriceRupiah.ToString("N0", CultureInfo.GetCultureInfo("id-ID"));
             InventoryEntry receipt = new InventoryEntry(ChapterOneDocumentRewards.ReceiptId,
-                Text("Struk pembayaran — ", "Payment receipt — ") + shopName,
+                Text("Struk pembayaran — ", "Payment receipt — ") + store,
                 InventoryEntryType.Document, description: description);
             if (!inventory.TryAdd(receipt))
             {

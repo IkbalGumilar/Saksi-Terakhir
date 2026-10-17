@@ -91,7 +91,7 @@ namespace SaksiTerakhir.EditorTools
 
         private static string NarratedSpeaker(string line)
         {
-            foreach (string name in new[] { "Bu Kantin", "Petugas Digitalisasi", "Rekan 1", "Rekan 2", "Resepsionis", "MC", "Bos", "A", "B", "Pegawai" })
+            foreach (string name in new[] { "Bu Kantin", "Petugas Digitalisasi", "Rekan 1", "Rekan 2", "Resepsionis", "Ucup", "MC", "Bos", "Dadan", "Rafi", "A", "B", "Pegawai" })
                 if (line.StartsWith(name + " ", StringComparison.Ordinal)) return SpeakerId(name);
             return null;
         }
@@ -100,8 +100,11 @@ namespace SaksiTerakhir.EditorTools
         {
             switch (speaker)
             {
+                case "Ucup":
                 case "MC": return "PLAYER";
+                case "Dadan":
                 case "A": return "NPC-003";
+                case "Rafi":
                 case "B": return "NPC-004";
                 case "Bos": return "NPC-006";
                 case "Resepsionis": return "NPC-002";

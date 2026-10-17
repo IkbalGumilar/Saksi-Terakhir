@@ -14,45 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.vehicle_meal_skipped
   lines:
-  - speakerId: NPC-004
-    text: Nah, sudah datang. Urusan di resepsionis beres semua?
-  - speakerId: PLAYER
-    text: Sudah. Kunci juga sudah di tangan. Kalian siap?
-  - speakerId: NPC-003
-    text: Siap. Ini satu bungkus nasi uduk buat kamu. Simpan buat di jalan.
-  - speakerId: PLAYER
-    text: Terima kasih. Baru pegang kunci sudah dapat bekal.
-  - speakerId: NPC-004
-    text: Masukkan tas saja. Jangan di jok, nanti sekali ngerem nasinya sampai duluan.
-  - speakerId: NPC-004
-    text: Aku baca lagi. Kian Santang mau mencari ayahnya yang lebih dulu ke Sancang,
-      terus singgah di kaki Cikuray karena desanya kelihatan damai. Sampai situ masih
-      masuk akal.
-  - speakerId: PLAYER
-    text: Rencananya tinggal tiga hari. Lalu bekalnya berkurang, jadi dia menandai
-      setiap makan dan kegiatan pakai arang di kain putih.
-  - speakerId: NPC-003
-    text: Dan ketika dibaca, sudah delapan hari. Setelah itu sembilan, sementara
-      dia merasa baru tiga. Saya susah percaya bagian itu. Rasanya seperti cerita
-      karangan.
-  - speakerId: NPC-004
-    text: Aku setuju. Dia mulai mencatat supaya nggak salah ingat, tapi hasilnya
-      malah berbeda enam hari. Kalau hanya lupa sekali makan, aku masih bisa bayangkan.
-      Ini jauh sekali.
-  - speakerId: PLAYER
-    text: Itu sebabnya catatannya perlu kita periksa. Sekarang kita baru punya tulisan
-      dan terjemahannya.
-  - speakerId: NPC-003
-    text: Bagian bangun di batu, lalu di semak-semak juga begitu. Terakhir dia bilang
-      desanya mencegah dia keluar. Semua berdasarkan pengalamannya sendiri.
-  - speakerId: NPC-004
-    text: Iya. Ditambah peringatan tentang iblis di ujungnya. Aku belum bisa menjadikan
-      itu penjelasan. Lebih masuk akal kita cari tahu dulu siapa yang menulis dan
-      bagaimana catatan ini dibuat.
-  - speakerId: PLAYER
-    text: Dia menulis akhirnya berhasil keluar hidup-hidup dan lanjut ke Sancang.
-      Tapi kita belum bisa memastikan apa yang terjadi di desa itu. Sumbernya dicocokkan
-      dulu; jangan cerita ini ikut berubah setiap kali kita menceritakannya.
-  - speakerId: PLAYER
-    text: Bagaimanapun, kita harus cepat.
+  - speakerId: "NPC-004"
+    text: "Nah, sudah datang. Urusan di resepsionis beres semua?"
+  - speakerId: "PLAYER"
+    text: "Sudah. Kunci juga sudah di tangan. Kalian siap?"
+  - speakerId: "NPC-003"
+    text: "Siap. Ini satu bungkus nasi uduk buat kamu. Simpan buat di jalan."
+  - speakerId: "PLAYER"
+    text: "Terima kasih, Pak. Baru pegang kunci sudah dapat bekal."
+  - speakerId: "NPC-004"
+    text: "Masukkan tas saja. Jangan di jok, nanti sekali ngerem nasinya sampai duluan."
+  - speakerId: "NPC-004"
+    text: "Aku baca lagi. Kian Santang mau mencari ayahnya, Prabu Siliwangi, yang lebih dulu ke Sancang. Terus singgah di Cikapohon, di kaki Cikuray, karena desanya kelihatan damai. Sampai situ masih masuk akal."
+  - speakerId: "PLAYER"
+    text: "Rencananya tinggal tiga hari. Lalu bekalnya berkurang, jadi dia menandai setiap makan dan kegiatan pakai arang di kain putih."
+  - speakerId: "NPC-003"
+    text: "Dan ketika dibaca, sudah delapan hari. Setelah itu sembilan, sementara dia merasa baru tiga. Saya susah percaya bagian itu. Rasanya seperti cerita karangan."
+  - speakerId: "NPC-004"
+    text: "Saya juga merasa begitu, Pak. Dia mulai mencatat supaya nggak salah ingat, tapi hasilnya malah berbeda enam hari. Kalau hanya lupa sekali makan, saya masih bisa bayangkan. Ini jauh sekali."
+  - speakerId: "PLAYER"
+    text: "Itu sebabnya catatannya perlu kita periksa. Sekarang kita baru punya tulisan dan terjemahannya."
+  - speakerId: "NPC-003"
+    text: "Bagian bangun di batu, lalu di semak-semak juga begitu. Terakhir dia bilang desanya mencegah dia keluar. Semua berdasarkan pengalamannya sendiri."
+  - speakerId: "NPC-004"
+    text: "Iya, Pak. Ditambah peringatan tentang iblis di ujungnya. Saya belum bisa menjadikan itu penjelasan. Lebih masuk akal kita cari tahu dulu siapa yang menulis dan bagaimana catatan ini dibuat."
+  - speakerId: "PLAYER"
+    text: "Dia menulis akhirnya berhasil keluar hidup-hidup dan lanjut ke Sancang. Tapi kita belum bisa memastikan apa yang terjadi di desa itu. Sumbernya dicocokkan dulu; jangan cerita ini ikut berubah setiap kali kita menceritakannya."
+  - speakerId: "PLAYER"
+    text: "Bagaimanapun, kita harus cepat."
   conditions: []

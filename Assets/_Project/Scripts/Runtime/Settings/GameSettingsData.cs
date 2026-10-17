@@ -100,6 +100,7 @@ namespace SaksiTerakhir.Settings
         public float dialogueVolume = 100f;
 
         // Bahasa / Subtitle
+        public SaksiTerakhir.Localization.GameLanguage language = SaksiTerakhir.Localization.GameLanguage.Indonesian;
         public bool showSpeakerName = true;
         public float textSpeed = 35f; // 10 - 100 karakter / detik
         public bool autoAdvance = true;
@@ -147,6 +148,7 @@ namespace SaksiTerakhir.Settings
             sfxVolume = def.sfxVolume;
             dialogueVolume = def.dialogueVolume;
 
+            language = def.language;
             showSpeakerName = def.showSpeakerName;
             textSpeed = def.textSpeed;
             autoAdvance = def.autoAdvance;

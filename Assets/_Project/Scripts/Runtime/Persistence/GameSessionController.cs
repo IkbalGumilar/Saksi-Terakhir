@@ -52,12 +52,20 @@ namespace SaksiTerakhir.Persistence
         private Coroutine continueTransition;
         private Coroutine settingsSlide;
 
+        public static event Action GameplayEntered;
+        public static event Action MenuOpened;
+
         public bool MenuOpen { get; private set; }
         public bool HasAutosave => loaded != null;
         public string AutosavePath => autosavePath;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ResetStatics() => pendingStartup = Startup.Menu;
+        private static void ResetStatics()
+        {
+            pendingStartup = Startup.Menu;
+            GameplayEntered = null;
+            MenuOpened = null;
+        }
 
         public static void Bootstrap(MainMenuPresentation presentation)
         {
@@ -103,6 +111,7 @@ namespace SaksiTerakhir.Persistence
             MenuOpen = true;
             previousTimeScale = Time.timeScale > 0 ? Time.timeScale : 1;
             Time.timeScale = 0;
+            MenuOpened?.Invoke();
         }
 
         private void Start()
@@ -371,6 +380,7 @@ namespace SaksiTerakhir.Persistence
             cameraController?.SetCursorLocked(true);
             chapter?.ResumeGameplay();
             if (chapter != null) OnProgressChanged(chapter.Progress);
+            GameplayEntered?.Invoke();
         }
 
         private void OnProgressChanged(ChapterOneProgress progress)
@@ -440,10 +450,24 @@ namespace SaksiTerakhir.Persistence
 
         private void SetContinueSummary()
         {
+            if (menu == null) return;
             string quest = chapter != null && chapter.CurrentQuest != null
                 ? LocalizationManager.Get(chapter.CurrentQuest.TitleKey) : string.Empty;
             menu.SetContinueDescription(Text("Melanjutkan simpanan terakhir", "Resume the latest autosave")
                 + (string.IsNullOrEmpty(quest) ? "." : ": " + quest));
+        }
+
+        private void OnLanguageChanged()
+        {
+            if (HasAutosave) SetContinueSummary();
+            menu?.ApplyLocalization();
+            if (chapter != null) tracker?.Render(chapter.CurrentQuest, chapter.Progress);
+        }
+
+        private void OnEnable()
+        {
+            LocalizationManager.LanguageChanged -= OnLanguageChanged;
+            LocalizationManager.LanguageChanged += OnLanguageChanged;
         }
 
         private void CaptureAndLockControls()
@@ -473,6 +497,7 @@ namespace SaksiTerakhir.Persistence
 
         private void OnDisable()
         {
+            LocalizationManager.LanguageChanged -= OnLanguageChanged;
             if (continueTransition != null)
             {
                 StopCoroutine(continueTransition);
@@ -485,6 +510,7 @@ namespace SaksiTerakhir.Persistence
 
         private void OnDestroy()
         {
+            LocalizationManager.LanguageChanged -= OnLanguageChanged;
             if (cameraController != null) cameraController.EndMenuPreview(false);
             if (subscribed && chapter != null) chapter.ProgressChanged -= OnProgressChanged;
             continueButton?.onClick.RemoveListener(ContinueGame);

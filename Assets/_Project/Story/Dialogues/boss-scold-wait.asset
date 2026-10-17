@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.boss_scold_wait
   lines:
-  - speakerId: NPC-006
-    text: Yang ketemu duluan suruh langsung ke sini. Kamu lanjut cari satunya. Saya
-      siapkan berkasnya sambil menunggu.
+  - speakerId: "NPC-006"
+    text: "Yang ketemu duluan suruh langsung ke sini. Kamu lanjut cari satunya. Saya siapkan berkasnya sambil menunggu."
   conditions: []

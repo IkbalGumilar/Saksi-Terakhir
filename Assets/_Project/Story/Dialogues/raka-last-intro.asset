@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.raka_last_intro
   lines:
-  - speakerId: PLAYER
-    text: Pak Bos cari kita. B sudah ke ruangannya.
-  - speakerId: NPC-003
-    text: HP saya sepertinya tertinggal di meja kantin. Baik, kita jalan dulu. Jangan
-      sampai B disuruh mencari kita lagi.
+  - speakerId: "PLAYER"
+    text: "Pak Dadan, kita dipanggil Pak Bos. Rafi sudah ke ruangannya."
+  - speakerId: "NPC-003"
+    text: "HP saya sepertinya tertinggal di meja kantin. Baik, kita jalan dulu. Jangan sampai Rafi disuruh mencari kita lagi."
   conditions: []

@@ -371,7 +371,7 @@ namespace SaksiTerakhir.Inventory
             description.text = entry != null && entry.Type == InventoryEntryType.Document
                 && entry.Definition != null && !entry.Definition.HasDocumentTranslation
                 && !string.IsNullOrEmpty(entry.Definition.DocumentText)
-                ? entry.Definition.DocumentText : entry?.Description ?? string.Empty;
+                ? LocalizationManager.Translate(entry.Definition.DocumentText) : entry?.Description ?? string.Empty;
             documentReader.Show(entry);
         }
 

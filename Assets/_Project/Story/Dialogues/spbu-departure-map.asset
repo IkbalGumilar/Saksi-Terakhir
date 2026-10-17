@@ -14,35 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.spbu_departure
   lines:
-  - speakerId: NPC-004
-    text: Nah, sekarang arah mana? Aku tadi membesarkan peta sampai cuma kelihatan
-      garis jalan. Gunungnya malah keluar layar.
-  - speakerId: PLAYER
-    text: Giriawas. Letaknya dekat kaki Cikuray, masih dalam wilayah yang perlu kita
-      telusuri. Kita bisa mulai meminta keterangan setempat di sana.
-  - speakerId: NPC-003
-    text: Boleh. Kita perlu titik awal yang jelas. Kalau hanya menyusuri kaki gunung,
-      sore nanti belum tentu ada satu nama pun yang bisa dicocokkan.
-  - speakerId: NPC-004
-    text: Aku tadinya sudah membayangkan langsung mencari bekas desanya. Barangnya
-      lengkap, orangnya masih bingung mau mulai dari mana. Nanti aku tanya soal nama
-      dulu. Kalau langsung membuka semua cerita prasasti, takutnya orang malah bingung
-      dengan maksud kedatangan kita.
-  - speakerId: PLAYER
-    text: Ya, kita mulai dari nama saja. Kita tanyakan apakah ada yang mengenal Wanaseta,
-      atau nama permukiman lain yang pernah dipakai. Kalau belum ada yang tahu, kita
-      catat juga.
-  - speakerId: NPC-003
-    text: Betul. Minta petunjuk siapa yang bisa ditemui. Keterangan yang berbeda
-      kita simpan masing-masing, jangan langsung digabung supaya cocok dengan berkas.
-  - speakerId: NPC-004
-    text: Giriawas dulu. Sudah kusimpan. Sekarang tugasku memastikan petanya tetap
-      kelihatan, bukan sibuk mencari sudut gunung yang bagus.
-  - speakerId: PLAYER
-    text: Kalau sudah berhenti nanti, baru cari sudut foto. Sekarang bantu lihat
-      rute dulu.
-  - speakerId: NPC-004
-    text: Siap. Kali ini foto boleh menunggu.
+  - speakerId: "NPC-004"
+    text: "Nah, sekarang arah mana? Aku tadi membesarkan peta sampai cuma kelihatan garis jalan. Gunungnya malah keluar layar."
+  - speakerId: "PLAYER"
+    text: "Giriawas. Letaknya dekat kaki Cikuray, masih dalam wilayah yang perlu kita telusuri. Kita bisa mulai meminta keterangan setempat di sana."
+  - speakerId: "NPC-003"
+    text: "Boleh. Kita perlu titik awal yang jelas. Kalau hanya menyusuri kaki gunung, sore nanti belum tentu ada satu nama pun yang bisa dicocokkan."
+  - speakerId: "NPC-004"
+    text: "Aku tadinya sudah membayangkan langsung mencari bekas desanya. Barangnya lengkap, orangnya masih bingung mau mulai dari mana. Nanti aku tanya soal nama dulu. Kalau langsung membuka semua cerita prasasti, takutnya orang malah bingung dengan maksud kedatangan kita."
+  - speakerId: "PLAYER"
+    text: "Ya, kita mulai dari nama saja. Kita tanyakan apakah ada yang mengenal Cikapohon, atau nama permukiman lain yang pernah dipakai. Kalau belum ada yang tahu, kita catat juga."
+  - speakerId: "NPC-003"
+    text: "Betul. Minta petunjuk siapa yang bisa ditemui. Keterangan yang berbeda kita simpan masing-masing, jangan langsung digabung supaya cocok dengan berkas."
+  - speakerId: "NPC-004"
+    text: "Giriawas dulu. Sudah kusimpan. Sekarang tugasku memastikan petanya tetap kelihatan, bukan sibuk mencari sudut gunung yang bagus."
+  - speakerId: "PLAYER"
+    text: "Kalau sudah berhenti nanti, baru cari sudut foto. Sekarang bantu lihat rute dulu."
+  - speakerId: "NPC-004"
+    text: "Siap. Kali ini foto boleh menunggu."
   conditions:
   - condition: 43
     expectedValue: 0

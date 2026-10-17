@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.spbu_grandfather_farewell
   lines:
-  - speakerId: PLAYER
-    text: Maaf, Kek, teman saya sudah menunggu. Terima kasih sudah mengajak ngobrol.
-  - speakerId: Kakek
-    text: Silakan. Semoga urusannya lancar.
+  - speakerId: "PLAYER"
+    text: "Maaf, Kek, teman saya sudah menunggu. Terima kasih sudah mengajak ngobrol."
+  - speakerId: "Kakek"
+    text: "Silakan. Semoga urusannya lancar."
   conditions: []
   phoneConversation: 0

@@ -14,17 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.spbu_photo
   lines:
-  - speakerId: NPC-004
-    text: Sekalian foto bertiga, yuk. Buat kirim ke grup kantor. Biar kelihatan kita
-      benar-benar sudah jalan, bukan masih muter cari parkiran.
-  - speakerId: NPC-003
-    text: Satu dulu. Saya belum mau membongkar barang yang baru dirapikan cuma buat
-      latar fotomu.
-  - speakerId: PLAYER
-    text: Di sini saja. Kamu masuk fotonya juga, jangan cuma kelihatan tangannya.
-  - speakerId: NPC-004
-    text: Sudah. Yang ini nggak perlu diulang; tiga-tiganya lagi lihat kamera.
-  - speakerId: NPC-003
-    text: Bagus. Sekarang orang yang pegang kamera bantu pegang jerigen dulu.
+  - speakerId: "NPC-004"
+    text: "Pak Dadan, Cup, sekalian foto bertiga, yuk. Buat kirim ke grup kantor. Biar kelihatan kita benar-benar sudah jalan, bukan masih muter cari parkiran."
+  - speakerId: "NPC-003"
+    text: "Satu dulu. Saya belum mau membongkar barang yang baru dirapikan cuma buat latar fotomu."
+  - speakerId: "PLAYER"
+    text: "Di sini saja. Kamu masuk fotonya juga, jangan cuma kelihatan tangannya."
+  - speakerId: "NPC-004"
+    text: "Sudah. Yang ini nggak perlu diulang; tiga-tiganya lagi lihat kamera."
+  - speakerId: "NPC-003"
+    text: "Bagus. Sekarang orang yang pegang kamera bantu pegang jerigen dulu."
   conditions: []
   phoneConversation: 0

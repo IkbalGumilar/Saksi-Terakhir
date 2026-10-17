@@ -14,6 +14,7 @@ namespace SaksiTerakhir.Story
 
         public string SpeakerId => speakerId;
         public string Text => text;
+        public string LocalizedText => SaksiTerakhir.Localization.LocalizationManager.Translate(text);
 
         public DialogueLine(string id, string content)
         {

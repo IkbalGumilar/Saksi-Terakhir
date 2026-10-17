@@ -14,18 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.wrong_route_delivered
   lines:
-  - speakerId: Petugas Digitalisasi
-    text: Nah, ini dia. Kami tadi sudah buka daftar penyimpanan, padahal berkasnya
-      masih keliling di gedung sendiri.
-  - speakerId: PLAYER
-    text: Ketemunya di rak aktif. Saya tadi dititipi pas mau naik.
-  - speakerId: Petugas Digitalisasi
-    text: Lihat, angka terakhirnya mirip. Salah baca sedikit, masuk rak lain. Kami
-      tinggal tunggu map ini untuk melanjutkan pemindaian.
-  - speakerId: PLAYER
-    text: Untung masih satu gedung. Kalau harus diambil ke tempat lain, saya sekalian
-      titip makan siang.
-  - speakerId: Petugas Digitalisasi
-    text: Untuk satu map begini? Nanti biaya makannya lebih besar dari ongkos ambil
-      berkas. Sudah, taruh di sini. Terima kasih, ya.
+  - speakerId: "Petugas Digitalisasi"
+    text: "Nah, ini dia. Kami tadi sudah buka daftar penyimpanan, padahal berkasnya masih keliling di gedung sendiri."
+  - speakerId: "PLAYER"
+    text: "Ketemunya di rak aktif. Saya tadi dititipi pas mau naik."
+  - speakerId: "Petugas Digitalisasi"
+    text: "Lihat, angka terakhirnya mirip. Salah baca sedikit, masuk rak lain. Kami tinggal tunggu map ini untuk melanjutkan pemindaian."
+  - speakerId: "PLAYER"
+    text: "Untung masih satu gedung. Kalau harus diambil ke tempat lain, saya sekalian titip makan siang."
+  - speakerId: "Petugas Digitalisasi"
+    text: "Untuk satu map begini? Nanti biaya makannya lebih besar dari ongkos ambil berkas. Sudah, taruh di sini. Terima kasih, ya."
   conditions: []

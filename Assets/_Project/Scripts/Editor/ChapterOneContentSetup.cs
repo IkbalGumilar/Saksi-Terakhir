@@ -32,7 +32,7 @@ namespace SaksiTerakhir.EditorTools
             var manuscript = new ChapterOneManuscript();
             Dictionary<string, DialogueLine[]> speech = ReadCanonicalDialogues(manuscript);
             string agenda = ChapterOneManuscript.QuotedDocument(ChapterOneManuscript.Between(
-                manuscript.Main, "## CATATAN AGENDA — 24 AGUSTUS 2026", "MC menutup buku."));
+                manuscript.Main, "## CATATAN AGENDA — 24 AGUSTUS 2026", "Ucup menutup buku."));
             // Validate source boundaries before creating any assets.
             foreach (KeyValuePair<string, DialogueLine[]> entry in speech)
             {
@@ -94,11 +94,11 @@ namespace SaksiTerakhir.EditorTools
             string assignment = speech["boss-final"].First(line => line.Text.StartsWith("Itu yang saya perlukan.", StringComparison.Ordinal)).Text;
             ItemDefinition letter = Document("Surat_Tugas_Verifikasi_Lapangan", "document.field_assignment",
                 "Surat Tugas Verifikasi Lapangan", "Field Verification Assignment",
-                "Tugas verifikasi lapangan untuk MC, A, dan B.", "Field verification assignment for MC, A, and B.",
+                "Tugas verifikasi lapangan untuk Ucup, Dadan, dan Rafi.", "Field verification assignment for Ucup, Dadan, and Rafi.",
                 "Surat Tugas Verifikasi Lapangan\n24 Agustus 2026\n\n" + assignment, changed);
             ItemDefinition diary = Document("Agenda_24_Agustus_2026", "document.agenda_2026_08_24",
                 "Agenda — 24 Agustus 2026", "Agenda — 24 August 2026",
-                "Catatan agenda mengenai tugas verifikasi arsip Wanaseta.", "A diary entry about the Wanaseta archive assignment.", agenda, changed);
+                "Catatan agenda mengenai tugas verifikasi arsip Cikapohon.", "A diary entry about the Cikapohon archive assignment.", agenda, changed);
             // Dynamic receipts use their own InventoryEntry description. Cataloging
             // this template would replace the saved shop, items and payment details.
             Document("Struk_Pembayaran_Template", "document.travel_receipt", "Struk Pembayaran", "Payment Receipt",
@@ -204,26 +204,26 @@ Do not trust what you see. Do not trust what you remember. The demons within thi
             Main("lunch-invitation", "## 12.08", "# MAIN QUEST 02 — JAM ISTIRAHAT");
             Main("rooftop", "# 5. ROOFTOP — AKHIR PEKAN YANG DITUNGGU", "**MAIN QUEST 02 — JAM ISTIRAHAT**");
             Main("boss-call", "**PONSEL BERGETAR**", "# MAIN QUEST 03 — PANGGILAN MENDADAK");
-            Main("boss-first", "# 6. RUANGAN BOS", "# MAIN QUEST 04 — CARI A DAN B");
-            Branch("raka-first", "# CABANG 01-A — A DITEMUKAN LEBIH DULU", "# CABANG 01-B — B DITEMUKAN TERAKHIR");
-            Branch("sinta-first", "# CABANG 01-C — B DITEMUKAN LEBIH DULU", "# CABANG 01-D — A DITEMUKAN TERAKHIR");
-            Branch("sinta-last-intro", "# CABANG 01-B — B DITEMUKAN TERAKHIR", "B memasukkan ponsel dan mendorong tasnya");
-            Branch("sinta-last", "B memasukkan ponsel dan mendorong tasnya", "# CABANG 01-C — B DITEMUKAN LEBIH DULU");
-            Branch("raka-last-intro", "# CABANG 01-D — A DITEMUKAN TERAKHIR", "MC dan A berjalan bersama menuju lantai tiga.");
-            Branch("raka-last", "MC dan A berjalan bersama menuju lantai tiga.", "# HASIL BRANCH 01");
-            string briefing = ChapterOneManuscript.Between(book.Main, "# 7. BRIEFING ARSIP MISTERIUS", "# ITEM CERITA — ARSIP WANASETA");
+            Main("boss-first", "# 6. RUANGAN BOS", "# MAIN QUEST 04 — CARI DADAN DAN RAFI");
+            Branch("raka-first", "# CABANG 01-A — DADAN DITEMUKAN LEBIH DULU", "# CABANG 01-B — RAFI DITEMUKAN TERAKHIR");
+            Branch("sinta-first", "# CABANG 01-C — RAFI DITEMUKAN LEBIH DULU", "# CABANG 01-D — DADAN DITEMUKAN TERAKHIR");
+            Branch("sinta-last-intro", "# CABANG 01-B — RAFI DITEMUKAN TERAKHIR", "Rafi memasukkan ponsel dan mendorong tasnya");
+            Branch("sinta-last", "Rafi memasukkan ponsel dan mendorong tasnya", "# CABANG 01-C — RAFI DITEMUKAN LEBIH DULU");
+            Branch("raka-last-intro", "# CABANG 01-D — DADAN DITEMUKAN TERAKHIR", "Ucup dan Dadan berjalan bersama menuju lantai tiga.");
+            Branch("raka-last", "Ucup dan Dadan berjalan bersama menuju lantai tiga.", "# HASIL BRANCH 01");
+            string briefing = ChapterOneManuscript.Between(book.Main, "# 7. BRIEFING ARSIP MISTERIUS", "# ITEM CERITA — ARSIP CIKAPOHON");
             string preparations = ChapterOneManuscript.Between(book.Main, "# 8. PERSIAPAN KEBERANGKATAN", "# MAIN QUEST 05 — PERSIAPAN LAPANGAN");
             result.Add("boss-final", ChapterOneManuscript.Speeches(briefing + preparations));
             string reception = ChapterOneManuscript.Between(book.Main, "# 10. RESEPSIONIS", "Jika pemain memiliki struk pembelian untuk tugas:");
             string handoff = ChapterOneManuscript.Between(book.Main, "Resepsionis mengambil sebuah kunci.", "## ITEM DIPEROLEH");
             result.Add("nadia-key", ChapterOneManuscript.Speeches(reception + handoff));
             Main("receipt-submitted", "Jika pemain memiliki struk pembelian untuk tugas:", "Semua pembelian setelah penugasan");
-            Branch("shared-meal", "## ADEGAN OPTIONAL QUEST 09 — MAKAN BERSAMA A DAN B", "Adegan berakhir.");
+            Branch("shared-meal", "## ADEGAN OPTIONAL QUEST 09 — MAKAN BERSAMA DADAN DAN RAFI", "Adegan berakhir.");
             Branch("vehicle-meal-complete", "### Lanjutan Branch 02-A — Kedatangan di Mobil", "**MOBIL MENINGGALKAN ANRI — MENUJU SPBU**");
             Branch("vehicle-meal-skipped", "## BRANCH 02-B — OPTIONAL QUEST 09 DILEWATKAN", "**MOBIL MENINGGALKAN ANRI — MENUJU SPBU**");
             Narration("wrong-route-declined", "Pemain dapat menerima atau menolak.");
             Narration("desk-prepared", "Saat membersihkan meja, pemain menemukan buku agenda.");
-            Narration("agenda-written", "MC membuka halaman baru.");
+            Narration("agenda-written", "Ucup membuka halaman baru.");
             Narration("shop-supplies", "Pemain bebas menentukan barang yang ingin dibeli.");
             Narration("bulletin", ChapterOneManuscript.QuotedDocument(ChapterOneManuscript.Between(
                 book.Main, "# 3. AREA KANTOR — EKSPLORASI PAGI", "# SIDE QUEST 01 — SALAH JALUR")));
@@ -354,8 +354,8 @@ Do not trust what you see. Do not trust what you remember. The demons within thi
             Text("quest.main.call", "An Unexpected Call", "Panggilan Mendadak", changed);
             Text("quest.main.boss_first", "An Unexpected Call", "Panggilan Mendadak", changed);
             Text("quest.main.boss_first.talk", "Visit the boss on floor 3", "Pergi ke ruangan bos di lantai 3", changed);
-            Text("quest.main.find", "Find A and B", "Cari A dan B", changed);
-            Text("quest.main.boss_final.listen", "Listen to the archive briefing", "Dengarkan briefing arsip Wanaseta", changed);
+            Text("quest.main.find", "Find Dadan and Rafi", "Cari Dadan dan Rafi", changed);
+            Text("quest.main.boss_final.listen", "Listen to the archive briefing", "Dengarkan briefing arsip Cikapohon", changed);
             Text("quest.main.key", "Field Preparations", "Persiapan Lapangan", changed);
             Text("quest.main.key.collect", "Collect the office car key at reception", "Ambil kunci mobil dinas di resepsionis", changed);
             Text("quest.main.vehicle", "Departure", "Keberangkatan", changed);
@@ -368,8 +368,8 @@ Do not trust what you see. Do not trust what you remember. The demons within thi
             Text("quest.optional.desk_preparation.finish", "Tidy the desk before leaving", "Rapikan meja sebelum pergi", changed);
             Text("quest.optional.supplies", "Field Supplies", "Perbekalan Lapangan", changed);
             Text("quest.optional.supplies.buy", "Buy the supplies you need", "Beli perbekalan yang dibutuhkan", changed);
-            Text("quest.optional.shared_meal", "Have a Meal with A and B", "Makan Bersama A dan B", changed);
-            Text("quest.optional.shared_meal.talk", "Sit with A and B before collecting the key", "Duduk bersama A dan B sebelum mengambil kunci", changed);
+            Text("quest.optional.shared_meal", "Have a Meal with Dadan and Rafi", "Makan Bersama Dadan dan Rafi", changed);
+            Text("quest.optional.shared_meal.talk", "Sit with Dadan and Rafi before collecting the key", "Duduk bersama Dadan dan Rafi sebelum mengambil kunci", changed);
         }
     }
 }

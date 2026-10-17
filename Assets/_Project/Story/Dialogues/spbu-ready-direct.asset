@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.spbu_ready_direct
   lines:
-  - speakerId: NPC-004
-    text: Sudah siap! Bensinnya penuh, cadangan juga sudah masuk. Kalau sudah selesai
-      jalan-jalannya, ayo lanjut.
-  - speakerId: NPC-003
-    text: Barang yang dibeli jangan tertinggal. Saya sudah periksa muatannya.
-  - speakerId: PLAYER
-    text: Iya, saya ke sana.
+  - speakerId: "NPC-004"
+    text: "Cup, sudah siap! Bensinnya penuh, cadangan juga sudah masuk. Kalau sudah selesai jalan-jalannya, ayo lanjut."
+  - speakerId: "NPC-003"
+    text: "Barang yang dibeli jangan tertinggal. Saya sudah periksa muatannya."
+  - speakerId: "PLAYER"
+    text: "Iya, saya ke sana."
   conditions: []
   phoneConversation: 0

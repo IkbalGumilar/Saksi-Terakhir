@@ -14,18 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.boss_first
   lines:
-  - speakerId: NPC-006
-    text: Kamu duluan yang datang. Saya juga sudah menghubungi A dan B, belum ada
-      yang angkat.
-  - speakerId: PLAYER
-    text: Tadi saya makan sama rekan-rekan di rooftop, Pak. A dan B belum ketemu.
-      Kalau untuk tim lapangan, saya cari mereka dulu saja.
-  - speakerId: NPC-006
-    text: Iya, cari dua-duanya. Berkasnya kita bahas setelah lengkap, supaya nanti
-      kalian berangkat dengan informasi yang sama.
-  - speakerId: NPC-006
-    text: Yang ketemu duluan suruh langsung ke sini. Kamu lanjut cari satunya. Saya
-      siapkan berkasnya sambil menunggu.
-  - speakerId: PLAYER
-    text: Baik, Pak. Nanti saya bawa yang terakhir ke sini.
+  - speakerId: "NPC-006"
+    text: "Kamu duluan yang datang. Saya juga sudah menghubungi Dadan dan Rafi, belum ada yang angkat."
+  - speakerId: "PLAYER"
+    text: "Tadi saya makan sama rekan-rekan di rooftop, Pak. Pak Dadan dan Rafi belum ketemu. Kalau untuk tim lapangan, saya cari mereka dulu saja."
+  - speakerId: "NPC-006"
+    text: "Iya, cari dua-duanya. Berkasnya kita bahas setelah lengkap, supaya nanti kalian berangkat dengan informasi yang sama."
+  - speakerId: "NPC-006"
+    text: "Yang ketemu duluan suruh langsung ke sini. Kamu lanjut cari satunya. Saya siapkan berkasnya sambil menunggu."
+  - speakerId: "PLAYER"
+    text: "Baik, Pak. Nanti saya bawa yang terakhir ke sini."
   conditions: []

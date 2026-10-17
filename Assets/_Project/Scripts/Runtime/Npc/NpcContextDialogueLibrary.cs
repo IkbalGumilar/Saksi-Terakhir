@@ -24,7 +24,8 @@ namespace SaksiTerakhir.Npc
             if (authored != null)
             {
                 foreach (string text in authored)
-                    if (!string.IsNullOrWhiteSpace(text)) lines.Add(new DialogueLine(speaker, text));
+                    if (!string.IsNullOrWhiteSpace(text))
+                        lines.Add(new DialogueLine(speaker, LocalizationManager.Translate(text)));
             }
             if (lines.Count > 0)
             {

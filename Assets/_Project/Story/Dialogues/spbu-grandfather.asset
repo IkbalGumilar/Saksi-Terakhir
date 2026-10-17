@@ -14,68 +14,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.spbu_grandfather
   lines:
-  - speakerId: Kakek
-    text: Terima kasih. Ditinggal sebentar buat membereskan tas, sudah keburu dibawa
-      angin.
-  - speakerId: PLAYER
-    text: Masih dekat, Kek. Boleh duduk di sini sebentar?
-  - speakerId: Kakek
-    text: Silakan. Bagian sana panas. Di sini lebih enak meluruskan kaki.
-  - speakerId: PLAYER
-    text: Kami berhenti isi bensin. Saya kira turun dari mobil bisa langsung jalan-jalan,
-      ternyata kaki minta duduk lagi.
-  - speakerId: Kakek
-    text: Yang menemani saya juga suka bilang baru sebentar. Lutut saya punya hitungan
-      sendiri.
-  - speakerId: Kakek
-    text: Kalian mau jalan-jalan atau ada pekerjaan?
-  - speakerId: PLAYER
-    text: Kami dari kantor arsip, ditugaskan memverifikasi desa lama di kaki Gunung
-      Cikuray. Namanya belum cocok dengan data administrasi sekarang. Kami perlu
-      mencari lokasinya dan orang yang tahu riwayatnya.
-  - speakerId: Kakek
-    text: Oh, Cikuray. Dulu saya tinggal di Garut, sering lewat sana untuk kerja.
-      Kenal beberapa warga Giriawas. Sekarang masih saling kabar.
-  - speakerId: Kakek
-    text: Mereka cerita ada laki-laki menebang pohon dan berburu dengan anjing di
-      kaki Cikuray. Membawa kapak, keluar-masuk jalur di antara pepohonan. Katanya
-      bukan warga Giriawas; mereka tidak mengenali orang-orang itu. Saya mendengar
-      dari mereka, bukan melihat sendiri.
-  - speakerId: PLAYER
-    text: Kalau keluar-masuk lewat situ, mungkin jalurnya menuju tempat tinggal mereka.
-  - speakerId: Kakek
-    text: Itu yang membuat warga bertanya-tanya. Ada yang membawa karung perbekalan
-      ke arah perbukitan. Para pemburu bersama anjingnya terlihat kembali lewat jalur
-      pepohonan ketika senja, kadang setelah gelap. Mungkin ada permukiman di ujungnya,
-      tetapi saya tidak tahu persis jalannya.
-  - speakerId: Kakek
-    text: Kalau kabar itu benar dan kalian ingin menemukan desa itu, coba datang
-      malam. Ikuti pemburu dengan anjing tadi, diam-diam, dari jarak yang cukup.
-      Jangan sampai ketahuan. Orang bisa tersinggung atau curiga kalau merasa dibuntuti,
-      apalagi oleh orang yang belum dikenalnya.
-  - speakerId: Kakek
-    text: Kalau terlihat desa, berhenti di luar. Tunggu pagi. Setelah terang, baru
-      datang, perkenalkan diri, jelaskan urusan kalian, dan minta izin warga.
-  - speakerId: PLAYER
-    text: Bukankah lebih baik masuk saja diam-diam?
-  - speakerId: Kakek
-    text: Itu etika. Lebih baik kalian berkunjung sebagai tamu daripada masuk sebagai
-      penyusup. Tas saya menghalangi jalan sedikit saja tadi harus saya geser. Apalagi
-      kalau kita datang ke tempat tinggal orang ketika mereka sedang tidur.
-  - speakerId: Kakek
-    text: Mengikuti jalan untuk mencari letak desa berbeda dengan masuk ke halaman
-      dan rumah orang. Malam-malam mereka belum tahu kalian siapa. Besok pagi, orang
-      sudah bangun, kalian bisa memperkenalkan diri dengan baik. Bawa surat tugasnya,
-      tanyakan siapa yang bisa menerima kalian. Beri mereka kesempatan menyambut
-      atau menjelaskan kalau kalian salah tempat.
-  - speakerId: PLAYER
-    text: Iya, Kek. Saya tadi cuma memikirkan cepat ketemu. Kabar dari Giriawas ini
-      kami periksa dulu.
-  - speakerId: PLAYER
-    text: Terima kasih. Saya kembali ke teman-teman dulu. Bungkusnya sudah aman di
-      tempat sampah. Tasnya jangan ikut dibawa angin, Kek.
-  - speakerId: Kakek
-    text: Kalau ini terbang, berarti belanjanya terlalu sedikit. Kalian kalau sudah
-      duduk lama, jangan langsung berlari ke mobil. Lututnya belum tentu setuju.
+  - speakerId: "Kakek"
+    text: "Terima kasih. Ditinggal sebentar buat membereskan tas, sudah keburu dibawa angin."
+  - speakerId: "PLAYER"
+    text: "Masih dekat, Kek. Boleh duduk di sini sebentar?"
+  - speakerId: "Kakek"
+    text: "Silakan. Bagian sana panas. Di sini lebih enak meluruskan kaki."
+  - speakerId: "PLAYER"
+    text: "Kami berhenti isi bensin. Saya kira turun dari mobil bisa langsung jalan-jalan, ternyata kaki minta duduk lagi."
+  - speakerId: "Kakek"
+    text: "Yang menemani saya juga suka bilang baru sebentar. Lutut saya punya hitungan sendiri."
+  - speakerId: "Kakek"
+    text: "Kalian mau jalan-jalan atau ada pekerjaan?"
+  - speakerId: "PLAYER"
+    text: "Kami dari kantor arsip, ditugaskan memverifikasi desa lama di kaki Gunung Cikuray. Namanya belum cocok dengan data administrasi sekarang. Kami perlu mencari lokasinya dan orang yang tahu riwayatnya."
+  - speakerId: "Kakek"
+    text: "Oh, Cikuray. Dulu saya tinggal di Garut, sering lewat sana untuk kerja. Kenal beberapa warga Giriawas. Sekarang masih saling kabar."
+  - speakerId: "Kakek"
+    text: "Mereka cerita ada laki-laki menebang pohon dan berburu dengan anjing di kaki Cikuray. Membawa kapak, keluar-masuk jalur di antara pepohonan. Katanya bukan warga Giriawas; mereka tidak mengenali orang-orang itu. Saya mendengar dari mereka, bukan melihat sendiri."
+  - speakerId: "PLAYER"
+    text: "Kalau keluar-masuk lewat situ, mungkin jalurnya menuju tempat tinggal mereka."
+  - speakerId: "Kakek"
+    text: "Itu yang membuat warga bertanya-tanya. Ada yang membawa karung perbekalan ke arah perbukitan. Para pemburu bersama anjingnya terlihat kembali lewat jalur pepohonan ketika senja, kadang setelah gelap. Mungkin ada permukiman di ujungnya, tetapi saya tidak tahu persis jalannya."
+  - speakerId: "Kakek"
+    text: "Kalau kabar itu benar dan kalian ingin menemukan desa itu, coba datang malam. Ikuti pemburu dengan anjing tadi, diam-diam, dari jarak yang cukup. Jangan sampai ketahuan. Orang bisa tersinggung atau curiga kalau merasa dibuntuti, apalagi oleh orang yang belum dikenalnya."
+  - speakerId: "Kakek"
+    text: "Kalau terlihat desa, berhenti di luar. Tunggu pagi. Setelah terang, baru datang, perkenalkan diri, jelaskan urusan kalian, dan minta izin warga."
+  - speakerId: "PLAYER"
+    text: "Bukankah lebih baik masuk saja diam-diam?"
+  - speakerId: "Kakek"
+    text: "Itu etika. Lebih baik kalian berkunjung sebagai tamu daripada masuk sebagai penyusup. Tas saya menghalangi jalan sedikit saja tadi harus saya geser. Apalagi kalau kita datang ke tempat tinggal orang ketika mereka sedang tidur."
+  - speakerId: "Kakek"
+    text: "Mengikuti jalan untuk mencari letak desa berbeda dengan masuk ke halaman dan rumah orang. Malam-malam mereka belum tahu kalian siapa. Besok pagi, orang sudah bangun, kalian bisa memperkenalkan diri dengan baik. Bawa surat tugasnya, tanyakan siapa yang bisa menerima kalian. Beri mereka kesempatan menyambut atau menjelaskan kalau kalian salah tempat."
+  - speakerId: "PLAYER"
+    text: "Iya, Kek. Saya tadi cuma memikirkan cepat ketemu. Kabar dari Giriawas ini kami periksa dulu."
+  - speakerId: "PLAYER"
+    text: "Terima kasih. Saya kembali ke teman-teman dulu. Bungkusnya sudah aman di tempat sampah. Tasnya jangan ikut dibawa angin, Kek."
+  - speakerId: "Kakek"
+    text: "Kalau ini terbang, berarti belanjanya terlalu sedikit. Kalian kalau sudah duduk lama, jangan langsung berlari ke mobil. Lututnya belum tentu setuju."
   conditions: []
   phoneConversation: 0

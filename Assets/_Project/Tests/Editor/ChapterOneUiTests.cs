@@ -162,11 +162,11 @@ namespace SaksiTerakhir.Tests
             LocalizationTable table = AssetDatabase.LoadAssetAtPath<LocalizationTable>(
                 "Assets/_Project/Localization/LocalizationTable.asset");
             Assert.That(table.GetText("interact.story.find_raka", GameLanguage.Indonesian),
-                Is.EqualTo("Temukan Raka"));
+                Is.EqualTo("Temukan Dadan"));
             Assert.That(table.GetText("interact.story.find_sinta", GameLanguage.Indonesian),
-                Is.EqualTo("Temukan Sinta"));
+                Is.EqualTo("Temukan Rafi"));
             Assert.That(table.GetText("quest.main.find", GameLanguage.Indonesian),
-                Is.EqualTo("Cari rekan-rekan"));
+                Is.EqualTo("Cari Dadan dan Rafi"));
         }
 
         private GameObject NewUi(string name)

@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.bulletin
   lines:
-  - speakerId: Catatan
-    text: "LIBURAN BERSAMA \u2014 BALI\n\nAkhir pekan ini.\n\nInformasi keberangkatan
-      lengkap telah dibagikan melalui grup internal.\nJangan telat lagi.\nSiapa yang
-      bawa speaker?\nSUNSCREEN!\nJangan bawa kerjaan."
+  - speakerId: "Catatan"
+    text: "LIBURAN BERSAMA \u2014 BALI\n\nAkhir pekan ini.\n\nInformasi keberangkatan lengkap telah dibagikan melalui grup internal.\nJangan telat lagi.\nSiapa yang bawa speaker?\nSUNSCREEN!\nJangan bawa kerjaan."
   conditions: []

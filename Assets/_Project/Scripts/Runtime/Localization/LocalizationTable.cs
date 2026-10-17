@@ -21,10 +21,12 @@ namespace SaksiTerakhir.Localization
     [CreateAssetMenu(fileName = "LocalizationTable", menuName = "Localization/Localization Table")]
     public sealed class LocalizationTable : ScriptableObject
     {
-        public GameLanguage defaultLanguage = GameLanguage.English;
+        public GameLanguage defaultLanguage = GameLanguage.Indonesian;
         public LocalizedTextEntry[] entries = Array.Empty<LocalizedTextEntry>();
 
         private Dictionary<string, LocalizedTextEntry> lookup;
+        private Dictionary<string, string> indonesianToEnglishLookup;
+        private Dictionary<string, string> englishToIndonesianLookup;
 
         public string GetText(string key, GameLanguage language)
         {
@@ -48,19 +50,59 @@ namespace SaksiTerakhir.Localization
             return string.IsNullOrEmpty(text) ? key : text;
         }
 
+        public string TranslateText(string text, GameLanguage language)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                return string.Empty;
+            }
+
+            EnsureLookup();
+            if (lookup.TryGetValue(text, out LocalizedTextEntry byKey))
+            {
+                string resolved = language == GameLanguage.Indonesian ? byKey.indonesian : byKey.english;
+                if (string.IsNullOrEmpty(resolved))
+                {
+                    resolved = language == GameLanguage.Indonesian ? byKey.english : byKey.indonesian;
+                }
+                return string.IsNullOrEmpty(resolved) ? text : resolved;
+            }
+
+            if (language == GameLanguage.English)
+            {
+                if (indonesianToEnglishLookup.TryGetValue(text, out string english) && !string.IsNullOrEmpty(english))
+                {
+                    return english;
+                }
+            }
+            else if (language == GameLanguage.Indonesian)
+            {
+                if (englishToIndonesianLookup.TryGetValue(text, out string indonesian) && !string.IsNullOrEmpty(indonesian))
+                {
+                    return indonesian;
+                }
+            }
+
+            return text;
+        }
+
         public void ClearLookupCache()
         {
             lookup = null;
+            indonesianToEnglishLookup = null;
+            englishToIndonesianLookup = null;
         }
 
         private void EnsureLookup()
         {
-            if (lookup != null)
+            if (lookup != null && indonesianToEnglishLookup != null && englishToIndonesianLookup != null)
             {
                 return;
             }
 
             lookup = new Dictionary<string, LocalizedTextEntry>(entries.Length);
+            indonesianToEnglishLookup = new Dictionary<string, string>(entries.Length);
+            englishToIndonesianLookup = new Dictionary<string, string>(entries.Length);
             foreach (LocalizedTextEntry entry in entries)
             {
                 if (entry == null || string.IsNullOrWhiteSpace(entry.key))
@@ -74,6 +116,11 @@ namespace SaksiTerakhir.Localization
                 }
 
                 lookup[entry.key] = entry;
+                if (!string.IsNullOrEmpty(entry.indonesian) && !string.IsNullOrEmpty(entry.english))
+                {
+                    indonesianToEnglishLookup[entry.indonesian] = entry.english;
+                    englishToIndonesianLookup[entry.english] = entry.indonesian;
+                }
             }
         }
 

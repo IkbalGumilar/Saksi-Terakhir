@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.spbu_ready_phone
   lines:
-  - speakerId: NPC-004
-    text: Sudah selesai semua. Kami tunggu di mobil. Kamu masih di taman?
-  - speakerId: PLAYER
-    text: Masih sekitar sini. Sebentar, saya balik.
-  - speakerId: NPC-003
-    text: Bilang kalau masih belanja, sekalian dibawa sekarang. Semua sudah siap.
-  - speakerId: NPC-004
-    text: Dengar sendiri, kan? Kami tinggal tunggu kamu.
+  - speakerId: "NPC-004"
+    text: "Cup, sudah selesai semua. Kami tunggu di mobil. Kamu masih di taman?"
+  - speakerId: "PLAYER"
+    text: "Masih sekitar sini. Sebentar, saya balik."
+  - speakerId: "NPC-003"
+    text: "Bilang kalau masih belanja, sekalian dibawa sekarang. Semua sudah siap."
+  - speakerId: "NPC-004"
+    text: "Dengar sendiri, kan? Kami tinggal tunggu kamu."
   conditions: []
   phoneConversation: 1

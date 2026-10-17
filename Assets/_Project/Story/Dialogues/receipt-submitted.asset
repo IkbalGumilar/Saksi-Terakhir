@@ -14,15 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.receipt_submitted
   lines:
-  - speakerId: PLAYER
-    text: Ini juga ada pengeluaran untuk perbekalan. Boleh saya titip buat bendahara?
-      Biar nggak tercampur dengan lembar terjemahan di map saya.
-  - speakerId: NPC-002
-    text: Boleh. Yang berkaitan dengan tugas saja, ya. Saya gabungkan dengan berkas
-      pengeluaran tim kalian, nanti saya serahkan.
-  - speakerId: PLAYER
-    text: Yang di sini untuk persiapan setelah briefing tadi. Terima kasih, sekalian
-      berkurang yang harus saya pegang di perjalanan.
-  - speakerId: NPC-002
-    text: Ya, bawa berkas arsipnya saja yang rapi. Urusan struk ini saya teruskan.
+  - speakerId: "PLAYER"
+    text: "Ini juga ada pengeluaran untuk perbekalan. Boleh saya titip buat bendahara? Biar nggak tercampur dengan lembar terjemahan di map saya."
+  - speakerId: "NPC-002"
+    text: "Boleh. Yang berkaitan dengan tugas saja, ya. Saya gabungkan dengan berkas pengeluaran tim kalian, nanti saya serahkan."
+  - speakerId: "PLAYER"
+    text: "Yang di sini untuk persiapan setelah briefing tadi. Terima kasih, sekalian berkurang yang harus saya pegang di perjalanan."
+  - speakerId: "NPC-002"
+    text: "Ya, bawa berkas arsipnya saja yang rapi. Urusan struk ini saya teruskan."
   conditions: []

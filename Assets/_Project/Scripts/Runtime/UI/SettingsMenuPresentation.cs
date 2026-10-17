@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using SaksiTerakhir.Localization;
 using SaksiTerakhir.Settings;
 using TMPro;
 using UnityEngine;
@@ -42,6 +43,36 @@ namespace SaksiTerakhir.UI
             "Mengatur fitur aksesibilitas dan kenyamanan."
         };
 
+        private static readonly string[] CategoryNamesId = {
+            "Kontrol", "Kamera", "Permainan", "Tampilan", "Grafis", "Audio", "Bahasa", "Aksesibilitas"
+        };
+
+        private static readonly string[] CategoryNamesEn = {
+            "Controls", "Camera", "Gameplay", "Display", "Graphics", "Audio", "Language", "Accessibility"
+        };
+
+        private static readonly string[] CategoryDescriptionsId = {
+            "Mengatur cara bermain dan respons kontrol.",
+            "Mengatur gerakan dan kenyamanan kamera.",
+            "Mengatur bantuan dan informasi selama bermain.",
+            "Mengatur mode layar dan resolusi gambar.",
+            "Mengatur kualitas visual dan performa grafis.",
+            "Mengatur volume suara dan audio permainan.",
+            "Mengatur bahasa tampilan dan subtitle.",
+            "Mengatur fitur aksesibilitas dan kenyamanan."
+        };
+
+        private static readonly string[] CategoryDescriptionsEn = {
+            "Configure control response and input behavior.",
+            "Configure camera movement and comfort.",
+            "Configure gameplay assistance and HUD information.",
+            "Configure screen mode and display resolution.",
+            "Configure visual quality and graphics performance.",
+            "Configure sound volume and game audio.",
+            "Configure display language and subtitles.",
+            "Configure accessibility and comfort features."
+        };
+
         [Header("Visual Colors")]
         [SerializeField] private Color activeTextColor = new Color32(245, 242, 235, 255);
         [SerializeField] private Color inactiveTextColor = new Color32(180, 175, 165, 255);
@@ -68,6 +99,9 @@ namespace SaksiTerakhir.UI
 
         public int ActiveTabIndex => activeTabIndex;
         public bool IsOpen => gameObject.activeSelf;
+
+        private static bool IsIndonesian => LocalizationManager.CurrentLanguage == GameLanguage.Indonesian;
+        private static string L(string id, string en) => IsIndonesian ? id : en;
 
         private void Awake()
         {
@@ -344,8 +378,18 @@ namespace SaksiTerakhir.UI
             }
 
             SelectDefaultOptionRowInActiveTab();
+            UpdateCategoryDescriptionText();
+        }
 
-            if (descriptionText != null && categoryDescriptions != null && activeTabIndex < categoryDescriptions.Length)
+        private void UpdateCategoryDescriptionText()
+        {
+            if (descriptionText == null) return;
+            string[] source = IsIndonesian ? CategoryDescriptionsId : CategoryDescriptionsEn;
+            if (activeTabIndex >= 0 && activeTabIndex < source.Length)
+            {
+                descriptionText.text = source[activeTabIndex];
+            }
+            else if (categoryDescriptions != null && activeTabIndex < categoryDescriptions.Length)
             {
                 descriptionText.text = categoryDescriptions[activeTabIndex];
             }
@@ -424,7 +468,9 @@ namespace SaksiTerakhir.UI
         {
             if (descriptionText != null)
             {
-                descriptionText.text = "Saksi Terakhir — Dikembangkan oleh Tim Saksi Terakhir (Unity 6 / URP).";
+                descriptionText.text = L(
+                    "Saksi Terakhir — Dikembangkan oleh Tim Saksi Terakhir (Unity 6 / URP).",
+                    "Saksi Terakhir — Developed by the Saksi Terakhir Team (Unity 6 / URP).");
             }
         }
 
@@ -434,7 +480,9 @@ namespace SaksiTerakhir.UI
             RefreshAllControls();
             if (descriptionText != null)
             {
-                descriptionText.text = "Semua pengaturan telah diatur ulang ke nilai bawaan.";
+                descriptionText.text = L(
+                    "Semua pengaturan telah diatur ulang ke nilai bawaan.",
+                    "All settings have been reset to their default values.");
             }
         }
 
@@ -459,18 +507,126 @@ namespace SaksiTerakhir.UI
             return child != null ? child.GetComponent<T>() : null;
         }
 
+        private static void SetRowLabel(Transform rowTransform, string idText, string enText)
+        {
+            if (rowTransform == null) return;
+            TMP_Text label = GetComponentAt<TMP_Text>(rowTransform, "Label");
+            if (label != null) label.text = L(idText, enText);
+        }
+
+        private void ApplyChromeLocalization()
+        {
+            TMP_Text headerTitle = GetComponentAt<TMP_Text>(transform, "Header Title");
+            if (headerTitle != null) headerTitle.text = L("PENGATURAN", "SETTINGS");
+
+            string[] catNames = IsIndonesian ? CategoryNamesId : CategoryNamesEn;
+            if (categoryButtons != null)
+            {
+                for (int i = 0; i < categoryButtons.Length && i < catNames.Length; i++)
+                {
+                    if (categoryButtons[i] == null) continue;
+                    TMP_Text lbl = categoryButtons[i].GetComponentInChildren<TMP_Text>(true);
+                    if (lbl != null) lbl.text = catNames[i];
+                }
+            }
+
+            if (contentPanels != null)
+            {
+                for (int i = 0; i < contentPanels.Length && i < catNames.Length; i++)
+                {
+                    if (contentPanels[i] == null) continue;
+                    TMP_Text hdr = GetComponentAt<TMP_Text>(contentPanels[i].transform, "Content Header");
+                    if (hdr != null) hdr.text = catNames[i];
+                }
+            }
+
+            if (creditsButton != null)
+            {
+                TMP_Text lbl = creditsButton.GetComponentInChildren<TMP_Text>(true);
+                if (lbl != null) lbl.text = L("Kredit", "Credits");
+            }
+            if (resetButton != null)
+            {
+                TMP_Text lbl = resetButton.GetComponentInChildren<TMP_Text>(true);
+                if (lbl != null) lbl.text = L("Atur Ulang", "Reset");
+            }
+            if (backButton != null)
+            {
+                TMP_Text lbl = backButton.GetComponentInChildren<TMP_Text>(true);
+                if (lbl != null) lbl.text = L("Kembali", "Back");
+            }
+
+            Transform hints = transform.Find("Footer Panel/Input Hints");
+            if (hints != null)
+            {
+                TMP_Text nav = GetComponentAt<TMP_Text>(hints, "Navigate Hint");
+                if (nav != null) nav.text = L("↑↓  Pilih", "↑↓  Select");
+
+                TMP_Text chg = GetComponentAt<TMP_Text>(hints, "Change Hint");
+                if (chg != null) chg.text = L("←→  Ubah", "←→  Change");
+
+                TMP_Text cnf = GetComponentAt<TMP_Text>(hints, "Confirm Hint/Action Label");
+                if (cnf != null) cnf.text = L("Konfirmasi", "Confirm");
+
+                TMP_Text bak = GetComponentAt<TMP_Text>(hints, "Back Hint/Action Label");
+                if (bak != null) bak.text = L("Kembali", "Back");
+            }
+
+            UpdateCategoryDescriptionText();
+        }
+
+        private static Transform EnsureLanguageRow(Transform languageList)
+        {
+            if (languageList == null) return null;
+            Transform existing = languageList.Find("Language Row");
+            if (existing != null) return existing;
+
+            Transform template = languageList.Find("Speaker Name Row");
+            if (template == null) return null;
+
+            GameObject clone = Instantiate(template.gameObject, languageList, false);
+            clone.name = "Language Row";
+            Transform langRow = clone.transform;
+            langRow.SetSiblingIndex(0);
+
+            Transform oldOutline = template.Find("Active Option Outline");
+            if (oldOutline != null)
+            {
+                DestroyImmediate(oldOutline.gameObject);
+            }
+
+            const float rowHeight = 58f;
+            for (int i = 0; i < languageList.childCount; i++)
+            {
+                RectTransform childRect = languageList.GetChild(i) as RectTransform;
+                if (childRect != null)
+                {
+                    childRect.anchoredPosition = new Vector2(0f, -i * rowHeight);
+                }
+            }
+
+            return langRow;
+        }
+
         private void BindAllRows()
         {
             isBound = true;
+            ApplyChromeLocalization();
+
             Transform contentPanel = transform.Find("Content Panel");
             if (contentPanel == null) return;
+
+            string[] onOff = IsIndonesian ? new[] { "Aktif", "Nonaktif" } : new[] { "On", "Off" };
+            string[] offOn = IsIndonesian ? new[] { "Nonaktif", "Aktif" } : new[] { "Off", "On" };
+            string[] lowMedHigh = IsIndonesian ? new[] { "Rendah", "Sedang", "Tinggi" } : new[] { "Low", "Medium", "High" };
 
             // 1. KONTROL
             Transform controlList = contentPanel.Find("Control Content/Control Options List");
             if (controlList != null)
             {
-                // Input Device
-                BindStepper(controlList.Find("Input Device Row"),
+                Transform inputRow = controlList.Find("Input Device Row");
+                SetRowLabel(inputRow, "Perangkat Input", "Input Device");
+                BindStepper(inputRow,
                     new[] { "Keyboard & Mouse", "Gamepad" },
                     () => GameSettingsManager.Current.inputDevice == "Gamepad" ? 1 : 0,
                     idx =>
@@ -479,12 +635,15 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                         if (idx == 1 && Gamepad.current == null && descriptionText != null)
                         {
-                            descriptionText.text = "Mode Gamepad dipilih (kontroler belum terdeteksi, Keyboard & Mouse tetap aktif).";
+                            descriptionText.text = L(
+                                "Mode Gamepad dipilih (kontroler belum terdeteksi, Keyboard & Mouse tetap aktif).",
+                                "Gamepad mode selected (controller not detected; Keyboard & Mouse remains active).");
                         }
                     });
 
-                // Mouse Sensitivity
-                BindSlider(controlList.Find("Mouse Sensitivity Row"), 1f, 100f,
+                Transform mouseSensRow = controlList.Find("Mouse Sensitivity Row");
+                SetRowLabel(mouseSensRow, "Sensitivitas Mouse", "Mouse Sensitivity");
+                BindSlider(mouseSensRow, 1f, 100f,
                     () => GameSettingsManager.Current.mouseSensitivity,
                     val =>
                     {
@@ -492,9 +651,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                // Sprint Mode
-                BindStepper(controlList.Find("Sprint Mode Row"),
-                    new[] { "Tahan", "1 Klik (Beralih)" },
+                Transform sprintRow = controlList.Find("Sprint Mode Row");
+                SetRowLabel(sprintRow, "Berlari", "Sprint Mode");
+                BindStepper(sprintRow,
+                    IsIndonesian ? new[] { "Tahan", "1 Klik (Beralih)" } : new[] { "Hold", "Toggle (1 Click)" },
                     () => GameSettingsManager.Current.sprintMode == SprintMode.Toggle ? 1 : 0,
                     idx =>
                     {
@@ -502,12 +662,14 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                // Key Binding (Disabled for now per specification)
-                SetRowDisabled(controlList.Find("Key Binding Row"));
+                Transform keyBindRow = controlList.Find("Key Binding Row");
+                SetRowLabel(keyBindRow, "Atur Tombol", "Key Bindings");
+                SetRowDisabled(keyBindRow, L("Segera Hadir", "Coming Soon"));
 
-                // Gamepad Vibration
-                BindStepper(controlList.Find("Gamepad Vibration Row"),
-                    new[] { "Aktif", "Nonaktif" },
+                Transform vibRow = controlList.Find("Gamepad Vibration Row");
+                SetRowLabel(vibRow, "Getaran Gamepad", "Gamepad Vibration");
+                BindStepper(vibRow,
+                    onOff,
                     () => GameSettingsManager.Current.gamepadVibration ? 0 : 1,
                     idx =>
                     {
@@ -526,7 +688,9 @@ namespace SaksiTerakhir.UI
             Transform cameraList = contentPanel.Find("Camera Content/Camera Options List");
             if (cameraList != null)
             {
-                BindSlider(cameraList.Find("Horizontal Sensitivity Row"), 1f, 100f,
+                Transform hSensRow = cameraList.Find("Horizontal Sensitivity Row");
+                SetRowLabel(hSensRow, "Sensitivitas Horizontal", "Horizontal Sensitivity");
+                BindSlider(hSensRow, 1f, 100f,
                     () => GameSettingsManager.Current.horizontalSensitivity,
                     val =>
                     {
@@ -534,7 +698,9 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindSlider(cameraList.Find("Vertical Sensitivity Row"), 1f, 100f,
+                Transform vSensRow = cameraList.Find("Vertical Sensitivity Row");
+                SetRowLabel(vSensRow, "Sensitivitas Vertikal", "Vertical Sensitivity");
+                BindSlider(vSensRow, 1f, 100f,
                     () => GameSettingsManager.Current.verticalSensitivity,
                     val =>
                     {
@@ -542,8 +708,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindStepper(cameraList.Find("Invert Vertical Axis Row"),
-                    new[] { "Nonaktif", "Aktif" },
+                Transform invRow = cameraList.Find("Invert Vertical Axis Row");
+                SetRowLabel(invRow, "Balik Sumbu Vertikal", "Invert Vertical Axis");
+                BindStepper(invRow,
+                    offOn,
                     () => GameSettingsManager.Current.invertVerticalAxis ? 1 : 0,
                     idx =>
                     {
@@ -551,7 +719,9 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindSlider(cameraList.Find("Field Of View Row"), 60f, 100f,
+                Transform fovRow = cameraList.Find("Field Of View Row");
+                SetRowLabel(fovRow, "Bidang Pandang", "Field of View");
+                BindSlider(fovRow, 60f, 100f,
                     () => GameSettingsManager.Current.fieldOfView,
                     val =>
                     {
@@ -559,8 +729,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     }, "°");
 
-                BindStepper(cameraList.Find("Camera Speed Row"),
-                    new[] { "Lambat", "Normal", "Cepat" },
+                Transform camSpeedRow = cameraList.Find("Camera Speed Row");
+                SetRowLabel(camSpeedRow, "Kecepatan Kamera", "Camera Speed");
+                BindStepper(camSpeedRow,
+                    IsIndonesian ? new[] { "Lambat", "Normal", "Cepat" } : new[] { "Slow", "Normal", "Fast" },
                     () => (int)GameSettingsManager.Current.cameraSpeed,
                     idx =>
                     {
@@ -573,9 +745,10 @@ namespace SaksiTerakhir.UI
             Transform gameplayList = contentPanel.Find("Gameplay Content/Gameplay Options List");
             if (gameplayList != null)
             {
-                // Main Quest
-                BindStepper(gameplayList.Find("Main Quest Display Row"),
-                    new[] { "Aktif", "Nonaktif" },
+                Transform mainQuestRow = gameplayList.Find("Main Quest Display Row");
+                SetRowLabel(mainQuestRow, "Tampilkan Quest Utama", "Show Main Quest");
+                BindStepper(mainQuestRow,
+                    onOff,
                     () => GameSettingsManager.Current.showMainQuest ? 0 : 1,
                     idx =>
                     {
@@ -584,8 +757,8 @@ namespace SaksiTerakhir.UI
                         UpdateTrackedQuestInteractability();
                     });
 
-                // Tracked Quest (Cache references to disable when Main Quest is off)
                 Transform trackedRow = gameplayList.Find("Tracked Quest Display Row");
+                SetRowLabel(trackedRow, "Tampilkan Quest Pantauan", "Show Tracked Quest");
                 if (trackedRow != null)
                 {
                     trackedQuestLabel = GetComponentAt<TMP_Text>(trackedRow, "Label");
@@ -599,7 +772,7 @@ namespace SaksiTerakhir.UI
                 }
 
                 BindStepper(trackedRow,
-                    new[] { "Aktif", "Nonaktif" },
+                    onOff,
                     () => GameSettingsManager.Current.showTrackedQuest ? 0 : 1,
                     idx =>
                     {
@@ -608,9 +781,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                // Interaction Prompt
-                BindStepper(gameplayList.Find("Interaction Prompt Row"),
-                    new[] { "Aktif", "Nonaktif" },
+                Transform promptRow = gameplayList.Find("Interaction Prompt Row");
+                SetRowLabel(promptRow, "Petunjuk Interaksi", "Interaction Prompt");
+                BindStepper(promptRow,
+                    onOff,
                     () => GameSettingsManager.Current.interactionPrompt ? 0 : 1,
                     idx =>
                     {
@@ -618,17 +792,23 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                // Exploration Hint & Tutorial Reminder (Disabled per specification)
-                SetRowDisabled(gameplayList.Find("Exploration Hint Row"));
-                SetRowDisabled(gameplayList.Find("Tutorial Reminder Row"));
+                Transform expHintRow = gameplayList.Find("Exploration Hint Row");
+                SetRowLabel(expHintRow, "Petunjuk Eksplorasi", "Exploration Hints");
+                SetRowDisabled(expHintRow, L("Segera Hadir", "Coming Soon"));
+
+                Transform tutRow = gameplayList.Find("Tutorial Reminder Row");
+                SetRowLabel(tutRow, "Pengingat Tutorial", "Tutorial Reminders");
+                SetRowDisabled(tutRow, L("Segera Hadir", "Coming Soon"));
             }
 
             // 4. TAMPILAN (DISPLAY)
             Transform displayList = contentPanel.Find("Display Content/Display Options List");
             if (displayList != null)
             {
-                BindStepper(displayList.Find("Screen Mode Row"),
-                    new[] { "Layar Penuh", "Jendela" },
+                Transform screenModeRow = displayList.Find("Screen Mode Row");
+                SetRowLabel(screenModeRow, "Mode Layar", "Screen Mode");
+                BindStepper(screenModeRow,
+                    IsIndonesian ? new[] { "Layar Penuh", "Jendela" } : new[] { "Fullscreen", "Windowed" },
                     () => GameSettingsManager.Current.screenMode == ScreenModeSetting.Fullscreen ? 0 : 1,
                     idx =>
                     {
@@ -636,7 +816,9 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindStepper(displayList.Find("Resolution Row"),
+                Transform resRow = displayList.Find("Resolution Row");
+                SetRowLabel(resRow, "Resolusi", "Resolution");
+                BindStepper(resRow,
                     new[] { "1920 × 1080", "1600 × 900", "1366 × 768", "1280 × 720" },
                     () => Mathf.Clamp(GameSettingsManager.Current.resolutionIndex, 0, 3),
                     idx =>
@@ -645,7 +827,9 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindSlider(displayList.Find("Brightness Row"), 0f, 100f,
+                Transform brightRow = displayList.Find("Brightness Row");
+                SetRowLabel(brightRow, "Kecerahan", "Brightness");
+                BindSlider(brightRow, 0f, 100f,
                     () => GameSettingsManager.Current.brightness,
                     val =>
                     {
@@ -653,8 +837,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindStepper(displayList.Find("VSync Row"),
-                    new[] { "Aktif", "Nonaktif" },
+                Transform vsyncRow = displayList.Find("VSync Row");
+                SetRowLabel(vsyncRow, "Sinkronisasi Vertikal", "VSync");
+                BindStepper(vsyncRow,
+                    onOff,
                     () => GameSettingsManager.Current.vSync ? 0 : 1,
                     idx =>
                     {
@@ -667,8 +853,10 @@ namespace SaksiTerakhir.UI
             Transform graphicsList = contentPanel.Find("Graphics Content/Graphics Options List");
             if (graphicsList != null)
             {
-                BindStepper(graphicsList.Find("Graphics Preset Row"),
-                    new[] { "Rendah", "Sedang", "Tinggi" },
+                Transform presetRow = graphicsList.Find("Graphics Preset Row");
+                SetRowLabel(presetRow, "Preset Grafis", "Graphics Preset");
+                BindStepper(presetRow,
+                    lowMedHigh,
                     () => (int)GameSettingsManager.Current.qualityPreset,
                     idx =>
                     {
@@ -676,8 +864,10 @@ namespace SaksiTerakhir.UI
                         RefreshAllControls();
                     });
 
-                BindStepper(graphicsList.Find("Shadow Quality Row"),
-                    new[] { "Nonaktif", "Rendah", "Tinggi" },
+                Transform shadowQualRow = graphicsList.Find("Shadow Quality Row");
+                SetRowLabel(shadowQualRow, "Kualitas Bayangan", "Shadow Quality");
+                BindStepper(shadowQualRow,
+                    IsIndonesian ? new[] { "Nonaktif", "Rendah", "Tinggi" } : new[] { "Off", "Low", "High" },
                     () => (int)GameSettingsManager.Current.shadowQuality,
                     idx =>
                     {
@@ -685,8 +875,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindStepper(graphicsList.Find("Shadow Distance Row"),
-                    new[] { "Dekat (15m)", "Sedang (25m)", "Jauh (40m)" },
+                Transform shadowDistRow = graphicsList.Find("Shadow Distance Row");
+                SetRowLabel(shadowDistRow, "Jarak Bayangan", "Shadow Distance");
+                BindStepper(shadowDistRow,
+                    IsIndonesian ? new[] { "Dekat (15m)", "Sedang (25m)", "Jauh (40m)" } : new[] { "Near (15m)", "Medium (25m)", "Far (40m)" },
                     () => (int)GameSettingsManager.Current.shadowDistance,
                     idx =>
                     {
@@ -694,8 +886,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindStepper(graphicsList.Find("Texture Quality Row"),
-                    new[] { "Rendah", "Sedang", "Tinggi" },
+                Transform texQualRow = graphicsList.Find("Texture Quality Row");
+                SetRowLabel(texQualRow, "Kualitas Tekstur", "Texture Quality");
+                BindStepper(texQualRow,
+                    lowMedHigh,
                     () => (int)GameSettingsManager.Current.textureQuality,
                     idx =>
                     {
@@ -703,8 +897,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindStepper(graphicsList.Find("Anti Aliasing Row"),
-                    new[] { "Nonaktif", "FXAA", "SMAA" },
+                Transform aaRow = graphicsList.Find("Anti Aliasing Row");
+                SetRowLabel(aaRow, "Anti-Aliasing", "Anti-Aliasing");
+                BindStepper(aaRow,
+                    IsIndonesian ? new[] { "Nonaktif", "FXAA", "SMAA" } : new[] { "Off", "FXAA", "SMAA" },
                     () => (int)GameSettingsManager.Current.antiAliasing,
                     idx =>
                     {
@@ -712,7 +908,9 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindStepper(graphicsList.Find("Render Scale Row"),
+                Transform scaleRow = graphicsList.Find("Render Scale Row");
+                SetRowLabel(scaleRow, "Skala Render", "Render Scale");
+                BindStepper(scaleRow,
                     new[] { "70%", "85%", "100%" },
                     () => GameSettingsManager.Current.renderScalePercent == 70 ? 0 : (GameSettingsManager.Current.renderScalePercent == 85 ? 1 : 2),
                     idx =>
@@ -721,8 +919,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindStepper(graphicsList.Find("Frame Rate Limit Row"),
-                    new[] { "30 FPS", "60 FPS", "Tanpa Batas" },
+                Transform fpsRow = graphicsList.Find("Frame Rate Limit Row");
+                SetRowLabel(fpsRow, "Batas Bingkai", "Frame Rate Limit");
+                BindStepper(fpsRow,
+                    IsIndonesian ? new[] { "30 FPS", "60 FPS", "Tanpa Batas" } : new[] { "30 FPS", "60 FPS", "Unlimited" },
                     () => GameSettingsManager.Current.targetFrameRate == 30 ? 0 : (GameSettingsManager.Current.targetFrameRate == 60 ? 1 : 2),
                     idx =>
                     {
@@ -731,22 +931,62 @@ namespace SaksiTerakhir.UI
                     });
             }
 
-            // 6. AUDIO (Disabled until audio assets are added)
+            // 6. AUDIO
             Transform audioList = contentPanel.Find("Audio Content/Audio Options List");
             if (audioList != null)
             {
-                for (int i = 0; i < audioList.childCount; i++)
-                {
-                    SetRowDisabled(audioList.GetChild(i));
-                }
+                Transform masterRow = audioList.Find("Master Volume Row");
+                SetRowLabel(masterRow, "Volume Utama", "Master Volume");
+                BindSlider(masterRow, 0f, 100f,
+                    () => GameSettingsManager.Current.masterVolume,
+                    val =>
+                    {
+                        GameSettingsManager.Current.masterVolume = val;
+                        GameSettingsManager.Save();
+                    });
+
+                Transform musicRow = audioList.Find("Music Volume Row");
+                SetRowLabel(musicRow, "Volume Musik", "Music Volume");
+                BindSlider(musicRow, 0f, 100f,
+                    () => GameSettingsManager.Current.musicVolume,
+                    val =>
+                    {
+                        GameSettingsManager.Current.musicVolume = val;
+                        GameSettingsManager.Save();
+                    });
+
+                Transform sfxRow = audioList.Find("Sfx Volume Row");
+                SetRowLabel(sfxRow, "Volume Efek", "SFX Volume");
+                SetRowDisabled(sfxRow, L("Segera Hadir", "Coming Soon"));
+
+                Transform dialogueRow = audioList.Find("Dialogue Volume Row");
+                SetRowLabel(dialogueRow, "Volume Dialog", "Dialogue Volume");
+                SetRowDisabled(dialogueRow, L("Segera Hadir", "Coming Soon"));
             }
 
             // 7. BAHASA / SUBTITLE
             Transform languageList = contentPanel.Find("Language Content/Language Options List");
             if (languageList != null)
             {
-                BindStepper(languageList.Find("Speaker Name Row"),
-                    new[] { "Aktif", "Nonaktif" },
+                Transform langRow = EnsureLanguageRow(languageList);
+                SetRowLabel(langRow, "Bahasa", "Language");
+                BindStepper(langRow,
+                    IsIndonesian ? new[] { "Indonesia", "Inggris" } : new[] { "Indonesian", "English" },
+                    () => GameSettingsManager.Current.language == GameLanguage.Indonesian ? 0 : 1,
+                    idx =>
+                    {
+                        GameLanguage selected = idx == 0 ? GameLanguage.Indonesian : GameLanguage.English;
+                        GameSettingsManager.Current.language = selected;
+                        LocalizationManager.SetLanguage(selected);
+                        GameSettingsManager.Save();
+                        RefreshAllControls();
+                        if (langRow != null) HighlightOptionRow(langRow);
+                    });
+
+                Transform speakerRow = languageList.Find("Speaker Name Row");
+                SetRowLabel(speakerRow, "Nama Pembicara", "Speaker Name");
+                BindStepper(speakerRow,
+                    onOff,
                     () => GameSettingsManager.Current.showSpeakerName ? 0 : 1,
                     idx =>
                     {
@@ -754,7 +994,9 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindSlider(languageList.Find("Text Speed Row"), 10f, 100f,
+                Transform speedRow = languageList.Find("Text Speed Row");
+                SetRowLabel(speedRow, "Kecepatan Teks", "Text Speed");
+                BindSlider(speedRow, 10f, 100f,
                     () => GameSettingsManager.Current.textSpeed,
                     val =>
                     {
@@ -762,8 +1004,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindStepper(languageList.Find("Auto Advance Row"),
-                    new[] { "Aktif", "Nonaktif" },
+                Transform autoAdvRow = languageList.Find("Auto Advance Row");
+                SetRowLabel(autoAdvRow, "Lanjut Otomatis", "Auto Advance");
+                BindStepper(autoAdvRow,
+                    onOff,
                     () => GameSettingsManager.Current.autoAdvance ? 0 : 1,
                     idx =>
                     {
@@ -771,7 +1015,9 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     });
 
-                BindSlider(languageList.Find("Auto Advance Delay Row"), 0.1f, 5.0f,
+                Transform delayRow = languageList.Find("Auto Advance Delay Row");
+                SetRowLabel(delayRow, "Jeda Lanjut Otomatis", "Auto Advance Delay");
+                BindSlider(delayRow, 0.1f, 5.0f,
                     () => GameSettingsManager.Current.autoAdvanceDelay,
                     val =>
                     {
@@ -779,8 +1025,10 @@ namespace SaksiTerakhir.UI
                         GameSettingsManager.Save();
                     }, "s");
 
-                BindStepper(languageList.Find("Text Animation Row"),
-                    new[] { "Aktif", "Nonaktif" },
+                Transform animRow = languageList.Find("Text Animation Row");
+                SetRowLabel(animRow, "Animasi Teks", "Text Animation");
+                BindStepper(animRow,
+                    onOff,
                     () => GameSettingsManager.Current.textAnimation ? 0 : 1,
                     idx =>
                     {
@@ -793,19 +1041,30 @@ namespace SaksiTerakhir.UI
             Transform accessibilityList = contentPanel.Find("Accessibility Content/Accessibility Options List");
             if (accessibilityList != null)
             {
+                SetRowLabel(accessibilityList.Find("Subtitle Size Row"), "Ukuran Subtitle", "Subtitle Size");
+                SetRowLabel(accessibilityList.Find("Background Opacity Row"), "Latar Belakang Teks", "Subtitle Background");
+                SetRowLabel(accessibilityList.Find("Speaker Color Row"), "Warna Nama Pembicara", "Speaker Name Color");
+                SetRowLabel(accessibilityList.Find("Camera Shake Row"), "Goyangan Kamera", "Camera Shake");
+                SetRowLabel(accessibilityList.Find("Head Bob Row"), "Goyangan Berjalan", "Head Bob");
                 for (int i = 0; i < accessibilityList.childCount; i++)
                 {
-                    SetRowDisabled(accessibilityList.GetChild(i));
+                    SetRowDisabled(accessibilityList.GetChild(i), L("Segera Hadir", "Coming Soon"));
                 }
             }
         }
 
-        private void SetRowDisabled(Transform rowTransform)
+        private void SetRowDisabled(Transform rowTransform, string overrideStepperValue = null)
         {
             if (rowTransform == null) return;
 
             Transform optOutline = rowTransform.Find("Active Option Outline");
             if (optOutline != null) optOutline.gameObject.SetActive(false);
+
+            if (!string.IsNullOrEmpty(overrideStepperValue))
+            {
+                TMP_Text stepperVal = GetComponentAt<TMP_Text>(rowTransform, "Stepper/Value Text");
+                if (stepperVal != null) stepperVal.text = overrideStepperValue;
+            }
 
             Button[] buttons = rowTransform.GetComponentsInChildren<Button>(true);
             for (int i = 0; i < buttons.Length; i++)
@@ -1003,11 +1262,21 @@ namespace SaksiTerakhir.UI
 
             if (slider != null)
             {
+                slider.interactable = true;
                 slider.onValueChanged.RemoveAllListeners();
                 slider.minValue = min;
                 slider.maxValue = max;
                 float initialVal = getter != null ? getter() : min;
                 slider.SetValueWithoutNotify(initialVal);
+
+                TMP_Text[] texts = rowTransform.GetComponentsInChildren<TMP_Text>(true);
+                for (int i = 0; i < texts.Length; i++)
+                {
+                    if (texts[i] != null) texts[i].color = activeTextColor;
+                }
+                if (fillImg != null) fillImg.color = activeTextColor;
+                Image handleImg = GetComponentAt<Image>(sliderObj, "Handle Slide Area/Handle");
+                if (handleImg != null) handleImg.color = activeTextColor;
 
                 bool isWhole = slider.wholeNumbers;
                 if (valText != null)

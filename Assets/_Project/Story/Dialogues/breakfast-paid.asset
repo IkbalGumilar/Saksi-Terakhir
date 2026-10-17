@@ -14,14 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.breakfast_paid
   lines:
-  - speakerId: PLAYER
-    text: Sekalian saya bayar sekarang, Bu. Nanti sudah duduk di depan komputer,
-      susah turun lagi.
-  - speakerId: Bu Kantin
-    text: Nah, begitu. Tunggu, saya ambil kembaliannya. Jangan sudah jalan baru ingat
-      uangnya belum diambil.
-  - speakerId: PLAYER
-    text: Iya, Bu. Saya masih di sini.
-  - speakerId: Bu Kantin
-    text: Saya tahu. Biasanya kalian kalau sudah dengar lift bunyi langsung buru-buru.
+  - speakerId: "PLAYER"
+    text: "Sekalian saya bayar sekarang, Bu. Nanti sudah duduk di depan komputer, susah turun lagi."
+  - speakerId: "Bu Kantin"
+    text: "Nah, begitu. Tunggu, saya ambil kembaliannya. Jangan sudah jalan baru ingat uangnya belum diambil."
+  - speakerId: "PLAYER"
+    text: "Iya, Bu. Saya masih di sini."
+  - speakerId: "Bu Kantin"
+    text: "Saya tahu. Biasanya kalian kalau sudah dengar lift bunyi langsung buru-buru."
   conditions: []

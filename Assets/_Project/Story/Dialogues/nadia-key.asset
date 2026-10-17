@@ -14,16 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.nadia_key
   lines:
-  - speakerId: NPC-002
-    text: Untuk tim verifikasi lapangan, ya. Kuncinya sudah dititipkan di sini. Tunggu
-      sebentar, saya lihat lacinya.
-  - speakerId: PLAYER
-    text: Iya. Kami bertiga berangkat hari ini. A dan B sudah bersiap, saya sekalian
-      mengambil kunci.
-  - speakerId: NPC-002
-    text: Mobilnya di area kendaraan dinas. Ini kuncinya. Periksa barang bersama
-      dulu sebelum jalan, kalau masih ada yang kurang kalian belum jauh.
-  - speakerId: PLAYER
-    text: Baik. Nanti kami cek sekali lagi di mobil. Map dan kotak arsipnya sudah
-      ada.
+  - speakerId: "NPC-002"
+    text: "Untuk tim verifikasi lapangan, ya. Kuncinya sudah dititipkan di sini. Tunggu sebentar, saya lihat lacinya."
+  - speakerId: "PLAYER"
+    text: "Iya. Kami bertiga berangkat hari ini. Pak Dadan dan Rafi sudah bersiap, saya sekalian mengambil kunci."
+  - speakerId: "NPC-002"
+    text: "Mobilnya di area kendaraan dinas. Ini kuncinya. Periksa barang bersama dulu sebelum jalan, kalau masih ada yang kurang kalian belum jauh."
+  - speakerId: "PLAYER"
+    text: "Baik. Nanti kami cek sekali lagi di mobil. Map dan kotak arsipnya sudah ada."
   conditions: []

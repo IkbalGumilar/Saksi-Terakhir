@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.sinta_first
   lines:
-  - speakerId: PLAYER
-    text: B, Pak Bos cari kamu. Disuruh langsung ke ruangannya.
-  - speakerId: NPC-004
-    text: Tiga panggilan tidak terjawab. Aku tadi nggak dengar sama sekali. Oke,
-      aku ke sana sekarang.
-  - speakerId: PLAYER
-    text: Aku masih harus cari A. Kami menyusul.
-  - speakerId: NPC-004
-    text: Sip. Semoga beliau belum menghitung panggilan keempat.
+  - speakerId: "PLAYER"
+    text: "Rafi, Pak Bos cari kamu. Disuruh langsung ke ruangannya."
+  - speakerId: "NPC-004"
+    text: "Tiga panggilan tidak terjawab. Aku tadi nggak dengar sama sekali. Oke, aku ke sana sekarang."
+  - speakerId: "PLAYER"
+    text: "Aku masih harus cari Pak Dadan. Kami menyusul."
+  - speakerId: "NPC-004"
+    text: "Sip. Semoga beliau belum menghitung panggilan keempat."
   conditions: []

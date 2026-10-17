@@ -141,8 +141,10 @@ namespace SaksiTerakhir.Story
                 && !playerInside && (progress.Stage == ChapterOneStage.FindColleagues
                     || progress.Stage == ChapterOneStage.EscortLastColleague))
             {
+                bool firstAlreadyArrived = progress.FirstColleagueId == "NPC-003" ? progress.RakaArrived
+                    : progress.FirstColleagueId == "NPC-004" && progress.SintaArrived;
                 string enteringId = progress.Stage == ChapterOneStage.EscortLastColleague
-                    && progress.WalkDialogueComplete
+                    && (progress.WalkDialogueComplete || firstAlreadyArrived)
                     ? progress.LastColleagueId : progress.FirstColleagueId;
                 OfficeNpcAgent entering = enteringId == "NPC-003" ? colleagueA
                     : enteringId == "NPC-004" ? colleagueB : null;

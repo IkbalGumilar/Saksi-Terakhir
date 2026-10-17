@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.shop_supplies
   lines:
-  - speakerId: Catatan
-    text: Pemain bebas menentukan barang yang ingin dibeli.
+  - speakerId: "Catatan"
+    text: "Pemain bebas menentukan barang yang ingin dibeli."
   conditions: []

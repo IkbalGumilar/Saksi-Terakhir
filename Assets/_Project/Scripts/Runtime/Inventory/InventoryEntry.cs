@@ -32,9 +32,9 @@ namespace SaksiTerakhir.Inventory
             }
         }
         public string Id => definition != null ? definition.Id : id;
-        public string DisplayName => definition != null ? LocalizationManager.Get(definition.NameKey) : displayName;
+        public string DisplayName => definition != null ? LocalizationManager.Get(definition.NameKey) : LocalizationManager.Translate(displayName);
         public InventoryEntryType Type => definition != null ? definition.Type : type;
-        public string Description => definition != null ? LocalizationManager.Get(definition.DescriptionKey) : description;
+        public string Description => definition != null ? LocalizationManager.Get(definition.DescriptionKey) : LocalizationManager.Translate(description);
         public Sprite Icon => definition != null ? definition.Icon : icon;
 
         public InventoryEntry(string id, string displayName, InventoryEntryType type,

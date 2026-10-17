@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using SaksiTerakhir.Npc;
 using UnityEngine;
 
 namespace SaksiTerakhir.Vehicles
@@ -6,6 +8,12 @@ namespace SaksiTerakhir.Vehicles
     [DisallowMultipleComponent, RequireComponent(typeof(Rigidbody))]
     public sealed class AutomaticVehicleDriver : MonoBehaviour
     {
+        private static readonly List<AutomaticVehicleDriver> activeDrivers = new List<AutomaticVehicleDriver>();
+        public static IReadOnlyList<AutomaticVehicleDriver> ActiveDrivers => activeDrivers;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetActiveDrivers() => activeDrivers.Clear();
+
         [SerializeField] private Vector3[] roadPoints = Array.Empty<Vector3>();
         [SerializeField] private float[] roadSpeeds = Array.Empty<float>();
         [SerializeField] private Vector3[] parkingPoints = Array.Empty<Vector3>();
@@ -25,6 +33,7 @@ namespace SaksiTerakhir.Vehicles
         private VehicleKeyUse occupants;
         private VehicleJourneyDirector journey;
         private readonly RaycastHit[] obstacles = new RaycastHit[32];
+        private readonly Collider[] nearbyPedestrians = new Collider[24];
         private float distance;
         private float speed;
         public bool IsMoving { get; private set; }
@@ -36,6 +45,11 @@ namespace SaksiTerakhir.Vehicles
         public float RemainingDistance => path != null ? Mathf.Max(0f, path.Length - distance) : 0f;
         public float StoppingDistance => speed * speed / (2f * Mathf.Max(.1f, braking));
         public event Action Arrived;
+
+        private void OnEnable()
+        {
+            if (!activeDrivers.Contains(this)) activeDrivers.Add(this);
+        }
 
         public VehicleRoutePath BuildPath(bool parking)
             => new VehicleRoutePath(parking ? parkingPoints : roadPoints, parking ? parkingSpeeds : roadSpeeds);
@@ -92,7 +106,11 @@ namespace SaksiTerakhir.Vehicles
         {
             if (!IsMoving || path == null || deltaTime <= 0 || !float.IsFinite(deltaTime)) return;
             float targetSpeed = path.SpeedLimitAt(distance, braking);
-            speed = Mathf.MoveTowards(speed, targetSpeed, (targetSpeed < speed ? braking : acceleration) * deltaTime);
+            bool yieldingToPedestrian = DetectAndAlertPedestriansAhead(out float pedestrianDistance);
+            if (yieldingToPedestrian && pedestrianDistance <= Mathf.Max(2.6f, StoppingDistance + 1.8f))
+                targetSpeed = 0f;
+            float decel = yieldingToPedestrian ? braking * 1.5f : braking;
+            speed = Mathf.MoveTowards(speed, targetSpeed, (targetSpeed < speed ? decel : acceleration) * deltaTime);
             float nextDistance = Mathf.Min(path.Length, distance + speed * deltaTime);
             Vector3 next = path.PositionAt(nextDistance);
             Quaternion rotation = path.RotationAt(nextDistance);
@@ -114,26 +132,96 @@ namespace SaksiTerakhir.Vehicles
             Arrived?.Invoke();
         }
 
+        private bool DetectAndAlertPedestriansAhead(out float nearestPedestrianDistance)
+        {
+            nearestPedestrianDistance = float.PositiveInfinity;
+            if (obstacleLayers.value == 0 || path == null || body == null) return false;
+            Vector3 current = body.position;
+            Quaternion rotation = body.rotation;
+            Vector3 forward = rotation * Vector3.forward;
+            forward.y = 0f;
+            if (forward.sqrMagnitude < 0.001f) forward = transform.forward;
+            else forward.Normalize();
+            Vector3 right = Vector3.Cross(Vector3.up, forward).normalized;
+
+            float lookAhead = Mathf.Clamp(speed * 1.35f + 4.2f, 4.2f, 8.5f);
+            Vector3 alertHalfSize = new Vector3(probeHalfSize.x + 0.9f, probeHalfSize.y, probeHalfSize.z);
+            int count = Physics.BoxCastNonAlloc(current + rotation * probeCenter, alertHalfSize,
+                forward, obstacles, rotation, lookAhead, obstacleLayers, QueryTriggerInteraction.Ignore);
+            bool foundInLane = false;
+            for (int i = 0; i < count; i++)
+            {
+                Collider col = obstacles[i].collider;
+                if (col == null || col.transform.IsChildOf(transform)
+                    || occupants != null && occupants.ContainsPassenger(col.transform)) continue;
+                OfficeNpcAgent npc = col.GetComponentInParent<OfficeNpcAgent>();
+                if (npc == null) continue;
+                npc.NotifyApproachingVehicle(current, forward, probeHalfSize.x + 1.25f);
+                Vector3 rel = npc.transform.position - current;
+                rel.y = 0f;
+                float along = Vector3.Dot(rel, forward);
+                float lateral = Mathf.Abs(Vector3.Dot(rel, right));
+                bool onZebraCross = OfficeNpcAgent.IsOnZebraCrossOrRoadway(npc.transform.position);
+                if (along >= -probeHalfSize.z && (lateral <= probeHalfSize.x + 0.55f
+                    || onZebraCross && lateral <= probeHalfSize.x + 1.15f))
+                {
+                    foundInLane = true;
+                    nearestPedestrianDistance = Mathf.Min(nearestPedestrianDistance, Mathf.Max(0f, along - probeHalfSize.z));
+                }
+            }
+
+            int overlapCount = Physics.OverlapBoxNonAlloc(current + rotation * probeCenter + forward * 1.6f,
+                new Vector3(probeHalfSize.x + 1.1f, probeHalfSize.y + 0.4f, probeHalfSize.z + 1.8f),
+                nearbyPedestrians, rotation, obstacleLayers, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < overlapCount; i++)
+            {
+                Collider col = nearbyPedestrians[i];
+                if (col == null || col.transform.IsChildOf(transform)
+                    || occupants != null && occupants.ContainsPassenger(col.transform)) continue;
+                OfficeNpcAgent npc = col.GetComponentInParent<OfficeNpcAgent>();
+                if (npc == null) continue;
+                npc.NotifyApproachingVehicle(current, forward, probeHalfSize.x + 1.25f);
+                Vector3 rel = npc.transform.position - current;
+                rel.y = 0f;
+                float along = Vector3.Dot(rel, forward);
+                float lateral = Mathf.Abs(Vector3.Dot(rel, right));
+                if (along >= -0.5f && lateral <= probeHalfSize.x + 0.65f)
+                {
+                    foundInLane = true;
+                    nearestPedestrianDistance = Mathf.Min(nearestPedestrianDistance, Mathf.Max(0f, along - probeHalfSize.z));
+                }
+            }
+            return foundInLane;
+        }
+
         private bool CanMoveTo(Vector3 next, Quaternion rotation)
         {
             Vector3 current = body.position;
             Vector3 delta = next - current;
             if (delta.sqrMagnitude < .000001f) return true;
             float castLength = delta.magnitude + .55f;
+            Vector3 forward = delta.normalized;
             int count = Physics.BoxCastNonAlloc(current + rotation * probeCenter, probeHalfSize,
-                delta.normalized, obstacles, rotation, castLength, obstacleLayers, QueryTriggerInteraction.Ignore);
+                forward, obstacles, rotation, castLength, obstacleLayers, QueryTriggerInteraction.Ignore);
             if (count == obstacles.Length) return false;
+            bool blocked = false;
             for (int i = 0; i < count; i++)
             {
                 Collider obstacle = obstacles[i].collider;
                 if (obstacle == null || obstacle.transform.IsChildOf(transform)
                     || occupants != null && occupants.ContainsPassenger(obstacle.transform)) continue;
-                return false;
+                OfficeNpcAgent npc = obstacle.GetComponentInParent<OfficeNpcAgent>();
+                if (npc != null) npc.NotifyApproachingVehicle(current, forward, probeHalfSize.x + 1.35f);
+                blocked = true;
             }
-            return true;
+            return !blocked;
         }
 
-        private void OnDisable() => Stop();
+        private void OnDisable()
+        {
+            activeDrivers.Remove(this);
+            Stop();
+        }
 
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()

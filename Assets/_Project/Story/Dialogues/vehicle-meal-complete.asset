@@ -14,33 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.vehicle_meal_complete
   lines:
-  - speakerId: PLAYER
-    text: Terima kasih.
-  - speakerId: NPC-004
-    text: Bagian hitungan harinya itu masih bikin aku bingung. Ingat tiga hari, catatannya
-      sampai sembilan.
-  - speakerId: PLAYER
-    text: Delapan, lalu sembilan. Dia mencatat karena bekalnya berkurang. Dia juga
-      terbangun di tempat lain; sekali di batu, lalu di semak-semak.
-  - speakerId: NPC-004
-    text: Padahal cuma singgah sebelum mencari ayahnya ke Sancang. Untung masih bisa
-      keluar.
-  - speakerId: PLAYER
-    text: Begitu menurut tulisannya. Perjalanannya dilanjutkan. Yang patah justru
-      bagian peringatan terakhir.
-  - speakerId: NPC-003
-    text: Uang perjalanan sudah saya tarik. Masing-masing dua juta dua ratus lima
-      puluh ribu.
-  - speakerId: NPC-003
-    text: Saya masih kepikiran isinya. Desa damai, lalu bekal berkurang dan orangnya
-      bangun di tempat lain. Kalau dibaca begini, kedengarannya seperti cerita karangan.
-  - speakerId: PLAYER
-    text: Bisa saja. Terjemahan ini memberi tahu apa yang ditulis, belum membuktikan
-      apa yang terjadi. Kita periksa prasastinya, cocokkan sumbernya, lalu cari tempat
-      yang dimaksud.
-  - speakerId: NPC-003
-    text: Ya. Jangan sampai kita sibuk membayangkan ceritanya, urusan verifikasinya
-      malah tertinggal.
-  - speakerId: NPC-003
-    text: Bagaimanapun, kita harus cepat.
+  - speakerId: "PLAYER"
+    text: "Terima kasih."
+  - speakerId: "NPC-004"
+    text: "Bagian hitungan harinya itu masih bikin aku bingung. Ingat tiga hari, catatannya sampai sembilan."
+  - speakerId: "PLAYER"
+    text: "Delapan, lalu sembilan. Dia mencatat karena bekalnya berkurang. Dia juga terbangun di tempat lain; sekali di batu, lalu di semak-semak."
+  - speakerId: "NPC-004"
+    text: "Padahal cuma singgah sebelum mencari ayahnya ke Sancang. Untung masih bisa keluar."
+  - speakerId: "PLAYER"
+    text: "Begitu menurut tulisannya. Perjalanannya dilanjutkan. Yang patah justru bagian peringatan terakhir."
+  - speakerId: "NPC-003"
+    text: "Uang perjalanan sudah saya tarik. Masing-masing dua juta dua ratus lima puluh ribu."
+  - speakerId: "NPC-003"
+    text: "Saya masih kepikiran isinya. Desa damai, lalu bekal berkurang dan orangnya bangun di tempat lain. Kalau dibaca begini, kedengarannya seperti cerita karangan."
+  - speakerId: "PLAYER"
+    text: "Bisa saja. Terjemahan ini memberi tahu apa yang ditulis, belum membuktikan apa yang terjadi. Kita periksa prasastinya, cocokkan sumbernya, lalu cari tempat yang dimaksud."
+  - speakerId: "NPC-003"
+    text: "Ya. Jangan sampai kita sibuk membayangkan ceritanya, urusan verifikasinya malah tertinggal."
+  - speakerId: "NPC-003"
+    text: "Bagaimanapun, kita harus cepat."
   conditions: []

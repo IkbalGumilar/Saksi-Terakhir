@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.boss_scold_raka
   lines:
-  - speakerId: NPC-006
-    text: Iya, cari dua-duanya. Berkasnya kita bahas setelah lengkap, supaya nanti
-      kalian berangkat dengan informasi yang sama.
+  - speakerId: "NPC-006"
+    text: "Iya, cari dua-duanya. Berkasnya kita bahas setelah lengkap, supaya nanti kalian berangkat dengan informasi yang sama."
   conditions: []

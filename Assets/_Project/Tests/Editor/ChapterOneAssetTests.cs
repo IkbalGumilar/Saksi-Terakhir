@@ -30,15 +30,15 @@ namespace SaksiTerakhir.Tests
             }));
         }
 
-        [TestCase("rooftop", 16, 20)]
+        [TestCase("rooftop", 30, 34)]
         [TestCase("boss-call", 4, 6)]
-        [TestCase("boss-first", 14, 18)]
-        [TestCase("raka-first", 6, 8)]
-        [TestCase("sinta-first", 6, 8)]
-        [TestCase("raka-last", 12, 16)]
-        [TestCase("sinta-last", 12, 16)]
-        [TestCase("boss-final", 18, 22)]
-        [TestCase("nadia-key", 5, 7)]
+        [TestCase("boss-first", 4, 7)]
+        [TestCase("raka-first", 4, 7)]
+        [TestCase("sinta-first", 4, 7)]
+        [TestCase("raka-last", 22, 26)]
+        [TestCase("sinta-last", 17, 21)]
+        [TestCase("boss-final", 25, 29)]
+        [TestCase("nadia-key", 4, 6)]
         public void StoryDialogueHasAuthoredLengthAndValidSpeakers(string name, int minimum,
             int maximum)
         {
@@ -62,8 +62,8 @@ namespace SaksiTerakhir.Tests
             string text = string.Join(" ", System.Array.ConvertAll(
                 new System.Collections.Generic.List<DialogueLine>(sequence.Lines).ToArray(),
                 line => line.Text));
-            Assert.That(text, Does.Contain("Provinsi Arunika"));
-            Assert.That(text, Does.Contain("Kecamatan Tanjung Sagara"));
+            Assert.That(text, Does.Contain("Cikapohon"));
+            Assert.That(text, Does.Contain("Gunung Cikuray"));
         }
 
         [TestCase("NPC-021-Pekerja-03", "chapter.rooftop")]

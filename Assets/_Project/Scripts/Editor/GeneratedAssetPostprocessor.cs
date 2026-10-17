@@ -17,6 +17,22 @@ namespace SaksiTerakhir.EditorTools
         private const int CharacterTextureSize = 1024;
         private const int EnvironmentTextureSize = 1024;
 
+        private void OnPreprocessAudio()
+        {
+            var importer = (AudioImporter)assetImporter;
+            if (importer == null) return;
+            if (importer.assetPath.Contains("/Ambience/") || importer.assetPath.Contains("/BGM_"))
+            {
+                AudioImporterSampleSettings settings = importer.defaultSampleSettings;
+                settings.loadType = AudioClipLoadType.Streaming;
+                settings.compressionFormat = AudioCompressionFormat.Vorbis;
+                settings.quality = 0.7f;
+                settings.preloadAudioData = true;
+                importer.defaultSampleSettings = settings;
+                importer.forceToMono = false;
+            }
+        }
+
         private void OnPreprocessModel()
         {
             var importer = (ModelImporter)assetImporter;

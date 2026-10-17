@@ -50,7 +50,7 @@ namespace SaksiTerakhir.Story
                 speakerLabel.gameObject.SetActive(settings == null || settings.showSpeakerName);
                 speakerLabel.text = SpeakerName(line.SpeakerId);
             }
-            StartTypewriter(line.Text);
+            StartTypewriter(line.LocalizedText);
         }
 
         public void Hide()
@@ -110,15 +110,33 @@ namespace SaksiTerakhir.Story
 
         private string SpeakerName(string id)
         {
-            if (id == "PLAYER") return "Kamu";
+            if (id == "PLAYER" || id == "MC" || id == "Ucup") return "Ucup";
+            bool en = SaksiTerakhir.Localization.LocalizationManager.CurrentLanguage == SaksiTerakhir.Localization.GameLanguage.English;
+            if (en)
+            {
+                if (id == "Petugas Digitalisasi") return "Digitization Staff";
+                if (id == "Petugas SPBU") return "Fuel Station Attendant";
+                if (id == "Bu Kantin") return "Canteen Seller";
+                if (id == "Pegawai") return "Staff Member";
+                if (id == "Kakek") return "Grandfather";
+                if (id == "Catatan") return "Note";
+            }
             if (speakerProfiles != null)
                 foreach (NpcProfile profile in speakerProfiles)
                     if (profile != null && profile.Id == id) return profile.DisplayName;
             return id;
         }
 
+        private void OnLanguageChanged()
+        {
+            if (dialogue != null && dialogue.IsPlaying)
+                Render(dialogue.ActiveSequence, dialogue.LineIndex);
+        }
+
         private void OnEnable()
         {
+            SaksiTerakhir.Localization.LocalizationManager.LanguageChanged -= OnLanguageChanged;
+            SaksiTerakhir.Localization.LocalizationManager.LanguageChanged += OnLanguageChanged;
             if (dialogue == null) return;
             dialogue.LineChanged += Render;
             dialogue.DialogueEnded += Hide;
@@ -127,6 +145,7 @@ namespace SaksiTerakhir.Story
 
         private void OnDisable()
         {
+            SaksiTerakhir.Localization.LocalizationManager.LanguageChanged -= OnLanguageChanged;
             if (dialogue != null)
             {
                 dialogue.LineChanged -= Render;

@@ -605,8 +605,12 @@ namespace SaksiTerakhir.EditorTools
             float rowY = 0f;
             const float rowHeight = 58f;
 
-            CreateStepperRow(optionsList, "Speaker Name Row", "Nama Pembicara", "Aktif",
+            CreateStepperRow(optionsList, "Language Row", "Bahasa", "Indonesia",
                 rowY, rowHeight, true, bodyFont, outlineSprite);
+            rowY += rowHeight;
+
+            CreateStepperRow(optionsList, "Speaker Name Row", "Nama Pembicara", "Aktif",
+                rowY, rowHeight, false, bodyFont, outlineSprite);
             rowY += rowHeight;
 
             CreateSliderRow(optionsList, "Text Speed Row", "Kecepatan Teks", 35,

@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Story.DialogueSequence
   id: chapter.raka_first
   lines:
-  - speakerId: PLAYER
-    text: Pak Bos cari kamu. Katanya sudah telepon juga.
-  - speakerId: NPC-003
-    text: Oh, HP saya ketinggalan di kantin. Pantas dari tadi tenang sekali.
-  - speakerId: PLAYER
-    text: Tenangnya pindah ke saya. Sekarang disuruh cari kalian berdua.
-  - speakerId: NPC-003
-    text: Baik, pencarian saya selesai. Saya langsung ke ruangannya.
-  - speakerId: PLAYER
-    text: Saya lanjut cari B. Kalau sudah ketemu, kami menyusul.
+  - speakerId: "PLAYER"
+    text: "Pak Dadan, Pak Bos mencari Bapak. Katanya sudah menelepon juga."
+  - speakerId: "NPC-003"
+    text: "Oh, HP saya ketinggalan di kantin. Pantas dari tadi tenang sekali."
+  - speakerId: "PLAYER"
+    text: "Tenangnya pindah ke saya, Pak. Sekarang saya yang disuruh cari Bapak sama Rafi."
+  - speakerId: "NPC-003"
+    text: "Baik, pencarian saya selesai. Saya langsung ke ruangannya."
+  - speakerId: "PLAYER"
+    text: "Saya lanjut cari Rafi, Pak. Kalau sudah ketemu, kami menyusul."
   conditions: []

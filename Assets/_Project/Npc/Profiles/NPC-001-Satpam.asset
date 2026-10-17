@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NPC-001-Satpam
   m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Npc.NpcProfile
   id: NPC-001
-  displayName: Damar
+  displayName: Satpam
   age: 38
   movementSpeed: 2.8
   role: 0

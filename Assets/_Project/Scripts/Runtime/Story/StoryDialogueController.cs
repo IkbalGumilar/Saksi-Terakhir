@@ -224,7 +224,7 @@ namespace SaksiTerakhir.Story
 
         private void ScheduleCurrentLine()
         {
-            nextLineAt = Time.time + GetLineDuration(CurrentLine != null ? CurrentLine.Text : string.Empty);
+            nextLineAt = Time.time + GetLineDuration(CurrentLine != null ? CurrentLine.LocalizedText : string.Empty);
         }
 
         private void ApplyPlaybackLocks()

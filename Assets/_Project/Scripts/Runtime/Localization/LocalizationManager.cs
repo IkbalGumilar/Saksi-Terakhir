@@ -10,7 +10,7 @@ namespace SaksiTerakhir.Localization
         public static event Action LanguageChanged;
 
         private static LocalizationTable table;
-        private static GameLanguage currentLanguage = GameLanguage.English;
+        private static GameLanguage currentLanguage = GameLanguage.Indonesian;
         private static bool isInitialized;
 
         public static GameLanguage CurrentLanguage => currentLanguage;
@@ -38,6 +38,16 @@ namespace SaksiTerakhir.Localization
             return table.GetText(key, currentLanguage);
         }
 
+        public static string Translate(string text)
+        {
+            if (string.IsNullOrEmpty(text) || !isInitialized || table == null)
+            {
+                return text ?? string.Empty;
+            }
+
+            return table.TranslateText(text, currentLanguage);
+        }
+
         public static void SetLanguage(GameLanguage language)
         {
             if (currentLanguage == language)
@@ -55,14 +65,14 @@ namespace SaksiTerakhir.Localization
         private static void ResetStaticState()
         {
             table = null;
-            currentLanguage = GameLanguage.English;
+            currentLanguage = GameLanguage.Indonesian;
             isInitialized = false;
             LanguageChanged = null;
         }
 
         private static GameLanguage LoadLanguage()
         {
-            GameLanguage defaultLanguage = table != null ? table.defaultLanguage : GameLanguage.English;
+            GameLanguage defaultLanguage = table != null ? table.defaultLanguage : GameLanguage.Indonesian;
             string savedValue = PlayerPrefs.GetString(LanguagePrefsKey, defaultLanguage.ToString());
             return Enum.TryParse(savedValue, out GameLanguage parsedLanguage) ? parsedLanguage : defaultLanguage;
         }

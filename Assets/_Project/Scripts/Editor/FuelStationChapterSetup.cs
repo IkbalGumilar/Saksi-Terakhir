@@ -43,15 +43,15 @@ namespace SaksiTerakhir.EditorTools
 
             var book = new ChapterOneManuscript();
             string grandfatherSection = ChapterOneManuscript.Between(book.Branches,
-                "## ADEGAN — BANGKU DI TEMPAT TEDUH", "## GAMEPLAY — TIMER SPBU DAN PANGGILAN B");
+                "## ADEGAN — BANGKU DI TEMPAT TEDUH", "## GAMEPLAY — TIMER SPBU DAN PANGGILAN RAFI");
             DialogueLine[] grandfatherLines = ChapterOneManuscript.Speeches(grandfatherSection);
             DialogueSequence grandfather = Dialogue("spbu-grandfather", "chapter.spbu_grandfather", grandfatherLines);
             DialogueSequence direct = Dialogue("spbu-ready-direct", "chapter.spbu_ready_direct",
                 Speeches(book.Main, "### Panggilan langsung", "### Panggilan melalui telepon"));
             DialogueSequence phone = Dialogue("spbu-ready-phone", "chapter.spbu_ready_phone",
-                Speeches(book.Main, "### Panggilan melalui telepon", "### Jika MC sedang berbicara dengan kakek"), phone: true);
+                Speeches(book.Main, "### Panggilan melalui telepon", "### Jika Ucup sedang berbicara dengan kakek"), phone: true);
             DialogueSequence farewell = Dialogue("spbu-grandfather-farewell", "chapter.spbu_grandfather_farewell",
-                Speeches(book.Branches, "Jika pemain memilih berpamitan lebih awal, MC dapat berkata:",
+                Speeches(book.Branches, "Jika pemain memilih berpamitan lebih awal, Ucup dapat berkata:",
                     "Jika pemain memilih menyelesaikan obrolan setelah menjawab telepon"));
             DialogueSequence photo = Dialogue("spbu-photo", "chapter.spbu_photo",
                 Speeches(book.Main, "## OPTIONAL ACTIVITY — FOTO PERJALANAN", "**ITEM OPSIONAL:**"));
@@ -105,7 +105,7 @@ namespace SaksiTerakhir.EditorTools
             DialogueLine[] full = Speeches(branch, "**Jika `INFO_PETUNJUK_KE_DESA_LENGKAP = TRUE`:**",
                 "**Jika `INFO_PETUNJUK_KE_DESA_LENGKAP = FALSE`:**");
             DialogueLine[] partialReply = Speeches(branch,
-                "Setelah salah satu variasi parsial tersebut, A berkata:", "### Lanjutan dialog bersama");
+                "Setelah salah satu variasi parsial tersebut, Dadan berkata:", "### Lanjutan dialog bersama");
             DialogueLine[] report = Partial("LAPORAN_GIRIAWAS", "PETUNJUK_MALAM");
             DialogueLine[] night = Partial("PETUNJUK_MALAM", "MENUNGGU_PAGI");
             DialogueLine[] morning = Partial("MENUNGGU_PAGI", null);
@@ -132,9 +132,9 @@ namespace SaksiTerakhir.EditorTools
             DialogueLine[] Partial(string stage, string next)
             {
                 string section = ChapterOneManuscript.Between(branch,
-                    "- Bila `BRANCH_03_TAHAP_DIALOG_TERAKHIR = " + stage + "`, MC berkata:",
+                    "- Bila `BRANCH_03_TAHAP_DIALOG_TERAKHIR = " + stage + "`, Ucup berkata:",
                     next == null ? "Setelah salah satu variasi parsial tersebut" :
-                        "- Bila `BRANCH_03_TAHAP_DIALOG_TERAKHIR = " + next + "`, MC berkata:");
+                        "- Bila `BRANCH_03_TAHAP_DIALOG_TERAKHIR = " + next + "`, Ucup berkata:");
                 return new[] { new DialogueLine("PLAYER", ChapterOneManuscript.QuotedDocument(section)) }
                     .Concat(partialReply).ToArray();
             }
@@ -174,12 +174,12 @@ namespace SaksiTerakhir.EditorTools
                 "Struk SPBU — Pengisian dan Perbekalan Kendaraan", "Fuel Station Receipt — Vehicle Fuel and Supplies",
                 "Bukti pengisian tangki dan pembelian serta pengisian dua jerigen cadangan.",
                 "Receipt for filling the vehicle and buying and filling two reserve fuel containers.",
-                "Struk SPBU — Pengisian dan Perbekalan Kendaraan\n24 Agustus 2026\n\nTangki mobil dinas: terisi penuh\nJerigen khusus BBM: 2 buah, terisi\nPembayaran ditangani A dari dana dinas.");
+                "Struk SPBU — Pengisian dan Perbekalan Kendaraan\n24 Agustus 2026\n\nTangki mobil dinas: terisi penuh\nJerigen khusus BBM: 2 buah, terisi\nPembayaran ditangani Dadan dari dana dinas.");
             ItemDefinition photo = Document("Foto_Persinggahan_SPBU", "document.spbu_trip_photo",
                 "Foto Perjalanan — Persinggahan SPBU", "Travel Photo — Fuel Station Stop",
-                "Foto MC, A dan B di area parkir, dengan papan SPBU di belakang mereka.",
-                "A photo of MC, A and B in the parking area with the fuel station sign behind them.",
-                "Foto Perjalanan — Persinggahan SPBU\n\nMC, A dan B berdiri bersama di area parkir. Ketiganya sedang melihat kamera; papan SPBU terlihat di belakang mereka.");
+                "Foto Ucup, Dadan, dan Rafi di area parkir, dengan papan SPBU di belakang mereka.",
+                "A photo of Ucup, Dadan, and Rafi in the parking area with the fuel station sign behind them.",
+                "Foto Perjalanan — Persinggahan SPBU\n\nUcup, Dadan, dan Rafi berdiri bersama di area parkir. Ketiganya sedang melihat kamera; papan SPBU terlihat di belakang mereka.");
             ItemDefinitionCatalog catalog = Asset<ItemDefinitionCatalog>("Assets/_Project/Resources/ItemDefinitionCatalog.asset");
             var serialized = new SerializedObject(catalog);
             SetReferences(serialized.FindProperty("definitions"), catalog.Definitions.Concat(new[] { receipt, photo }).Distinct().ToArray());
@@ -213,8 +213,8 @@ namespace SaksiTerakhir.EditorTools
             leaving.Configure("chapter.spbu_departure", QuestCategory.Main, "story.quest.spbu_departure", Array.Empty<string>());
             EditorUtility.SetDirty(returning);
             EditorUtility.SetDirty(leaving);
-            Text("story.quest.spbu_return", "Kembali ke mobil bersama Raka dan Sinta", "Return to the car with Raka and Sinta");
-            Text("story.quest.spbu_departure", "Menuju Giriawas bersama Raka dan Sinta", "Leave for Giriawas with Raka and Sinta");
+            Text("story.quest.spbu_return", "Kembali ke mobil bersama Dadan dan Rafi", "Return to the car with Dadan and Rafi");
+            Text("story.quest.spbu_departure", "Menuju Giriawas bersama Dadan dan Rafi", "Leave for Giriawas with Dadan and Rafi");
             var serialized = new SerializedObject(chapter);
             SerializedProperty quests = serialized.FindProperty("quests");
             if (quests.arraySize < 13) quests.arraySize = 13;
