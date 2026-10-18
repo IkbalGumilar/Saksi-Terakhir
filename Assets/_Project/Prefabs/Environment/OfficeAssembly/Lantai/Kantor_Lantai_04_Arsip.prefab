@@ -57160,8 +57160,50 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7980413541476211403, guid: adc7569f57a59c25bb1da7f2490ada49, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 842957536814063486}
   m_SourcePrefab: {fileID: 100100000, guid: adc7569f57a59c25bb1da7f2490ada49, type: 3}
+--- !u!1 &2533258844660949153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7980413541476211403, guid: adc7569f57a59c25bb1da7f2490ada49, type: 3}
+  m_PrefabInstance: {fileID: 5613717875061291626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &842957536814063486
+
+MonoBehaviour:
+
+  m_ObjectHideFlags: 0
+
+  m_CorrespondingSourceObject: {fileID: 0}
+
+  m_PrefabInstance: {fileID: 0}
+
+  m_PrefabAsset: {fileID: 0}
+
+  m_GameObject: {fileID: 2533258844660949153}
+
+  m_Enabled: 1
+
+  m_EditorHideFlags: 0
+
+  m_Script: {fileID: 11500000, guid: 63b0f22bb9bf1d56c94df5f62f7d73f9, type: 3}
+
+  m_Name:
+
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Environment.ElevatorButton
+
+  promptKey: interact.generic
+
+  elevator: {fileID: 0}
+
+  buttonType: 0
+
+  targetFloor: 3
+
+  customPromptKey:
+
 --- !u!4 &2912740252388014619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7317170142064427121, guid: adc7569f57a59c25bb1da7f2490ada49, type: 3}

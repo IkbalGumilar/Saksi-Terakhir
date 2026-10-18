@@ -99,7 +99,7 @@ namespace SaksiTerakhir.Audio
             if (menuMusicClip != null)
             {
                 isGameplayMusicActive = false;
-                AudioManager.Instance.PlayMusic(menuMusicClip, loop: true, fadeDuration: crossfadeDuration);
+                AudioManager.Instance?.PlayMusic(menuMusicClip, loop: true, fadeDuration: crossfadeDuration);
             }
         }
 
@@ -115,17 +115,18 @@ namespace SaksiTerakhir.Audio
             if (officeGameplayMusicClip != null)
             {
                 isGameplayMusicActive = true;
-                AudioManager.Instance.PlayMusic(officeGameplayMusicClip, loop: true, fadeDuration: crossfadeDuration);
+                AudioManager.Instance?.PlayMusic(officeGameplayMusicClip, loop: true, fadeDuration: crossfadeDuration);
             }
         }
 
         private void OnDestroy()
         {
             isOfficeActive = false;
-            // Stop office music when leaving the office scene so the next scene can play its own audio
-            if (AudioManager.HasInstance)
+            // Stop office music when leaving the office scene so the next scene can play its own audio.
+            // Check IsQuitting so teardown when exiting Play Mode does not attempt to stop or touch audio.
+            if (AudioManager.HasInstance && !AudioManager.IsQuitting)
             {
-                AudioManager.Instance.StopMusic(fadeDuration: 1.0f);
+                AudioManager.Instance?.StopMusic(fadeDuration: 1.0f);
             }
         }
 

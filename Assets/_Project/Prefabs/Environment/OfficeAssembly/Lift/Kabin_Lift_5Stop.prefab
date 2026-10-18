@@ -1,0 +1,740 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2727917115355575614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6899448314019266355}
+  - component: {fileID: 3961520851336373789}
+  - component: {fileID: 807879704315968701}
+  m_Layer: 0
+  m_Name: Tombol_Lantai_4_Interaksi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6899448314019266355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727917115355575614}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.062, y: 0.591, z: -0.055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5796888629196804531}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3961520851336373789
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727917115355575614}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.075, y: 0.075, z: 0.045}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &807879704315968701
+
+MonoBehaviour:
+
+  m_ObjectHideFlags: 0
+
+  m_CorrespondingSourceObject: {fileID: 0}
+
+  m_PrefabInstance: {fileID: 0}
+
+  m_PrefabAsset: {fileID: 0}
+
+  m_GameObject: {fileID: 2727917115355575614}
+
+  m_Enabled: 1
+
+  m_EditorHideFlags: 0
+
+  m_Script: {fileID: 11500000, guid: 63b0f22bb9bf1d56c94df5f62f7d73f9, type: 3}
+
+  m_Name:
+
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Environment.ElevatorButton
+
+  promptKey: interact.generic
+
+  elevator: {fileID: 0}
+
+  buttonType: 1
+
+  targetFloor: 3
+
+  customPromptKey:
+
+--- !u!1 &4394128762247874745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 779905944591574744}
+  - component: {fileID: 8476141235535305414}
+  - component: {fileID: 1014304453859820026}
+  m_Layer: 0
+  m_Name: Tombol_Lantai_3_Interaksi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &779905944591574744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4394128762247874745}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.062, y: 0.468, z: -0.055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5796888629196804531}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8476141235535305414
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4394128762247874745}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.075, y: 0.075, z: 0.045}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1014304453859820026
+
+MonoBehaviour:
+
+  m_ObjectHideFlags: 0
+
+  m_CorrespondingSourceObject: {fileID: 0}
+
+  m_PrefabInstance: {fileID: 0}
+
+  m_PrefabAsset: {fileID: 0}
+
+  m_GameObject: {fileID: 4394128762247874745}
+
+  m_Enabled: 1
+
+  m_EditorHideFlags: 0
+
+  m_Script: {fileID: 11500000, guid: 63b0f22bb9bf1d56c94df5f62f7d73f9, type: 3}
+
+  m_Name:
+
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Environment.ElevatorButton
+
+  promptKey: interact.generic
+
+  elevator: {fileID: 0}
+
+  buttonType: 1
+
+  targetFloor: 2
+
+  customPromptKey:
+
+--- !u!1 &4986979600270838651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5238330722416115132}
+  m_Layer: 0
+  m_Name: Kabin_Lift_5Stop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5238330722416115132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986979600270838651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4426204116599996243}
+  - {fileID: 4524061211867321159}
+  - {fileID: 3783852125441041872}
+  - {fileID: 5796888629196804531}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7686528331611299404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6013701216035262051}
+  - component: {fileID: 6160193196255775567}
+  - component: {fileID: 2211721159663036366}
+  m_Layer: 0
+  m_Name: Tombol_Lantai_5_Interaksi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6013701216035262051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7686528331611299404}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.062, y: 0.714, z: -0.055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5796888629196804531}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6160193196255775567
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7686528331611299404}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.075, y: 0.075, z: 0.045}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2211721159663036366
+
+MonoBehaviour:
+
+  m_ObjectHideFlags: 0
+
+  m_CorrespondingSourceObject: {fileID: 0}
+
+  m_PrefabInstance: {fileID: 0}
+
+  m_PrefabAsset: {fileID: 0}
+
+  m_GameObject: {fileID: 7686528331611299404}
+
+  m_Enabled: 1
+
+  m_EditorHideFlags: 0
+
+  m_Script: {fileID: 11500000, guid: 63b0f22bb9bf1d56c94df5f62f7d73f9, type: 3}
+
+  m_Name:
+
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Environment.ElevatorButton
+
+  promptKey: interact.generic
+
+  elevator: {fileID: 0}
+
+  buttonType: 1
+
+  targetFloor: 4
+
+  customPromptKey:
+
+--- !u!1 &8410920876838069204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7828773052095418695}
+  - component: {fileID: 428439311629802273}
+  - component: {fileID: 8538815058713921263}
+  m_Layer: 0
+  m_Name: Tombol_Lantai_2_Interaksi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7828773052095418695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8410920876838069204}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.062, y: 0.345, z: -0.055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5796888629196804531}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &428439311629802273
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8410920876838069204}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.075, y: 0.075, z: 0.045}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8538815058713921263
+
+MonoBehaviour:
+
+  m_ObjectHideFlags: 0
+
+  m_CorrespondingSourceObject: {fileID: 0}
+
+  m_PrefabInstance: {fileID: 0}
+
+  m_PrefabAsset: {fileID: 0}
+
+  m_GameObject: {fileID: 8410920876838069204}
+
+  m_Enabled: 1
+
+  m_EditorHideFlags: 0
+
+  m_Script: {fileID: 11500000, guid: 63b0f22bb9bf1d56c94df5f62f7d73f9, type: 3}
+
+  m_Name:
+
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Environment.ElevatorButton
+
+  promptKey: interact.generic
+
+  elevator: {fileID: 0}
+
+  buttonType: 1
+
+  targetFloor: 1
+
+  customPromptKey:
+
+--- !u!1 &8897315678068584330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 724937103377018713}
+  - component: {fileID: 6083356036747640813}
+  - component: {fileID: 7863019785674704712}
+  m_Layer: 0
+  m_Name: Tombol_Lantai_1_Interaksi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &724937103377018713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897315678068584330}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.062, y: 0.222, z: -0.055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5796888629196804531}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6083356036747640813
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897315678068584330}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.075, y: 0.075, z: 0.045}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7863019785674704712
+
+MonoBehaviour:
+
+  m_ObjectHideFlags: 0
+
+  m_CorrespondingSourceObject: {fileID: 0}
+
+  m_PrefabInstance: {fileID: 0}
+
+  m_PrefabAsset: {fileID: 0}
+
+  m_GameObject: {fileID: 8897315678068584330}
+
+  m_Enabled: 1
+
+  m_EditorHideFlags: 0
+
+  m_Script: {fileID: 11500000, guid: 63b0f22bb9bf1d56c94df5f62f7d73f9, type: 3}
+
+  m_Name:
+
+  m_EditorClassIdentifier: SaksiTerakhir.Runtime::SaksiTerakhir.Environment.ElevatorButton
+
+  promptKey: interact.generic
+
+  elevator: {fileID: 0}
+
+  buttonType: 1
+
+  targetFloor: 0
+
+  customPromptKey:
+
+--- !u!1001 &1231049324904558920
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5238330722416115132}
+    m_Modifications:
+    - target: {fileID: 2824681979307070625, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_Name
+      value: Cangkang_Kabin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+--- !u!4 &4426204116599996243 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3204480355624799771, guid: e0145ebd0c3969c329f09a96dea8fd45, type: 3}
+  m_PrefabInstance: {fileID: 1231049324904558920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4408185023596037328
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5238330722416115132}
+    m_Modifications:
+    - target: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 625549493045710125, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+      propertyPath: m_Name
+      value: Pintu_Kabin_Kiri
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+--- !u!4 &4524061211867321159 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 280829973568821143, guid: 3a06170b5e4dfea74b9435e776fbe56d, type: 3}
+  m_PrefabInstance: {fileID: 4408185023596037328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6777138240531898410
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5238330722416115132}
+    m_Modifications:
+    - target: {fileID: 7044784905404538688, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_Name
+      value: Pintu_Kabin_Kanan
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+--- !u!4 &3783852125441041872 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7678578160540812794, guid: 889d6adda3bc0dceebab7c82ec01e520, type: 3}
+  m_PrefabInstance: {fileID: 6777138240531898410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8773534554846348765
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5238330722416115132}
+    m_Modifications:
+    - target: {fileID: 2519945289151663828, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_Name
+      value: Panel_Tombol_Lift_5_Lantai
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 724937103377018713}
+    - targetCorrespondingSourceObject: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7828773052095418695}
+    - targetCorrespondingSourceObject: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 779905944591574744}
+    - targetCorrespondingSourceObject: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6899448314019266355}
+    - targetCorrespondingSourceObject: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6013701216035262051}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+--- !u!4 &5796888629196804531 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3004873260111074414, guid: 2ddc18ac96e39d1e096249b28ba968db, type: 3}
+  m_PrefabInstance: {fileID: 8773534554846348765}
+  m_PrefabAsset: {fileID: 0}

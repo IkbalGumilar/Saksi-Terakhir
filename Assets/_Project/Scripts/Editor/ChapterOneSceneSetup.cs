@@ -150,13 +150,15 @@ namespace SaksiTerakhir.EditorTools
                 new Vector2(0f, 1f), new Vector2(18f, -17f), new Vector2(12f, 12f),
                 QuestTrackerView.MainDotColor).GetComponent<Image>();
             GameObject storyPanel = Panel(saveArea, "Chapter One Dialogue Panel",
-                new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 118f),
-                new Vector2(548f, 112f), new Color(0.025f, 0.03f, 0.04f, 0.88f));
-            TMP_Text speaker = Label(storyPanel.transform, "Speaker", new Vector2(18f, -10f),
-                new Vector2(510f, 26f), 18f);
+                new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 60f),
+                new Vector2(1800f, 300f), new Color(0.025f, 0.03f, 0.04f, 0.88f));
+            TMP_Text speaker = Label(storyPanel.transform, "Speaker", new Vector2(48f, -24f),
+                new Vector2(1704f, 44f), 28f);
             speaker.color = new Color(1f, 0.82f, 0.36f, 1f);
-            TMP_Text line = Label(storyPanel.transform, "Dialogue Line", new Vector2(18f, -37f),
-                new Vector2(510f, 70f), 14f);
+            speaker.fontStyle = FontStyles.Bold;
+            TMP_Text line = Label(storyPanel.transform, "Dialogue Line", new Vector2(48f, -78f),
+                new Vector2(1704f, 196f), 24f);
+            line.lineSpacing = 6f;
 
             GameObject notice = Find("Notificatuion");
             TMP_Text noticeText = notice.GetComponentInChildren<TMP_Text>(true);

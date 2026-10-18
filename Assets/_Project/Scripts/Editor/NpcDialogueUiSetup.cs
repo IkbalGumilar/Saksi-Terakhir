@@ -47,11 +47,12 @@ namespace SaksiTerakhir.EditorTools
             background.raycastTarget = false;
 
             TextMeshProUGUI nameLabel = EnsureText(panel.transform, "NPC Name", actionText,
-                new Vector2(0f, -12f), new Vector2(-36f, 32f), 24f,
+                new Vector2(0f, -24f), new Vector2(-96f, 44f), 28f,
                 new Color(1f, 0.89f, 0.52f), FontStyles.Bold);
             TextMeshProUGUI lineLabel = EnsureText(panel.transform, "NPC Line", actionText,
-                new Vector2(0f, -52f), new Vector2(-36f, 66f), 20f,
+                new Vector2(0f, -78f), new Vector2(-96f, 196f), 24f,
                 Color.white, FontStyles.Normal);
+            lineLabel.lineSpacing = 6f;
 
             prompt.ConfigureNpcDialogue(panel, nameLabel, lineLabel);
             EditorUtility.SetDirty(prompt);
@@ -85,8 +86,8 @@ namespace SaksiTerakhir.EditorTools
             rect.anchorMin = new Vector2(0.5f, 0f);
             rect.anchorMax = new Vector2(0.5f, 0f);
             rect.pivot = new Vector2(0.5f, 0f);
-            rect.anchoredPosition = new Vector2(0f, 68f);
-            rect.sizeDelta = new Vector2(660f, 138f);
+            rect.anchoredPosition = new Vector2(0f, 60f);
+            rect.sizeDelta = new Vector2(1800f, 300f);
             return panel;
         }
 

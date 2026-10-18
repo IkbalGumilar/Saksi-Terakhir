@@ -16,8 +16,16 @@ namespace SaksiTerakhir.Audio
         private static AudioManager instance;
         private static bool isQuitting;
 
-        public static AudioManager Instance => EnsureInstance();
-        public static bool HasInstance => instance != null;
+        public static bool IsQuitting => isQuitting;
+        public static bool HasInstance => !isQuitting && instance != null;
+        public static AudioManager Instance => isQuitting ? null : EnsureInstance();
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
+        {
+            instance = null;
+            isQuitting = false;
+        }
 
         [Header("Audio Sources")]
         [SerializeField] private AudioSource sourceA;
@@ -37,14 +45,11 @@ namespace SaksiTerakhir.Audio
             if (instance != null) return instance;
 
             instance = FindFirstObjectByType<AudioManager>();
-            if (instance == null)
+            if (instance == null && Application.isPlaying)
             {
                 GameObject root = new GameObject("[AudioManager]");
                 instance = root.AddComponent<AudioManager>();
-                if (Application.isPlaying)
-                {
-                    DontDestroyOnLoad(root);
-                }
+                DontDestroyOnLoad(root);
             }
             return instance;
         }
@@ -82,6 +87,14 @@ namespace SaksiTerakhir.Audio
         private void OnApplicationQuit()
         {
             isQuitting = true;
+        }
+
+        private void OnDestroy()
+        {
+            if (instance == this)
+            {
+                instance = null;
+            }
         }
 
         private void EnsureSources()
@@ -192,7 +205,7 @@ namespace SaksiTerakhir.Audio
             activeSource.volume = 0f;
             activeSource.Play();
 
-            if (fadeDuration <= 0f)
+            if (fadeDuration <= 0f || !gameObject.activeInHierarchy || isQuitting)
             {
                 activeSource.volume = TargetMusicVolume;
                 if (fadingOutSource != null)
@@ -224,7 +237,7 @@ namespace SaksiTerakhir.Audio
             currentClip = null;
             if (activeSource == null || !activeSource.isPlaying) return;
 
-            if (fadeDuration <= 0f)
+            if (fadeDuration <= 0f || !gameObject.activeInHierarchy || isQuitting)
             {
                 activeSource.Stop();
                 activeSource.volume = 0f;
