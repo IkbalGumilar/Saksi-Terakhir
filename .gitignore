@@ -73,6 +73,13 @@ ExportedObj/
 # Naskah lokal untuk pembuat dialog; menjaga spoiler di luar repo publik.
 /docs/bab-01.md
 /docs/bab-01-branch.md
+/docs/bab-02.md
+/docs/bab-*.md
+
+# Tangkapan layar dokumentasi untuk README tetap dilacak Git.
+!/docs/screenshots/
+!/docs/screenshots/**
+
 /.agents/
 /.aws/
 /.codex/
